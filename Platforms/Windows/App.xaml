@@ -1,0 +1,8 @@
+﻿<maui:MauiWinUIApplication
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maui="using:Microsoft.Maui"
+    xmlns:local="using:ProyectoFinal_Grupo3_Floristeria_Margaritas.WinUI">
+
+</maui:MauiWinUIApplication>
