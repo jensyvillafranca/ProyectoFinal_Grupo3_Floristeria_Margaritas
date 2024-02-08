@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundColor="White">
+
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Scrollable Content  -->
+        <ScrollView Grid.Row="0">
+            <!--  Your existing content goes here  -->
+            <StackLayout>
+                <!--  Header  -->
+                <StackLayout
+                    Margin="0,0,0,10"
+                    Padding="0,10,0,10"
+                    BackgroundColor="Black"
+                    Orientation="Horizontal">
+                    <Button
+                        x:Name="btnNotification"
+                        Margin="10,0,0,0"
+                        BackgroundColor="Transparent"
+                        Clicked="btnNotification_Clicked"
+                        Text="🔔" />
+                    <!--  Spacer to push the Button to the end  -->
+                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                    <Image
+                        Margin="0,0,10,0"
+                        Aspect="AspectFit"
+                        HeightRequest="40"
+                        Source="logo.png"
+                        WidthRequest="40" />
+                    <Label
+                        Margin="0,0,90,0"
+                        FontAttributes="Bold"
+                        Text="Floristeria Margaritas"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+
+                <!--  Body: First Row  -->
+
+                <!--  First Row: Productos and Carrito Frames  -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--  Productos Frame  -->
+                    <Frame
+                        x:Name="frameProductos"
+                        Margin="5"
+                        Padding="5"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="50"
+                                Source="productos.png" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Productos"
+                                TextColor="White" />
+                        </StackLayout>
+                    </Frame>
+
+                    <!--  Carrito Frame  -->
+                    <Frame
+                        x:Name="frameCarrito"
+                        Grid.Column="1"
+                        Margin="5"
+                        Padding="5"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="50"
+                                Source="carrito.png" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Carrito"
+                                TextColor="White" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+
+                <StackLayout>
+                    <!--  Label  -->
+                    <Label
+                        Margin="0,10,0,0"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Text="Ofertas"
+                        TextColor="Black"
+                        VerticalOptions="Start" />
+
+                    <!--  CarouselView  -->
+                    <CarouselView
+                        x:Name="carouselView"
+                        Margin="0,0,0,10"
+                        ItemsSource="{Binding TestItems}">
+                        <CarouselView.ItemsLayout>
+                            <LinearItemsLayout
+                                ItemSpacing="0"
+                                Orientation="Horizontal"
+                                SnapPointsAlignment="Start"
+                                SnapPointsType="Mandatory" />
+                        </CarouselView.ItemsLayout>
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="5"
+                                    Padding="5"
+                                    BackgroundColor="Black"
+                                    CornerRadius="10"
+                                    HasShadow="True">
+                                    <StackLayout>
+                                        <Image Aspect="Center" Source="{Binding ImagePath}" />
+                                        <Label
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelText}"
+                                            TextColor="White" />
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                </StackLayout>
+
+                <!--  Body: Third Row  -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--  Pedidos Frame  -->
+                    <Frame
+                        x:Name="framePedidos"
+                        Margin="5"
+                        Padding="5"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="50"
+                                Source="pedidos.png" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Pedidos"
+                                TextColor="White" />
+                        </StackLayout>
+                    </Frame>
+
+                    <!--  Perfil Frame  -->
+                    <Frame
+                        x:Name="framePerfil"
+                        Grid.Column="1"
+                        Margin="5"
+                        Padding="5"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="50"
+                                Source="perfil.png" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Perfil"
+                                TextColor="White" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+
+        <!--  Bottom Navigation Bar  -->
+        <StackLayout
+            Grid.Row="1"
+            Padding="0,0,0,0"
+            BackgroundColor="LightGray"
+            Orientation="Horizontal">
+
+            <!--  Spacer to push the Button to the end  -->
+            <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+
+            <!--  Logout Button at the end  -->
+            <Frame
+                Padding="5"
+                BackgroundColor="Transparent"
+                CornerRadius="20">
+                <StackLayout>
+                    <Button
+                        x:Name="btnLogout"
+                        BackgroundColor="Transparent"
+                        Clicked="btnLogout_Clicked"
+                        HeightRequest="40"
+                        WidthRequest="40">
+                        <Button.ImageSource>
+                            <FileImageSource File="logout.png" />
+                        </Button.ImageSource>
+                    </Button>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </Grid>
+</ContentPage>
