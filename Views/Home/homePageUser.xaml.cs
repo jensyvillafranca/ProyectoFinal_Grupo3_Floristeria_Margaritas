@@ -17,11 +17,11 @@ public partial class homePageUser : ContentPage
         // Inicia objetos de prueba para el carrusel
         TestItems = new ObservableCollection<TestItem>
         {
-                new TestItem { ImagePath = "descuento.png", LabelText = "Item 1" },
-                new TestItem { ImagePath = "descuento.png", LabelText = "Item 2" },
-                new TestItem { ImagePath = "descuento.png", LabelText = "Item 3" },
-                new TestItem { ImagePath = "descuento.png", LabelText = "Item 4" },
-                new TestItem { ImagePath = "descuento.png", LabelText = "Item 5" }
+                new TestItem { ImagePath = "Home/descuento.png", LabelText = "Item 1" },
+                new TestItem { ImagePath = "Home/descuento.png", LabelText = "Item 2" },
+                new TestItem { ImagePath = "Home/descuento.png", LabelText = "Item 3" },
+                new TestItem { ImagePath = "Home/descuento.png", LabelText = "Item 4" },
+                new TestItem { ImagePath = "Home/descuento.png", LabelText = "Item 5" }
             };
 
         // Coloca la coleccion como la fuente de objetos para el carrusel
@@ -73,11 +73,6 @@ public partial class homePageUser : ContentPage
         public string? LabelText { get; set; }
     }
 
-    private void btnNotification_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
     private void btnLogout_Clicked(object sender, EventArgs e)
     {
 
@@ -106,5 +101,10 @@ public partial class homePageUser : ContentPage
     private async void TapGestureCarousel_Tapped(object sender, TappedEventArgs e)
     {
         await AnimationUtilities.ChangeFrameColor((Frame)sender, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
+    }
+
+    private void btnNotification_Clicked(object sender, EventArgs e)
+    {
+
     }
 }

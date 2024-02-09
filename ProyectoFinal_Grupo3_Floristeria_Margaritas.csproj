@@ -89,6 +89,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\notificacion.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -99,6 +103,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Home\carrito.png" />
+	  <MauiImage Include="Resources\Images\Home\descuento.png" />
+	  <MauiImage Include="Resources\Images\Home\historial.png" />
+	  <MauiImage Include="Resources\Images\Home\ingresos.png" />
+	  <MauiImage Include="Resources\Images\Home\notificacion.png" />
+	  <MauiImage Include="Resources\Images\Home\notificacionrepartidor.png" />
+	  <MauiImage Include="Resources\Images\Home\pedidos.png" />
+	  <MauiImage Include="Resources\Images\Home\perfil.png" />
+	  <MauiImage Include="Resources\Images\Home\productos.png" />
+	  <MauiImage Include="Resources\Images\Logo\logo.png" />
+	  <MauiImage Include="Resources\Images\Menu\logout.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Home\homePageRepartidor.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Home\homePageUser.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser"
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageRepartidor"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title=""
     BackgroundColor="White">
-
     <Grid>
         <!--  Content Grid  -->
         <Grid.RowDefinitions>
@@ -18,7 +17,7 @@
             <StackLayout>
                 <!--  Header  -->
                 <StackLayout
-                    Margin="0,0,0,25"
+                    Margin="0,0,0,20"
                     Padding="0,10,0,10"
                     BackgroundColor="Black"
                     Orientation="Horizontal">
@@ -40,128 +39,29 @@
                         Source="Logo/logo.png"
                         WidthRequest="40" />
                     <Label
-                        Margin="0,0,90,0"
+                        Margin="0,0,50,0"
                         FontAttributes="Bold"
                         Text="Floristeria Margaritas"
                         TextColor="White"
                         VerticalOptions="CenterAndExpand" />
+                    <Image
+                        Margin="0,0,10,0"
+                        Aspect="AspectFit"
+                        HeightRequest="40"
+                        Source="Home/notificacionrepartidor.png" />
                 </StackLayout>
 
                 <!--  Body: First Row  -->
+                <Label
+                    Margin="0,10,0,70"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Text="¡Bienvenido Usuario!"
+                    TextColor="Black"
+                    VerticalOptions="Start" />
 
-                <!--  First Row: Productos and Carrito Frames  -->
+                <!--  First Row: Pedidos and Ingresos Frames  -->
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <!--  Productos Frame  -->
-                    <Frame
-                        x:Name="frameProductos"
-                        Margin="5"
-                        Padding="5"
-                        BackgroundColor="Black"
-                        CornerRadius="10"
-                        HasShadow="True">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer
-                                x:Name="TapGestureProductos"
-                                CommandParameter="Productos"
-                                Tapped="TapGestureProductos_Tapped" />
-                        </Frame.GestureRecognizers>
-                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                            <Image
-                                Aspect="AspectFit"
-                                HeightRequest="50"
-                                Source="Home/productos.png" />
-                            <Label
-                                HorizontalTextAlignment="Center"
-                                Text="Productos"
-                                TextColor="White" />
-                        </StackLayout>
-                    </Frame>
-
-                    <!--  Carrito Frame  -->
-                    <Frame
-                        x:Name="frameCarrito"
-                        Grid.Column="1"
-                        Margin="5"
-                        Padding="5"
-                        BackgroundColor="Black"
-                        CornerRadius="10"
-                        HasShadow="True">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer
-                                x:Name="TapGestureCarrito"
-                                CommandParameter="Carrito"
-                                Tapped="TapGestureCarrito_Tapped" />
-                        </Frame.GestureRecognizers>
-                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                            <Image
-                                Aspect="AspectFit"
-                                HeightRequest="50"
-                                Source="Home/carrito.png" />
-                            <Label
-                                HorizontalTextAlignment="Center"
-                                Text="Carrito"
-                                TextColor="White" />
-                        </StackLayout>
-                    </Frame>
-                </Grid>
-
-                <StackLayout>
-                    <!--  Label  -->
-                    <Label
-                        Margin="0,10,0,0"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        Text="Ofertas"
-                        TextColor="Black"
-                        VerticalOptions="Start" />
-
-                    <!--  CarouselView  -->
-                    <CarouselView
-                        x:Name="carouselView"
-                        Margin="0,0,0,20"
-                        ItemsSource="{Binding TestItems}">
-                        <CarouselView.ItemsLayout>
-                            <LinearItemsLayout
-                                ItemSpacing="0"
-                                Orientation="Horizontal"
-                                SnapPointsAlignment="Start"
-                                SnapPointsType="Mandatory" />
-                        </CarouselView.ItemsLayout>
-                        <CarouselView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame
-                                    x:Name="frameCarousel"
-                                    Margin="5"
-                                    Padding="5"
-                                    BackgroundColor="Black"
-                                    CornerRadius="10"
-                                    HasShadow="True">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            x:Name="TapGestureCarousel"
-                                            CommandParameter="Carousel"
-                                            Tapped="TapGestureCarousel_Tapped" />
-                                    </Frame.GestureRecognizers>
-                                    <StackLayout>
-                                        <Image Aspect="Center" Source="{Binding ImagePath}" />
-                                        <Label
-                                            HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelText}"
-                                            TextColor="White" />
-                                    </StackLayout>
-                                </Frame>
-                            </DataTemplate>
-                        </CarouselView.ItemTemplate>
-                    </CarouselView>
-                </StackLayout>
-
-                <!--  Body: Third Row  -->
-                <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -188,7 +88,68 @@
                                 Source="Home/pedidos.png" />
                             <Label
                                 HorizontalTextAlignment="Center"
-                                Text="Pedidos"
+                                Text="Pedidos Entrantes"
+                                TextColor="White" />
+                        </StackLayout>
+                    </Frame>
+
+                    <!--  Ingresos Frame  -->
+                    <Frame
+                        x:Name="frameIngresos"
+                        Grid.Column="1"
+                        Margin="5"
+                        Padding="5"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="TapGestureIngresos"
+                                CommandParameter="Ingresos"
+                                Tapped="TapGestureIngresos_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="50"
+                                Source="Home/ingresos.png" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Ingresos"
+                                TextColor="White" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+
+                <!--  Body: Second Row  -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--  Historial Frame  -->
+                    <Frame
+                        x:Name="frameHistorial"
+                        Margin="5"
+                        Padding="5"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="TapGestureHistorial"
+                                CommandParameter="Historial"
+                                Tapped="TapGestureHistorial_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="50"
+                                Source="Home/historial.png" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Historial"
                                 TextColor="White" />
                         </StackLayout>
                     </Frame>
@@ -244,5 +205,16 @@
                 Source="Menu/logout.png"
                 WidthRequest="40" />
         </StackLayout>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="PulseStates">
+                <VisualState x:Name="Normal" />
+                <VisualState x:Name="Pulse">
+                    <VisualState.Setters>
+                        <Setter Property="Frame.BackgroundColor" Value="Transparent" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </ContentPage>

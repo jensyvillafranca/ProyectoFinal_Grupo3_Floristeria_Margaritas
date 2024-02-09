@@ -23,6 +23,12 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Home Screen Usuario"
                 Text="Home Usuario" />
+            <Button
+                x:Name="btnHomeRepartidor"
+                Clicked="btnHomeRepartidor_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Home Screen Repartidor"
+                Text="Home Repartidor" />
         </VerticalStackLayout>
     </ScrollView>
 
