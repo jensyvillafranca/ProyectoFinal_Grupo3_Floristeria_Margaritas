@@ -1,18 +1,20 @@
 using System.Collections.ObjectModel;
 using static ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser;
+using Microsoft.Maui.Graphics;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home;
 
 public partial class homePageUser : ContentPage
 {
     public ObservableCollection<TestItem> TestItems { get; set; }
-    private int currentIndex = 0; // Keep track of the current index in the CarouselView
+    private int currentIndex = 0; // Para saber el indice del carrusel
 
     public homePageUser()
 	{
 		InitializeComponent();
 
-        // Initialize the collection and add test items
+        // Inicia objetos de prueba para el carrusel
         TestItems = new ObservableCollection<TestItem>
         {
                 new TestItem { ImagePath = "descuento.png", LabelText = "Item 1" },
@@ -22,15 +24,15 @@ public partial class homePageUser : ContentPage
                 new TestItem { ImagePath = "descuento.png", LabelText = "Item 5" }
             };
 
-        // Set the collection as the ItemsSource for the CarouselView
+        // Coloca la coleccion como la fuente de objetos para el carrusel
         carouselView.ItemsSource = TestItems;
 
-        // Set the binding context to this instance of the page
+        // Coloca el binding context
         BindingContext = this;
 
         SizeChanged += OnSizeChanged;
 
-        // Start a timer to move to the next item every 5 seconds (adjust as needed)
+        // Empieza un timer para cambiar las ofertas
         Task.Run(async () =>
         {
             while (true)
@@ -49,11 +51,11 @@ public partial class homePageUser : ContentPage
 
     private void OnSizeChanged(object sender, EventArgs e)
     {
-        // Get the actual screen height
+        // Obtiene la altura de la pantalla
         double screenHeight = DeviceDisplay.MainDisplayInfo.Height;
 
-        // Set frame heights as a percentage of the screen height
-        double frameHeightPercentage = 0.08; // 25% of the screen height
+        // Ajusta la altura del frame como un porcentaje de la altura de la pantalla
+        double frameHeightPercentage = 0.08;
 
         frameProductos.HeightRequest = screenHeight * frameHeightPercentage;
         frameCarrito.HeightRequest = screenHeight * frameHeightPercentage;
@@ -61,14 +63,14 @@ public partial class homePageUser : ContentPage
         framePerfil.HeightRequest = screenHeight * frameHeightPercentage;
 
         // Set CarouselView height as a percentage of the screen height
-        double carouselHeightPercentage = 0.09; // 50% of the screen height
+        //double carouselHeightPercentage = 0.09; // 50% of the screen height
         //carouselView.HeightRequest = screenHeight * carouselHeightPercentage;
     }
 
     public class TestItem
     {
-        public string ImagePath { get; set; }
-        public string LabelText { get; set; }
+        public string? ImagePath { get; set; }
+        public string? LabelText { get; set; }
     }
 
     private void btnNotification_Clicked(object sender, EventArgs e)
@@ -76,33 +78,33 @@ public partial class homePageUser : ContentPage
 
     }
 
-    private void Button_Clicked_1(object sender, EventArgs e)
-    {
-
-    }
-
-    private void btnProductos_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
-    private void btnCarrito_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
-    private void btnPedidos_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
-    private void btnPerfil_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
     private void btnLogout_Clicked(object sender, EventArgs e)
     {
 
+    }
+
+    private async void TapGestureProductos_Tapped(object sender, TappedEventArgs e)
+    {
+        await AnimationUtilities.ChangeFrameColor(frameProductos, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
+    }
+
+    private async void TapGestureCarrito_Tapped(object sender, TappedEventArgs e)
+    {
+        await AnimationUtilities.ChangeFrameColor(frameCarrito, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
+    }
+
+    private async void TapGesturePedidos_Tapped(object sender, TappedEventArgs e)
+    {
+        await AnimationUtilities.ChangeFrameColor(framePedidos, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
+    }
+
+    private async void TapGesturePerfil_Tapped(object sender, TappedEventArgs e)
+    {
+        await AnimationUtilities.ChangeFrameColor(framePerfil, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
+    }
+
+    private async void TapGestureCarousel_Tapped(object sender, TappedEventArgs e)
+    {
+        await AnimationUtilities.ChangeFrameColor((Frame)sender, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
     }
 }

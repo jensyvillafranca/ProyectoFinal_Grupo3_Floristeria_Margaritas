@@ -15,11 +15,10 @@
 
         <!--  Scrollable Content  -->
         <ScrollView Grid.Row="0">
-            <!--  Your existing content goes here  -->
             <StackLayout>
                 <!--  Header  -->
                 <StackLayout
-                    Margin="0,0,0,10"
+                    Margin="0,0,0,25"
                     Padding="0,10,0,10"
                     BackgroundColor="Black"
                     Orientation="Horizontal">
@@ -29,7 +28,7 @@
                         BackgroundColor="Transparent"
                         Clicked="btnNotification_Clicked"
                         Text="🔔" />
-                    <!--  Spacer to push the Button to the end  -->
+                    <!--  Spacer  -->
                     <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
                     <Image
                         Margin="0,0,10,0"
@@ -62,6 +61,12 @@
                         BackgroundColor="Black"
                         CornerRadius="10"
                         HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="TapGestureProductos"
+                                CommandParameter="Productos"
+                                Tapped="TapGestureProductos_Tapped" />
+                        </Frame.GestureRecognizers>
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Image
                                 Aspect="AspectFit"
@@ -83,6 +88,12 @@
                         BackgroundColor="Black"
                         CornerRadius="10"
                         HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="TapGestureCarrito"
+                                CommandParameter="Carrito"
+                                Tapped="TapGestureCarrito_Tapped" />
+                        </Frame.GestureRecognizers>
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Image
                                 Aspect="AspectFit"
@@ -109,7 +120,7 @@
                     <!--  CarouselView  -->
                     <CarouselView
                         x:Name="carouselView"
-                        Margin="0,0,0,10"
+                        Margin="0,0,0,20"
                         ItemsSource="{Binding TestItems}">
                         <CarouselView.ItemsLayout>
                             <LinearItemsLayout
@@ -121,11 +132,18 @@
                         <CarouselView.ItemTemplate>
                             <DataTemplate>
                                 <Frame
+                                    x:Name="frameCarousel"
                                     Margin="5"
                                     Padding="5"
                                     BackgroundColor="Black"
                                     CornerRadius="10"
                                     HasShadow="True">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            x:Name="TapGestureCarousel"
+                                            CommandParameter="Carousel"
+                                            Tapped="TapGestureCarousel_Tapped" />
+                                    </Frame.GestureRecognizers>
                                     <StackLayout>
                                         <Image Aspect="Center" Source="{Binding ImagePath}" />
                                         <Label
@@ -154,6 +172,12 @@
                         BackgroundColor="Black"
                         CornerRadius="10"
                         HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="TapGesturePedidos"
+                                CommandParameter="Pedidos"
+                                Tapped="TapGesturePedidos_Tapped" />
+                        </Frame.GestureRecognizers>
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Image
                                 Aspect="AspectFit"
@@ -175,6 +199,12 @@
                         BackgroundColor="Black"
                         CornerRadius="10"
                         HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="TapGesturePerfil"
+                                CommandParameter="Perfil"
+                                Tapped="TapGesturePerfil_Tapped" />
+                        </Frame.GestureRecognizers>
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Image
                                 Aspect="AspectFit"
@@ -193,31 +223,34 @@
         <!--  Bottom Navigation Bar  -->
         <StackLayout
             Grid.Row="1"
-            Padding="0,0,0,0"
-            BackgroundColor="LightGray"
+            Padding="0,10,0,10"
+            BackgroundColor="Black"
             Orientation="Horizontal">
 
             <!--  Spacer to push the Button to the end  -->
             <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
 
             <!--  Logout Button at the end  -->
-            <Frame
-                Padding="5"
+            <ImageButton
+                x:Name="btnLogout"
+                Margin="0,0,10,0"
+                Aspect="AspectFit"
                 BackgroundColor="Transparent"
-                CornerRadius="20">
-                <StackLayout>
-                    <Button
-                        x:Name="btnLogout"
-                        BackgroundColor="Transparent"
-                        Clicked="btnLogout_Clicked"
-                        HeightRequest="40"
-                        WidthRequest="40">
-                        <Button.ImageSource>
-                            <FileImageSource File="logout.png" />
-                        </Button.ImageSource>
-                    </Button>
-                </StackLayout>
-            </Frame>
+                Clicked="btnLogout_Clicked"
+                HeightRequest="40"
+                Source="logout.png"
+                WidthRequest="40" />
         </StackLayout>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="PulseStates">
+                <VisualState x:Name="Normal" />
+                <VisualState x:Name="Pulse">
+                    <VisualState.Setters>
+                        <Setter Property="Frame.BackgroundColor" Value="Transparent" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </ContentPage>
