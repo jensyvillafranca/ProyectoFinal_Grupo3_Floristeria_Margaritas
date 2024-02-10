@@ -89,7 +89,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\anouncements.png" />
+	  <None Remove="Resources\Images\barchart.png" />
+	  <None Remove="Resources\Images\basket.png" />
+	  <None Remove="Resources\Images\coin.png" />
+	  <None Remove="Resources\Images\homeicon.png" />
+	  <None Remove="Resources\Images\iconoadmin.png" />
 	  <None Remove="Resources\Images\notificacion.png" />
+	  <None Remove="Resources\Images\piechart.png" />
+	  <None Remove="Resources\Images\proyecciones.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -103,17 +111,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Home\barchart.png" />
 	  <MauiImage Include="Resources\Images\Home\carrito.png" />
+	  <MauiImage Include="Resources\Images\Home\coin.png" />
 	  <MauiImage Include="Resources\Images\Home\descuento.png" />
 	  <MauiImage Include="Resources\Images\Home\historial.png" />
+	  <MauiImage Include="Resources\Images\Home\iconoadmin.png" />
 	  <MauiImage Include="Resources\Images\Home\ingresos.png" />
 	  <MauiImage Include="Resources\Images\Home\notificacion.png" />
 	  <MauiImage Include="Resources\Images\Home\notificacionrepartidor.png" />
 	  <MauiImage Include="Resources\Images\Home\pedidos.png" />
 	  <MauiImage Include="Resources\Images\Home\perfil.png" />
+	  <MauiImage Include="Resources\Images\Home\piechart.png" />
 	  <MauiImage Include="Resources\Images\Home\productos.png" />
 	  <MauiImage Include="Resources\Images\Logo\logo.png" />
+	  <MauiImage Include="Resources\Images\Menu\anouncements.png" />
+	  <MauiImage Include="Resources\Images\Menu\basket.png" />
+	  <MauiImage Include="Resources\Images\Menu\homeicon.png" />
 	  <MauiImage Include="Resources\Images\Menu\logout.png" />
+	  <MauiImage Include="Resources\Images\Menu\proyecciones.png" />
 	</ItemGroup>
 
 	<ItemGroup>

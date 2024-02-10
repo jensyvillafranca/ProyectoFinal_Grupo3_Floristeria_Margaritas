@@ -17,6 +17,11 @@
         {
             Navigation.PushAsync(new Views.Home.homePageRepartidor());
         }
+
+        private void btnHomeAdmin_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Home.homePageAdmin());
+        }
     }
 
 }

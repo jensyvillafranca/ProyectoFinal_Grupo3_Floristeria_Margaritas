@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageAdmin"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundColor="White">
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Scrollable Content  -->
+        <ScrollView Grid.Row="0">
+            <StackLayout>
+                <!--  Header  -->
+                <StackLayout
+                    Margin="0,0,0,15"
+                    Padding="0,10,0,10"
+                    BackgroundColor="Black"
+                    Orientation="Horizontal">
+                    <ImageButton
+                        x:Name="btnNotification"
+                        Margin="10,0,0,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnNotification_Clicked"
+                        HeightRequest="40"
+                        Source="Home/notificacion.png"
+                        WidthRequest="40" />
+                    <!--  Spacer  -->
+                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                    <Image
+                        Margin="0,0,10,0"
+                        Aspect="AspectFit"
+                        HeightRequest="40"
+                        Source="Logo/logo.png"
+                        WidthRequest="40" />
+                    <Label
+                        Margin="0,0,50,0"
+                        FontAttributes="Bold"
+                        Text="Floristeria Margaritas"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                    <Image
+                        Margin="0,0,10,0"
+                        Aspect="AspectFit"
+                        HeightRequest="40"
+                        Source="Home/iconoadmin.png" />
+                </StackLayout>
+
+                <!--  Body: Labels  -->
+
+                <Label
+                    Margin="0,0,0,10"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Text="¡Bienvenido Usuario!"
+                    TextColor="Black"
+                    VerticalOptions="Start" />
+                <Label
+                    Margin="5,0,5,10"
+                    FontSize="12"
+                    HorizontalOptions="Center"
+                    Text="Te damos la bienvenida a tu espacio personalizado, donde  podrás mantenerte al día con las estadísticas más recientes de la empresa."
+                    TextColor="Black"
+                    VerticalOptions="Start" />
+
+                <!--  First Row: Totales  -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--  Totales Entregados Frame  -->
+                    <Frame
+                        x:Name="frameEntregados"
+                        Margin="5"
+                        Padding="5"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="TapGestureEntregados"
+                                CommandParameter="Entregados"
+                                Tapped="TapGestureEntregados_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label
+                                Margin="0,5,0,5"
+                                FontSize="12"
+                                HorizontalTextAlignment="Center"
+                                Text="Total de Pedidos Entregados"
+                                TextColor="White" />
+                            <Label
+                                x:Name="labelPedidosEntregados"
+                                Margin="0,0,0,7"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                Text="499"
+                                TextColor="White" />
+                            <Button
+                                x:Name="btnVerMasEntregados"
+                                Margin="0,0,0,5"
+                                Clicked="btnVerMasEntregados_Clicked"
+                                FontSize="10"
+                                HeightRequest="35"
+                                HorizontalOptions="CenterAndExpand"
+                                SemanticProperties.Hint="Ver Mas Total Productos Entregados"
+                                Text="Ver más"
+                                WidthRequest="100" />
+                        </StackLayout>
+                    </Frame>
+
+                    <!--  Totales Pedidos Pendientes Frame  -->
+                    <Frame
+                        x:Name="framePendientes"
+                        Grid.Column="1"
+                        Margin="5"
+                        Padding="5"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="TapGesturePendientes"
+                                CommandParameter="Pendientes"
+                                Tapped="TapGesturePendientes_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label
+                                Margin="0,5,0,5"
+                                FontSize="12"
+                                HorizontalTextAlignment="Center"
+                                Text="Total de Pedidos Pendientes"
+                                TextColor="White" />
+                            <Label
+                                x:Name="labelPedidosPendientes"
+                                Margin="0,0,0,7"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                Text="180"
+                                TextColor="White" />
+                            <Button
+                                x:Name="btnVerMasPendientes"
+                                Margin="0,0,0,5"
+                                Clicked="btnVerMasPendientes_Clicked"
+                                FontSize="10"
+                                HeightRequest="35"
+                                HorizontalOptions="CenterAndExpand"
+                                SemanticProperties.Hint="Ver Mas Total Pedidos Pendientes"
+                                Text="Ver más"
+                                WidthRequest="100" />
+                        </StackLayout>
+                    </Frame>
+
+                    <!--  Totales Pedidos Cancelados Frame  -->
+                    <Frame
+                        x:Name="frameCancelados"
+                        Grid.Column="2"
+                        Margin="5"
+                        Padding="5"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="TapGestureCancelados"
+                                CommandParameter="Cancelados"
+                                Tapped="TapGestureCancelados_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label
+                                Margin="0,5,0,5"
+                                FontSize="12"
+                                HorizontalTextAlignment="Center"
+                                Text="Total de Pedidos Cancelados"
+                                TextColor="White" />
+                            <Label
+                                x:Name="labelPedidosCancelados"
+                                Margin="0,0,0,7"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                Text="5"
+                                TextColor="White" />
+                            <Button
+                                x:Name="btnVerMasCancelados"
+                                Margin="0,0,0,5"
+                                Clicked="btnVerMasCancelados_Clicked"
+                                FontSize="10"
+                                HeightRequest="35"
+                                HorizontalOptions="CenterAndExpand"
+                                SemanticProperties.Hint="Ver Mas Total Pedidos Cancelados"
+                                Text="Ver más"
+                                WidthRequest="100" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+
+                <!--  Filtros Frame  -->
+                <Frame
+                    x:Name="frameFiltros"
+                    Margin="5"
+                    Padding="0"
+                    BackgroundColor="Black"
+                    CornerRadius="10"
+                    HasShadow="True">
+                    <!--  Adjust the height as needed  -->
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            x:Name="TapGestureFiltros"
+                            CommandParameter="Filtros"
+                            Tapped="TapGestureFiltros_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+                        <Label
+                            Margin="0,5,0,5"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalTextAlignment="Center"
+                            Text="Área de Filtros"
+                            TextColor="White" />
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Margin="7,5,0,0"
+                                FontSize="10"
+                                HorizontalTextAlignment="Center"
+                                Text="Elija un departamento"
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="20,5,5,0"
+                                FontSize="10"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Elija un repartidor"
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Column="2"
+                                Margin="30,5,5,0"
+                                FontSize="10"
+                                HorizontalTextAlignment="Center"
+                                Text="De"
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Column="3"
+                                Margin="40,5,5,0"
+                                FontSize="10"
+                                HorizontalTextAlignment="Center"
+                                Text="A"
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+
+                        <!--  Nested Grid for Pickers and DatePicker  -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!--  Picker 1 with Border  -->
+                            <Frame
+                                Grid.Column="0"
+                                Margin="0,5,0,0"
+                                BorderColor="White"
+                                CornerRadius="5"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand">
+                                <Picker
+                                    x:Name="departamentoPicker"
+                                    Title="Departamento"
+                                    FontSize="8"
+                                    HorizontalOptions="CenterAndExpand"
+                                    SelectedIndexChanged="departamentoPicker_SelectedIndexChanged"
+                                    TextColor="Black"
+                                    TitleColor="Gray"
+                                    VerticalOptions="CenterAndExpand" />
+                            </Frame>
+
+
+                            <!--  Picker 2  -->
+
+                            <Frame
+                                Grid.Column="1"
+                                Margin="5,5,5,0"
+                                BorderColor="White"
+                                CornerRadius="5"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand">
+                                <Picker
+                                    x:Name="repartidorPicker"
+                                    Title="Repartidor"
+                                    FontSize="8"
+                                    HorizontalOptions="CenterAndExpand"
+                                    SelectedIndexChanged="repartidorPicker_SelectedIndexChanged"
+                                    TextColor="Black"
+                                    TitleColor="Gray"
+                                    VerticalOptions="CenterAndExpand" />
+                            </Frame>
+
+                            <!--  DatePicker Start Date  -->
+
+                            <Frame
+                                Grid.Column="2"
+                                Margin="0,5,5,0"
+                                BorderColor="White"
+                                CornerRadius="5"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="50">
+                                <DatePicker
+                                    x:Name="datePickerStartDate"
+                                    BackgroundColor="White"
+                                    FontSize="9"
+                                    HorizontalOptions="CenterAndExpand"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="40" />
+                            </Frame>
+
+                            <!--  DatePicker End Date  -->
+
+                            <Frame
+                                Grid.Column="3"
+                                Margin="0,5,0,0"
+                                BorderColor="White"
+                                CornerRadius="5"
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="50">
+                                <DatePicker
+                                    x:Name="datePickerEndDate"
+                                    BackgroundColor="White"
+                                    FontSize="9"
+                                    HorizontalOptions="CenterAndExpand"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="40" />
+                            </Frame>
+                        </Grid>
+
+                        <!--  Grafica  -->
+                        <Image
+                            Margin="0,10,0,10"
+                            Aspect="AspectFit"
+                            HeightRequest="150"
+                            Source="Home/piechart.png" />
+                    </StackLayout>
+                </Frame>
+
+
+                <!--  Body: Third Row  -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--  Ganancias Frame  -->
+                    <Frame
+                        x:Name="frameGanancias"
+                        Margin="5"
+                        Padding="5"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="TapGestureGanancias"
+                                CommandParameter="Ganancias"
+                                Tapped="TapGestureGanancias_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label
+                                Margin="0,0,0,5"
+                                FontSize="14"
+                                HorizontalTextAlignment="Center"
+                                Text="Total Generado por Pedidos"
+                                TextColor="White" />
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="50"
+                                Source="Home/coin.png" />
+                            <Label
+                                x:Name="labelTotalGenerado"
+                                Margin="0,5,0,0"
+                                Padding="0,0,0,10"
+                                HorizontalTextAlignment="Center"
+                                Text="L 10,235.50"
+                                TextColor="White" />
+                        </StackLayout>
+                    </Frame>
+
+                    <!--  Stock Frame  -->
+                    <Frame
+                        x:Name="frameStock"
+                        Grid.Column="1"
+                        Margin="5"
+                        Padding="5"
+                        BackgroundColor="Black"
+                        CornerRadius="10"
+                        HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                x:Name="TapGestureStock"
+                                CommandParameter="Stock"
+                                Tapped="TapGestureStock_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label
+                                Margin="0,0,0,0"
+                                FontSize="14"
+                                HorizontalTextAlignment="Center"
+                                Text="Stock de Productos"
+                                TextColor="White" />
+                            <Image
+                                Margin="0,0,0,10"
+                                Aspect="AspectFit"
+                                HeightRequest="120"
+                                Source="Home/barchart.png"
+                                WidthRequest="120" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+
+        <!--  Bottom Navigation Bar  -->
+        <StackLayout
+            Grid.Row="1"
+            Padding="0,10,0,10"
+            BackgroundColor="Black"
+            Orientation="Horizontal">
+
+            <!--  Home Button  -->
+            <ImageButton
+                x:Name="btnHome"
+                Margin="20,0,10,0"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Clicked="btnHome_Clicked"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Source="Menu/homeicon.png"
+                WidthRequest="40" />
+
+            <!--  Inventario Button  -->
+            <ImageButton
+                x:Name="btnStock"
+                Margin="0,0,10,0"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Clicked="btnStock_Clicked"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Source="Menu/basket.png"
+                WidthRequest="40" />
+
+            <!--  Estadisticas Button  -->
+            <ImageButton
+                x:Name="btnEstadisticas"
+                Margin="0,0,10,0"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Clicked="btnEstadisticas_Clicked"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Source="Menu/proyecciones.png"
+                WidthRequest="40" />
+
+            <!--  Anuncios Button  -->
+            <ImageButton
+                x:Name="btnAnuncios"
+                Margin="0,0,10,0"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Clicked="btnAnuncios_Clicked"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Source="Menu/anouncements.png"
+                WidthRequest="40" />
+
+            <!--  Perfil Button  -->
+            <ImageButton
+                x:Name="btnPerfil"
+                Margin="0,0,10,0"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Clicked="btnPerfil_Clicked"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Source="Home/perfil.png"
+                WidthRequest="40" />
+
+            <!--  Logout Button  -->
+            <ImageButton
+                x:Name="btnLogout"
+                Margin="0,0,20,0"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Clicked="btnLogout_Clicked"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Source="Menu/logout.png"
+                WidthRequest="40" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
