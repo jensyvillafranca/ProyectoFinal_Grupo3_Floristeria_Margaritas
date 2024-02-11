@@ -22,6 +22,11 @@
         {
             Navigation.PushAsync(new Views.Home.homePageAdmin());
         }
+
+        private void btnProductos_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Productos.productos());
+        }
     }
 
 }

@@ -8,49 +8,50 @@
     <Grid>
         <!--  Content Grid  -->
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!--  Scrollable Content  -->
-        <ScrollView Grid.Row="0">
-            <StackLayout>
-                <!--  Header  -->
-                <StackLayout
-                    Margin="0,0,0,15"
-                    Padding="0,10,0,10"
-                    BackgroundColor="Black"
-                    Orientation="Horizontal">
-                    <ImageButton
-                        x:Name="btnNotification"
-                        Margin="10,0,0,0"
-                        Aspect="AspectFit"
-                        BackgroundColor="Transparent"
-                        Clicked="btnNotification_Clicked"
-                        HeightRequest="40"
-                        Source="Home/notificacion.png"
-                        WidthRequest="40" />
-                    <!--  Spacer  -->
-                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
-                    <Image
-                        Margin="0,0,10,0"
-                        Aspect="AspectFit"
-                        HeightRequest="40"
-                        Source="Logo/logo.png"
-                        WidthRequest="40" />
-                    <Label
-                        Margin="0,0,50,0"
-                        FontAttributes="Bold"
-                        Text="Floristeria Margaritas"
-                        TextColor="White"
-                        VerticalOptions="CenterAndExpand" />
-                    <Image
-                        Margin="0,0,10,0"
-                        Aspect="AspectFit"
-                        HeightRequest="40"
-                        Source="Home/iconoadmin.png" />
-                </StackLayout>
+        <!--  Header  -->
+        <StackLayout
+            Grid.Row="0"
+            Margin="0,0,0,15"
+            Padding="0,10,0,10"
+            BackgroundColor="Black"
+            Orientation="Horizontal">
+            <ImageButton
+                x:Name="btnNotification"
+                Margin="10,0,0,0"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Clicked="btnNotification_Clicked"
+                HeightRequest="40"
+                Source="Home/notificacion.png"
+                WidthRequest="40" />
+            <!--  Spacer  -->
+            <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+            <Image
+                Margin="0,0,10,0"
+                Aspect="AspectFit"
+                HeightRequest="40"
+                Source="Logo/logo.png"
+                WidthRequest="40" />
+            <Label
+                Margin="0,0,50,0"
+                FontAttributes="Bold"
+                Text="Floristeria Margaritas"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand" />
+            <Image
+                Margin="0,0,10,0"
+                Aspect="AspectFit"
+                HeightRequest="40"
+                Source="Home/iconoadmin.png" />
+        </StackLayout>
 
+        <ScrollView Grid.Row="1">
+            <StackLayout>
                 <!--  Body: Labels  -->
 
                 <Label
@@ -440,11 +441,21 @@
                                 Text="Stock de Productos"
                                 TextColor="White" />
                             <Image
-                                Margin="0,0,0,10"
+                                Margin="0,0,0,5"
                                 Aspect="AspectFit"
                                 HeightRequest="120"
                                 Source="Home/barchart.png"
                                 WidthRequest="120" />
+                            <Button
+                                x:Name="btnVerVencidos"
+                                Margin="0,0,0,5"
+                                Clicked="btnVerVencidos_Clicked"
+                                FontSize="7"
+                                HeightRequest="35"
+                                HorizontalOptions="CenterAndExpand"
+                                SemanticProperties.Hint="Ver Productos Vencidos"
+                                Text="Ver Productos Vencidos"
+                                WidthRequest="110" />
                         </StackLayout>
                     </Frame>
                 </Grid>
@@ -453,7 +464,7 @@
 
         <!--  Bottom Navigation Bar  -->
         <StackLayout
-            Grid.Row="1"
+            Grid.Row="2"
             Padding="0,10,0,10"
             BackgroundColor="Black"
             Orientation="Horizontal">

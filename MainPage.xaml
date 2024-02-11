@@ -35,6 +35,12 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Home Screen Admin"
                 Text="Home Admin" />
+            <Button
+                x:Name="btnProductos"
+                Clicked="btnProductos_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Productos"
+                Text="Productos" />
         </VerticalStackLayout>
     </ScrollView>
 

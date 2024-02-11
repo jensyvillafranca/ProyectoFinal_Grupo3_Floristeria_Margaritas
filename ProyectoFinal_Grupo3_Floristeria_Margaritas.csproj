@@ -92,7 +92,11 @@
 	  <None Remove="Resources\Images\anouncements.png" />
 	  <None Remove="Resources\Images\barchart.png" />
 	  <None Remove="Resources\Images\basket.png" />
+	  <None Remove="Resources\Images\cancelar.png" />
 	  <None Remove="Resources\Images\coin.png" />
+	  <None Remove="Resources\Images\flowers.png" />
+	  <None Remove="Resources\Images\handslide.png" />
+	  <None Remove="Resources\Images\handslideblack.png" />
 	  <None Remove="Resources\Images\homeicon.png" />
 	  <None Remove="Resources\Images\iconoadmin.png" />
 	  <None Remove="Resources\Images\notificacion.png" />
@@ -137,6 +141,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Home\homePageUser.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Productos\productos.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
