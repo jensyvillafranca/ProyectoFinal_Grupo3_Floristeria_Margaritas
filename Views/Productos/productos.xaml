@@ -137,7 +137,7 @@
                     BackgroundColor="Transparent"
                     Clicked="btnSiguiente_Clicked"
                     HeightRequest="30"
-                    Source="handslideblack.png"
+                    Source="Productos/handslideblack.png"
                     WidthRequest="30" />
                 <ImageButton
                     x:Name="btnCancelarFiltro"
@@ -147,7 +147,7 @@
                     BackgroundColor="Transparent"
                     Clicked="btnCancelarFiltro_Clicked"
                     HeightRequest="40"
-                    Source="cancelar.png"
+                    Source="Productos/cancelar.png"
                     WidthRequest="40" />
             </Grid>
         </StackLayout>

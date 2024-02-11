@@ -205,16 +205,5 @@
                 Source="Menu/logout.png"
                 WidthRequest="40" />
         </StackLayout>
-
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="PulseStates">
-                <VisualState x:Name="Normal" />
-                <VisualState x:Name="Pulse">
-                    <VisualState.Setters>
-                        <Setter Property="Frame.BackgroundColor" Value="Transparent" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
     </Grid>
 </ContentPage>

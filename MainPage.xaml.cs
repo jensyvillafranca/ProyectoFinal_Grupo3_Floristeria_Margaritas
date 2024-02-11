@@ -27,6 +27,11 @@
         {
             Navigation.PushAsync(new Views.Productos.productos());
         }
+
+        private void btnProductoDetalle_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Productos.productoDetalle());
+        }
     }
 
 }

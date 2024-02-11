@@ -90,12 +90,13 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\anouncements.png" />
+	  <None Remove="Resources\Images\backarrow.png" />
 	  <None Remove="Resources\Images\barchart.png" />
 	  <None Remove="Resources\Images\basket.png" />
 	  <None Remove="Resources\Images\cancelar.png" />
 	  <None Remove="Resources\Images\coin.png" />
 	  <None Remove="Resources\Images\flowers.png" />
-	  <None Remove="Resources\Images\handslide.png" />
+	  <None Remove="Resources\Images\flowers2.png" />
 	  <None Remove="Resources\Images\handslideblack.png" />
 	  <None Remove="Resources\Images\homeicon.png" />
 	  <None Remove="Resources\Images\iconoadmin.png" />
@@ -134,6 +135,9 @@
 	  <MauiImage Include="Resources\Images\Menu\homeicon.png" />
 	  <MauiImage Include="Resources\Images\Menu\logout.png" />
 	  <MauiImage Include="Resources\Images\Menu\proyecciones.png" />
+	  <MauiImage Include="Resources\Images\Productos\cancelar.png" />
+	  <MauiImage Include="Resources\Images\Productos\flowers.png" />
+	  <MauiImage Include="Resources\Images\Productos\handslideblack.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -141,6 +145,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Home\homePageUser.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Productos\productoDetalle.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Productos\productos.xaml">

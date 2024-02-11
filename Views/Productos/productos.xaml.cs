@@ -17,21 +17,21 @@ public partial class productos : ContentPage
         // Inicia objetos de prueba para collection view
         Items = new ObservableCollection<FrameItem>
             {
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 1", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 1")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 2", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 2")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 3", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 3")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 4", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 4")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 5", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 5")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 6", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 6")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 7", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 7")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 8", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 8")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 9", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 9")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 10", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 10")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 11", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 11")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 12", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 12")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 13", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 13")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 14", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 14")) },
-                new FrameItem { ImageSource = "flowers.png", LabelText = "Item 15", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 15")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 1", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 1")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 2", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 2")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 3", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 3")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 4", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 4")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 5", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 5")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 6", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 6")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 7", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 7")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 8", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 8")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 9", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 9")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 10", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 10")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 11", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 11")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 12", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 12")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 13", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 13")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 14", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 14")) },
+                new FrameItem { ImageSource = "Productos/flowers.png", LabelText = "Item 15", LabelPrecio = "L 1,700.00", TappedCommand = new Command(() => HandleItemTapped("Item 15")) },
                 // Add more items as needed
             };
 
