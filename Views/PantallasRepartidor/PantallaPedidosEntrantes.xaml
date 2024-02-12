@@ -14,7 +14,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="590"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <!-- StackLayout de Imagen de Encabezado de la Interfaz -->
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="10" Grid.Row="0" WidthRequest="340">
@@ -44,8 +44,68 @@
             <Label Text="¡Pedidos confirmados y listos para ser procesados&#x0a;por tí!" AbsoluteLayout.LayoutBounds="20, 0, -1, -1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AzulPersonalizado}" FontAttributes="Bold" Grid.Row="1" VerticalOptions="Start"></Label>
             <!---Para poder dar un salto de línea lo hacemos con: &#x0a;No, sola-->
 
-            <ScrollView Grid.Row="2">
+            <ScrollView Grid.Row="2" MaximumHeightRequest="530">
                 <!--Lista de los pedidos-->
+                <StackLayout Margin="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <CollectionView x:Name="collectionViewPedidosRepartidor" ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding ListaPedidosRepartidor}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" Span="20" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame x:Name="drawablePedido" Margin="5,0,0,10" WidthRequest="340" Padding="10" BackgroundColor="White" CornerRadius="20" HasShadow="True">
+                                    <Grid ColumnSpacing="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                                           TextColor="Black"
+                                           Text="{Binding codPedido, StringFormat='Código: {0}'}" HorizontalOptions="Start"
+                                           HorizontalTextAlignment="Start" FontSize="9" FontAttributes="Bold"/>
+
+                                        <Frame Grid.Column="0" Grid.Row="1" WidthRequest="80" HeightRequest="100" CornerRadius="10" Padding="0">
+                                            <Image Source="{Binding imagenProductoPedido}" Aspect="AspectFill"/>
+                                        </Frame>
+
+                                        <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Vertical" Spacing="5">
+                                            <!--Formato para visualización del nombre del cliente-->
+                                            <Label FontAttributes="Bold" FontSize="13">
+                                                <Label.Text>
+                                                    <Binding Path="clientePedido" StringFormat="Cliente: {0}" />
+                                                </Label.Text>
+                                            </Label>
+
+                                            <!--Formato para visualización del lugar de entrega del pedido-->
+                                            <Label FontSize="10" LineBreakMode="WordWrap" MaximumWidthRequest="162">
+                                                <Label.Text>
+                                                    <Binding Path="lugarEntregaPedido" StringFormat="Entrega en: {0}" />
+                                                </Label.Text>
+                                            </Label>
+
+
+                                            <!--Formato para visualización de la sucursal a recoger el pedido-->
+                                            <Label FontSize="10">
+                                                <Label.Text>
+                                                    <Binding Path="sucursalPedido" StringFormat="Recoger en: {0}" />
+                                                </Label.Text>
+                                            </Label>
+
+                                        </StackLayout>
+                                        <Image Grid.Column="2" Grid.Row="1" Source="ImagenesRepartidor/checkpedidosrepartidor.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="5,0,0,0"/>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate> 
+                    </CollectionView>
+                </StackLayout>
             </ScrollView>
             <!--Menú de Opciones-->
             <StackLayout  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="3" WidthRequest="360" HeightRequest="65">

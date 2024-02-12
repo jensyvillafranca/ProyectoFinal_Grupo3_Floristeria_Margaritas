@@ -116,6 +116,8 @@
 	  <None Remove="Resources\Images\ImagenesRepartidor\botoningresos.svg" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\botoninicio.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\botonpedidos.svg" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\check.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\checkpedidosrepartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\encabezado_repartidores.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\notificacion_repartidor.png" />
@@ -153,6 +155,8 @@
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botoningresos.svg" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botoninicio.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botonpedidos.svg" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\check.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\checkpedidosrepartidor.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\encabezado_repartidores.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\notificacion_repartidor.png" />
@@ -188,6 +192,10 @@
 	  <MauiXaml Update="Views\Productos\productos.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="NewFolder\" />
 	</ItemGroup>
 
 </Project>
