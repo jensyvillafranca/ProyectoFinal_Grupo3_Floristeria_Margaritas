@@ -89,6 +89,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Models\**" />
+	  <Compile Remove="Models\**" />
+	  <EmbeddedResource Remove="Models\**" />
+	  <MauiCss Remove="Models\**" />
+	  <MauiXaml Remove="Models\**" />
+	  <None Remove="Models\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\anouncements.png" />
 	  <None Remove="Resources\Images\backarrow.png" />
 	  <None Remove="Resources\Images\barchart.png" />
@@ -101,6 +110,17 @@
 	  <None Remove="Resources\Images\handslideblack.png" />
 	  <None Remove="Resources\Images\homeicon.png" />
 	  <None Remove="Resources\Images\iconoadmin.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\atras.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\botonera.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\botonhistorialpedidos.svg" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\botoningresos.svg" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\botoninicio.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\botonpedidos.svg" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\encabezado_repartidores.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\notificacion_repartidor.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\perfilrepartidor.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\salirmenu.png" />
 	  <None Remove="Resources\Images\notificacion.png" />
 	  <None Remove="Resources\Images\piechart.png" />
 	  <None Remove="Resources\Images\proyecciones.png" />
@@ -111,10 +131,6 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.6" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Models\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -131,6 +147,17 @@
 	  <MauiImage Include="Resources\Images\Home\perfil.png" />
 	  <MauiImage Include="Resources\Images\Home\piechart.png" />
 	  <MauiImage Include="Resources\Images\Home\productos.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\atras.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botonera.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botonhistorialpedidos.svg" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botoningresos.svg" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botoninicio.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botonpedidos.svg" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\encabezado_repartidores.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\notificacion_repartidor.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\perfilrepartidor.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\salirmenu.png" />
 	  <MauiImage Include="Resources\Images\Logo\logo.png" />
 	  <MauiImage Include="Resources\Images\Menu\anouncements.png" />
 	  <MauiImage Include="Resources\Images\Menu\basket.png" />
@@ -150,6 +177,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Home\homePageUser.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallasRepartidor\PantallaPedidosEntrantes.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Productos\productoDetalle.xaml">

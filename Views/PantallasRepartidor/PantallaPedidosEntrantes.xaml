@@ -1,0 +1,112 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.PantallaPedidosEntrantes"
+             Title="PantallaPedidosEntrantes">
+    <AbsoluteLayout>
+        <!-- StackLayout de Imagen de Fondo -->
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" >
+            <Image Source="ImagenesRepartidor/fondo_todas_pantallas.png" Aspect="AspectFill" HeightRequest="1000"/>
+        </StackLayout>
+
+        <Grid>
+            <!--  Content Grid  -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="590"/>
+            </Grid.RowDefinitions>
+            <!-- StackLayout de Imagen de Encabezado de la Interfaz -->
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="10" Grid.Row="0" WidthRequest="340">
+                <Image Source="ImagenesRepartidor/encabezado_repartidores.png"/>
+            </StackLayout>
+
+            <!--StackLayout para superponer elementos a la imagen del encabezado-->
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="15" Grid.Row="0">
+                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Icono Atrás -->
+                    <Image Source="ImagenesRepartidor/atras.png" Grid.Column="0" HorizontalOptions="Start" Margin="10"/>
+
+                    <!-- Texto -->
+                    <Label Text="Pedidos entrantes" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Large"/>
+
+                    <!-- Icono de notificación -->
+                    <StackLayout Grid.Column="2" HorizontalOptions="End" Orientation="Horizontal" Spacing="5" Margin="10">
+                        <Image Source="ImagenesRepartidor/notificacion_repartidor.png"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+            <Label Text="¡Pedidos confirmados y listos para ser procesados&#x0a;por tí!" AbsoluteLayout.LayoutBounds="20, 0, -1, -1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AzulPersonalizado}" FontAttributes="Bold" Grid.Row="1" VerticalOptions="Start"></Label>
+            <!---Para poder dar un salto de línea lo hacemos con: &#x0a;No, sola-->
+
+            <ScrollView Grid.Row="2">
+                <!--Lista de los pedidos-->
+            </ScrollView>
+            <!--Menú de Opciones-->
+            <StackLayout  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="3" WidthRequest="360" HeightRequest="65">
+                <Image Source="ImagenesRepartidor/botonera.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"></Image>
+            </StackLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand" Grid.Row="3" Orientation="Horizontal">
+                <ImageButton
+                    x:Name="btnInicioRepartidor"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    HeightRequest="55"
+                    Source="ImagenesRepartidor/botoninicio.png"
+                    Margin="15,0,5,5"
+                    WidthRequest="55">
+                </ImageButton>
+                <ImageButton
+                    x:Name="btnPedidosRepartidor"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    HeightRequest="55"
+                    Source="ImagenesRepartidor/botonpedidos.svg"
+                    Margin="0,0,5,5"
+                    WidthRequest="50">
+                </ImageButton>
+                <ImageButton
+                    x:Name="btnIngresosRepartidor"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    HeightRequest="55"
+                    Source="ImagenesRepartidor/botoningresos.svg"
+                    Margin="0,0,5,5"
+                    WidthRequest="50">
+                </ImageButton>
+                <ImageButton
+                    x:Name="btnHistorialPedidosRepartidor"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    HeightRequest="55"
+                    Source="ImagenesRepartidor/botonhistorialpedidos.svg"
+                    Margin="0,0,5,5"
+                    WidthRequest="50">
+                </ImageButton>
+                <ImageButton
+                    x:Name="btnPerfilRepartidor"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    HeightRequest="55"
+                    Source="ImagenesRepartidor/perfilrepartidor.svg"
+                    Margin="0,0,5,5"
+                    WidthRequest="50">
+                </ImageButton>
+                <ImageButton
+                    x:Name="btnLogOutRepartidor"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    HeightRequest="55"
+                    Source="ImagenesRepartidor/salirmenu.png"
+                    Margin="0,0,5,5"
+                    WidthRequest="50">
+                </ImageButton>
+            </StackLayout>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>
