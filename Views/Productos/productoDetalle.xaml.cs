@@ -1,7 +1,11 @@
+using Microsoft.Maui.Handlers;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
 public partial class productoDetalle : ContentPage
 {
+
+    private CustomPopupViewAgregar customPopup;
     //Variables de prueba
     double precioTotal = 0;
     double precioProducto = 1700;
@@ -9,16 +13,17 @@ public partial class productoDetalle : ContentPage
 	public productoDetalle()
 	{
 		InitializeComponent();
-	}
+        customPopup = new CustomPopupViewAgregar();
+    }
 
     private void btnBack_Clicked(object sender, EventArgs e)
     {
 
     }
 
-    private void btnAgregar_Clicked(object sender, EventArgs e)
+    private async void btnAgregar_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushModalAsync(new NavigationPage(customPopup));
     }
 
     private void btnSubstract_Clicked(object sender, EventArgs e)

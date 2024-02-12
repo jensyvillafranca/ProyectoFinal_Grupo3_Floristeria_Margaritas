@@ -94,6 +94,7 @@
 	  <None Remove="Resources\Images\barchart.png" />
 	  <None Remove="Resources\Images\basket.png" />
 	  <None Remove="Resources\Images\cancelar.png" />
+	  <None Remove="Resources\Images\carritomas.png" />
 	  <None Remove="Resources\Images\coin.png" />
 	  <None Remove="Resources\Images\flowers.png" />
 	  <None Remove="Resources\Images\flowers2.png" />
@@ -109,6 +110,7 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.6" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -135,8 +137,11 @@
 	  <MauiImage Include="Resources\Images\Menu\homeicon.png" />
 	  <MauiImage Include="Resources\Images\Menu\logout.png" />
 	  <MauiImage Include="Resources\Images\Menu\proyecciones.png" />
+	  <MauiImage Include="Resources\Images\Productos\backarrow.png" />
 	  <MauiImage Include="Resources\Images\Productos\cancelar.png" />
+	  <MauiImage Include="Resources\Images\Productos\carritomas.png" />
 	  <MauiImage Include="Resources\Images\Productos\flowers.png" />
+	  <MauiImage Include="Resources\Images\Productos\flowers2.png" />
 	  <MauiImage Include="Resources\Images\Productos\handslideblack.png" />
 	</ItemGroup>
 

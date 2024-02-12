@@ -27,7 +27,7 @@
                 BackgroundColor="Transparent"
                 Clicked="btnBack_Clicked"
                 HeightRequest="40"
-                Source="backarrow.png"
+                Source="Productos/backarrow.png"
                 WidthRequest="40" />
             <!--  Spacer  -->
             <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
@@ -57,7 +57,7 @@
                             Margin="20,20,20,10"
                             Aspect="AspectFit"
                             HorizontalOptions="FillAndExpand"
-                            Source="flowers2.png" />
+                            Source="Productos/flowers2.png" />
 
                         <Label
                             x:Name="labelNombreProducto"
