@@ -48,11 +48,17 @@
                 SemanticProperties.Hint="Pagina de detalles producto"
                 Text="Detalle Producto" />
             <Button
+                x:Name="btnCarrito"
+                Clicked="btnCarrito_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina del carrito de compras"
+                Text="Carrito de Compras" />
+            <Button
                 x:Name="btnPedidosRepartidor"
                 Clicked="btnPedidosRepartidor_Clicked"
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina de pedidos entrantes"
-                Text="Pedidos Entrantes" />  
+                Text="Pedidos Entrantes" />
         </VerticalStackLayout>
     </ScrollView>
 

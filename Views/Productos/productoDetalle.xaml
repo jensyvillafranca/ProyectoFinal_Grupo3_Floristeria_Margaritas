@@ -96,12 +96,11 @@
                                     HeightRequest="40"
                                     Text="-"
                                     WidthRequest="40" />
-                                <Entry
+                                <Label
                                     x:Name="quantityEntry"
                                     BackgroundColor="White"
                                     HeightRequest="40"
                                     HorizontalTextAlignment="Center"
-                                    Keyboard="Numeric"
                                     Text="1"
                                     VerticalTextAlignment="Center"
                                     WidthRequest="40" />

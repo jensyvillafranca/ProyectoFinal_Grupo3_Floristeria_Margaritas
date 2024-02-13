@@ -38,6 +38,11 @@
             Navigation.PushAsync(new Views.PantallasRepartidor.PantallaPedidosEntrantes());
 
         }
+
+        private void btnCarrito_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Productos.carritoCompras());
+        }
     }
 
 }
