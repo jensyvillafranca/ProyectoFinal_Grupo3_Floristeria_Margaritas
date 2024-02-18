@@ -128,8 +128,14 @@
 	  <None Remove="Resources\Images\imglogin\fondosignin.png" />
 	  <None Remove="Resources\Images\notificacion.png" />
 	  <None Remove="Resources\Images\piechart.png" />
+	  <None Remove="Resources\Images\Productos\agregartarjeta.png" />
+	  <None Remove="Resources\Images\Productos\agregarubicacion.png" />
 	  <None Remove="Resources\Images\Productos\carritodecompras.png" />
+	  <None Remove="Resources\Images\Productos\casa.png" />
+	  <None Remove="Resources\Images\Productos\editar.png" />
 	  <None Remove="Resources\Images\Productos\eliminar.png" />
+	  <None Remove="Resources\Images\Productos\tarjetacredito.png" />
+	  <None Remove="Resources\Images\Productos\ubicacionactual.png" />
 	  <None Remove="Resources\Images\proyecciones.png" />
 	</ItemGroup>
 
@@ -173,14 +179,20 @@
 	  <MauiImage Include="Resources\Images\Menu\homeicon.png" />
 	  <MauiImage Include="Resources\Images\Menu\logout.png" />
 	  <MauiImage Include="Resources\Images\Menu\proyecciones.png" />
+	  <MauiImage Include="Resources\Images\Productos\agregartarjeta.png" />
+	  <MauiImage Include="Resources\Images\Productos\agregarubicacion.png" />
 	  <MauiImage Include="Resources\Images\Productos\backarrow.png" />
 	  <MauiImage Include="Resources\Images\Productos\cancelar.png" />
 	  <MauiImage Include="Resources\Images\Productos\carritodecompras.png" />
 	  <MauiImage Include="Resources\Images\Productos\carritomas.png" />
+	  <MauiImage Include="Resources\Images\Productos\casa.png" />
+	  <MauiImage Include="Resources\Images\Productos\editar.png" />
 	  <MauiImage Include="Resources\Images\Productos\eliminar.png" />
 	  <MauiImage Include="Resources\Images\Productos\flowers.png" />
 	  <MauiImage Include="Resources\Images\Productos\flowers2.png" />
 	  <MauiImage Include="Resources\Images\Productos\handslideblack.png" />
+	  <MauiImage Include="Resources\Images\Productos\tarjetacredito.png" />
+	  <MauiImage Include="Resources\Images\Productos\ubicacionactual.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -200,6 +212,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Productos\carritoCompras.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Productos\pagoDireccion.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Productos\PagoTarjeta.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Productos\productoDetalle.xaml">

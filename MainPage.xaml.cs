@@ -54,7 +54,15 @@
 
         }
 
+        private void btnDireccion_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Productos.pagoDireccion());
+        }
 
+        private void btnPagoTarjeta_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Productos.pagoDireccion());
+        }
     }
 
 }

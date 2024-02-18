@@ -54,6 +54,18 @@
                 SemanticProperties.Hint="Pagina del carrito de compras"
                 Text="Carrito de Compras" />
             <Button
+                x:Name="btnDireccion"
+                Clicked="btnDireccion_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de eleccion de direccion"
+                Text="Pago - Direccion" />
+            <Button
+                x:Name="btnPagoTarjeta"
+                Clicked="btnPagoTarjeta_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de eleccion de tarjeta"
+                Text="Pago - Tarjeta" />
+            <Button
                 x:Name="btnPedidosRepartidor"
                 Clicked="btnPedidosRepartidor_Clicked"
                 HorizontalOptions="Center"
