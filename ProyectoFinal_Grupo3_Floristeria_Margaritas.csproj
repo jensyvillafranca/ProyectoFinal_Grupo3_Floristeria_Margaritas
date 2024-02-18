@@ -123,6 +123,9 @@
 	  <None Remove="Resources\Images\ImagenesRepartidor\notificacion_repartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\perfilrepartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\salirmenu.png" />
+	  <None Remove="Resources\Images\imglogin\fondologinn.png" />
+	  <None Remove="Resources\Images\imglogin\fondologsig.png" />
+	  <None Remove="Resources\Images\imglogin\fondosignin.png" />
 	  <None Remove="Resources\Images\notificacion.png" />
 	  <None Remove="Resources\Images\piechart.png" />
 	  <None Remove="Resources\Images\Productos\carritodecompras.png" />
@@ -187,6 +190,12 @@
 	  <MauiXaml Update="Views\Home\homePageUser.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\login.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\signin.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\PantallaPedidosEntrantes.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -203,6 +212,24 @@
 
 	<ItemGroup>
 	  <Folder Include="NewFolder\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\imglogin\fondologsig.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\imglogin\fondologinn.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\imglogin\fondosignin.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\Login\signin.xaml.cs">
+	    <DependentUpon>signin.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

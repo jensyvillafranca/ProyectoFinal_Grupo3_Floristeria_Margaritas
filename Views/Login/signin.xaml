@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login.singin"
+             Title="singin">
+    <AbsoluteLayout>
+        <Image Source="imglogin/fondosignin.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1" AbsoluteLayout.LayoutFlags="All"/>
+
+     
+            <Image Source="imglogin/fondologinn.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1" AbsoluteLayout.LayoutFlags="All"/>
+
+        <Label FontSize="13" Text="Primer Nombre" TextColor="White" AbsoluteLayout.LayoutBounds="0.5,0.30,0.7,0.04" AbsoluteLayout.LayoutFlags="All"/>
+        <Entry  FontSize="11" TextColor="White" Placeholder="Ingrese su primer nombre" AbsoluteLayout.LayoutBounds="0.5,0.33,0.7,0.04" AbsoluteLayout.LayoutFlags="All"/>
+
+        <Label FontSize="13" Text="Primer Apellido" TextColor="White" AbsoluteLayout.LayoutBounds="0.5,0.40,0.7,0.04" AbsoluteLayout.LayoutFlags="All"/>
+        <Entry FontSize="11" TextColor="White" Placeholder="Ingrese su primer apellido" AbsoluteLayout.LayoutBounds="0.5,0.43,0.7,0.04" AbsoluteLayout.LayoutFlags="All"/>
+
+        <Label FontSize="13" Text="Correo Electrónico" TextColor="White" AbsoluteLayout.LayoutBounds="0.5,0.50,0.7,0.04" AbsoluteLayout.LayoutFlags="All"/>
+        <Entry FontSize="11" TextColor="White" Placeholder="Ingrese su correo electrónico" AbsoluteLayout.LayoutBounds="0.5,0.53,0.7,0.04" AbsoluteLayout.LayoutFlags="All"/>
+
+        <Label FontSize="13" Text="Contraseña" TextColor="White" AbsoluteLayout.LayoutBounds="0.5,0.60,0.7,0.04" AbsoluteLayout.LayoutFlags="All"/>
+        <Entry FontSize="11" TextColor="White" Placeholder="Ingrese su contraseña" AbsoluteLayout.LayoutBounds="0.5,0.63,0.7,0.04" AbsoluteLayout.LayoutFlags="All"/>
+
+        <Label FontSize="13" Text="Confirmar Contraseña" TextColor="White" AbsoluteLayout.LayoutBounds="0.5,0.70,0.7,0.04" AbsoluteLayout.LayoutFlags="All"/>
+        <Entry FontSize="11" TextColor="White" Placeholder="Ingrese nuevamente su contraseña" AbsoluteLayout.LayoutBounds="0.5,0.73,0.7,0.04" AbsoluteLayout.LayoutFlags="All"/>
+
+
+        <Label Text="Ya tengo una cuenta" FontSize="10" TextColor="LightBlue" TextDecorations="Underline" AbsoluteLayout.LayoutBounds="1.02,0.76,0.4,0.02" AbsoluteLayout.LayoutFlags="All"/>
+
+        <Button Text="Entrar" FontSize="10" WidthRequest="335" HeightRequest="37" TextColor="White" BackgroundColor="DodgerBlue" CornerRadius="20" AbsoluteLayout.LayoutBounds="0.5,0.87,0.1,0.1" AbsoluteLayout.LayoutFlags="All"/>
+    </AbsoluteLayout>
+
+
+
+
+
+
+</ContentPage>

@@ -43,6 +43,18 @@
         {
             Navigation.PushAsync(new Views.Productos.carritoCompras());
         }
+
+        private void btnlogin_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Login.login());
+        }
+        private void btnsignin_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Login.singin());
+
+        }
+
+
     }
 
 }

@@ -59,6 +59,18 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina de pedidos entrantes"
                 Text="Pedidos Entrantes" />
+            <Button
+                x:Name="btnlogin"
+                Clicked="btnlogin_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de log in"
+                Text="Log In" />
+            <Button
+                x:Name="btnsignin"
+                Clicked="btnsignin_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de sign in"
+                Text="Sign In" />
         </VerticalStackLayout>
     </ScrollView>
 

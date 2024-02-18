@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login.login"
+             Title="login">
+    <AbsoluteLayout>
+        <Image Source="imglogin/fondologinn.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1" AbsoluteLayout.LayoutFlags="All"/>
+
+        <Label Text="Usuario" TextColor="White" AbsoluteLayout.LayoutBounds="0.5,0.3,0.7,0.05" AbsoluteLayout.LayoutFlags="All"/>
+        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.2,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
+        <Entry TextColor="White" Placeholder="Ingrese su usuario" AbsoluteLayout.LayoutBounds="0.5,0.33,0.7,0.05" AbsoluteLayout.LayoutFlags="All"/>
+
+
+        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.4,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
+
+        <Label Text="Contraseña" TextColor="White" AbsoluteLayout.LayoutBounds="0.5,0.43,0.7,0.05" AbsoluteLayout.LayoutFlags="All"/>
+        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.2,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
+        <Entry TextColor="White" Placeholder="Ingrese su Contraseña" IsPassword="True" AbsoluteLayout.LayoutBounds="0.5,0.46,0.7,0.05" AbsoluteLayout.LayoutFlags="All"/>
+
+        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.4,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
+
+        <Switch IsToggled="false" ThumbColor="LightBlue" AbsoluteLayout.LayoutBounds="0.06,0.55,0.2,0.04" AbsoluteLayout.LayoutFlags="All" OnColor="#273AA0" InputTransparent="False"/>
+        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.2,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
+        <Label Text="Recordar contraseña"  FontSize="10" TextColor="LightBlue"  AbsoluteLayout.LayoutBounds="0.4,0.55,0.4,0.02" AbsoluteLayout.LayoutFlags="All"/>
+        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.6,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
+        <Label Text="Olvidé mi contraseña" FontSize="10" TextColor="LightBlue" TextDecorations="Underline" AbsoluteLayout.LayoutBounds="1.02,0.55,0.4,0.02" AbsoluteLayout.LayoutFlags="All"/>
+
+
+        <Button Text="Entrar" FontSize="11" WidthRequest="335" HeightRequest="37" TextColor="White" BackgroundColor="DodgerBlue" CornerRadius="20" AbsoluteLayout.LayoutBounds="0.5,0.705,0.1,0.3" AbsoluteLayout.LayoutFlags="All"/>
+        <Button Text="Registrarse" FontSize="11" WidthRequest="335" HeightRequest="37" TextColor="White" BackgroundColor="CornflowerBlue" CornerRadius="20" AbsoluteLayout.LayoutBounds="0.5,0.805,0.1,0.3" AbsoluteLayout.LayoutFlags="All"/>
+        <Button Text="Aplicar como repartidor" FontSize="11" WidthRequest="335" HeightRequest="37" TextColor="White" BackgroundColor="RoyalBlue" CornerRadius="20" AbsoluteLayout.LayoutBounds="0.5,0.905,0.1,0.3" AbsoluteLayout.LayoutFlags="All"/>
+
+    </AbsoluteLayout>
+       
+
+</ContentPage>
