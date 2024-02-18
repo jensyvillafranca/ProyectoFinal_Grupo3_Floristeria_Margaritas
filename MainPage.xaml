@@ -66,6 +66,12 @@
                 SemanticProperties.Hint="Pagina de eleccion de tarjeta"
                 Text="Pago - Tarjeta" />
             <Button
+                x:Name="btnFinalizar"
+                Clicked="btnFinalizar_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de finalizar orden"
+                Text="Finalizar Orden" />
+            <Button
                 x:Name="btnPedidosRepartidor"
                 Clicked="btnPedidosRepartidor_Clicked"
                 HorizontalOptions="Center"

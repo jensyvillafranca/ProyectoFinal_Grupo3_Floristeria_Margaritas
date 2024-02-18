@@ -61,7 +61,12 @@
 
         private void btnPagoTarjeta_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Views.Productos.pagoDireccion());
+            Navigation.PushAsync(new Views.Productos.PagoTarjeta());
+        }
+
+        private void btnFinalizar_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Productos.confirmarOrden());
         }
     }
 

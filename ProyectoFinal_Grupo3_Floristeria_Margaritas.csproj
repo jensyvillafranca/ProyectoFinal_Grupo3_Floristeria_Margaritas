@@ -214,6 +214,9 @@
 	  <MauiXaml Update="Views\Productos\carritoCompras.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Productos\confirmarOrden.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Productos\pagoDireccion.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
