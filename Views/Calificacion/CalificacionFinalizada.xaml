@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Calificacion.CalificacionFinalizada"
+             Title="CalificacionFinalizada"
+             BackgroundImageSource="fondo_pantalla.png">
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Header  -->
+        <Frame
+            Grid.Row="0"
+            Margin="10,10,10,15"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            CornerRadius="20">
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+                <ImageButton
+                    x:Name="btnBack"
+                    Margin="10,0,0,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnBack_Clicked"
+                    HeightRequest="40"
+                    Source="Productos/backarrow.png"
+                    WidthRequest="40" />
+                <!--  Spacer  -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Label
+                    Margin="0,0,95,0"
+                    FontAttributes="Bold"
+                    Text="Calificacion Finalizada"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+
+            </StackLayout>
+        </Frame>
+
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <!--  Detalle Frame  -->
+                <Frame
+             x:Name="frameDetalle"
+             Margin="15"
+             Padding="0"
+             BackgroundColor="White"
+             CornerRadius="10"
+             HasShadow="True"
+             VerticalOptions="CenterAndExpand">
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+                        <Image
+                         x:Name="Hola" 
+                         Margin="10,30,10,20"
+                         Aspect="AspectFit"
+                         HorizontalOptions="FillAndExpand"
+                        Source="ImagenesCalificacion/calificacion_finalizada.png" />
+
+                        <Label
+                            x:Name="labelAgradecimiento"
+                            Margin="0,5,0,10"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            HorizontalTextAlignment="Center"
+                            Text="¡Gracias por tu Tiempo!"
+                            TextColor="#314e87" />
+
+
+                        <Label
+                     x:Name="labelDescripcion"
+                     Margin="20,0,20,20"
+                     FontSize="13"
+                     HorizontalOptions="Center"
+                     HorizontalTextAlignment="Center"
+                     Text="Tu opinión puede ayudar a más personas"
+                     TextColor="#172C51"
+                     VerticalOptions="Start"
+                     VerticalTextAlignment="Center" />
+
+                        <StackLayout
+Grid.Row="2"
+Padding="0,10,0,10"
+BackgroundColor="Transparent"
+Orientation="Horizontal">
+
+                            <Button
+    x:Name="btnConfirmar"
+    Margin="30,0,30,30"
+    FontSize="14"
+    Clicked="btnConfirmar_Clicked"                           
+    HeightRequest="50"
+    CornerRadius="20"                   
+    HorizontalOptions="FillAndExpand"
+    SemanticProperties.Hint="Confirmar Calificacion"
+    BackgroundColor="#41B9FE"
+    Text="Confirmar" />
+
+                        </StackLayout>
+
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+
+
+    </Grid>
+</ContentPage>

@@ -110,6 +110,11 @@
 	  <None Remove="Resources\Images\handslideblack.png" />
 	  <None Remove="Resources\Images\homeicon.png" />
 	  <None Remove="Resources\Images\iconoadmin.png" />
+	  <None Remove="Resources\Images\ImagenesCalificacion\calificacion_exitosa.png" />
+	  <None Remove="Resources\Images\ImagenesCalificacion\calificacion_finalizada.png" />
+	  <None Remove="Resources\Images\ImagenesCalificacion\estrella_llena1.png" />
+	  <None Remove="Resources\Images\ImagenesCalificacion\estrella_vacia.png" />
+	  <None Remove="Resources\Images\ImagenesCalificacion\fondo_pantalla.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\atras.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\botonera.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\botonhistorialpedidos.svg" />
@@ -160,6 +165,21 @@
 	  <MauiImage Include="Resources\Images\Home\perfil.png" />
 	  <MauiImage Include="Resources\Images\Home\piechart.png" />
 	  <MauiImage Include="Resources\Images\Home\productos.png" />
+	  <MauiImage Include="Resources\Images\ImagenesCalificacion\calificacion_exitosa.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\ImagenesCalificacion\calificacion_finalizada.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\ImagenesCalificacion\estrella_llena1.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\ImagenesCalificacion\estrella_vacia.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\ImagenesCalificacion\fondo_pantalla.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\atras.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botonera.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botonhistorialpedidos.svg" />
@@ -196,6 +216,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\Calificacion\CalificacionFinalizada.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Calificacion\PantallaCalificacion.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Home\homePageRepartidor.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

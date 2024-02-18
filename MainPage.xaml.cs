@@ -68,6 +68,18 @@
         {
             Navigation.PushAsync(new Views.Productos.confirmarOrden());
         }
+
+
+        private void btnCalificacionFinalizada_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Calificacion.CalificacionFinalizada());
+        }
+
+        private void btnPantallaCalificacion_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Calificacion.PantallaCalificacion());
+        }
+
     }
 
 }
