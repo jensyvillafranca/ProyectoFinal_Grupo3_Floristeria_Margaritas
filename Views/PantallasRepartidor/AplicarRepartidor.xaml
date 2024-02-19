@@ -28,6 +28,7 @@
                 Source="ImagenesRepartidor/atras.png"
                 WidthRequest="40" />
                 <!--  Spacer  -->
+                <!--  Spacer  -->
                 <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
                 <Label
                 Margin="0,0,95,0"
