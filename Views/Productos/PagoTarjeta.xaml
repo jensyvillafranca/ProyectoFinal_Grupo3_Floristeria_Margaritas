@@ -23,6 +23,7 @@
                 Margin="0,0,0,0"
                 Padding="0,10,0,10"
                 BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
                 CornerRadius="20">
                 <StackLayout
                     Margin="0,0,0,0"
@@ -59,7 +60,10 @@
                     </StackLayout>
                 </StackLayout>
             </Frame>
-            <Frame Padding="0,0,0,0" BackgroundColor="Black">
+            <Frame
+                Padding="0,0,0,0"
+                BackgroundColor="{DynamicResource AzulOscuro}"
+                BorderColor="{DynamicResource AzulBotones}">
                 <Label
                     Margin="0,0,0,0"
                     FontAttributes="Bold"
@@ -90,6 +94,7 @@
                                 Margin="5"
                                 Padding="5"
                                 BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
                                 CornerRadius="10"
                                 HasShadow="True"
                                 HorizontalOptions="FillAndExpand">
@@ -98,10 +103,10 @@
                                     Orientation="Horizontal"
                                     VerticalOptions="FillAndExpand">
                                     <Image
-                                        Margin="3,10,3,10"
+                                        Margin="5,10,3,10"
                                         Aspect="AspectFit"
                                         HeightRequest="80"
-                                        Source="{Binding ImageSource}"
+                                        Source="Productos/tarjetacolor.png"
                                         WidthRequest="80" />
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -154,6 +159,7 @@
                     Margin="5"
                     Padding="5"
                     BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}"
                     CornerRadius="10"
                     HasShadow="True"
                     HorizontalOptions="FillAndExpand">
@@ -169,16 +175,16 @@
                         Orientation="Horizontal"
                         VerticalOptions="FillAndExpand">
                         <Image
-                            Margin="3,10,3,10"
+                            Margin="10,10,3,10"
                             Aspect="AspectFit"
                             HeightRequest="50"
-                            Source="Productos/agregartarjeta.png"
+                            Source="Productos/agregartarjeta2.png"
                             WidthRequest="50" />
 
                         <Label
                             x:Name="labelAgregarTarjeta"
                             Grid.Row="0"
-                            Margin="5,0,0,5"
+                            Margin="0,0,0,5"
                             FontAttributes="Bold"
                             FontSize="16"
                             HorizontalOptions="CenterAndExpand"
@@ -198,6 +204,7 @@
             Margin="0,1,0,0"
             Padding="0,10,0,10"
             BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
             CornerRadius="20">
             <StackLayout
                 Padding="0,0,0,0"
@@ -306,6 +313,7 @@
                     x:Name="btnSiguiente"
                     Margin="30,20,30,10"
                     BackgroundColor="{DynamicResource AzulBotones}"
+                    BorderColor="{DynamicResource AzulMedio}"
                     Clicked="btnSiguiente_Clicked"
                     CornerRadius="20"
                     FontAttributes="Bold"

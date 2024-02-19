@@ -12,16 +12,15 @@ public partial class pagoDireccion : ContentPage
 
         Direcciones = new ObservableCollection<DireccionItem>
         {
-                new DireccionItem { ImageSource = "Productos/casa.png", LabelDescripcion = "Casa Principal", LabelDireccion = "3 Ave, 12 Calle", LabelCiudadDept = "San Pedro Sula, Cortes", TappedCommand = new Command<DireccionItem>(item => HandleTappedCommand(item))},
-                new DireccionItem { ImageSource = "Productos/casa.png", LabelDescripcion = "Maria", LabelDireccion = "4 Ave, 6 Calle", LabelCiudadDept = "Puerto Cortes, Cortes", TappedCommand = new Command<DireccionItem>(item => HandleTappedCommand(item)) },
-                new DireccionItem { ImageSource = "Productos/casa.png", LabelDescripcion = "Madre", LabelDireccion = "1 2 Calle S", LabelCiudadDept = "San Pedro Sula, Cortes", TappedCommand = new Command<DireccionItem>(item => HandleTappedCommand(item)) },
+                new DireccionItem { LabelDescripcion = "Casa Principal", LabelDireccion = "3 Ave, 12 Calle", LabelCiudadDept = "San Pedro Sula, Cortes", TappedCommand = new Command<DireccionItem>(item => HandleTappedCommand(item))},
+                new DireccionItem { LabelDescripcion = "Maria", LabelDireccion = "4 Ave, 6 Calle", LabelCiudadDept = "Puerto Cortes, Cortes", TappedCommand = new Command<DireccionItem>(item => HandleTappedCommand(item)) },
+                new DireccionItem { LabelDescripcion = "Madre", LabelDireccion = "1 2 Calle S", LabelCiudadDept = "San Pedro Sula, Cortes", TappedCommand = new Command<DireccionItem>(item => HandleTappedCommand(item)) },
         };
         collectionViewDirecciones.ItemsSource = Direcciones;
     }
 
     public class DireccionItem
     {
-        public string ImageSource { get; set; }
         public string LabelDescripcion { get; set; }
         public string LabelDireccion { get; set; }
         public string LabelCiudadDept { get; set; }

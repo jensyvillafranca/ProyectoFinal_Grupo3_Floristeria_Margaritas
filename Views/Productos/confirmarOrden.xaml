@@ -23,6 +23,7 @@
                 Margin="0,0,0,0"
                 Padding="0,10,0,10"
                 BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
                 CornerRadius="20">
                 <StackLayout
                     Margin="0,0,0,0"
@@ -64,9 +65,12 @@
 
         <!--  Body - Collection view  -->
         <ScrollView Grid.Row="1">
-            <StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand">
                 <!--  Frame Direccion  -->
-                <Frame Padding="0,0,0,0" BackgroundColor="Black">
+                <Frame
+                    Padding="0,0,0,0"
+                    BackgroundColor="{DynamicResource AzulOscuro}"
+                    BorderColor="{DynamicResource AzulBotones}">
                     <Label
                         Margin="0,0,0,0"
                         FontAttributes="Bold"
@@ -79,9 +83,10 @@
 
                 <Frame
                     x:Name="frameDireccionCollection"
-                    Margin="5"
+                    Margin="0,5,0,15"
                     Padding="5"
                     BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}"
                     CornerRadius="10"
                     HasShadow="True"
                     HorizontalOptions="FillAndExpand">
@@ -140,7 +145,10 @@
                 </Frame>
 
                 <!--  Frame Tarjeta  -->
-                <Frame Padding="0,0,0,0" BackgroundColor="Black">
+                <Frame
+                    Padding="0,0,0,0"
+                    BackgroundColor="{DynamicResource AzulOscuro}"
+                    BorderColor="{DynamicResource AzulBotones}">
                     <Label
                         Margin="0,0,0,0"
                         FontAttributes="Bold"
@@ -153,9 +161,10 @@
 
                 <Frame
                     x:Name="frameTarjetaCollection"
-                    Margin="5"
+                    Margin="0,5,0,15"
                     Padding="5"
                     BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}"
                     CornerRadius="10"
                     HasShadow="True"
                     HorizontalOptions="FillAndExpand">
@@ -216,7 +225,8 @@
                 <Frame
                     Margin="0,0,0,5"
                     Padding="0,0,0,0"
-                    BackgroundColor="Black">
+                    BackgroundColor="{DynamicResource AzulOscuro}"
+                    BorderColor="{DynamicResource AzulBotones}">
                     <Label
                         Margin="0,0,0,0"
                         FontAttributes="Bold"
@@ -227,7 +237,11 @@
                         VerticalOptions="CenterAndExpand" />
                 </Frame>
 
-                <Frame Padding="0,0,0,0" BackgroundColor="FloralWhite">
+                <Frame
+                    Margin="0,0,0,10"
+                    Padding="0,0,0,0"
+                    BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}">
                     <StackLayout Orientation="Vertical">
                         <Entry
                             x:Name="entryTitulo"
@@ -256,6 +270,7 @@
             Margin="0,1,0,0"
             Padding="0,10,0,10"
             BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
             CornerRadius="20">
             <StackLayout
                 Padding="0,0,0,0"

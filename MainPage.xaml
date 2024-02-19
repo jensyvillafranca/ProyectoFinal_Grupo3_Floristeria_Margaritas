@@ -72,6 +72,12 @@
                 SemanticProperties.Hint="Pagina de finalizar orden"
                 Text="Finalizar Orden" />
             <Button
+                x:Name="btnPopupPago"
+                Clicked="btnPopupPago_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pantalla de popup de confirmacion de pago"
+                Text="Confirmacion Pago" />
+            <Button
                 x:Name="btnPedidosRepartidor"
                 Clicked="btnPedidosRepartidor_Clicked"
                 HorizontalOptions="Center"

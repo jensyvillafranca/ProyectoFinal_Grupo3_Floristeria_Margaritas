@@ -80,27 +80,27 @@ public partial class homePageUser : ContentPage
 
     private async void TapGestureProductos_Tapped(object sender, TappedEventArgs e)
     {
-        await AnimationUtilities.ChangeFrameColor(frameProductos, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
+        await AnimationUtilities.ChangeFrameColor(frameProductos, Color.FromRgb(46, 117, 182), Color.FromRgb(65, 185, 254), 250);
     }
 
     private async void TapGestureCarrito_Tapped(object sender, TappedEventArgs e)
     {
-        await AnimationUtilities.ChangeFrameColor(frameCarrito, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
+        await AnimationUtilities.ChangeFrameColor(frameCarrito, Color.FromRgb(33, 52, 91), Color.FromRgb(65, 185, 254), 250);
     }
 
     private async void TapGesturePedidos_Tapped(object sender, TappedEventArgs e)
     {
-        await AnimationUtilities.ChangeFrameColor(framePedidos, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
+        await AnimationUtilities.ChangeFrameColor(framePedidos, Color.FromRgb(33, 52, 91), Color.FromRgb(65, 185, 254), 250);
     }
 
     private async void TapGesturePerfil_Tapped(object sender, TappedEventArgs e)
     {
-        await AnimationUtilities.ChangeFrameColor(framePerfil, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
+        await AnimationUtilities.ChangeFrameColor(framePerfil, Color.FromRgb(46, 117, 182), Color.FromRgb(65, 185, 254), 250);
     }
 
     private async void TapGestureCarousel_Tapped(object sender, TappedEventArgs e)
     {
-        await AnimationUtilities.ChangeFrameColor((Frame)sender, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
+        await AnimationUtilities.ChangeFrameColor((Frame)sender, Color.FromRgb(46, 117, 182), Color.FromRgb(65, 185, 254), 250);
     }
 
     private void btnNotification_Clicked(object sender, EventArgs e)

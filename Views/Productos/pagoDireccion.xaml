@@ -23,6 +23,7 @@
                 Margin="0,0,0,0"
                 Padding="0,10,0,10"
                 BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
                 CornerRadius="20">
                 <StackLayout
                     Margin="0,0,0,0"
@@ -57,7 +58,10 @@
                         WidthRequest="40" />
                 </StackLayout>
             </Frame>
-            <Frame Padding="0,0,0,0" BackgroundColor="Black">
+            <Frame
+                Padding="0,0,0,0"
+                BackgroundColor="{DynamicResource AzulOscuro}"
+                BorderColor="{DynamicResource AzulBotones}">
                 <Label
                     Margin="0,0,0,0"
                     FontAttributes="Bold"
@@ -89,6 +93,7 @@
                                 Margin="5"
                                 Padding="5"
                                 BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
                                 CornerRadius="10"
                                 HasShadow="True"
                                 HorizontalOptions="FillAndExpand">
@@ -100,7 +105,7 @@
                                         Margin="3,10,3,10"
                                         Aspect="AspectFit"
                                         HeightRequest="80"
-                                        Source="{Binding ImageSource}"
+                                        Source="Productos/casa2.png"
                                         WidthRequest="80" />
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -150,10 +155,10 @@
                                         BackgroundColor="Transparent"
                                         Command="{Binding TappedCommand}"
                                         CommandParameter="{Binding .}"
-                                        HeightRequest="30"
+                                        HeightRequest="24"
                                         HorizontalOptions="CenterAndExpand"
                                         Source="Productos/editar.png"
-                                        WidthRequest="30" />
+                                        WidthRequest="24" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>
@@ -165,6 +170,7 @@
                     Margin="5"
                     Padding="5"
                     BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}"
                     CornerRadius="10"
                     HasShadow="True"
                     HorizontalOptions="FillAndExpand">
@@ -182,9 +188,9 @@
                         <Image
                             Margin="3,10,3,10"
                             Aspect="AspectFit"
-                            HeightRequest="60"
-                            Source="Productos/agregarubicacion.png"
-                            WidthRequest="60" />
+                            HeightRequest="80"
+                            Source="Productos/agregarubicacion2.png"
+                            WidthRequest="80" />
 
                         <Label
                             x:Name="labelNuevaDireccion"
@@ -206,6 +212,7 @@
                     Margin="5"
                     Padding="5"
                     BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}"
                     CornerRadius="10"
                     HasShadow="True"
                     HorizontalOptions="FillAndExpand">
@@ -223,9 +230,9 @@
                         <Image
                             Margin="3,10,3,10"
                             Aspect="AspectFit"
-                            HeightRequest="50"
+                            HeightRequest="80"
                             Source="Productos/ubicacionactual.png"
-                            WidthRequest="50" />
+                            WidthRequest="80" />
 
                         <Label
                             x:Name="labelUbicacionActual"
@@ -250,6 +257,7 @@
             Margin="0,1,0,0"
             Padding="0,10,0,10"
             BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
             CornerRadius="20">
             <StackLayout
                 Padding="0,0,0,0"
@@ -358,6 +366,7 @@
                     x:Name="btnRealizarPago"
                     Margin="30,20,30,10"
                     BackgroundColor="{DynamicResource AzulBotones}"
+                    BorderColor="{DynamicResource AzulOscuro}"
                     Clicked="btnRealizarPago_Clicked"
                     CornerRadius="20"
                     FontAttributes="Bold"

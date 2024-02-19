@@ -1,5 +1,5 @@
-﻿namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
-{
+﻿namespace ProyectoFinal_Grupo3_Floristeria_Margaritas;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
     public partial class MainPage : ContentPage
     {
 
@@ -68,6 +68,10 @@
         {
             Navigation.PushAsync(new Views.Productos.confirmarOrden());
         }
-    }
 
-}
+        private async void btnPopupPago_Clicked(object sender, EventArgs e)
+        {
+            CustomPopupPagoRealizado customPopup = new CustomPopupPagoRealizado();
+            await Navigation.PushModalAsync(new NavigationPage(customPopup));
+        }
+    }

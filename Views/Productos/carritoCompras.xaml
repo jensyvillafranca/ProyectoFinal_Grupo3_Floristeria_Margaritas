@@ -17,8 +17,9 @@
         <Frame
             Grid.Row="0"
             Margin="0,0,0,15"
-            Padding="0,10,0,10"
+            Padding="5,10,5,10"
             BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
             CornerRadius="20">
             <StackLayout
                 Margin="0,0,0,0"
@@ -49,7 +50,7 @@
                     BackgroundColor="Transparent"
                     Clicked="btnProductos_Clicked"
                     HeightRequest="40"
-                    Source="Productos/carritodecompras.png"
+                    Source="Productos/flowercolor.png"
                     WidthRequest="40" />
             </StackLayout>
         </Frame>
@@ -73,6 +74,7 @@
                                 Margin="5"
                                 Padding="5"
                                 BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
                                 CornerRadius="10"
                                 HasShadow="True"
                                 HorizontalOptions="FillAndExpand">
@@ -112,15 +114,13 @@
                                             Margin="10,0,0,0"
                                             HorizontalOptions="CenterAndExpand"
                                             Orientation="Horizontal">
-                                            <Button
+                                            <ImageButton
                                                 x:Name="btnSubstract"
-                                                BackgroundColor="{DynamicResource AzulBotones}"
+                                                BorderColor="{DynamicResource AzulOscuro}"
                                                 Command="{Binding substractCommand}"
                                                 CommandParameter="{Binding .}"
-                                                FontAttributes="Bold"
-                                                FontSize="12"
                                                 HeightRequest="35"
-                                                Text="-"
+                                                Source="Productos/menos.png"
                                                 WidthRequest="35" />
                                             <Label
                                                 x:Name="quantityEntry"
@@ -130,15 +130,13 @@
                                                 Text="{Binding EntryQuantity, Mode=TwoWay}"
                                                 VerticalTextAlignment="Center"
                                                 WidthRequest="40" />
-                                            <Button
+                                            <ImageButton
                                                 x:Name="btnAdd"
-                                                BackgroundColor="{DynamicResource AzulBotones}"
+                                                BorderColor="{DynamicResource AzulOscuro}"
                                                 Command="{Binding addCommand}"
                                                 CommandParameter="{Binding .}"
-                                                FontAttributes="Bold"
-                                                FontSize="12"
                                                 HeightRequest="35"
-                                                Text="+"
+                                                Source="Productos/add.png"
                                                 WidthRequest="35" />
                                         </StackLayout>
                                         <Label
@@ -157,15 +155,15 @@
                                             x:Name="btnEliminar"
                                             Grid.Row="1"
                                             Grid.Column="1"
-                                            Margin="30,0,0,0"
+                                            Margin="30,0,0,10"
                                             Aspect="AspectFit"
                                             BackgroundColor="Transparent"
                                             Command="{Binding TappedCommand}"
                                             CommandParameter="{Binding .}"
-                                            HeightRequest="30"
+                                            HeightRequest="35"
                                             HorizontalOptions="CenterAndExpand"
-                                            Source="Productos/eliminar.png"
-                                            WidthRequest="30" />
+                                            Source="Productos/eliminar2.png"
+                                            WidthRequest="35" />
                                     </Grid>
 
 
@@ -182,6 +180,7 @@
             Grid.Row="2"
             Padding="0,10,0,10"
             BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
             CornerRadius="20">
             <StackLayout
                 Padding="0,0,0,0"
@@ -290,13 +289,14 @@
                     x:Name="btnRealizarOrden"
                     Margin="30,20,30,10"
                     BackgroundColor="{DynamicResource AzulBotones}"
+                    BorderColor="{DynamicResource AzulOscuro}"
                     Clicked="btnRealizarOrden_Clicked"
                     CornerRadius="20"
                     FontAttributes="Bold"
                     FontSize="14"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
-                    SemanticProperties.Hint="Agregar a Carrito"
+                    SemanticProperties.Hint="Realizar Compra"
                     Text="Realizar Orden" />
 
             </StackLayout>

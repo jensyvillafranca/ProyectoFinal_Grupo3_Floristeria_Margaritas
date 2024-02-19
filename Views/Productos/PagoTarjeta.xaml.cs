@@ -11,8 +11,8 @@ public partial class PagoTarjeta : ContentPage
 
         Tarjetas = new ObservableCollection<TarjetaItem>
         {
-                new TarjetaItem { ImageSource = "Productos/tarjetacredito.png", LabelDescripcion = "Tarjeta Credito Ficohsa", LabelNumeroTarjeta = "4234 5678 9123 4567", LabelNombreTarjeta = "Gustavo Brocato"},
-                new TarjetaItem { ImageSource = "Productos/tarjetacredito.png", LabelDescripcion = "Tarjeta Debito BAC", LabelNumeroTarjeta = "3759 876543 21001", LabelNombreTarjeta = "Gustavo Brocato"},
+                new TarjetaItem { LabelDescripcion = "Tarjeta Credito Ficohsa", LabelNumeroTarjeta = "4234 5678 9123 4567", LabelNombreTarjeta = "Gustavo Brocato"},
+                new TarjetaItem { LabelDescripcion = "Tarjeta Debito BAC", LabelNumeroTarjeta = "3759 876543 21001", LabelNombreTarjeta = "Gustavo Brocato"},
         };
 
         collectionViewTarjetas.ItemsSource = Tarjetas;
@@ -20,7 +20,6 @@ public partial class PagoTarjeta : ContentPage
 
     public class TarjetaItem
     {
-        public string ImageSource { get; set; }
         public string LabelDescripcion { get; set; }
         public string LabelNumeroTarjeta { get; set; }
         public string LabelNombreTarjeta { get; set; }
