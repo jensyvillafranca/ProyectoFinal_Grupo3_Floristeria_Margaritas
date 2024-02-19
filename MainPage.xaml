@@ -110,6 +110,12 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina de Aplicar Repartidor"
                 Text="Aplicar Repartidor" />
+            <Button
+                x:Name="btnCrearPromociones"
+                Clicked="btnCrearPromociones_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Crear Promociones"
+                Text="Crear Promociones" />
         </VerticalStackLayout>
     </ScrollView>
 

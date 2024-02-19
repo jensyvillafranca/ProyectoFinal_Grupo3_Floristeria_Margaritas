@@ -1,4 +1,3 @@
-using Microsoft.Maui.Handlers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
@@ -10,9 +9,9 @@ public partial class productoDetalle : ContentPage
     double precioTotal = 0;
     double precioProducto = 1700;
 
-	public productoDetalle()
-	{
-		InitializeComponent();
+    public productoDetalle()
+    {
+        InitializeComponent();
         customPopup = new CustomPopupViewAgregar();
     }
 

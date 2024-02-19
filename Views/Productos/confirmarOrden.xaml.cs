@@ -2,9 +2,9 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
 public partial class confirmarOrden : ContentPage
 {
-	public confirmarOrden()
-	{
-		InitializeComponent();
+    public confirmarOrden()
+    {
+        InitializeComponent();
         labelDescripcionDireccion.Text = "Casa Principal";
         labelDireccion.Text = "3 Ave, 12 Calle";
         labelCiudadDept.Text = "San Pedro Sula, Cortes";

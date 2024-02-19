@@ -1,7 +1,36 @@
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-maccatalyst)'
+Antes:
 using System;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
+Después:
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
+using System;
+*/
 
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-windows10.0.19041.0)'
+Antes:
+using System;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
+Después:
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
+using System;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-ios)'
+Antes:
+using System;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
+Después:
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
+using System;
+*/
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Calificacion
 {
     public partial class PantallaCalificacion : ContentPage

@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.OS;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
 {

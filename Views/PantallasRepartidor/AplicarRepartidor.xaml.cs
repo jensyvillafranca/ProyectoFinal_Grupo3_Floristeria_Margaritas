@@ -2,10 +2,10 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor;
 
 public partial class AplicarRepartidor : ContentPage
 {
-	public AplicarRepartidor()
-	{
-		InitializeComponent();
-	}
+    public AplicarRepartidor()
+    {
+        InitializeComponent();
+    }
 
     private void Picker_SelectedIndexChanged(object sender, EventArgs e)
     {

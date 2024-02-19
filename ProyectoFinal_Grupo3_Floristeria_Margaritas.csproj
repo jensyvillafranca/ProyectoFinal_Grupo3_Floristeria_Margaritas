@@ -116,6 +116,11 @@
 	  <None Remove="Resources\Images\handslideblack.png" />
 	  <None Remove="Resources\Images\homeicon.png" />
 	  <None Remove="Resources\Images\iconoadmin.png" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\botonproductos.svg" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\botonpromociones.svg" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\buscar.png" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\icono_boton_promocion.png" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\promociones.png" />
 	  <None Remove="Resources\Images\ImagenesCalificacion\calificacion_exitosa.png" />
 	  <None Remove="Resources\Images\ImagenesCalificacion\calificacion_finalizada.png" />
 	  <None Remove="Resources\Images\ImagenesCalificacion\estrella_llena1.png" />
@@ -185,6 +190,11 @@
 	  <MauiImage Include="Resources\Images\Home\perfil.png" />
 	  <MauiImage Include="Resources\Images\Home\piechart.png" />
 	  <MauiImage Include="Resources\Images\Home\productos.png" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\botonproductos.svg" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\botonpromociones.svg" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\buscar.png" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\icono_boton_promocion.png" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\promociones.png" />
 	  <MauiImage Include="Resources\Images\ImagenesCalificacion\calificacion_exitosa.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiImage>
@@ -275,6 +285,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Login\signin.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallaAdministrador\CrearPromociones.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\PantallaPedidosEntrantes.xaml">

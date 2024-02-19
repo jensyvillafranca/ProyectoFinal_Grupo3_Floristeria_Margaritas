@@ -1,7 +1,44 @@
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-maccatalyst)'
+Antes:
 using System.Collections.ObjectModel;
 using static ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser;
 using Microsoft.Maui.Graphics;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+Después:
+using Microsoft.Maui.Graphics;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser;
+using Microsoft.Collections.ObjectModel;
+using static ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-windows10.0.19041.0)'
+Antes:
+using System.Collections.ObjectModel;
+using static ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser;
+using Microsoft.Maui.Graphics;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+Después:
+using Microsoft.Maui.Graphics;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser;
+using Microsoft.Collections.ObjectModel;
+using static ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-ios)'
+Antes:
+using System.Collections.ObjectModel;
+using static ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser;
+using Microsoft.Maui.Graphics;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+Después:
+using Microsoft.Maui.Graphics;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser;
+using Microsoft.Collections.ObjectModel;
+using static ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home.homePageUser;
+*/
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using System.Collections.ObjectModel;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home;
 
@@ -11,8 +48,8 @@ public partial class homePageUser : ContentPage
     private int currentIndex = 0; // Para saber el indice del carrusel
 
     public homePageUser()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         // Inicia objetos de prueba para el carrusel
         TestItems = new ObservableCollection<TestItem>

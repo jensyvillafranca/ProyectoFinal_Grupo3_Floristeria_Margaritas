@@ -84,6 +84,11 @@
         {
             Navigation.PushAsync(new Views.PantallasRepartidor.AplicarRepartidor());
         }
+
+        private void btnCrearPromociones_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.PantallaAdministrador.CrearPromociones());
+        }
     }
 
 }
