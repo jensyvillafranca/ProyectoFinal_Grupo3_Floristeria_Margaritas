@@ -32,6 +32,8 @@
 
     <!--  Colores Personalizados Jensy  -->
     <Color x:Key="AzulPersonalizado">#204999</Color>
+    <Color x:Key="AzulPersonalizadoRepartidores">#46b3fe</Color>
+    <Color x:Key="AzulCelesteRepartidores">#9bc0ea</Color>
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" />
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}" />

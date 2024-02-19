@@ -100,10 +100,16 @@
             <Button
                 x:Name="btnCalificacionFinalizada"
                 Clicked="btnCalificacionFinalizada_Clicked"
-               HorizontalOptions="Center"
-               SemanticProperties.Hint="Pagina de Calificacion Finalizada"
-               Text="Calificacion Finalizada" />
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Calificacion Finalizada"
+                Text="Calificacion Finalizada" />
 
+            <Button
+                x:Name="btnAplicarRepartidor"
+                Clicked="btnAplicarRepartidor_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Aplicar Repartidor"
+                Text="Aplicar Repartidor" />
         </VerticalStackLayout>
     </ScrollView>
 

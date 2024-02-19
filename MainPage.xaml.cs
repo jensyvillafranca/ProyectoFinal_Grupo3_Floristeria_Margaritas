@@ -80,6 +80,10 @@
             Navigation.PushAsync(new Views.Calificacion.PantallaCalificacion());
         }
 
+        private void btnAplicarRepartidor_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.PantallasRepartidor.AplicarRepartidor());
+        }
     }
 
 }
