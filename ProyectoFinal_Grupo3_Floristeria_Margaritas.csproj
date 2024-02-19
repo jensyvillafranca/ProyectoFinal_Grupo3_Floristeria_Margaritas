@@ -90,11 +90,17 @@
 
 	<ItemGroup>
 	  <AndroidResource Remove="Models\**" />
+	  <AndroidResource Remove="NewFolder\**" />
 	  <Compile Remove="Models\**" />
+	  <Compile Remove="NewFolder\**" />
 	  <EmbeddedResource Remove="Models\**" />
+	  <EmbeddedResource Remove="NewFolder\**" />
 	  <MauiCss Remove="Models\**" />
+	  <MauiCss Remove="NewFolder\**" />
 	  <MauiXaml Remove="Models\**" />
+	  <MauiXaml Remove="NewFolder\**" />
 	  <None Remove="Models\**" />
+	  <None Remove="NewFolder\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -255,10 +261,6 @@
 	  <MauiXaml Update="Views\Productos\productos.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="NewFolder\" />
 	</ItemGroup>
 
 	<ItemGroup>
