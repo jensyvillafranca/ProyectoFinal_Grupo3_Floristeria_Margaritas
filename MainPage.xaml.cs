@@ -74,7 +74,6 @@ using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
             CustomPopupPagoRealizado customPopup = new CustomPopupPagoRealizado();
             await Navigation.PushModalAsync(new NavigationPage(customPopup));
         }
-    }
 
 
         private void btnCalificacionFinalizada_Clicked(object sender, EventArgs e)
@@ -97,5 +96,3 @@ using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
             Navigation.PushAsync(new Views.PantallaAdministrador.CrearPromociones());
         }
     }
-
-}
