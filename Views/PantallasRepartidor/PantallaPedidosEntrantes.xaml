@@ -42,7 +42,7 @@
                 </Grid>
             </StackLayout>
             <Label Text="¡Pedidos confirmados y listos para ser procesados&#x0a;por tí!" AbsoluteLayout.LayoutBounds="20, 0, -1, -1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AzulPersonalizado}" FontAttributes="Bold" Grid.Row="1" VerticalOptions="Start"></Label>
-            <!---Para poder dar un salto de línea lo hacemos con: &#x0a;No, sola-->
+            <!---Para poder dar un salto de línea lo hacemos con: &#x0a;-->
 
             <ScrollView Grid.Row="2" MaximumHeightRequest="530">
                 <!--Lista de los pedidos-->

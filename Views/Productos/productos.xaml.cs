@@ -9,8 +9,8 @@ public partial class productos : ContentPage
     public ObservableCollection<FiltroItem> Filtros { get; set; }
     private int currentIndex = 0; // Para saber el indice del carrusel
     public productos()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         carouselViewFiltros.Scrolled += CarouselViewFiltros_Scrolled;
 

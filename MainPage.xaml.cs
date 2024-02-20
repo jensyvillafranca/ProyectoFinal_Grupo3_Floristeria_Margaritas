@@ -75,3 +75,27 @@ using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
             await Navigation.PushModalAsync(new NavigationPage(customPopup));
         }
     }
+
+
+        private void btnCalificacionFinalizada_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Calificacion.CalificacionFinalizada());
+        }
+
+        private void btnPantallaCalificacion_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Calificacion.PantallaCalificacion());
+        }
+
+        private void btnAplicarRepartidor_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.PantallasRepartidor.AplicarRepartidor());
+        }
+
+        private void btnCrearPromociones_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.PantallaAdministrador.CrearPromociones());
+        }
+    }
+
+}

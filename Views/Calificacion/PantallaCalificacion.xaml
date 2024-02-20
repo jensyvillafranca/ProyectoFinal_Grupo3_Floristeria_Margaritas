@@ -1,0 +1,174 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Calificacion.PantallaCalificacion"
+             Title="PantallaCalificacion"
+             BackgroundImageSource="fondo_pantalla.png">
+    <Grid>
+        <!-- Content Grid -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Frame Grid.Row="0"
+               Margin="10,10,10,15"
+               Padding="0,10,0,10"
+               BackgroundColor="{DynamicResource BlackWithTransparency}"
+               CornerRadius="20">
+            <StackLayout Margin="0,0,0,0"
+                         Padding="0,0,0,0"
+                         BackgroundColor="Transparent"
+                         Orientation="Horizontal">
+                <ImageButton x:Name="btnBack"
+                             Margin="10,0,0,0"
+                             Aspect="AspectFit"
+                             BackgroundColor="Transparent"
+                             HeightRequest="40"
+                             Source="Productos/backarrow.png"
+                             WidthRequest="40" />
+                <!-- Spacer -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Label Margin="0,0,120,0"
+                       FontAttributes="Bold"
+                       Text="Calificacion"
+                       TextColor="White"
+                       VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+        </Frame>
+
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <!-- Detalle Frame -->
+                <Frame x:Name="frameDetalle"
+                       Margin="15"
+                       Padding="0"
+                       BackgroundColor="White"
+                       CornerRadius="10"
+                       HasShadow="True"
+                       VerticalOptions="CenterAndExpand">
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label x:Name="labelPregunta"
+                               Margin="0,20,0,30"
+                               FontSize="15"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               Text="¿Cómo Calificaría su Experiencia con Florestería Margarita?"
+                               TextColor="#314e87" />
+
+                        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton  x:Name="btnEstrella1"  AutomationId="0" Source="PantallaCalificacion/estrella_vacia.png" Clicked="OnStar_Clicked" />
+                                <Label Text="Pesima Experiencia" HorizontalOptions="Center" TextColor="#B4B4B4" LineBreakMode="WordWrap" Margin="5,5,0,0"  FontSize="9" HorizontalTextAlignment="Center" />
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton  x:Name="btnEstrella2"   AutomationId="1" Source="PantallaCalificacion/estrella_vacia.png" Margin="0,0,0,30"  Clicked="OnStar_Clicked" />
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton  x:Name="btnEstrella3" AutomationId="2"    Source="PantallaCalificacion/estrella_vacia.png" Margin="9,0,0,30" Clicked="OnStar_Clicked" />
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="btnEstrella4" AutomationId="3" Source="PantallaCalificacion/estrella_vacia.png" Margin="9,0,0,30" Clicked="OnStar_Clicked" />
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center">
+                                <ImageButton x:Name="btnEstrella5" AutomationId="4" Source="PantallaCalificacion/estrella_vacia.png" Clicked="OnStar_Clicked" />
+                                <Label Text="Excelente Experiencia" HorizontalOptions="Center" TextColor="#B4B4B4" LineBreakMode="WordWrap" Margin="5,5,0,0" FontSize="9" HorizontalTextAlignment="Center" />
+                            </StackLayout>
+                        </Grid>
+
+
+
+                        <StackLayout Grid.Row="0" Padding="0,30,0,10" BackgroundColor="Transparent" Orientation="Horizontal">
+                            <ScrollView>
+                                <StackLayout Orientation="Vertical" Spacing="10">
+
+                                    <Button x:Name="BtnOpinion1"
+                Clicked="BtnOpinion_Clicked"
+                Margin="30,0,10,0"
+                FontSize="12"
+                HeightRequest="40"
+                CornerRadius="5"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="StartAndExpand"
+                SemanticProperties.Hint="Primera Opinion"
+                BackgroundColor="#314E87"  
+                Text="Excelente Calidad y Atención Personalizada"
+                LineBreakMode="WordWrap" 
+                TextColor="White"
+                BorderColor="#314E87"
+                BorderWidth="1"   />
+
+                                    <Button x:Name="BtnOpinion2"
+                Clicked="BtnOpinion_Clicked"
+                Margin="30,0,10,0"
+                FontSize="12"
+                HeightRequest="40"
+                CornerRadius="5"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="StartAndExpand"
+                SemanticProperties.Hint="Segunda Opinion"
+                BackgroundColor="#314E87"  
+                Text="Me encanta esta Floreria"
+                LineBreakMode="WordWrap"
+                TextColor="White"
+                BorderColor="#314E87"   
+                BorderWidth="1"        />
+
+                                    <Button x:Name="BtnOpinion3"
+                Clicked="BtnOpinion_Clicked"
+                Margin="30,0,10,0"
+                FontSize="12"
+                HeightRequest="40"
+                CornerRadius="5"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="StartAndExpand"
+                SemanticProperties.Hint="Tercera Opinion"
+                 BackgroundColor="#314E87"  
+                Text="¡Flores Frescas y Hermosas!"
+                LineBreakMode="WordWrap"
+                BorderColor="#314E87"   
+                BorderWidth="1"          
+                TextColor="White "                        />
+                                </StackLayout>
+                            </ScrollView>
+
+
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="2" Padding="0,30,0,10" BackgroundColor="Transparent" Orientation="Horizontal">
+                            <Button x:Name="btnConfirmar"
+                                    Clicked="btnConfirmar_Clicked"
+                                    Margin="30,0,30,30"
+                                    FontSize="14"
+                                    HeightRequest="50"
+                                    CornerRadius="20"
+                                    HorizontalOptions="FillAndExpand"
+                                    SemanticProperties.Hint="Confirmar Calificacion"
+                                    BackgroundColor="#41B9FE"
+                                    Text="Confirmar" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+

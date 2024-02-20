@@ -1,7 +1,53 @@
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-maccatalyst)'
+Antes:
 using System.Collections.ObjectModel;
-using System.ComponentModel;
+Después:
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using System.Collections.ObjectModel;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-windows10.0.19041.0)'
+Antes:
+using System.Collections.ObjectModel;
+Después:
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using System.Collections.ObjectModel;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-ios)'
+Antes:
+using System.Collections.ObjectModel;
+Después:
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using System.Collections.ObjectModel;
+*/
+using
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-maccatalyst)'
+Antes:
 using System.Windows.Input;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+Después:
+using System.Windows.Input;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-windows10.0.19041.0)'
+Antes:
+using System.Windows.Input;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+Después:
+using System.Windows.Input;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-ios)'
+Antes:
+using System.Windows.Input;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+Después:
+using System.Windows.Input;
+*/
+ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using System.Collections.ObjectModel;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
@@ -14,8 +60,8 @@ public partial class carritoCompras : ContentPage
     private double Total { get; set; }
     private double PrecioProducto { get; set; }
     public carritoCompras()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         BindingContext = this;
 
         Ordenes = new ObservableCollection<FrameOrden>

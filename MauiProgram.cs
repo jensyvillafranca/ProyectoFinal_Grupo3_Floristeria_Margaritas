@@ -16,7 +16,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

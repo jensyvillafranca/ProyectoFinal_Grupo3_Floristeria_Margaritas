@@ -90,11 +90,17 @@
 
 	<ItemGroup>
 	  <AndroidResource Remove="Models\**" />
+	  <AndroidResource Remove="NewFolder\**" />
 	  <Compile Remove="Models\**" />
+	  <Compile Remove="NewFolder\**" />
 	  <EmbeddedResource Remove="Models\**" />
+	  <EmbeddedResource Remove="NewFolder\**" />
 	  <MauiCss Remove="Models\**" />
+	  <MauiCss Remove="NewFolder\**" />
 	  <MauiXaml Remove="Models\**" />
+	  <MauiXaml Remove="NewFolder\**" />
 	  <None Remove="Models\**" />
+	  <None Remove="NewFolder\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -114,6 +120,18 @@
 	  <None Remove="Resources\Images\Home\pedidoscolor.png" />
 	  <None Remove="Resources\Images\Home\perfilcolor.png" />
 	  <None Remove="Resources\Images\iconoadmin.png" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\botonproductos.svg" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\botonpromociones.svg" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\buscar.png" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\icono_boton_promocion.png" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\promociones.png" />
+	  <None Remove="Resources\Images\ImagenesCalificacion\calificacion_exitosa.png" />
+	  <None Remove="Resources\Images\ImagenesCalificacion\calificacion_finalizada.png" />
+	  <None Remove="Resources\Images\ImagenesCalificacion\estrella_llena1.png" />
+	  <None Remove="Resources\Images\ImagenesCalificacion\estrella_vacia.png" />
+	  <None Remove="Resources\Images\ImagenesCalificacion\fondo_pantalla.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\adjuntar_fotografia.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\aplicar_repartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\atras.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\botonera.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\botonhistorialpedidos.svg" />
@@ -122,14 +140,26 @@
 	  <None Remove="Resources\Images\ImagenesRepartidor\botonpedidos.svg" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\check.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\checkpedidosrepartidor.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\correo.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\dni.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\encabezado_repartidores.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\fecha_nacimiento.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\genero.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\historial_entregas.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\ingresos_repartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\notificacion_repartidor.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\pedidosentrantes.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\perfilrepartidor.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\perfilrepartidor_home.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\repartidor.svg" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\salirmenu.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\telefono_repartidor.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\ubicacion_repartidor.png" />
 	  <None Remove="Resources\Images\imglogin\fondologinn.png" />
 	  <None Remove="Resources\Images\imglogin\fondologsig.png" />
 	  <None Remove="Resources\Images\imglogin\fondosignin.png" />
+	  <None Remove="Resources\Images\Logo\logo_margaritas.png" />
 	  <None Remove="Resources\Images\Logo\logp.png" />
 	  <None Remove="Resources\Images\notificacion.png" />
 	  <None Remove="Resources\Images\piechart.png" />
@@ -177,6 +207,28 @@
 	  <MauiImage Include="Resources\Images\Home\perfilcolor.png" />
 	  <MauiImage Include="Resources\Images\Home\piechart.png" />
 	  <MauiImage Include="Resources\Images\Home\productos.png" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\botonproductos.svg" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\botonpromociones.svg" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\buscar.png" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\icono_boton_promocion.png" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\promociones.png" />
+	  <MauiImage Include="Resources\Images\ImagenesCalificacion\calificacion_exitosa.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\ImagenesCalificacion\calificacion_finalizada.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\ImagenesCalificacion\estrella_llena1.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\ImagenesCalificacion\estrella_vacia.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\ImagenesCalificacion\fondo_pantalla.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\adjuntar_fotografia.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\aplicar_repartidor.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\atras.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botonera.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botonhistorialpedidos.svg" />
@@ -185,12 +237,24 @@
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botonpedidos.svg" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\check.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\checkpedidosrepartidor.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\correo.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\dni.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\encabezado_repartidores.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fecha_nacimiento.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\genero.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\historial_entregas.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\ingresos_repartidor.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\notificacion_repartidor.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\pedidosentrantes.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\perfilrepartidor.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\perfilrepartidor_home.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\repartidor.svg" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\salirmenu.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\telefono_repartidor.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\ubicacion_repartidor.png" />
 	  <MauiImage Include="Resources\Images\Logo\logo.png" />
+	  <MauiImage Include="Resources\Images\Logo\logo_margaritas.png" />
 	  <MauiImage Include="Resources\Images\Logo\logp.png" />
 	  <MauiImage Include="Resources\Images\Menu\anouncements.png" />
 	  <MauiImage Include="Resources\Images\Menu\basket.png" />
@@ -222,6 +286,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\Calificacion\CalificacionFinalizada.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Calificacion\PantallaCalificacion.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\CustomViews\CustomPopupPagoRealizado.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -231,10 +301,22 @@
 	  <MauiXaml Update="Views\Home\homePageUser.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\CrearCuenta.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\EnviarCodigo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Login\login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\RestaurarContra.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Login\signin.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallaAdministrador\CrearPromociones.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\PantallaPedidosEntrantes.xaml">
@@ -258,10 +340,6 @@
 	  <MauiXaml Update="Views\Productos\productos.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="NewFolder\" />
 	</ItemGroup>
 
 	<ItemGroup>
