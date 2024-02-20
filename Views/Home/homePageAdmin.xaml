@@ -508,7 +508,6 @@
             BorderColor="{DynamicResource AzulBotones}"
             CornerRadius="20">
             <StackLayout
-                Grid.Row="2"
                 Padding="0,0,0,0"
                 BackgroundColor="Transparent"
                 Orientation="Horizontal">
@@ -546,7 +545,7 @@
                     Clicked="btnEstadisticas_Clicked"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
-                    Source="Menu/proyecciones.png"
+                    Source="ImagenesRepartidor/botonhistorialpedidos.svg"
                     WidthRequest="40" />
 
                 <!--  Anuncios Button  -->
