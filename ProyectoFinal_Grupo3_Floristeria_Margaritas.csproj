@@ -90,17 +90,11 @@
 
 	<ItemGroup>
 	  <AndroidResource Remove="Models\**" />
-	  <AndroidResource Remove="NewFolder\**" />
 	  <Compile Remove="Models\**" />
-	  <Compile Remove="NewFolder\**" />
 	  <EmbeddedResource Remove="Models\**" />
-	  <EmbeddedResource Remove="NewFolder\**" />
 	  <MauiCss Remove="Models\**" />
-	  <MauiCss Remove="NewFolder\**" />
 	  <MauiXaml Remove="Models\**" />
-	  <MauiXaml Remove="NewFolder\**" />
 	  <None Remove="Models\**" />
-	  <None Remove="NewFolder\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -149,7 +143,7 @@
 	  <None Remove="Resources\Images\ImagenesRepartidor\estrellallenarepartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\estrellavaciarepartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\fecha_nacimiento.png" />
-	  <None Remove="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.svg" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\genero.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\historial_entregas.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\ingresos_repartidor.png" />
@@ -257,7 +251,7 @@
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\estrellallenarepartidor.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\estrellavaciarepartidor.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fecha_nacimiento.png" />
-	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.svg" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\genero.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\historial_entregas.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\ingresos_repartidor.png" />
@@ -336,10 +330,16 @@
 	  <MauiXaml Update="Views\Login\signin.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallaAdministrador\BuscarProducto_Promociones.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallaAdministrador\CrearPromociones.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\historialEntregas.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallasRepartidor\IngresosRepartidor.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\PantallaPedidosEntrantes.xaml">

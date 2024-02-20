@@ -101,3 +101,11 @@ using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
         Navigation.PushAsync(new Views.PantallasRepartidor.historialEntregas());
     }
 }
+
+        private void btnIngresosRepartidor_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.PantallasRepartidor.IngresosRepartidor());
+        }
+
+        
+    }

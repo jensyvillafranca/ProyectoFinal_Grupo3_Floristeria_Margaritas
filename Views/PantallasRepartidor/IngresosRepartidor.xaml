@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.IngresosRepartidor"
+             Title="IngresosRepartidor"
+             Shell.NavBarIsVisible="False"
+             BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.svg">
+    <StackLayout>
+        
+        <!--Encabezado-->
+        <Frame
+            Grid.Row="0"
+            Margin="10,10,10,15"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            CornerRadius="20">
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+                <!--  Spacer  -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="80"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" MaximumWidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center" Source="ImagenesRepartidor/atras.png"/>
+                    <Label Grid.Column="1" TextColor="White" FontSize="15" FontAttributes="Bold"  HorizontalOptions="Start" VerticalOptions="Center" Text="Ingresos Generados"></Label>
+                    <Image Grid.Column="2" MaximumWidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center" Source="ImagenesRepartidor/notificacion_repartidor.png"/>
+                </Grid>
+            </StackLayout>
+        </Frame>
+        <!--Buscador-->
+        <Border BackgroundColor="White" Padding="5" HorizontalOptions="Center" WidthRequest="330" HeightRequest="48">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10"/>
+            </Border.StrokeShape>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="310"></ColumnDefinition>
+                    <ColumnDefinition Width="0"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Entry Grid.Column="0" Placeholder="Busca tu pedido aquí" WidthRequest="280" HorizontalOptions="Start"></Entry>
+                <Image Grid.Column="1" Source="ImagenesAdministrador/buscar.png" WidthRequest="30" HeightRequest="30" VerticalOptions="End" HorizontalOptions="End" />
+            </Grid>
+        </Border>
+        <!--Textos Informativos-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Text="¡Ingresos generados por tus pedidos entregados!" Grid.Column="0" TextColor="Blue"></Label>
+            <Label Text=" L.2,500" Grid.Column="1" TextColor="Blue" FontAttributes="Bold"></Label>
+        </Grid>
+    </StackLayout>
+</ContentPage>

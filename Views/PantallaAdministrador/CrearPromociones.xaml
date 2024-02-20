@@ -4,7 +4,7 @@
              x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallaAdministrador.CrearPromociones"
              Title="CrearPromociones"
              Shell.NavBarIsVisible="False"
-             BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.png">
+             BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.svg">
     <StackLayout>
         <Frame
             Grid.Row="0"
@@ -75,7 +75,7 @@
 
                         <!--Apartado de control switch con sus labels-->
                         <Label Grid.Row="0" Grid.Column="0" Text="Todos los productos" VerticalOptions="Center" />
-                        <Switch Grid.Row="0" Grid.Column="1" IsToggled="false"/>
+                        <Switch x:Name="SwitchAplicarPromocion" Grid.Row="0" Grid.Column="1" IsToggled="false" Toggled="switchEstado"/>
                         <Label Grid.Row="0" Grid.Column="2" Text="Uno/Varios Productos" VerticalOptions="Center" />
                     </Grid>
                 </StackLayout>
@@ -95,7 +95,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition Width="140"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="Busca los productos aquí:" FontSize="13" IsEnabled="False"></Label>
+                            <Label x:Name="lblBuscarProductos" Grid.Column="0" Text="Busca los productos aquí:" FontSize="13" IsEnabled="False"></Label>
                             <ImageButton x:Name="btnBuscarProductosOfertas"  Grid.Column="1" Source="ImagenesAdministrador/buscar.png" HeightRequest="29" Clicked="btnBuscarProductosOfertas_Clicked" IsEnabled="False"></ImageButton>
                         </Grid>
                     </StackLayout>
@@ -185,4 +185,5 @@
         </Grid>
 
     </StackLayout>
+    
 </ContentPage>
