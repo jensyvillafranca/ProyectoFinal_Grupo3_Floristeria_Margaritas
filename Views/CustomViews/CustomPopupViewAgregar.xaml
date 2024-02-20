@@ -37,6 +37,22 @@
                     CornerRadius="10"
                     HasShadow="True"
                     VerticalOptions="StartAndExpand">
+                    <Image
+                        Margin="20,0,20,10"
+                        Aspect="AspectFit"
+                        HeightRequest="100"
+                        Source="Productos/confirmacionpago.png"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
+                </Frame>
+                <Frame
+                    Margin="5"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    BorderColor="Transparent"
+                    CornerRadius="10"
+                    HasShadow="True"
+                    VerticalOptions="StartAndExpand">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -49,7 +65,7 @@
                         <Image
                             Grid.Row="0"
                             Grid.Column="0"
-                            Margin="20,20,10,10"
+                            Margin="20,0,10,10"
                             Aspect="AspectFit"
                             HeightRequest="60"
                             Source="Productos/carritocoloragregar.png"
@@ -72,7 +88,7 @@
                         <Image
                             Grid.Row="1"
                             Grid.Column="0"
-                            Margin="20,20,10,10"
+                            Margin="20,20,10,20"
                             Aspect="AspectFit"
                             HeightRequest="60"
                             Source="Home/carritocolor.png"
