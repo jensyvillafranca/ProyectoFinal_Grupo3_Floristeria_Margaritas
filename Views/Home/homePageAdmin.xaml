@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title=""
-    BackgroundColor="White">
+    BackgroundImageSource="fondo_todas_pantallas.png">
     <Grid>
         <!--  Content Grid  -->
         <Grid.RowDefinitions>
@@ -14,41 +14,49 @@
         </Grid.RowDefinitions>
 
         <!--  Header  -->
-        <StackLayout
+        <Frame
             Grid.Row="0"
             Margin="0,0,0,15"
             Padding="0,10,0,10"
-            BackgroundColor="Black"
-            Orientation="Horizontal">
-            <ImageButton
-                x:Name="btnNotification"
-                Margin="10,0,0,0"
-                Aspect="AspectFit"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
                 BackgroundColor="Transparent"
-                Clicked="btnNotification_Clicked"
-                HeightRequest="40"
-                Source="Home/notificacion.png"
-                WidthRequest="40" />
-            <!--  Spacer  -->
-            <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
-            <Image
-                Margin="0,0,10,0"
-                Aspect="AspectFit"
-                HeightRequest="40"
-                Source="Logo/logo.png"
-                WidthRequest="40" />
-            <Label
-                Margin="0,0,50,0"
-                FontAttributes="Bold"
-                Text="Floristeria Margaritas"
-                TextColor="White"
-                VerticalOptions="CenterAndExpand" />
-            <Image
-                Margin="0,0,10,0"
-                Aspect="AspectFit"
-                HeightRequest="40"
-                Source="Home/iconoadmin.png" />
-        </StackLayout>
+                Orientation="Horizontal">
+                <ImageButton
+                    x:Name="btnNotification"
+                    Margin="10,0,0,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnNotification_Clicked"
+                    HeightRequest="40"
+                    Source="Home/notificacion.png"
+                    WidthRequest="40" />
+                <!--  Spacer  -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Image
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    HeightRequest="50"
+                    Source="Logo/logp.png"
+                    WidthRequest="50" />
+                <Label
+                    Margin="0,0,45,0"
+                    FontAttributes="Bold"
+                    Text="Floristeria Margaritas"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+                <Image
+                    Margin="0,0,20,0"
+                    Aspect="AspectFit"
+                    HeightRequest="40"
+                    Source="Home/iconoadmin.png" />
+            </StackLayout>
+        </Frame>
+
 
         <ScrollView Grid.Row="1">
             <StackLayout>
@@ -56,17 +64,18 @@
 
                 <Label
                     Margin="0,0,0,10"
+                    FontAttributes="Bold"
                     FontSize="18"
                     HorizontalOptions="Center"
                     Text="¡Bienvenido Usuario!"
-                    TextColor="Black"
+                    TextColor="{StaticResource AzulPersonalizado}"
                     VerticalOptions="Start" />
                 <Label
                     Margin="5,0,5,10"
                     FontSize="12"
                     HorizontalOptions="Center"
                     Text="Te damos la bienvenida a tu espacio personalizado, donde  podrás mantenerte al día con las estadísticas más recientes de la empresa."
-                    TextColor="Black"
+                    TextColor="{StaticResource AzulPersonalizado}"
                     VerticalOptions="Start" />
 
                 <!--  First Row: Totales  -->
@@ -82,7 +91,8 @@
                         x:Name="frameEntregados"
                         Margin="5"
                         Padding="5"
-                        BackgroundColor="Black"
+                        BackgroundColor="{DynamicResource AzulMedio}"
+                        BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
                         HasShadow="True">
                         <Frame.GestureRecognizers>
@@ -94,6 +104,7 @@
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Label
                                 Margin="0,5,0,5"
+                                FontAttributes="Bold"
                                 FontSize="12"
                                 HorizontalTextAlignment="Center"
                                 Text="Total de Pedidos Entregados"
@@ -109,7 +120,11 @@
                             <Button
                                 x:Name="btnVerMasEntregados"
                                 Margin="0,0,0,5"
+                                BackgroundColor="{DynamicResource AzulBotones}"
+                                BorderColor="{DynamicResource AzulOscuro}"
                                 Clicked="btnVerMasEntregados_Clicked"
+                                CornerRadius="20"
+                                FontAttributes="Bold"
                                 FontSize="10"
                                 HeightRequest="35"
                                 HorizontalOptions="CenterAndExpand"
@@ -125,7 +140,8 @@
                         Grid.Column="1"
                         Margin="5"
                         Padding="5"
-                        BackgroundColor="Black"
+                        BackgroundColor="{DynamicResource AzulMedio}"
+                        BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
                         HasShadow="True">
                         <Frame.GestureRecognizers>
@@ -137,6 +153,7 @@
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Label
                                 Margin="0,5,0,5"
+                                FontAttributes="Bold"
                                 FontSize="12"
                                 HorizontalTextAlignment="Center"
                                 Text="Total de Pedidos Pendientes"
@@ -152,7 +169,11 @@
                             <Button
                                 x:Name="btnVerMasPendientes"
                                 Margin="0,0,0,5"
+                                BackgroundColor="{DynamicResource AzulBotones}"
+                                BorderColor="{DynamicResource AzulOscuro}"
                                 Clicked="btnVerMasPendientes_Clicked"
+                                CornerRadius="20"
+                                FontAttributes="Bold"
                                 FontSize="10"
                                 HeightRequest="35"
                                 HorizontalOptions="CenterAndExpand"
@@ -168,7 +189,8 @@
                         Grid.Column="2"
                         Margin="5"
                         Padding="5"
-                        BackgroundColor="Black"
+                        BackgroundColor="{DynamicResource AzulMedio}"
+                        BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
                         HasShadow="True">
                         <Frame.GestureRecognizers>
@@ -180,6 +202,7 @@
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Label
                                 Margin="0,5,0,5"
+                                FontAttributes="Bold"
                                 FontSize="12"
                                 HorizontalTextAlignment="Center"
                                 Text="Total de Pedidos Cancelados"
@@ -195,7 +218,11 @@
                             <Button
                                 x:Name="btnVerMasCancelados"
                                 Margin="0,0,0,5"
+                                BackgroundColor="{DynamicResource AzulBotones}"
+                                BorderColor="{DynamicResource AzulOscuro}"
                                 Clicked="btnVerMasCancelados_Clicked"
+                                CornerRadius="20"
+                                FontAttributes="Bold"
                                 FontSize="10"
                                 HeightRequest="35"
                                 HorizontalOptions="CenterAndExpand"
@@ -211,7 +238,8 @@
                     x:Name="frameFiltros"
                     Margin="5"
                     Padding="0"
-                    BackgroundColor="Black"
+                    BackgroundColor="{DynamicResource AzulOscuro}"
+                    BorderColor="{DynamicResource AzulBotones}"
                     CornerRadius="10"
                     HasShadow="True">
                     <!--  Adjust the height as needed  -->
@@ -240,7 +268,7 @@
                             </Grid.ColumnDefinitions>
                             <Label
                                 Grid.Column="0"
-                                Margin="7,5,0,0"
+                                Margin="0,5,0,0"
                                 FontSize="10"
                                 HorizontalTextAlignment="Center"
                                 Text="Elija un departamento"
@@ -248,7 +276,7 @@
                                 VerticalTextAlignment="Center" />
                             <Label
                                 Grid.Column="1"
-                                Margin="20,5,5,0"
+                                Margin="7,5,5,0"
                                 FontSize="10"
                                 HorizontalOptions="CenterAndExpand"
                                 Text="Elija un repartidor"
@@ -256,7 +284,7 @@
                                 VerticalTextAlignment="Center" />
                             <Label
                                 Grid.Column="2"
-                                Margin="30,5,5,0"
+                                Margin="20,5,5,0"
                                 FontSize="10"
                                 HorizontalTextAlignment="Center"
                                 Text="De"
@@ -388,7 +416,8 @@
                         x:Name="frameGanancias"
                         Margin="5"
                         Padding="5"
-                        BackgroundColor="Black"
+                        BackgroundColor="{DynamicResource AzulMedio}"
+                        BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
                         HasShadow="True">
                         <Frame.GestureRecognizers>
@@ -399,7 +428,8 @@
                         </Frame.GestureRecognizers>
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Label
-                                Margin="0,0,0,5"
+                                Margin="0,0,0,10"
+                                FontAttributes="Bold"
                                 FontSize="14"
                                 HorizontalTextAlignment="Center"
                                 Text="Total Generado por Pedidos"
@@ -410,8 +440,9 @@
                                 Source="Home/coin.png" />
                             <Label
                                 x:Name="labelTotalGenerado"
-                                Margin="0,5,0,0"
+                                Margin="0,10,0,0"
                                 Padding="0,0,0,10"
+                                FontAttributes="Bold"
                                 HorizontalTextAlignment="Center"
                                 Text="L 10,235.50"
                                 TextColor="White" />
@@ -424,7 +455,8 @@
                         Grid.Column="1"
                         Margin="5"
                         Padding="5"
-                        BackgroundColor="Black"
+                        BackgroundColor="{DynamicResource AzulMedio}"
+                        BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
                         HasShadow="True">
                         <Frame.GestureRecognizers>
@@ -436,6 +468,7 @@
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Label
                                 Margin="0,0,0,0"
+                                FontAttributes="Bold"
                                 FontSize="14"
                                 HorizontalTextAlignment="Center"
                                 Text="Stock de Productos"
@@ -449,7 +482,11 @@
                             <Button
                                 x:Name="btnVerVencidos"
                                 Margin="0,0,0,5"
+                                BackgroundColor="{DynamicResource AzulBotones}"
+                                BorderColor="{DynamicResource AzulOscuro}"
                                 Clicked="btnVerVencidos_Clicked"
+                                CornerRadius="20"
+                                FontAttributes="Bold"
                                 FontSize="7"
                                 HeightRequest="35"
                                 HorizontalOptions="CenterAndExpand"
@@ -463,83 +500,92 @@
         </ScrollView>
 
         <!--  Bottom Navigation Bar  -->
-        <StackLayout
+        <Frame
             Grid.Row="2"
+            Margin="0,0,0,0"
             Padding="0,10,0,10"
-            BackgroundColor="Black"
-            Orientation="Horizontal">
-
-            <!--  Home Button  -->
-            <ImageButton
-                x:Name="btnHome"
-                Margin="20,0,10,0"
-                Aspect="AspectFit"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Grid.Row="2"
+                Padding="0,0,0,0"
                 BackgroundColor="Transparent"
-                Clicked="btnHome_Clicked"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                Source="Menu/homeicon.png"
-                WidthRequest="40" />
+                Orientation="Horizontal">
 
-            <!--  Inventario Button  -->
-            <ImageButton
-                x:Name="btnStock"
-                Margin="0,0,10,0"
-                Aspect="AspectFit"
-                BackgroundColor="Transparent"
-                Clicked="btnStock_Clicked"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                Source="Menu/basket.png"
-                WidthRequest="40" />
+                <!--  Home Button  -->
+                <ImageButton
+                    x:Name="btnHome"
+                    Margin="20,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnHome_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botoninicio.png"
+                    WidthRequest="40" />
 
-            <!--  Estadisticas Button  -->
-            <ImageButton
-                x:Name="btnEstadisticas"
-                Margin="0,0,10,0"
-                Aspect="AspectFit"
-                BackgroundColor="Transparent"
-                Clicked="btnEstadisticas_Clicked"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                Source="Menu/proyecciones.png"
-                WidthRequest="40" />
+                <!--  Inventario Button  -->
+                <ImageButton
+                    x:Name="btnStock"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnStock_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Menu/historialcompras.png"
+                    WidthRequest="40" />
 
-            <!--  Anuncios Button  -->
-            <ImageButton
-                x:Name="btnAnuncios"
-                Margin="0,0,10,0"
-                Aspect="AspectFit"
-                BackgroundColor="Transparent"
-                Clicked="btnAnuncios_Clicked"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                Source="Menu/anouncements.png"
-                WidthRequest="40" />
+                <!--  Estadisticas Button  -->
+                <ImageButton
+                    x:Name="btnEstadisticas"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnEstadisticas_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Menu/proyecciones.png"
+                    WidthRequest="40" />
 
-            <!--  Perfil Button  -->
-            <ImageButton
-                x:Name="btnPerfil"
-                Margin="0,0,10,0"
-                Aspect="AspectFit"
-                BackgroundColor="Transparent"
-                Clicked="btnPerfil_Clicked"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                Source="Home/perfil.png"
-                WidthRequest="40" />
+                <!--  Anuncios Button  -->
+                <ImageButton
+                    x:Name="btnAnuncios"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnAnuncios_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Menu/anouncements.png"
+                    WidthRequest="40" />
 
-            <!--  Logout Button  -->
-            <ImageButton
-                x:Name="btnLogout"
-                Margin="0,0,20,0"
-                Aspect="AspectFit"
-                BackgroundColor="Transparent"
-                Clicked="btnLogout_Clicked"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                Source="Menu/logout.png"
-                WidthRequest="40" />
-        </StackLayout>
+                <!--  Perfil Button  -->
+                <ImageButton
+                    x:Name="btnPerfil"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnPerfil_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Home/perfilmenu.png"
+                    WidthRequest="40" />
+
+                <!--  Logout Button  -->
+                <ImageButton
+                    x:Name="btnLogout"
+                    Margin="0,0,20,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnLogout_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/salirmenu.png"
+                    WidthRequest="40" />
+            </StackLayout>
+        </Frame>
+
     </Grid>
 </ContentPage>

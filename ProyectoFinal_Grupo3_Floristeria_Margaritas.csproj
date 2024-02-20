@@ -118,6 +118,7 @@
 	  <None Remove="Resources\Images\Home\carritocolor.png" />
 	  <None Remove="Resources\Images\Home\carritocoloragregar.png" />
 	  <None Remove="Resources\Images\Home\flowercolor.png" />
+	  <None Remove="Resources\Images\Home\historialcompras.png" />
 	  <None Remove="Resources\Images\Home\pedidoscolor.png" />
 	  <None Remove="Resources\Images\Home\perfilcolor.png" />
 	  <None Remove="Resources\Images\iconoadmin.png" />
@@ -203,6 +204,7 @@
 	  <MauiImage Include="Resources\Images\Home\descuento.png" />
 	  <MauiImage Include="Resources\Images\Home\flowercolor.png" />
 	  <MauiImage Include="Resources\Images\Home\historial.png" />
+	  <MauiImage Include="Resources\Images\Home\historialcompras.png" />
 	  <MauiImage Include="Resources\Images\Home\iconoadmin.png" />
 	  <MauiImage Include="Resources\Images\Home\ingresos.png" />
 	  <MauiImage Include="Resources\Images\Home\notificacion.png" />
