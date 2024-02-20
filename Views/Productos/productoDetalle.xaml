@@ -54,7 +54,7 @@
                     x:Name="frameDetalle"
                     Margin="5"
                     Padding="0"
-                    BackgroundColor="{DynamicResource BlackWithTransparency}"
+                    BackgroundColor="FloralWhite"
                     BorderColor="{DynamicResource AzulBotones}"
                     CornerRadius="10"
                     HasShadow="True"
@@ -75,7 +75,7 @@
                             FontSize="20"
                             HorizontalTextAlignment="Center"
                             Text="Esplendor Floral"
-                            TextColor="White" />
+                            TextColor="Black" />
 
                         <Label
                             x:Name="labelDescripcion"
@@ -84,7 +84,7 @@
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
                             Text="Arreglo floral elaborado con 10 rosas  y flores complemento, expuesto  en cofre de madera artesanal."
-                            TextColor="White"
+                            TextColor="Black"
                             VerticalOptions="Start"
                             VerticalTextAlignment="Center" />
 
@@ -108,7 +108,7 @@
                                     WidthRequest="40" />
                                 <Label
                                     x:Name="quantityEntry"
-                                    BackgroundColor="White"
+                                    BackgroundColor="FloralWhite"
                                     HeightRequest="40"
                                     HorizontalTextAlignment="Center"
                                     Text="1"
@@ -134,7 +134,7 @@
                                 FontSize="18"
                                 HorizontalOptions="Center"
                                 Text="L. 1,700.00"
-                                TextColor="White"
+                                TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>
                     </StackLayout>

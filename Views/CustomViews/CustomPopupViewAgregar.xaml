@@ -2,18 +2,23 @@
 <ContentPage
     x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews.CustomPopupViewAgregar"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundImageSource="fondo_todas_pantallas.png">
 
-    <StackLayout BackgroundColor="White">
+    <StackLayout
+        BackgroundColor="Transparent"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="CenterAndExpand">
         <Frame
-            Margin="20,0,20,200"
-            BackgroundColor="Black"
+            Margin="20,0,20,0"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
             CornerRadius="10"
             HasShadow="True"
             VerticalOptions="CenterAndExpand">
-            <StackLayout BackgroundColor="Black">
+            <StackLayout BackgroundColor="Transparent">
                 <Frame
-                    BackgroundColor="Black"
+                    BackgroundColor="Transparent"
                     BorderColor="Transparent"
                     CornerRadius="10"
                     HasShadow="True">
@@ -27,7 +32,7 @@
                 <Frame
                     Margin="5"
                     Padding="0"
-                    BackgroundColor="Black"
+                    BackgroundColor="Transparent"
                     BorderColor="Transparent"
                     CornerRadius="10"
                     HasShadow="True"
@@ -44,17 +49,22 @@
                         <Image
                             Grid.Row="0"
                             Grid.Column="0"
-                            Margin="20,20,20,10"
+                            Margin="20,20,10,10"
                             Aspect="AspectFit"
-                            HeightRequest="35"
-                            Source="Productos/carritomas.png"
+                            HeightRequest="60"
+                            Source="Productos/carritocoloragregar.png"
                             VerticalOptions="Center"
-                            WidthRequest="35" />
+                            WidthRequest="60" />
                         <Button
                             x:Name="btnAgregarMas"
                             Grid.Row="0"
                             Grid.Column="1"
+                            BackgroundColor="{DynamicResource AzulBotones}"
+                            BorderColor="{DynamicResource AzulOscuro}"
                             Clicked="btnAgregarMas_Clicked"
+                            CornerRadius="20"
+                            FontAttributes="Bold"
+                            FontSize="14"
                             HeightRequest="40"
                             HorizontalOptions="Center"
                             Text="Agregar más Productos"
@@ -62,16 +72,21 @@
                         <Image
                             Grid.Row="1"
                             Grid.Column="0"
-                            Margin="20,20,20,10"
+                            Margin="20,20,10,10"
                             Aspect="AspectFit"
-                            HeightRequest="35"
-                            Source="Home/carrito.png"
-                            WidthRequest="35" />
+                            HeightRequest="60"
+                            Source="Home/carritocolor.png"
+                            WidthRequest="60" />
                         <Button
                             x:Name="btnCarrito"
                             Grid.Row="1"
                             Grid.Column="1"
+                            BackgroundColor="{DynamicResource AzulBotones}"
+                            BorderColor="{DynamicResource AzulOscuro}"
                             Clicked="btnCarrito_Clicked"
+                            CornerRadius="20"
+                            FontAttributes="Bold"
+                            FontSize="14"
                             HeightRequest="40"
                             HorizontalOptions="CenterAndExpand"
                             Text="Carrito de Compras"

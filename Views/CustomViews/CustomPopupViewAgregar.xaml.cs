@@ -5,6 +5,7 @@ public partial class CustomPopupViewAgregar : ContentPage
     public CustomPopupViewAgregar()
     {
         InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
     }
 
     private void btnAgregarMas_Clicked(object sender, EventArgs e)

@@ -116,6 +116,7 @@
 	  <None Remove="Resources\Images\handslideblack.png" />
 	  <None Remove="Resources\Images\homeicon.png" />
 	  <None Remove="Resources\Images\Home\carritocolor.png" />
+	  <None Remove="Resources\Images\Home\carritocoloragregar.png" />
 	  <None Remove="Resources\Images\Home\flowercolor.png" />
 	  <None Remove="Resources\Images\Home\pedidoscolor.png" />
 	  <None Remove="Resources\Images\Home\perfilcolor.png" />
@@ -161,6 +162,9 @@
 	  <None Remove="Resources\Images\imglogin\fondosignin.png" />
 	  <None Remove="Resources\Images\Logo\logo_margaritas.png" />
 	  <None Remove="Resources\Images\Logo\logp.png" />
+	  <None Remove="Resources\Images\Menu\pedidosmenu.png" />
+	  <None Remove="Resources\Images\Menu\perfilmenu.png" />
+	  <None Remove="Resources\Images\Menu\productocliente.png" />
 	  <None Remove="Resources\Images\notificacion.png" />
 	  <None Remove="Resources\Images\piechart.png" />
 	  <None Remove="Resources\Images\Productos\add.png" />
@@ -175,6 +179,7 @@
 	  <None Remove="Resources\Images\Productos\editar.png" />
 	  <None Remove="Resources\Images\Productos\eliminar.png" />
 	  <None Remove="Resources\Images\Productos\eliminar2.png" />
+	  <None Remove="Resources\Images\Productos\handslide.png" />
 	  <None Remove="Resources\Images\Productos\menos.png" />
 	  <None Remove="Resources\Images\Productos\tarjetacolor.png" />
 	  <None Remove="Resources\Images\Productos\tarjetacredito.png" />
@@ -193,6 +198,7 @@
 	  <MauiImage Include="Resources\Images\Home\barchart.png" />
 	  <MauiImage Include="Resources\Images\Home\carrito.png" />
 	  <MauiImage Include="Resources\Images\Home\carritocolor.png" />
+	  <MauiImage Include="Resources\Images\Home\carritocoloragregar.png" />
 	  <MauiImage Include="Resources\Images\Home\coin.png" />
 	  <MauiImage Include="Resources\Images\Home\descuento.png" />
 	  <MauiImage Include="Resources\Images\Home\flowercolor.png" />
@@ -260,6 +266,9 @@
 	  <MauiImage Include="Resources\Images\Menu\basket.png" />
 	  <MauiImage Include="Resources\Images\Menu\homeicon.png" />
 	  <MauiImage Include="Resources\Images\Menu\logout.png" />
+	  <MauiImage Include="Resources\Images\Menu\pedidosmenu.png" />
+	  <MauiImage Include="Resources\Images\Menu\perfilmenu.png" />
+	  <MauiImage Include="Resources\Images\Menu\productocliente.png" />
 	  <MauiImage Include="Resources\Images\Menu\proyecciones.png" />
 	  <MauiImage Include="Resources\Images\Productos\add.png" />
 	  <MauiImage Include="Resources\Images\Productos\agregartarjeta.png" />
@@ -278,6 +287,7 @@
 	  <MauiImage Include="Resources\Images\Productos\eliminar2.png" />
 	  <MauiImage Include="Resources\Images\Productos\flowers.png" />
 	  <MauiImage Include="Resources\Images\Productos\flowers2.png" />
+	  <MauiImage Include="Resources\Images\Productos\handslide.png" />
 	  <MauiImage Include="Resources\Images\Productos\handslideblack.png" />
 	  <MauiImage Include="Resources\Images\Productos\menos.png" />
 	  <MauiImage Include="Resources\Images\Productos\tarjetacolor.png" />

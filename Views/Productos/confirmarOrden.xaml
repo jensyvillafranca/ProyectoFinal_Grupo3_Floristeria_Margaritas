@@ -83,7 +83,7 @@
 
                 <Frame
                     x:Name="frameDireccionCollection"
-                    Margin="0,5,0,15"
+                    Margin="5,5,5,15"
                     Padding="5"
                     BackgroundColor="FloralWhite"
                     BorderColor="{DynamicResource AzulBotones}"
@@ -98,7 +98,7 @@
                             Margin="3,10,3,10"
                             Aspect="AspectFit"
                             HeightRequest="80"
-                            Source="Productos/ubicacionactual.png"
+                            Source="Productos/casa2.png"
                             WidthRequest="80" />
                         <Grid>
                             <Grid.RowDefinitions>
@@ -161,7 +161,7 @@
 
                 <Frame
                     x:Name="frameTarjetaCollection"
-                    Margin="0,5,0,15"
+                    Margin="5,5,5,15"
                     Padding="5"
                     BackgroundColor="FloralWhite"
                     BorderColor="{DynamicResource AzulBotones}"
@@ -176,7 +176,7 @@
                             Margin="3,10,3,10"
                             Aspect="AspectFit"
                             HeightRequest="80"
-                            Source="Productos/tarjetacredito.png"
+                            Source="Productos/tarjetacolor.png"
                             WidthRequest="80" />
                         <Grid>
                             <Grid.RowDefinitions>
@@ -238,7 +238,7 @@
                 </Frame>
 
                 <Frame
-                    Margin="0,0,0,10"
+                    Margin="5,0,5,10"
                     Padding="0,0,0,0"
                     BackgroundColor="FloralWhite"
                     BorderColor="{DynamicResource AzulBotones}">
