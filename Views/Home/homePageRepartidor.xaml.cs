@@ -31,22 +31,22 @@ public partial class homePageRepartidor : ContentPage
 
     private async void TapGesturePedidos_Tapped(object sender, TappedEventArgs e)
     {
-        await AnimationUtilities.ChangeFrameColor(framePedidos, Color.FromRgb(70, 179, 254), Color.FromRgb(211, 211, 211), 250);
+        await AnimationUtilities.ChangeFrameColor(framePedidos, Color.FromRgb(46, 117, 182), Color.FromRgb(65, 185, 254), 250);
     }
 
     private async void TapGestureIngresos_Tapped(object sender, TappedEventArgs e)
     {
-        await AnimationUtilities.ChangeFrameColor(frameIngresos, Color.FromRgb(155, 192, 234), Color.FromRgb(211, 211, 211), 250);
+        await AnimationUtilities.ChangeFrameColor(frameIngresos, Color.FromRgb(33, 52, 91), Color.FromRgb(65, 185, 254), 250);
     }
 
     private async void TapGestureHistorial_Tapped(object sender, TappedEventArgs e)
     {
-        await AnimationUtilities.ChangeFrameColor(frameHistorial, Color.FromRgb(155, 192, 234), Color.FromRgb(211, 211, 211), 250);
+        await AnimationUtilities.ChangeFrameColor(frameHistorial, Color.FromRgb(33, 52, 91), Color.FromRgb(65, 185, 254), 250);
     }
 
     private async void TapGesturePerfil_Tapped(object sender, TappedEventArgs e)
     {
-        await AnimationUtilities.ChangeFrameColor(framePerfil, Color.FromRgb(70, 179, 254), Color.FromRgb(211, 211, 211), 250);
+        await AnimationUtilities.ChangeFrameColor(framePerfil, Color.FromRgb(46, 117, 182), Color.FromRgb(65, 185, 254), 250);
     }
 
     private void btnLogout_Clicked(object sender, EventArgs e)
