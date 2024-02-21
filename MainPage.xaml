@@ -52,7 +52,9 @@
                 Clicked="btnPedidosRepartidor_Clicked"
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina de pedidos entrantes"
-                Text="Pedidos Entrantes" />  
+                Text="Pedidos Entrantes" />
+
+           
         </VerticalStackLayout>
     </ScrollView>
 

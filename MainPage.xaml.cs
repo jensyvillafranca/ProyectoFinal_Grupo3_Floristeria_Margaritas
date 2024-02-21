@@ -38,6 +38,8 @@
             Navigation.PushAsync(new Views.PantallasRepartidor.PantallaPedidosEntrantes());
 
         }
+
+     
     }
 
 }

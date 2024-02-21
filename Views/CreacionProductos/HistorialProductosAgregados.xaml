@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CreacionProductos.HistorialProductosAgregados"
+             Title="">
+    
+    <Grid>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" >
+            <Image Source="Profile/fondoprincipal.png" Aspect="AspectFill" HeightRequest="1000"/>
+        </StackLayout>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <ScrollView >
+                <Frame
+                 WidthRequest="600"
+                 HeightRequest="160"
+                 CornerRadius="2"
+                 Margin="-20,-2,200,0"
+                 BackgroundColor="{DynamicResource BlackWithTransparency}"
+                 BorderColor="{DynamicResource TealPrimary}"
+                 >
+
+                </Frame>
+            </ScrollView>
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="15" Grid.Row="0">
+                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Boton de atras-->
+                    <ImageButton
+                     x:Name="btnImagenAtras"
+                     Margin="10,20,50,0"
+                     Clicked="btnImagenAtras_Clicked"
+                     Grid.Column="0"
+                     HeightRequest="40"
+                     Source="Profile/atrasperfil.png"
+                     HorizontalOptions="Start"
+                     WidthRequest="40" />
+                    <Label
+                     Margin="90,20,50,0"
+                     FontAttributes="Bold"
+                     Text="Productos Agregados"
+                     FontSize="20"
+                     TextColor="White"
+                     VerticalOptions="CenterAndExpand" />
+                </Grid>
+            </StackLayout>
+
+        </Grid>
+
+        <Grid>
+            <ScrollView Grid.Row="2" MaximumHeightRequest="530">
+                <!--Lista de los pedidos-->
+                <StackLayout Margin="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <CollectionView x:Name="collectionViewHistorialAgregados" ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding ListaPedidosRepartidor}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" Span="20" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame x:Name="drawablePedido" Margin="23,0,40,10" WidthRequest="340" Padding="10" BackgroundColor="White" CornerRadius="20" HasShadow="True">
+                                    <Grid ColumnSpacing="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+
+
+                                        <Frame Grid.Column="0" Grid.Row="1" 
+                                            WidthRequest="75" HeightRequest="75" 
+                                            CornerRadius="5" 
+                                            BorderColor="AliceBlue"
+                                            Margin="0,-1,0,0"
+                                            Padding="0">
+                                            <Image Source="{Binding imagenCasa}" Aspect="AspectFill"/>
+                                        </Frame>
+
+                                        <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Vertical" Spacing="5">
+                                            <!--Formato para visualización del nombre del cliente-->
+                                            <Label  FontSize="12">
+                                                <Label.Text>
+                                                    <Binding Path="Categoria" StringFormat="Categoria.: {0}" />
+                                                </Label.Text>
+                                            </Label>
+
+                                            <!--Formato para visualización del lugar de entrega del pedido-->
+                                            <Label FontSize="12" 
+                                                Margin="0,0,0,0">
+                                                <Label.Text>
+                                                    <Binding Path="stock" StringFormat="Stock: {0}" />
+                                                </Label.Text>
+                                            </Label>
+
+
+                                            <!--Formato para visualización de la sucursal a recoger el pedido-->
+                                            <Label FontSize="12">
+                                                <Label.Text>
+                                                    <Binding Path="descuento" StringFormat="Descuento en: {0}" />
+                                                </Label.Text>
+                                            </Label>
+
+                                            <!--Formato para visualización de la sucursal a recoger el pedido-->
+                                            <Label FontSize="12">
+                                                <Label.Text>
+                                                    <Binding Path="precio" StringFormat="Precio: en: {0}" />
+                                                </Label.Text>
+                                            </Label>
+
+                                        </StackLayout>
+                                        <ImageButton
+                                         Grid.Column="2" Grid.Row="1" 
+                                         WidthRequest="26"
+                                         Source="Profile/editar.png"
+                                         Clicked="btnActualizarProducto_Clicked"
+                                         HorizontalOptions="CenterAndExpand" 
+                                         VerticalOptions="CenterAndExpand" 
+                                         Margin="0,0,19,0"
+                                         />
+
+                                        <ImageButton
+                                             Grid.Column="2" Grid.Row="1" 
+                                             WidthRequest="26"
+                                             Source="Profile/eliminar.png" 
+                                             HorizontalOptions="CenterAndExpand" 
+                                             VerticalOptions="CenterAndExpand" 
+                                             Margin="70,0,19,0"
+                                             />
+
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+
+          
+               
+
+
+
+        </Grid>
+
+    </Grid>
+</ContentPage>

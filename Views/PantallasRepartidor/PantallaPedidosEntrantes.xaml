@@ -107,6 +107,7 @@
                     </CollectionView>
                 </StackLayout>
             </ScrollView>
+            
             <!--Menú de Opciones-->
             <StackLayout  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="3" WidthRequest="360" HeightRequest="65">
                 <Image Source="ImagenesRepartidor/botonera.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"></Image>

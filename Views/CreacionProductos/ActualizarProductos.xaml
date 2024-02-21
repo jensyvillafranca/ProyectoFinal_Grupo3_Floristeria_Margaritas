@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CreacionProductos.ActualizarProductos"
+             Title="">
+    <Grid>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" >
+            <Image Source="Profile/fondoprincipal.png" Aspect="AspectFill" HeightRequest="1000"/>
+        </StackLayout>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <ScrollView >
+                <Frame
+                       WidthRequest="510"
+                       HeightRequest="90"
+                       CornerRadius="20"
+                       Margin="-20,-2,880,0"
+                       BackgroundColor="{DynamicResource BlackWithTransparency}"
+                       BorderColor="{DynamicResource TealPrimary}"
+                       >
+
+                </Frame>
+            </ScrollView>
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="15" Grid.Row="0">
+                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Boton de atras-->
+                    <ImageButton
+                        x:Name="btnImagenAtras"
+                        Margin="25,6,20,0"
+                        Clicked="btnImagenAtras_Clicked"
+                        Grid.Column="0"
+                         HeightRequest="40"
+                        Source="Profile/atrasperfil.png"
+                        HorizontalOptions="Start"
+                        WidthRequest="40" />
+                    <Label
+                            Margin="99,10,50,0"
+                             FontAttributes="Bold"
+                             Text="Actualizar Productos"
+                             FontSize="20"
+                             TextColor="White"
+                             VerticalOptions="CenterAndExpand" />   
+                </Grid>
+            </StackLayout>
+        </Grid>
+
+
+
+        <!-- Frame para el usuario -->
+        <Grid Grid.Row="1">
+            <ScrollView>
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Frame WidthRequest="360" HeightRequest="630"
+                    BackgroundColor="White"
+                    BorderColor="#99EEF1"
+                    CornerRadius="20"
+                    HasShadow="True"
+                    Margin="50,40,50,20"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+
+        <Grid>
+            <!--Texto para agregar los nombres-->
+            <Label
+                  Text="Ingrese su nombre completo"
+                  Grid.Column="1" 
+                  HorizontalOptions="Center" 
+                  VerticalOptions="Center"
+                  Margin="0,-510,100,0"
+                  FontSize="16"
+                  FontAttributes="Bold"
+                  TextColor="#27498f"/>
+
+
+            <Frame
+                  WidthRequest="310"
+                  HeightRequest="45"
+                 CornerRadius="5"
+                 BackgroundColor="#f2f2f2"
+                 Margin="0,-415,5,0">
+            </Frame>
+            <Entry 
+                     WidthRequest="290"
+                     HeightRequest="40"
+                     Placeholder="Ingrese el nombre del producto" 
+                     Text="{Binding Nombres}" 
+                     Margin="0,-410,20,0"/>
+
+            <!--Categiria-->
+          <Label
+                 Text="Nombre de la categoria"
+                 FontSize="15"
+                 Margin="45,225,0,0"
+                 FontAttributes="Bold"
+                 TextColor="#27498f"
+         />
+
+            <Frame
+               WidthRequest="320"
+               HeightRequest="40"
+               CornerRadius="5"
+               Margin="220,-260,220,0"
+               BackgroundColor="#f2f2f2">
+                
+            </Frame>
+
+              <Picker
+             x:Name="cotegoriaPicker"
+             Title="Seleccione una categoria"
+             Margin="50,250,0,0"
+             SelectedIndexChanged="cotegoriaPicker_SelectedIndexChanged" />
+
+
+            <!--Precio de venta-->
+
+            <Label
+                 Text="Precio de venta"
+                 FontSize="15"
+                 Margin="45,300,0,0"
+                 FontAttributes="Bold"
+                 TextColor="#27498f"
+
+             />
+
+            <Frame
+                WidthRequest="160"
+                HeightRequest="45"
+                CornerRadius="5"
+                Margin="210,-100,365,0"
+                BackgroundColor="#f2f2f2"
+                >
+            </Frame>
+
+
+            <Entry
+                  WidthRequest="140"
+                  HeightRequest="50"
+                  Placeholder="Precio de venta" 
+                  TextColor="Black"
+                  FontSize="15"
+                  Keyboard="Telephone"
+                  Text="{Binding telefono}" 
+                  Margin="70,-100,240,0"
+                />
+
+            <!--Stock-->
+
+            <Label
+                 Text="Stock"
+                 FontSize="15"
+                 Margin="245,300,70,0"
+                 FontAttributes="Bold"
+                 TextColor="#27498f"
+
+             />
+
+            <Frame
+                WidthRequest="120"
+                HeightRequest="45"
+                CornerRadius="5"
+                Margin="570,-100,375,0"
+                BackgroundColor="#f2f2f2">
+
+            </Frame>
+
+            <Entry
+                  WidthRequest="100"
+                  HeightRequest="50"
+                  Placeholder="Ingrese stock" 
+                  TextColor="Black"
+                  FontSize="15"
+                  Keyboard="Telephone"
+                  Text="{Binding telefono}" 
+                  Margin="430,-102,240,0"
+              />
+
+            <!--Imagen-->
+
+            <Label
+               Text="Imagen del producto"
+               FontSize="15"
+               Margin="50,384,70,0"
+               FontAttributes="Bold"
+               TextColor="#27498f"
+           />
+
+            <Button
+                WidthRequest="140"
+                HeightRequest="45"
+                CornerRadius="60"
+                Margin="0,75,170,0"
+                FontSize="14"
+                FontAttributes="Bold"
+                Text="Subir imagen"
+                BackgroundColor="#3D5E63"
+                />
+
+            <Frame
+                WidthRequest="150"
+                HeightRequest="40"
+                CornerRadius="5"
+                Margin="570,75,395,0"
+                BackgroundColor="#f2f2f2">
+            </Frame>
+
+            <!--Descuento-->
+
+            <Label
+             Text="Descuento del producto"
+             FontSize="15"
+             Margin="40,475,70,0"
+             FontAttributes="Bold"
+             TextColor="#27498f"
+         />
+            <Frame
+               WidthRequest="165"
+               HeightRequest="50"
+               CornerRadius="50"
+               BorderColor="#27498f"
+               Margin="0,260,155,0">
+            </Frame>
+            
+            <!--Metodo de si-->
+
+            <Label
+                 Text="Si"
+                 FontSize="18"
+                 Margin="50,520,80,0"
+                 FontAttributes="Bold"
+                 TextColor="#27498f"/>
+
+            <Frame
+                 WidthRequest="90"
+                 HeightRequest="40"
+                 CornerRadius="40"
+                 BackgroundColor="#1d4999"
+                 Margin="0,260,155,0">
+        </Frame>
+            
+            <!--Metodo de cambio-->
+            <StackLayout Margin="20,0,0,0" Orientation="Vertical" >
+                <Button x:Name="YesButton" 
+                 WidthRequest="30"
+                 HeightRequest="30"
+                 Clicked="YesButton_Clicked"
+                 HorizontalOptions="StartAndExpand" 
+                 Margin="57,518,23,0"
+                 BackgroundColor="White"
+                 CornerRadius="70"/>
+
+                <!--Boton de no-->
+                <Button x:Name="NoButton" Text="" 
+                 Clicked="NoButton_Clicked"
+                 HorizontalOptions="EndAndExpand"
+                 WidthRequest="30"
+                 HeightRequest="30"
+                 CornerRadius="70"
+                 Margin="60,518,233,0"
+                 BackgroundColor="White"
+                 />
+            </StackLayout>
+
+            <Label
+                  Text="No"
+                  FontSize="18"
+                  Margin="168,518,70,0"
+                  FontAttributes="Bold"
+                  TextColor="#27498f"/>
+            <!--Agregar el descuesto-->
+            <Frame
+                   WidthRequest="155"
+                   HeightRequest="45"
+                   CornerRadius="5"
+                   Margin="570,255,385,0"
+                   BackgroundColor="#f2f2f2">
+            </Frame>
+            <Entry
+                   WidthRequest="140"
+                   HeightRequest="50"
+                   Placeholder="Ingrese el descuento" 
+                   TextColor="Black"
+                   FontSize="14"
+                   Keyboard="Telephone"
+                   Text="{Binding telefono}" 
+                   Margin="290,245,110,0"/>
+
+
+
+            <Label
+                Text="Agregue una descripcion"
+                FontSize="14"
+                Margin="38,565,70,0"
+                FontAttributes="Bold"
+                TextColor="#27498f"/>
+            
+            <Frame
+             Margin="60,460,70,10"
+                WidthRequest="290"
+                HeightRequest="70"
+                BackgroundColor="#B3B7B8"
+                BorderColor="#99EEF1">
+                <Editor
+                     x:Name="entryDescripcion"
+                     Margin="0,0,0,0"
+                     BackgroundColor="Transparent"
+                     FontSize="16"
+                     TextColor="Black"
+                     HeightRequest="100"
+                     HorizontalOptions="FillAndExpand"
+                     HorizontalTextAlignment="Center"
+                     Placeholder="Descripcion"
+                     VerticalOptions="CenterAndExpand"
+                     VerticalTextAlignment="Center"
+                     WidthRequest="200" />  
+            </Frame>
+
+
+            <Button
+                WidthRequest="130"
+                HeightRequest="35"
+                Margin="20,585,190,0"
+                Text="Actualizar"
+                FontAttributes="Bold"
+                BackgroundColor="#3D5E63"
+                />
+
+            <Button
+             WidthRequest="130"
+             HeightRequest="35"
+             Margin="185,585,0,0"
+             Text="Cancelar"
+             FontAttributes="Bold"
+             BackgroundColor="#3D5E63"/>
+
+        </Grid>
+
+
+        <!--Menú de Opciones-->
+        <StackLayout  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="3" WidthRequest="393" HeightRequest="65">
+            <Image Source="ImagenesRepartidor/botonera.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                   AbsoluteLayout.LayoutFlags="All"></Image>
+        </StackLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                     AbsoluteLayout.LayoutFlags="All" 
+                     VerticalOptions="EndAndExpand"
+                     HorizontalOptions="StartAndExpand"
+                     Grid.Row="3" 
+                     Orientation="Horizontal">
+            <ImageButton
+                  x:Name="btnInicioRepartidor"
+                  Aspect="AspectFit"
+                  BackgroundColor="Transparent"
+                  HeightRequest="55"
+                  Source="ImagenesRepartidor/botoninicio.png"
+                  Margin="17,0,5,5"
+                  WidthRequest="55">
+            </ImageButton>
+            <ImageButton
+                  x:Name="btnPedidosRepartidor"
+                  Aspect="AspectFit"
+                  BackgroundColor="Transparent"
+                  HeightRequest="55"
+                  Source="ImagenesRepartidor/botonpedidos.svg"
+                  Margin="5,0,5,5"
+                  WidthRequest="50">
+            </ImageButton>
+            <ImageButton
+                  x:Name="btnIngresosRepartidor"
+                  Aspect="AspectFit"
+                  BackgroundColor="Transparent"
+                  HeightRequest="55"
+                  Source="ImagenesRepartidor/botoningresos.svg"
+                  Margin="5,0,5,5"
+                  WidthRequest="50">
+            </ImageButton>
+            <ImageButton
+                  x:Name="btnHistorialPedidosRepartidor"
+                  Aspect="AspectFit"
+                  BackgroundColor="Transparent"
+                  HeightRequest="55"
+                  Source="ImagenesRepartidor/botonhistorialpedidos.svg"
+                  Margin="5,0,5,5"
+                  WidthRequest="50">
+            </ImageButton>
+            <ImageButton
+                  x:Name="btnPerfilRepartidor"
+                  Aspect="AspectFit"
+                  BackgroundColor="Transparent"
+                  HeightRequest="55"
+                  Source="ImagenesRepartidor/perfilrepartidor.svg"
+                  Margin="5,0,5,5"
+                  WidthRequest="50">
+            </ImageButton>
+            <ImageButton
+                  x:Name="btnLogOutRepartidor"
+                  Aspect="AspectFit"
+                  BackgroundColor="Transparent"
+                  HeightRequest="55"
+                  Source="ImagenesRepartidor/salirmenu.png"
+                  Margin="5,0,5,5"
+                  WidthRequest="50">
+            </ImageButton>
+        </StackLayout>
+
+
+    </Grid>
+</ContentPage>

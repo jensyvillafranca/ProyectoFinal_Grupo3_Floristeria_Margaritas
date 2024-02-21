@@ -45,4 +45,15 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+
+    <!--  Colores Personalizados  -->
+    <Color x:Key="BlackWithTransparency">#C0000000</Color>
+    <Color x:Key="TealPrimary">#6d98be</Color>
+    <Color x:Key="Accent">#FFA500</Color>
+    <Color x:Key="Background">#F5F5F5</Color>
+    <Color x:Key="TextColor">#333333</Color>
+    <Color x:Key="SecondaryAccent">#87CEEB</Color>
+
+    <Color x:Key="YesColor">#00FF00</Color>
+    <Color x:Key="NoColor">#FF0000</Color>
 </ResourceDictionary>

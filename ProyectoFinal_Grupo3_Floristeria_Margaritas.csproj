@@ -125,6 +125,30 @@
 	  <None Remove="Resources\Images\ImagenesRepartidor\salirmenu.png" />
 	  <None Remove="Resources\Images\notificacion.png" />
 	  <None Remove="Resources\Images\piechart.png" />
+	  <None Remove="Resources\Images\Profile\agregardireccion.png" />
+	  <None Remove="Resources\Images\Profile\atras.png" />
+	  <None Remove="Resources\Images\Profile\atrasperfil.png" />
+	  <None Remove="Resources\Images\Profile\cambiarcontra.png" />
+	  <None Remove="Resources\Images\Profile\casa.png" />
+	  <None Remove="Resources\Images\Profile\casaeditar.png" />
+	  <None Remove="Resources\Images\Profile\ciudad.png" />
+	  <None Remove="Resources\Images\Profile\contrasenia.png" />
+	  <None Remove="Resources\Images\Profile\editar.png" />
+	  <None Remove="Resources\Images\Profile\editarperfil.png" />
+	  <None Remove="Resources\Images\Profile\eliminar.png" />
+	  <None Remove="Resources\Images\Profile\encabezadoperfil.png" />
+	  <None Remove="Resources\Images\Profile\fondo.jpg" />
+	  <None Remove="Resources\Images\Profile\fondoprincipal.png" />
+	  <None Remove="Resources\Images\Profile\historialcompras.png" />
+	  <None Remove="Resources\Images\Profile\historialproductosagredado.png" />
+	  <None Remove="Resources\Images\Profile\listo.png" />
+	  <None Remove="Resources\Images\Profile\listofondo.png" />
+	  <None Remove="Resources\Images\Profile\perfilvacio.jpg" />
+	  <None Remove="Resources\Images\Profile\primerextrenia.png" />
+	  <None Remove="Resources\Images\Profile\segundaestre.png" />
+	  <None Remove="Resources\Images\Profile\tomarfoto.png" />
+	  <None Remove="Resources\Images\Profile\ubicacioneditar.png" />
+	  <None Remove="Resources\Images\Profile\ubucacionguardas.png" />
 	  <None Remove="Resources\Images\proyecciones.png" />
 	</ItemGroup>
 
@@ -174,9 +198,50 @@
 	  <MauiImage Include="Resources\Images\Productos\flowers.png" />
 	  <MauiImage Include="Resources\Images\Productos\flowers2.png" />
 	  <MauiImage Include="Resources\Images\Productos\handslideblack.png" />
+	  <MauiImage Include="Resources\Images\Profile\agregardireccion.png" />
+	  <MauiImage Include="Resources\Images\Profile\atrasperfil.png" />
+	  <MauiImage Include="Resources\Images\Profile\cambiarcontra.png" />
+	  <MauiImage Include="Resources\Images\Profile\casa.png" />
+	  <MauiImage Include="Resources\Images\Profile\casaeditar.png" />
+	  <MauiImage Include="Resources\Images\Profile\ciudad.png" />
+	  <MauiImage Include="Resources\Images\Profile\contrasenia.png" />
+	  <MauiImage Include="Resources\Images\Profile\editar.png" />
+	  <MauiImage Include="Resources\Images\Profile\editarperfil.png" />
+	  <MauiImage Include="Resources\Images\Profile\eliminar.png" />
+	  <MauiImage Include="Resources\Images\Profile\encabezadoperfil.png" />
+	  <MauiImage Include="Resources\Images\Profile\fondo.jpg" />
+	  <MauiImage Include="Resources\Images\Profile\fondoprincipal.png" />
+	  <MauiImage Include="Resources\Images\Profile\historialcompras.png" />
+	  <MauiImage Include="Resources\Images\Profile\historialproductosagredado.png" />
+	  <MauiImage Include="Resources\Images\Profile\listo.png" />
+	  <MauiImage Include="Resources\Images\Profile\listofondo.png" />
+	  <MauiImage Include="Resources\Images\Profile\perfilvacio.jpg" />
+	  <MauiImage Include="Resources\Images\Profile\primerextrenia.png" />
+	  <MauiImage Include="Resources\Images\Profile\segundaestre.png" />
+	  <MauiImage Include="Resources\Images\Profile\tomarfoto.png" />
+	  <MauiImage Include="Resources\Images\Profile\ubicacioneditar.png" />
+	  <MauiImage Include="Resources\Images\Profile\ubucacionguardas.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\CreacionProductos\ActualizarProductos.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CreacionProductos\AgregarProductos.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CreacionProductos\HistorialProductosAgregados.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DireccionesUsuario\AgregarDireccionNueva.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DireccionesUsuario\DireccionesGuardas.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DireccionesUsuario\EditarDireccion.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Home\homePageRepartidor.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -190,6 +255,21 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Productos\productos.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Profile\CambiarContrasenia.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Profile\ConfirmacionContrasenia.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Profile\editPageUserProfile.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Profile\HistorialCompras.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Profile\profilePageUser.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

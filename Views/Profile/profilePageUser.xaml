@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Profile.profilePageUser"
+             Title="">
+    <Grid>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" >
+            <Image Source="Profile/fondoprincipal.png" Aspect="AspectFill" HeightRequest="1000"/>
+            </StackLayout>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <ScrollView >
+                <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="0,-20,800,0" Grid.Row="0" 
+               WidthRequest="440"
+               HeightRequest="140"
+               >
+                    <Image Source="Profile/listofondo.png"/>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="15" Grid.Row="0">
+                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Boton de atras-->
+                    <ImageButton
+                        x:Name="btnImagenAtras"
+                        Margin="10,6,20,0"
+                        Clicked="btnImagenAtras_Clicked"
+                        Grid.Column="0"
+                         HeightRequest="40"
+                        Source="Profile/atrasperfil.png"
+                        HorizontalOptions="Start"
+                        WidthRequest="40" />
+                    <Label
+                        Margin="120,8,50,0"
+                        FontAttributes="Bold"
+                        Text="Perfil Usuario"
+                        FontSize="20"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </Grid>
+            </StackLayout>
+          
+        </Grid>
+        
+        <!-- Frame para el usuario -->
+        <Grid Grid.Row="1">
+            <ScrollView>
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Frame WidthRequest="360" HeightRequest="600"
+                           BackgroundColor="{DynamicResource BlackWithTransparency}"
+                           BorderColor="{DynamicResource TealPrimary}"
+                           CornerRadius="20"
+                           HasShadow="True"
+                           Margin="50,50,50,20"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Frame WidthRequest="120"
+             HeightRequest="120"
+             CornerRadius="99"
+             BackgroundColor="Transparent"
+             Padding="0"
+             Margin="10,-400,0,0"
+             HasShadow="False">
+                <Image Source="Profile/perfilvacio.jpg" Aspect="AspectFill" />
+            </Frame>
+            
+            <Frame WidthRequest="50"
+                   HeightRequest="50"
+                   CornerRadius="270"
+                   BackgroundColor="#00d0ff"
+                   Padding="0"
+                   Margin="100,-310,0,0"
+                   HasShadow="false">
+                <ImageButton Source="Profile/editarperfil.png"
+                  Clicked="btnEditarPefil_Clicked"
+                 />
+            </Frame>
+
+            <Label 
+                Text="Jonathan Marley"
+                Grid.Column="1" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"
+                Margin="10,-230,0,0"
+                FontSize="20"
+                TextColor="White"/>
+
+            <Label 
+                Text="+504 8882-4447"
+                Grid.Column="1" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"
+                Margin="10,-175,0,0"
+                FontSize="13"
+                TextColor="White"/>
+
+            <Frame
+                x:Name="frameUbicaciones"
+                CornerRadius="10"
+                WidthRequest="315" 
+                HeightRequest="70"
+                BackgroundColor="White"
+                Padding="0"
+                Margin="10,120,0,80">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        x:Name="TapGesturePerfil"
+                        CommandParameter="Perfil"
+                        Tapped="TapGesturePerfil_Tapped"/>
+                </Frame.GestureRecognizers>
+                <StackLayout>
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="50"
+                        Source="Profile/ubucacionguardas.png"
+                        Margin="0,10,230,80"/>
+                    <Label
+                        Text="Ubicaciones guardadas"
+                         HorizontalOptions="Center" 
+                         VerticalOptions="Center"
+                         Margin="30,-118,0,0"
+                         FontSize="17"
+                         TextColor="Black"/>
+
+                </StackLayout>
+            </Frame>
+
+            <Frame
+                x:Name="frameHistorial"
+                CornerRadius="10"
+                WidthRequest="315" 
+                HeightRequest="70"
+                BackgroundColor="White"
+                Padding="0"
+                Margin="10,310,0,80">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        x:Name="TapGestureHistorial"
+                        CommandParameter="Historial"
+                        Tapped="TapGestureHistorial_Tapped"/>  
+                </Frame.GestureRecognizers>
+                <StackLayout>
+                    <Image
+                    Aspect="AspectFit"
+                    HeightRequest="50"
+                    Source="Profile/historialcompras.png"
+                    Margin="0,10,230,80"/>
+                    <Label
+                        Text="Historial de compras"
+                         HorizontalOptions="Center" 
+                         VerticalOptions="Center"
+                         Margin="10,-118,0,0"
+                         FontSize="17"
+                         TextColor="Black"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame
+                x:Name="frameCambiarcontrasenia"
+                CornerRadius="10"
+                WidthRequest="315" 
+                HeightRequest="70"
+                BackgroundColor="White"
+                Padding="0"
+                Margin="10,500,0,80">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                    x:Name="TapGestureCambiarcontra"
+                    CommandParameter="Contrasenia"
+                    Tapped="TapGestureCambiarcontra_Tapped"/>
+                </Frame.GestureRecognizers>
+                <StackLayout>
+                    <Image
+                    Aspect="AspectFit"
+                    HeightRequest="50"
+                    Source="Profile/cambiarcontra.png"
+                    Margin="0,10,230,80"/>
+                    <Label
+                        Text="Cambiar contraseña"
+                         HorizontalOptions="Center" 
+                         VerticalOptions="Center"
+                         Margin="10,-118,0,0"
+                         FontSize="17"
+                         TextColor="Black"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+          
+    </Grid>
+</ContentPage>
