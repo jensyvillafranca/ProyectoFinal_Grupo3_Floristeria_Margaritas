@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title=""
-    BackgroundColor="White">
+    BackgroundImageSource="fondo_todas_pantallas.png">
     <Grid>
         <!--  Content Grid  -->
         <Grid.RowDefinitions>
@@ -14,30 +14,38 @@
         </Grid.RowDefinitions>
 
         <!--  Header  -->
-        <StackLayout
+        <Frame
             Grid.Row="0"
             Margin="0,0,0,15"
             Padding="0,10,0,10"
-            BackgroundColor="Black"
-            Orientation="Horizontal">
-            <ImageButton
-                x:Name="btnBack"
-                Margin="10,0,0,0"
-                Aspect="AspectFit"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
                 BackgroundColor="Transparent"
-                Clicked="btnBack_Clicked"
-                HeightRequest="40"
-                Source="Productos/backarrow.png"
-                WidthRequest="40" />
-            <!--  Spacer  -->
-            <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
-            <Label
-                Margin="0,0,90,0"
-                FontAttributes="Bold"
-                Text="Descripción del Producto"
-                TextColor="White"
-                VerticalOptions="CenterAndExpand" />
-        </StackLayout>
+                Orientation="Horizontal">
+                <ImageButton
+                    x:Name="btnBack"
+                    Margin="10,0,0,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnBack_Clicked"
+                    HeightRequest="40"
+                    Source="Productos/backarrow.png"
+                    WidthRequest="40" />
+                <!--  Spacer  -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Label
+                    Margin="0,0,90,0"
+                    FontAttributes="Bold"
+                    Text="Descripción del Producto"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+        </Frame>
+
 
         <ScrollView Grid.Row="1">
             <StackLayout>
@@ -46,7 +54,8 @@
                     x:Name="frameDetalle"
                     Margin="5"
                     Padding="0"
-                    BackgroundColor="Black"
+                    BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}"
                     CornerRadius="10"
                     HasShadow="True"
                     VerticalOptions="CenterAndExpand">
@@ -66,7 +75,7 @@
                             FontSize="20"
                             HorizontalTextAlignment="Center"
                             Text="Esplendor Floral"
-                            TextColor="White" />
+                            TextColor="Black" />
 
                         <Label
                             x:Name="labelDescripcion"
@@ -75,7 +84,7 @@
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
                             Text="Arreglo floral elaborado con 10 rosas  y flores complemento, expuesto  en cofre de madera artesanal."
-                            TextColor="White"
+                            TextColor="Black"
                             VerticalOptions="Start"
                             VerticalTextAlignment="Center" />
 
@@ -90,26 +99,27 @@
                                 Margin="20,10,0,20"
                                 HorizontalOptions="CenterAndExpand"
                                 Orientation="Horizontal">
-                                <Button
+                                <ImageButton
                                     x:Name="btnSubstract"
+                                    BorderColor="{DynamicResource AzulOscuro}"
                                     Clicked="btnSubstract_Clicked"
                                     HeightRequest="40"
-                                    Text="-"
+                                    Source="Productos/menos.png"
                                     WidthRequest="40" />
-                                <Entry
+                                <Label
                                     x:Name="quantityEntry"
-                                    BackgroundColor="White"
+                                    BackgroundColor="FloralWhite"
                                     HeightRequest="40"
                                     HorizontalTextAlignment="Center"
-                                    Keyboard="Numeric"
                                     Text="1"
                                     VerticalTextAlignment="Center"
                                     WidthRequest="40" />
-                                <Button
+                                <ImageButton
                                     x:Name="btnAdd"
+                                    BorderColor="{DynamicResource AzulOscuro}"
                                     Clicked="btnAdd_Clicked"
                                     HeightRequest="40"
-                                    Text="+"
+                                    Source="Productos/add.png"
                                     WidthRequest="40" />
                             </StackLayout>
                             <BoxView
@@ -124,7 +134,7 @@
                                 FontSize="18"
                                 HorizontalOptions="Center"
                                 Text="L. 1,700.00"
-                                TextColor="White"
+                                TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>
                     </StackLayout>
@@ -133,22 +143,34 @@
         </ScrollView>
 
         <!--  Boton Agregar a Carrito  -->
-        <StackLayout
+        <Frame
             Grid.Row="2"
+            Margin="0,0,0,0"
             Padding="0,10,0,10"
-            BackgroundColor="Transparent"
-            Orientation="Horizontal">
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,10,0,10"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
 
-            <Button
-                x:Name="btnAgregar"
-                Margin="30,0,30,30"
-                Clicked="btnAgregar_Clicked"
-                FontSize="14"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                SemanticProperties.Hint="Agregar a Carrito"
-                Text="Agregar al Carrito" />
+                <Button
+                    x:Name="btnAgregar"
+                    Margin="30,0,30,0"
+                    BackgroundColor="{DynamicResource AzulBotones}"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnAgregar_Clicked"
+                    CornerRadius="20"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    SemanticProperties.Hint="Agregar a Carrito"
+                    Text="Agregar al Carrito" />
 
-        </StackLayout>
+            </StackLayout>
+        </Frame>
+
     </Grid>
 </ContentPage>

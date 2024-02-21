@@ -7,27 +7,27 @@ public partial class homePageAdmin : ContentPage
     ObservableCollection<string> departamentos;
     ObservableCollection<string> repartidores;
     public homePageAdmin()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         departamentos = new ObservableCollection<string>
         {
-            "Atlántida", 
-            "Choluteca", 
-            "Colón", 
-            "Comayagua", 
-            "Copán", 
-            "Cortés", 
-            "El Paraíso", 
-            "Francisco Morazán", 
-            "Gracias a Dios", 
-            "Intibucá", 
-            "Islas de la Bahía", 
-            "La Paz", 
-            "Lempira", 
-            "Ocotepeque", 
-            "Olancho", 
-            "Santa Bárbara", 
-            "Valle", 
+            "Atlántida",
+            "Choluteca",
+            "Colón",
+            "Comayagua",
+            "Copán",
+            "Cortés",
+            "El Paraíso",
+            "Francisco Morazán",
+            "Gracias a Dios",
+            "Intibucá",
+            "Islas de la Bahía",
+            "La Paz",
+            "Lempira",
+            "Ocotepeque",
+            "Olancho",
+            "Santa Bárbara",
+            "Valle",
             "Yoro"
         };
 

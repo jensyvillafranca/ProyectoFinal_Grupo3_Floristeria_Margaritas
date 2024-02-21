@@ -48,13 +48,86 @@
                 SemanticProperties.Hint="Pagina de detalles producto"
                 Text="Detalle Producto" />
             <Button
+                x:Name="btnCarrito"
+                Clicked="btnCarrito_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina del carrito de compras"
+                Text="Carrito de Compras" />
+            <Button
+                x:Name="btnDireccion"
+                Clicked="btnDireccion_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de eleccion de direccion"
+                Text="Pago - Direccion" />
+            <Button
+                x:Name="btnPagoTarjeta"
+                Clicked="btnPagoTarjeta_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de eleccion de tarjeta"
+                Text="Pago - Tarjeta" />
+            <Button
+                x:Name="btnFinalizar"
+                Clicked="btnFinalizar_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de finalizar orden"
+                Text="Finalizar Orden" />
+            <Button
+                x:Name="btnPopupPago"
+                Clicked="btnPopupPago_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pantalla de popup de confirmacion de pago"
+                Text="Confirmacion Pago" />
+            <Button
                 x:Name="btnPedidosRepartidor"
                 Clicked="btnPedidosRepartidor_Clicked"
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina de pedidos entrantes"
                 Text="Pedidos Entrantes" />
+            <Button
+                x:Name="btnHistorialEntrega"
+                Clicked="btnHistorialEntrega_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de historial de entregas"
+                Text="Historial Entregas" />
+            <Button
+                x:Name="btnlogin"
+                Clicked="btnlogin_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de log in"
+                Text="Log In" />
+            <Button
+                x:Name="btnsignin"
+                Clicked="btnsignin_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de sign in"
+                Text="Sign In" />
 
-           
+            <Button
+                x:Name="btnPantallaCalificacion"
+                Clicked="btnPantallaCalificacion_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Calificacion"
+                Text="Calificacion" />
+
+            <Button
+                x:Name="btnCalificacionFinalizada"
+                Clicked="btnCalificacionFinalizada_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Calificacion Finalizada"
+                Text="Calificacion Finalizada" />
+
+            <Button
+                x:Name="btnAplicarRepartidor"
+                Clicked="btnAplicarRepartidor_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Aplicar Repartidor"
+                Text="Aplicar Repartidor" />
+            <Button
+                x:Name="btnCrearPromociones"
+                Clicked="btnCrearPromociones_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Crear Promociones"
+                Text="Crear Promociones" />
         </VerticalStackLayout>
     </ScrollView>
 

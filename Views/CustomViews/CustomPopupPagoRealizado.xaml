@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews.CustomPopupPagoRealizado"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="fondo_todas_pantallas.png">
+    <StackLayout
+        BackgroundColor="Transparent"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="CenterAndExpand">
+        <Frame
+            Margin="20,0,20,0"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="10"
+            HasShadow="True"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout>
+                <Frame
+                    BackgroundColor="Transparent"
+                    BorderColor="Transparent"
+                    CornerRadius="10"
+                    HasShadow="True">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalTextAlignment="Center"
+                        Text="¡Pago Realizado!"
+                        TextColor="White" />
+                </Frame>
+                <Frame
+                    Margin="5"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    BorderColor="Transparent"
+                    CornerRadius="10"
+                    HasShadow="True"
+                    VerticalOptions="StartAndExpand">
+                    <Image
+                        Margin="20,20,20,10"
+                        Aspect="AspectFit"
+                        HeightRequest="100"
+                        Source="Productos/confirmacionpago.png"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
+                </Frame>
+                <Frame
+                    BackgroundColor="Transparent"
+                    BorderColor="Transparent"
+                    CornerRadius="10"
+                    HasShadow="True">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        HorizontalTextAlignment="Center"
+                        Text="Porfavor espera mientras es redireccionado..."
+                        TextColor="White" />
+                </Frame>
+            </StackLayout>
+        </Frame>
+
+    </StackLayout>
+</ContentPage>

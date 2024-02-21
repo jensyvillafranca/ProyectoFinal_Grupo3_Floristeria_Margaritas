@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login.CrearCuenta"
+                      Title=""
+         BackgroundImageSource="fondocodigoverificacion.png">
+
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Header  -->
+
+        <StackLayout
+            Grid.Row="0"
+            Margin="0,0,0,0"
+            Padding="0,20,0,0"
+            BackgroundColor="Transparent"
+            Orientation="Horizontal">
+            <ImageButton
+                x:Name="btnBack"
+                Margin="10,0,0,0"
+                Aspect="AspectFit"
+                HeightRequest="40"
+                Source="atras.png"
+                WidthRequest="40" />
+
+        </StackLayout>
+
+
+        <!--  Body - Collection view  -->
+        <ScrollView Grid.Row="1">
+            <StackLayout
+            Padding="10,10,0,0">
+
+                <Label
+                    x:Name="labelcrearcuenta"
+                    Margin="0,60,0,0"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Crear Cuenta"
+                    TextColor="White" />
+
+                <Image
+                    Margin="0,40,0,0"
+                    Aspect="AspectFit"
+                    HeightRequest="150" 
+                    WidthRequest="150" 
+                    Source="codigoverificacion.png"
+                   />
+
+                <Label
+                    x:Name="labelTextCodigVerf"
+                    Margin="0,60,10,0"
+                    FontSize="17"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Ingrese el codigó de verificación"
+                    TextColor="White"/>
+
+
+                <StackLayout>
+                    <Frame
+                      WidthRequest="310"
+                      HeightRequest="45"
+                      CornerRadius="5"
+                     Margin="0,60,5,0">
+                    </Frame>
+                    <Entry 
+                     WidthRequest="290"
+                     HeightRequest="40"
+                     TextColor="Black"
+                     Margin="0,-45,10,0"/>
+                </StackLayout>
+
+                <Label
+                    x:Name="labelEnviarCog"
+                    Margin="220,10,0,0"
+                    FontAttributes="Bold"
+                    FontSize="11"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Enviar de nuevo"
+                    TextColor="White" />
+
+
+
+            </StackLayout>
+
+        </ScrollView>
+
+
+        <!--  Boton Registrase  -->
+
+        <StackLayout
+            Grid.Row="2"
+            Padding="0,0,0,0"
+            BackgroundColor="Transparent"
+            Orientation="Vertical">
+
+            <Button
+                x:Name="btnRegistrarse"
+                BackgroundColor="{DynamicResource AzulBotones}"
+                Command="{Binding substractCommand}"
+                CommandParameter="{Binding .}"
+                FontAttributes="Bold"
+                FontSize="18"
+                Margin="0,0,0,70"
+                Padding="2"
+                HeightRequest="40"
+                Text="Registrase"
+                CornerRadius="20"
+                WidthRequest="300"/>
+
+
+
+        </StackLayout>
+
+
+    </Grid>
+</ContentPage>

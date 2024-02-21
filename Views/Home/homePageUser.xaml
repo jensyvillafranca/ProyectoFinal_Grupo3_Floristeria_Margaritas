@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title=""
-    BackgroundColor="White">
+    BackgroundImageSource="fondo_todas_pantallas.png">
 
     <Grid>
         <!--  Content Grid  -->
@@ -17,35 +17,43 @@
         <ScrollView Grid.Row="0">
             <StackLayout>
                 <!--  Header  -->
-                <StackLayout
+                <Frame
                     Margin="0,0,0,25"
                     Padding="0,10,0,10"
-                    BackgroundColor="Black"
-                    Orientation="Horizontal">
-                    <ImageButton
-                        x:Name="btnNotification"
-                        Margin="10,0,0,0"
-                        Aspect="AspectFit"
+                    BackgroundColor="{DynamicResource BlackWithTransparency}"
+                    BorderColor="{DynamicResource AzulBotones}"
+                    CornerRadius="20">
+                    <StackLayout
+                        Margin="0,0,0,0"
+                        Padding="0,0,0,0"
                         BackgroundColor="Transparent"
-                        Clicked="btnNotification_Clicked"
-                        HeightRequest="40"
-                        Source="Home/notificacion.png"
-                        WidthRequest="40" />
-                    <!--  Spacer  -->
-                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
-                    <Image
-                        Margin="0,0,10,0"
-                        Aspect="AspectFit"
-                        HeightRequest="40"
-                        Source="Logo/logo.png"
-                        WidthRequest="40" />
-                    <Label
-                        Margin="0,0,90,0"
-                        FontAttributes="Bold"
-                        Text="Floristeria Margaritas"
-                        TextColor="White"
-                        VerticalOptions="CenterAndExpand" />
-                </StackLayout>
+                        Orientation="Horizontal">
+                        <ImageButton
+                            x:Name="btnNotification"
+                            Margin="10,0,0,0"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            Clicked="btnNotification_Clicked"
+                            HeightRequest="40"
+                            Source="Home/notificacion.png"
+                            WidthRequest="40" />
+                        <!--  Spacer  -->
+                        <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                        <Image
+                            Margin="0,0,10,0"
+                            Aspect="AspectFit"
+                            HeightRequest="50"
+                            Source="Logo/logp.png"
+                            WidthRequest="50" />
+                        <Label
+                            Margin="0,0,90,0"
+                            FontAttributes="Bold"
+                            Text="Floristeria Margaritas"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </Frame>
+
 
                 <!--  Body: First Row  -->
 
@@ -61,7 +69,8 @@
                         x:Name="frameProductos"
                         Margin="5"
                         Padding="5"
-                        BackgroundColor="Black"
+                        BackgroundColor="{DynamicResource AzulMedio}"
+                        BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
                         HasShadow="True">
                         <Frame.GestureRecognizers>
@@ -73,9 +82,12 @@
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Image
                                 Aspect="AspectFit"
-                                HeightRequest="50"
-                                Source="Home/productos.png" />
+                                HeightRequest="100"
+                                Source="Home/flowercolor.png"
+                                WidthRequest="100" />
                             <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
                                 HorizontalTextAlignment="Center"
                                 Text="Productos"
                                 TextColor="White" />
@@ -88,7 +100,8 @@
                         Grid.Column="1"
                         Margin="5"
                         Padding="5"
-                        BackgroundColor="Black"
+                        BackgroundColor="{DynamicResource AzulOscuro}"
+                        BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
                         HasShadow="True">
                         <Frame.GestureRecognizers>
@@ -100,9 +113,12 @@
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Image
                                 Aspect="AspectFit"
-                                HeightRequest="50"
-                                Source="Home/carrito.png" />
+                                HeightRequest="100"
+                                Source="Home/carritocolor.png"
+                                WidthRequest="100" />
                             <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
                                 HorizontalTextAlignment="Center"
                                 Text="Carrito"
                                 TextColor="White" />
@@ -114,6 +130,7 @@
                     <!--  Label  -->
                     <Label
                         Margin="0,10,0,0"
+                        FontAttributes="Bold"
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="Ofertas"
@@ -138,7 +155,8 @@
                                     x:Name="frameCarousel"
                                     Margin="5"
                                     Padding="5"
-                                    BackgroundColor="Black"
+                                    BackgroundColor="{DynamicResource AzulMedio}"
+                                    BorderColor="{DynamicResource AzulBotones}"
                                     CornerRadius="10"
                                     HasShadow="True">
                                     <Frame.GestureRecognizers>
@@ -172,7 +190,8 @@
                         x:Name="framePedidos"
                         Margin="5"
                         Padding="5"
-                        BackgroundColor="Black"
+                        BackgroundColor="{DynamicResource AzulOscuro}"
+                        BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
                         HasShadow="True">
                         <Frame.GestureRecognizers>
@@ -184,9 +203,12 @@
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Image
                                 Aspect="AspectFit"
-                                HeightRequest="50"
-                                Source="Home/pedidos.png" />
+                                HeightRequest="100"
+                                Source="Home/pedidoscolor.png"
+                                WidthRequest="100" />
                             <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
                                 HorizontalTextAlignment="Center"
                                 Text="Pedidos"
                                 TextColor="White" />
@@ -199,7 +221,8 @@
                         Grid.Column="1"
                         Margin="5"
                         Padding="5"
-                        BackgroundColor="Black"
+                        BackgroundColor="{DynamicResource AzulMedio}"
+                        BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
                         HasShadow="True">
                         <Frame.GestureRecognizers>
@@ -211,9 +234,12 @@
                         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <Image
                                 Aspect="AspectFit"
-                                HeightRequest="50"
-                                Source="Home/perfil.png" />
+                                HeightRequest="100"
+                                Source="Home/perfilcolor.png"
+                                WidthRequest="100" />
                             <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
                                 HorizontalTextAlignment="Center"
                                 Text="Perfil"
                                 TextColor="White" />
@@ -224,25 +250,32 @@
         </ScrollView>
 
         <!--  Bottom Navigation Bar  -->
-        <StackLayout
+        <Frame
             Grid.Row="1"
             Padding="0,10,0,10"
-            BackgroundColor="Black"
-            Orientation="Horizontal">
-
-            <!--  Spacer to push the Button to the end  -->
-            <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
-
-            <!--  Logout Button at the end  -->
-            <ImageButton
-                x:Name="btnLogout"
-                Margin="0,0,10,0"
-                Aspect="AspectFit"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,0,0,0"
                 BackgroundColor="Transparent"
-                Clicked="btnLogout_Clicked"
-                HeightRequest="40"
-                Source="Menu/logout.png"
-                WidthRequest="40" />
-        </StackLayout>
+                Orientation="Horizontal">
+
+                <!--  Spacer to push the Button to the end  -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+
+                <!--  Logout Button at the end  -->
+                <ImageButton
+                    x:Name="btnLogout"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnLogout_Clicked"
+                    HeightRequest="40"
+                    Source="ImagenesRepartidor/salirmenu.png"
+                    WidthRequest="40" />
+            </StackLayout>
+        </Frame>
+
     </Grid>
 </ContentPage>

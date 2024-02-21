@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos.PagoTarjeta"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="fondo_todas_pantallas.png">
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Header  -->
+        <StackLayout
+            Grid.Row="0"
+            Margin="0,0,0,15"
+            BackgroundColor="Transparent"
+            Orientation="Vertical">
+            <Frame
+                Margin="0,0,0,0"
+                Padding="0,10,0,10"
+                BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
+                CornerRadius="20">
+                <StackLayout
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    Orientation="Vertical">
+                    <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
+                        <ImageButton
+                            x:Name="btnBack"
+                            Margin="10,0,0,0"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            Clicked="btnBack_Clicked"
+                            HeightRequest="40"
+                            Source="Productos/backarrow.png"
+                            WidthRequest="40" />
+                        <!--  Spacer  -->
+                        <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                        <Label
+                            Margin="0,0,90,0"
+                            FontAttributes="Bold"
+                            Text="Realizar Pago"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                        <ImageButton
+                            x:Name="btnCancelar"
+                            Margin="10,0,10,0"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            Clicked="btnCancelar_Clicked"
+                            HeightRequest="40"
+                            Source="Productos/cancelar.png"
+                            WidthRequest="40" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame
+                Padding="0,0,0,0"
+                BackgroundColor="{DynamicResource AzulOscuro}"
+                BorderColor="{DynamicResource AzulBotones}">
+                <Label
+                    Margin="0,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    HorizontalTextAlignment="Center"
+                    Text="Por Favor Elija la Opción de Pago"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+            </Frame>
+        </StackLayout>
+
+
+        <!--  Body - Collection view  -->
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <CollectionView
+                    x:Name="collectionViewTarjetas"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding Tarjetas}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                x:Name="frameTarjetaCollection"
+                                Margin="5"
+                                Padding="5"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
+                                CornerRadius="10"
+                                HasShadow="True"
+                                HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="FillAndExpand">
+                                    <Image
+                                        Margin="5,10,3,10"
+                                        Aspect="AspectFit"
+                                        HeightRequest="80"
+                                        Source="Productos/tarjetacolor.png"
+                                        WidthRequest="80" />
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            x:Name="labelDescripcion"
+                                            Grid.Row="0"
+                                            Margin="5,10,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelDescripcion}"
+                                            TextColor="Black"
+                                            WidthRequest="200" />
+                                        <Label
+                                            x:Name="labelNumeroTarjeta"
+                                            Grid.Row="1"
+                                            Margin="20,0,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelNumeroTarjeta}"
+                                            TextColor="Black"
+                                            WidthRequest="200" />
+                                        <Label
+                                            x:Name="labelNombreTarjeta"
+                                            Grid.Row="2"
+                                            Margin="20,0,0,0"
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelNombreTarjeta}"
+                                            TextColor="Black"
+                                            WidthRequest="200" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Frame
+                    x:Name="frameAgregarTarjeta"
+                    Margin="5"
+                    Padding="5"
+                    BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}"
+                    CornerRadius="10"
+                    HasShadow="True"
+                    HorizontalOptions="FillAndExpand">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            x:Name="TapGestureNuevaDireccion"
+                            CommandParameter="Nueva Direccion"
+                            Tapped="TapGestureNuevaDireccion_Tapped" />
+                    </Frame.GestureRecognizers>
+
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="FillAndExpand">
+                        <Image
+                            Margin="10,10,3,10"
+                            Aspect="AspectFit"
+                            HeightRequest="50"
+                            Source="Productos/agregartarjeta2.png"
+                            WidthRequest="50" />
+
+                        <Label
+                            x:Name="labelAgregarTarjeta"
+                            Grid.Row="0"
+                            Margin="0,0,0,5"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="Agregar Tarjeta"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="200" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+        <!--  Seccion de Totales y Boton de Confirmar Pedido  -->
+        <Frame
+            Grid.Row="2"
+            Margin="0,1,0,0"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Vertical">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--  Labels  -->
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,10,0,2"
+                        FontAttributes="Bold"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Subtotal:"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="10,0,0,2"
+                        FontAttributes="Bold"
+                        HorizontalOptions="StartAndExpand"
+                        Text="ISV (12%):"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="10,0,0,5"
+                        FontAttributes="Bold"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Envio:"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="10,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Total:"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <!--  Totales  -->
+
+                    <Label
+                        x:Name="labelSubtotal"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,10,10,2"
+                        HorizontalOptions="EndAndExpand"
+                        Text=""
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        x:Name="labelISV"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="0,0,10,2"
+                        HorizontalOptions="EndAndExpand"
+                        Text=""
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        x:Name="labelEnvio"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="0,0,10,5"
+                        HorizontalOptions="EndAndExpand"
+                        Text=""
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        x:Name="labelTotal"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="0,0,10,0"
+                        FontSize="16"
+                        HorizontalOptions="EndAndExpand"
+                        Text=""
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </Grid>
+
+                <Button
+                    x:Name="btnSiguiente"
+                    Margin="30,20,30,10"
+                    BackgroundColor="{DynamicResource AzulBotones}"
+                    BorderColor="{DynamicResource AzulMedio}"
+                    Clicked="btnSiguiente_Clicked"
+                    CornerRadius="20"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    SemanticProperties.Hint="Confirmar Tarjeta"
+                    Text="Siguiente" />
+
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

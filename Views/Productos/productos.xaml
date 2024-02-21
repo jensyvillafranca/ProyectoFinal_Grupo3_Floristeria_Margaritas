@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title=""
-    BackgroundColor="White">
+    BackgroundImageSource="fondo_todas_pantallas.png">
     <Grid>
         <!--  Content Grid  -->
         <Grid.RowDefinitions>
@@ -12,144 +12,157 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <!--  Header  -->
 
         <StackLayout Grid.Row="0">
-            <!--  Header  -->
-            <StackLayout
+            <Frame
                 Margin="0,0,0,0"
-                Padding="0,10,0,10"
-                BackgroundColor="Black"
-                Orientation="Horizontal">
-                <ImageButton
-                    x:Name="btnNotification"
-                    Margin="10,0,20,0"
-                    Aspect="AspectFit"
-                    BackgroundColor="Transparent"
-                    Clicked="btnNotification_Clicked"
-                    HeightRequest="40"
-                    Source="Home/notificacion.png"
-                    WidthRequest="40" />
-
-                <!--  SearchBar  -->
-                <Grid
+                Padding="5,10,5,10"
+                BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
+                CornerRadius="20">
+                <StackLayout
                     Margin="0,0,0,0"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="CenterAndExpand">
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    Orientation="Horizontal">
+                    <ImageButton
+                        x:Name="btnNotification"
+                        Margin="10,0,20,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnNotification_Clicked"
+                        HeightRequest="40"
+                        Source="Home/notificacion.png"
+                        WidthRequest="40" />
+
+                    <!--  SearchBar  -->
+                    <Grid
+                        Margin="0,0,0,0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <SearchBar
+                            x:Name="searchBarProductos"
+                            Grid.Column="1"
+                            Margin="0,0,0,0"
+                            BackgroundColor="White"
+                            Placeholder="Buscar"
+                            PlaceholderColor="Black"
+                            SearchButtonPressed="searchBarProducots_SearchButtonPressed"
+                            TextChanged="searchBarProducots_TextChanged"
+                            TextColor="Black" />
+                    </Grid>
+
+
+                    <ImageButton
+                        x:Name="btnCarrito"
+                        Margin="20,0,10,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnCarrito_Clicked"
+                        HeightRequest="40"
+                        Source="Home/carritocolor.png"
+                        WidthRequest="40" />
+                </StackLayout>
+            </Frame>
+
+
+            <!--  Filtros  -->
+            <Frame
+                Margin="0,0,0,10"
+                Padding="5,10,5,10"
+                BackgroundColor="{DynamicResource AzulOscuro}"
+                BorderColor="{DynamicResource AzulBotones}"
+                CornerRadius="20">
+                <Grid BackgroundColor="Transparent" HorizontalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <SearchBar
-                        x:Name="searchBarProductos"
+                    <Label
+                        Grid.Column="0"
+                        Margin="10,0,0,0"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        Text="Filtros:"
+                        TextColor="White"
+                        VerticalTextAlignment="Center" />
+
+                    <!--  Carrusel Filtros  -->
+                    <CarouselView
+                        x:Name="carouselViewFiltros"
                         Grid.Column="1"
-                        Margin="0,0,0,0"
-                        BackgroundColor="White"
-                        Placeholder="Buscar"
-                        PlaceholderColor="Black"
-                        SearchButtonPressed="searchBarProducots_SearchButtonPressed"
-                        TextChanged="searchBarProducots_TextChanged"
-                        TextColor="Black" />
+                        Margin="5,0,5,0"
+                        ItemsSource="{Binding FiltroItem}">
+
+                        <CarouselView.ItemsLayout>
+                            <LinearItemsLayout
+                                ItemSpacing="0"
+                                Orientation="Horizontal"
+                                SnapPointsAlignment="Start"
+                                SnapPointsType="MandatorySingle" />
+                        </CarouselView.ItemsLayout>
+
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <!--  Individual Frame for CarouselView Item  -->
+                                <Frame
+                                    x:Name="frameCarousel"
+                                    Margin="5"
+                                    Padding="5"
+                                    BackgroundColor="FloralWhite"
+                                    CornerRadius="10"
+                                    HasShadow="True"
+                                    WidthRequest="200">
+
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            x:Name="TapGestureCarouselFiltros"
+                                            CommandParameter="CarouselFiltros"
+                                            Tapped="TapGestureCarouselFiltros_Tapped" />
+                                    </Frame.GestureRecognizers>
+
+                                    <StackLayout>
+                                        <Label
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelText}"
+                                            TextColor="Black" />
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+
+                    <ImageButton
+                        x:Name="btnSiguiente"
+                        Grid.Column="2"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnSiguiente_Clicked"
+                        HeightRequest="30"
+                        Source="Productos/handslide.png"
+                        WidthRequest="30" />
+                    <ImageButton
+                        x:Name="btnCancelarFiltro"
+                        Grid.Column="3"
+                        Margin="5,2,10,2"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnCancelarFiltro_Clicked"
+                        HeightRequest="40"
+                        Source="Productos/cancelar.png"
+                        WidthRequest="40" />
                 </Grid>
+            </Frame>
 
-
-                <ImageButton
-                    x:Name="btnCarrito"
-                    Margin="20,0,10,0"
-                    Aspect="AspectFit"
-                    BackgroundColor="Transparent"
-                    Clicked="btnCarrito_Clicked"
-                    HeightRequest="40"
-                    Source="Home/carrito.png"
-                    WidthRequest="40" />
-            </StackLayout>
-
-            <!--  Filtros  -->
-            <Grid
-                Margin="0,0,0,20"
-                BackgroundColor="DarkGray"
-                HorizontalOptions="FillAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-
-                <Label
-                    Grid.Column="0"
-                    Margin="10,0,0,0"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    Text="Filtros:"
-                    TextColor="Black"
-                    VerticalTextAlignment="Center" />
-
-                <!--  Carrusel Filtros  -->
-                <CarouselView
-                    x:Name="carouselViewFiltros"
-                    Grid.Column="1"
-                    Margin="5,0,5,0"
-                    ItemsSource="{Binding FiltroItem}">
-
-                    <CarouselView.ItemsLayout>
-                        <LinearItemsLayout
-                            ItemSpacing="0"
-                            Orientation="Horizontal"
-                            SnapPointsAlignment="Start"
-                            SnapPointsType="MandatorySingle" />
-                    </CarouselView.ItemsLayout>
-
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <!--  Individual Frame for CarouselView Item  -->
-                            <Frame
-                                x:Name="frameCarousel"
-                                Margin="5"
-                                Padding="5"
-                                BackgroundColor="Black"
-                                CornerRadius="10"
-                                HasShadow="True"
-                                WidthRequest="200">
-
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        x:Name="TapGestureCarouselFiltros"
-                                        CommandParameter="CarouselFiltros"
-                                        Tapped="TapGestureCarouselFiltros_Tapped" />
-                                </Frame.GestureRecognizers>
-
-                                <StackLayout>
-                                    <Label
-                                        HorizontalTextAlignment="Center"
-                                        Text="{Binding LabelText}"
-                                        TextColor="White" />
-                                </StackLayout>
-                            </Frame>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-
-                <ImageButton
-                    x:Name="btnSiguiente"
-                    Grid.Column="2"
-                    Aspect="AspectFit"
-                    BackgroundColor="Transparent"
-                    Clicked="btnSiguiente_Clicked"
-                    HeightRequest="30"
-                    Source="Productos/handslideblack.png"
-                    WidthRequest="30" />
-                <ImageButton
-                    x:Name="btnCancelarFiltro"
-                    Grid.Column="3"
-                    Margin="5,2,10,2"
-                    Aspect="AspectFit"
-                    BackgroundColor="Transparent"
-                    Clicked="btnCancelarFiltro_Clicked"
-                    HeightRequest="40"
-                    Source="Productos/cancelar.png"
-                    WidthRequest="40" />
-            </Grid>
         </StackLayout>
 
         <!--  Body: Collection View  -->
@@ -169,7 +182,8 @@
                                 x:Name="frameProducto"
                                 Margin="5"
                                 Padding="5"
-                                BackgroundColor="Black"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
                                 CornerRadius="10"
                                 HasShadow="True">
                                 <Frame.GestureRecognizers>
@@ -188,14 +202,14 @@
                                         FontSize="14"
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding LabelText}"
-                                        TextColor="White" />
+                                        TextColor="Black" />
                                     <Label
                                         x:Name="labelPrecioProducto"
                                         Margin="0,0,0,5"
                                         FontSize="12"
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding LabelPrecio}"
-                                        TextColor="White" />
+                                        TextColor="Black" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>
@@ -205,71 +219,84 @@
         </ScrollView>
 
         <!--  Bottom Navigation Bar  -->
-        <StackLayout
+        <Frame
             Grid.Row="2"
+            Margin="0,0,0,0"
             Padding="0,10,0,10"
-            BackgroundColor="Black"
-            Orientation="Horizontal">
-
-            <!--  Home Button  -->
-            <ImageButton
-                x:Name="btnHome"
-                Margin="20,0,10,0"
-                Aspect="AspectFit"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,0,0,0"
                 BackgroundColor="Transparent"
-                Clicked="btnHome_Clicked"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                Source="Menu/homeicon.png"
-                WidthRequest="40" />
+                Orientation="Horizontal">
 
-            <!--  Productos Button  -->
-            <ImageButton
-                x:Name="btnProductos"
-                Margin="0,0,10,0"
-                Aspect="AspectFit"
-                BackgroundColor="Transparent"
-                Clicked="btnProductos_Clicked"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                Source="Menu/productos.png"
-                WidthRequest="40" />
+                <!--  Home Button  -->
+                <ImageButton
+                    x:Name="btnHome"
+                    Margin="20,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnHome_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botoninicio.png"
+                    WidthRequest="40" />
 
-            <!--  Pedidos Button  -->
-            <ImageButton
-                x:Name="btnPedidos"
-                Margin="0,0,10,0"
-                Aspect="AspectFit"
-                BackgroundColor="Transparent"
-                Clicked="btnPedidos_Clicked"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                Source="Menu/pedidos.png"
-                WidthRequest="40" />
+                <!--  Productos Button  -->
+                <ImageButton
+                    x:Name="btnProductos"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnProductos_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Menu/productocliente.png"
+                    WidthRequest="40" />
 
-            <!--  Perfil Button  -->
-            <ImageButton
-                x:Name="btnPerfil"
-                Margin="0,0,10,0"
-                Aspect="AspectFit"
-                BackgroundColor="Transparent"
-                Clicked="btnPerfil_Clicked"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                Source="Home/perfil.png"
-                WidthRequest="40" />
+                <!--  Pedidos Button  -->
+                <ImageButton
+                    x:Name="btnPedidos"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnPedidos_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Menu/pedidosmenu.png"
+                    WidthRequest="40" />
 
-            <!--  Logout Button  -->
-            <ImageButton
-                x:Name="btnLogout"
-                Margin="0,0,20,0"
-                Aspect="AspectFit"
-                BackgroundColor="Transparent"
-                Clicked="btnLogout_Clicked"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand"
-                Source="Menu/logout.png"
-                WidthRequest="40" />
-        </StackLayout>
+                <!--  Perfil Button  -->
+                <ImageButton
+                    x:Name="btnPerfil"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnPerfil_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Home/perfilmenu.png"
+                    WidthRequest="40" />
+
+                <!--  Logout Button  -->
+                <ImageButton
+                    x:Name="btnLogout"
+                    Margin="0,0,20,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnLogout_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/salirmenu.png"
+                    WidthRequest="40" />
+            </StackLayout>
+        </Frame>
+
     </Grid>
 </ContentPage>

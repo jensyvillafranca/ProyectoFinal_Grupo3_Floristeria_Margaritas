@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos.carritoCompras"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="fondo_todas_pantallas.png">
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Header  -->
+        <Frame
+            Grid.Row="0"
+            Margin="0,0,0,15"
+            Padding="5,10,5,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+                <ImageButton
+                    x:Name="btnBack"
+                    Margin="10,0,0,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnBack_Clicked"
+                    HeightRequest="40"
+                    Source="Productos/backarrow.png"
+                    WidthRequest="40" />
+                <!--  Spacer  -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Label
+                    Margin="0,0,90,0"
+                    FontAttributes="Bold"
+                    Text="Carrito de Compras"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+                <ImageButton
+                    x:Name="btnProductos"
+                    Margin="10,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnProductos_Clicked"
+                    HeightRequest="40"
+                    Source="Productos/flowercolor.png"
+                    WidthRequest="40" />
+            </StackLayout>
+        </Frame>
+
+
+        <!--  Body - Collection view  -->
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <CollectionView
+                    x:Name="collectionViewCarrito"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding Ordenes}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                x:Name="frameOrden"
+                                Margin="5"
+                                Padding="5"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
+                                CornerRadius="10"
+                                HasShadow="True"
+                                HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="FillAndExpand">
+                                    <Image
+                                        Margin="3,10,3,10"
+                                        Aspect="AspectFit"
+                                        HeightRequest="80"
+                                        Source="{Binding ImageSource}"
+                                        WidthRequest="80" />
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            x:Name="labelNombreProducto"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Margin="5,10,0,0"
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelNombreProducto}"
+                                            TextColor="Black" />
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Margin="10,0,0,0"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Orientation="Horizontal">
+                                            <ImageButton
+                                                x:Name="btnSubstract"
+                                                BorderColor="{DynamicResource AzulOscuro}"
+                                                Command="{Binding substractCommand}"
+                                                CommandParameter="{Binding .}"
+                                                HeightRequest="35"
+                                                Source="Productos/menos.png"
+                                                WidthRequest="35" />
+                                            <Label
+                                                x:Name="quantityEntry"
+                                                BackgroundColor="FloralWhite"
+                                                HeightRequest="40"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding EntryQuantity, Mode=TwoWay}"
+                                                VerticalTextAlignment="Center"
+                                                WidthRequest="40" />
+                                            <ImageButton
+                                                x:Name="btnAdd"
+                                                BorderColor="{DynamicResource AzulOscuro}"
+                                                Command="{Binding addCommand}"
+                                                CommandParameter="{Binding .}"
+                                                HeightRequest="35"
+                                                Source="Productos/add.png"
+                                                WidthRequest="35" />
+                                        </StackLayout>
+                                        <Label
+                                            x:Name="labelPrecioTotal"
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="20,10,0,0"
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelPrecioTotal, StringFormat='L {0:N2}'}"
+                                            TextColor="Black"
+                                            WidthRequest="100" />
+                                        <ImageButton
+                                            x:Name="btnEliminar"
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Margin="30,0,0,10"
+                                            Aspect="AspectFit"
+                                            BackgroundColor="Transparent"
+                                            Command="{Binding TappedCommand}"
+                                            CommandParameter="{Binding .}"
+                                            HeightRequest="35"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Source="Productos/eliminar2.png"
+                                            WidthRequest="35" />
+                                    </Grid>
+
+
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+
+        <!--  Seccion de Totales y Boton de Confirmar Pedido  -->
+        <Frame
+            Grid.Row="2"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Vertical">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--  Labels  -->
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,10,0,2"
+                        FontAttributes="Bold"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Subtotal:"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="10,0,0,2"
+                        FontAttributes="Bold"
+                        HorizontalOptions="StartAndExpand"
+                        Text="ISV (12%):"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="10,0,0,5"
+                        FontAttributes="Bold"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Envio:"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="10,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Total:"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <!--  Totales  -->
+
+                    <Label
+                        x:Name="labelSubtotal"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,10,10,2"
+                        HorizontalOptions="EndAndExpand"
+                        Text=""
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        x:Name="labelISV"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="0,0,10,2"
+                        HorizontalOptions="EndAndExpand"
+                        Text=""
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        x:Name="labelEnvio"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="0,0,10,5"
+                        HorizontalOptions="EndAndExpand"
+                        Text=""
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        x:Name="labelTotal"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="0,0,10,0"
+                        FontSize="16"
+                        HorizontalOptions="EndAndExpand"
+                        Text=""
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </Grid>
+
+                <Button
+                    x:Name="btnRealizarOrden"
+                    Margin="30,20,30,10"
+                    BackgroundColor="{DynamicResource AzulBotones}"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnRealizarOrden_Clicked"
+                    CornerRadius="20"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    SemanticProperties.Hint="Realizar Compra"
+                    Text="Realizar Orden" />
+
+            </StackLayout>
+        </Frame>
+
+    </Grid>
+</ContentPage>

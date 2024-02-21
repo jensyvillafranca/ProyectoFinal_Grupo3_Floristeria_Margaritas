@@ -1,5 +1,4 @@
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor;
 
@@ -7,8 +6,8 @@ public partial class PantallaPedidosEntrantes : ContentPage
 {
     public ObservableCollection<ListaPedidos> ListaPedidosRepartidor { get; set; }
     public PantallaPedidosEntrantes()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         // Inicia objetos de prueba para collection view
         ListaPedidosRepartidor = new ObservableCollection<ListaPedidos>
             {
