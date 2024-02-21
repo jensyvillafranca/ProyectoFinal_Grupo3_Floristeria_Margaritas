@@ -84,6 +84,12 @@
                 SemanticProperties.Hint="Pagina de pedidos entrantes"
                 Text="Pedidos Entrantes" />
             <Button
+                x:Name="btnHistorialEntrega"
+                Clicked="btnHistorialEntrega_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de historial de entregas"
+                Text="Historial Entregas" />
+            <Button
                 x:Name="btnlogin"
                 Clicked="btnlogin_Clicked"
                 HorizontalOptions="Center"

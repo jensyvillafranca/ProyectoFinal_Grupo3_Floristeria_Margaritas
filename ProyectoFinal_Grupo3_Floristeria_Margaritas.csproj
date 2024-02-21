@@ -145,6 +145,8 @@
 	  <None Remove="Resources\Images\ImagenesRepartidor\correo.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\dni.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\encabezado_repartidores.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\estrellallenarepartidor.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\estrellavaciarepartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\fecha_nacimiento.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\genero.png" />
@@ -248,6 +250,8 @@
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\correo.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\dni.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\encabezado_repartidores.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\estrellallenarepartidor.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\estrellavaciarepartidor.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fecha_nacimiento.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\genero.png" />
@@ -329,6 +333,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallaAdministrador\CrearPromociones.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallasRepartidor\historialEntregas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\PantallaPedidosEntrantes.xaml">

@@ -95,4 +95,9 @@ using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
         {
             Navigation.PushAsync(new Views.PantallaAdministrador.CrearPromociones());
         }
+
+    private void btnHistorialEntrega_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.PantallasRepartidor.historialEntregas());
     }
+}
