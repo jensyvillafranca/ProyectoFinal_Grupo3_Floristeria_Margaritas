@@ -32,7 +32,7 @@
                 <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
                 <Label Margin="0,0,120,0"
                        FontAttributes="Bold"
-                       Text="Calificacion"
+                       Text="Calificación"
                        TextColor="White"
                        VerticalOptions="CenterAndExpand" />
             </StackLayout>
@@ -71,25 +71,55 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
-                                <ImageButton  x:Name="btnEstrella1"  AutomationId="0" Source="PantallaCalificacion/estrella_vacia.png" Clicked="OnStar_Clicked" />
-                                <Label Text="Pesima Experiencia" HorizontalOptions="Center" TextColor="#B4B4B4" LineBreakMode="WordWrap" Margin="5,5,0,0"  FontSize="9" HorizontalTextAlignment="Center" />
+                            <!-- Estrella 1 -->
+                            <StackLayout x:Name="stackLayaoutEstrella1" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                <CheckBox x:Name="chkEstrella1" AutomationId="0" IsVisible="False" CheckedChanged="OnStar_Checked" />
+                                <Image x:Name="imgEstrella1" AutomationId="0" Source="PantallaCalificacion/estrella_vacia.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnStarTapped" CommandParameter="0" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label Text="Pesima Experiencia" HorizontalOptions="Center" TextColor="#B4B4B4" LineBreakMode="WordWrap" Margin="5,5,0,0" FontSize="9" HorizontalTextAlignment="Center" />
                             </StackLayout>
 
-                            <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
-                                <ImageButton  x:Name="btnEstrella2"   AutomationId="1" Source="PantallaCalificacion/estrella_vacia.png" Margin="0,0,0,30"  Clicked="OnStar_Clicked" />
+                            <!-- Estrella 2 -->
+                            <StackLayout x:Name="stackLayaoutEstrella2" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                <CheckBox x:Name="chkEstrella2" AutomationId="1" IsVisible="False" CheckedChanged="OnStar_Checked" />
+                                <Image x:Name="imgEstrella2" AutomationId="1" Source="PantallaCalificacion/estrella_vacia.png" Margin="0,0,12,30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnStarTapped" CommandParameter="1" />
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </StackLayout>
 
-                            <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
-                                <ImageButton  x:Name="btnEstrella3" AutomationId="2"    Source="PantallaCalificacion/estrella_vacia.png" Margin="9,0,0,30" Clicked="OnStar_Clicked" />
+                            <!-- Estrella 3 -->
+                            <StackLayout x:Name="stackLayaoutEstrella3" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                                <CheckBox x:Name="chkEstrella3" AutomationId="2" IsVisible="False" CheckedChanged="OnStar_Checked" />
+                                <Image x:Name="imgEstrella3" AutomationId="2" Source="PantallaCalificacion/estrella_vacia.png" Margin="0,0,12,30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnStarTapped" CommandParameter="2" />
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </StackLayout>
 
-                            <StackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center">
-                                <ImageButton x:Name="btnEstrella4" AutomationId="3" Source="PantallaCalificacion/estrella_vacia.png" Margin="9,0,0,30" Clicked="OnStar_Clicked" />
+                            <!-- Estrella 4 -->
+                            <StackLayout x:Name="stackLayaoutEstrella4" Grid.Row="0" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center">
+                                <CheckBox x:Name="chkEstrella4" AutomationId="3" IsVisible="False" CheckedChanged="OnStar_Checked" />
+                                <Image x:Name="imgEstrella4" AutomationId="3" Source="PantallaCalificacion/estrella_vacia.png" Margin="0,0,0,30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnStarTapped" CommandParameter="3" />
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </StackLayout>
 
-                            <StackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center">
-                                <ImageButton x:Name="btnEstrella5" AutomationId="4" Source="PantallaCalificacion/estrella_vacia.png" Clicked="OnStar_Clicked" />
+                            <!-- Estrella 5 -->
+                            <StackLayout x:Name="stackLayaoutEstrella5" Grid.Row="0" Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center">
+                                <CheckBox x:Name="chkEstrella5" AutomationId="4" IsVisible="False" CheckedChanged="OnStar_Checked" />
+                                <Image x:Name="imgEstrella5" AutomationId="4" Source="PantallaCalificacion/estrella_vacia.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnStarTapped" CommandParameter="4" />
+                                    </Image.GestureRecognizers>
+                                </Image>
                                 <Label Text="Excelente Experiencia" HorizontalOptions="Center" TextColor="#B4B4B4" LineBreakMode="WordWrap" Margin="5,5,0,0" FontSize="9" HorizontalTextAlignment="Center" />
                             </StackLayout>
                         </Grid>
@@ -101,7 +131,7 @@
                                 <StackLayout Orientation="Vertical" Spacing="10">
 
                                     <Button x:Name="BtnOpinion1"
-                Clicked="BtnOpinion_Clicked"
+                
                 Margin="30,0,10,0"
                 FontSize="12"
                 HeightRequest="40"
@@ -117,7 +147,7 @@
                 BorderWidth="1"   />
 
                                     <Button x:Name="BtnOpinion2"
-                Clicked="BtnOpinion_Clicked"
+                
                 Margin="30,0,10,0"
                 FontSize="12"
                 HeightRequest="40"
@@ -126,14 +156,14 @@
                 VerticalOptions="StartAndExpand"
                 SemanticProperties.Hint="Segunda Opinion"
                 BackgroundColor="#314E87"  
-                Text="Me encanta esta Floreria"
+                Text="Me encanta esta Floristería"
                 LineBreakMode="WordWrap"
                 TextColor="White"
                 BorderColor="#314E87"   
                 BorderWidth="1"        />
 
                                     <Button x:Name="BtnOpinion3"
-                Clicked="BtnOpinion_Clicked"
+                
                 Margin="30,0,10,0"
                 FontSize="12"
                 HeightRequest="40"
@@ -155,7 +185,7 @@
 
                         <StackLayout Grid.Row="2" Padding="0,30,0,10" BackgroundColor="Transparent" Orientation="Horizontal">
                             <Button x:Name="btnConfirmar"
-                                    Clicked="btnConfirmar_Clicked"
+                                   Clicked="btnConfirmar_Clicked"
                                     Margin="30,0,30,30"
                                     FontSize="14"
                                     HeightRequest="50"
@@ -171,4 +201,3 @@
         </ScrollView>
     </Grid>
 </ContentPage>
-

@@ -15,7 +15,7 @@
         <!--  StackLayout para superponer elementos a la imagen del encabezado  -->
         <Frame
             Grid.Row="0"
-            Margin="0,0,0,20"
+            Margin="0,0,0,10"
             Padding="0,10,0,10"
             BackgroundColor="{DynamicResource BlackWithTransparency}"
             BorderColor="{DynamicResource AzulBotones}"
