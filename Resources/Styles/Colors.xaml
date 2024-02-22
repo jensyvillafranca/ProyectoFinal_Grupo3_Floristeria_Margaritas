@@ -53,7 +53,7 @@
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
 
     <!--  Colores Personalizados  -->
-    <Color x:Key="BlackWithTransparency">#C0000000</Color>
+  
     <Color x:Key="TealPrimary">#6d98be</Color>
     <Color x:Key="Accent">#FFA500</Color>
     <Color x:Key="Background">#F5F5F5</Color>
