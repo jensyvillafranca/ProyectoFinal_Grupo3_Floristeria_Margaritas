@@ -135,6 +135,12 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina de Ingresos"
                 Text="Ingresos Repartidor" />
+            <Button
+                x:Name="btnDetallePedido"
+                Clicked="btnDetallePedido_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Detalle de Pedidos"
+                Text="Detalle de Pedidos" />
         </VerticalStackLayout>
     </ScrollView>
 

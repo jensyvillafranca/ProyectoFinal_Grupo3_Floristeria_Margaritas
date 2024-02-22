@@ -1,117 +1,196 @@
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.PantallaPedidosEntrantes"
-             Title="PantallaPedidosEntrantes">
-    <AbsoluteLayout>
-        <!-- StackLayout de Imagen de Fondo -->
-        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" >
-            <Image Source="ImagenesRepartidor/fondo_todas_pantallas.png" Aspect="AspectFill" HeightRequest="1000"/>
-        </StackLayout>
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.PantallaPedidosEntrantes"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="fondo_todas_pantallas.png">
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-        <Grid>
-            <!--  Content Grid  -->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <!-- StackLayout de Imagen de Encabezado de la Interfaz -->
-            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="10" Grid.Row="0" WidthRequest="340">
-                <Image Source="ImagenesRepartidor/encabezado_repartidores.png"/>
-            </StackLayout>
-
-            <!--StackLayout para superponer elementos a la imagen del encabezado-->
-            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="15" Grid.Row="0">
-                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+        <!--  StackLayout para superponer elementos a la imagen del encabezado  -->
+        <Frame
+            Grid.Row="0"
+            Margin="0,0,0,10"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <!-- Icono Atrás -->
-                    <Image Source="ImagenesRepartidor/atras.png" Grid.Column="0" HorizontalOptions="Start" Margin="10"/>
+                    <!--  Icono Atrás  -->
+                    <Image
+                        Grid.Column="0"
+                        Margin="20,0,0,0"
+                        HorizontalOptions="Start"
+                        Source="ImagenesRepartidor/atras.png" />
 
-                    <!-- Texto -->
-                    <Label Text="Pedidos entrantes" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Large"/>
+                    <!--  Texto  -->
+                    <Label
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        HorizontalOptions="Center"
+                        Text="Pedidos entrantes"
+                        TextColor="White"
+                        VerticalOptions="Center" />
 
-                    <!-- Icono de notificación -->
-                    <StackLayout Grid.Column="2" HorizontalOptions="End" Orientation="Horizontal" Spacing="5" Margin="10">
-                        <Image Source="ImagenesRepartidor/notificacion_repartidor.png"/>
+                    <!--  Icono de notificación  -->
+                    <StackLayout
+                        Grid.Column="2"
+                        Margin="0,0,20,0"
+                        HorizontalOptions="End"
+                        Orientation="Horizontal"
+                        Spacing="5">
+                        <Image HeightRequest="40" Source="Home/notificacion.png" />
                     </StackLayout>
                 </Grid>
             </StackLayout>
-            <Label Text="¡Pedidos confirmados y listos para ser procesados&#x0a;por tí!" AbsoluteLayout.LayoutBounds="20, 0, -1, -1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AzulPersonalizado}" FontAttributes="Bold" Grid.Row="1" VerticalOptions="Start"></Label>
-            <!---Para poder dar un salto de línea lo hacemos con: &#x0a;-->
 
-            <ScrollView Grid.Row="2" MaximumHeightRequest="530">
-                <!--Lista de los pedidos-->
-                <StackLayout Margin="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <CollectionView x:Name="collectionViewPedidosRepartidor" ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding ListaPedidosRepartidor}">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Horizontal" Span="20" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame x:Name="drawablePedido" Margin="5,0,0,10" WidthRequest="340" Padding="10" BackgroundColor="White" CornerRadius="20" HasShadow="True">
-                                    <Grid ColumnSpacing="10">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
+        </Frame>
+
+
+
+
+        <ScrollView Grid.Row="1">
+            <!--  Lista de los pedidos  -->
+            <StackLayout>
+                <Label
+                    Margin="0,0,0,10"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Text="¡Pedidos confirmados y listos para ser procesados&#x0a;por tí!"
+                    TextColor="{StaticResource AzulPersonalizado}"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Center" />
+                <!--  -Para poder dar un salto de línea lo hacemos con: &#x0a;  -->
+
+                <CollectionView
+                    x:Name="collectionViewPedidosRepartidor"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding ListaPedidosRepartidor}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                x:Name="drawablePedido"
+                                Margin="10,0,10,10"
+                                Padding="10"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
+                                CornerRadius="10"
+                                HasShadow="True"
+                                HorizontalOptions="FillAndExpand">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
 
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
 
-                                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
-                                           TextColor="Black"
-                                           Text="{Binding codPedido, StringFormat='Código: {0}'}" HorizontalOptions="Start"
-                                           HorizontalTextAlignment="Start" FontSize="9" FontAttributes="Bold"/>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="3"
+                                        FontAttributes="Bold"
+                                        FontSize="9"
+                                        HorizontalOptions="Start"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{Binding codPedido, StringFormat='Código: {0}'}"
+                                        TextColor="Black" />
 
-                                        <Frame Grid.Column="0" Grid.Row="1" WidthRequest="80" HeightRequest="100" CornerRadius="10" Padding="0">
-                                            <Image Source="{Binding imagenProductoPedido}" Aspect="AspectFill"/>
-                                        </Frame>
+                                    <Frame
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Padding="0"
+                                        CornerRadius="10"
+                                        HeightRequest="100"
+                                        WidthRequest="80">
+                                        <Image Aspect="AspectFill" Source="{Binding imagenProductoPedido}" />
+                                    </Frame>
 
-                                        <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Vertical" Spacing="5">
-                                            <!--Formato para visualización del nombre del cliente-->
-                                            <Label FontAttributes="Bold" FontSize="13">
-                                                <Label.Text>
-                                                    <Binding Path="clientePedido" StringFormat="Cliente: {0}" />
-                                                </Label.Text>
-                                            </Label>
+                                    <StackLayout
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Orientation="Vertical"
+                                        Spacing="5">
+                                        <!--  Formato para visualización del nombre del cliente  -->
+                                        <Label
+                                            Margin="5,0,0,0"
+                                            FontAttributes="Bold"
+                                            FontSize="13">
+                                            <Label.Text>
+                                                <Binding Path="clientePedido" StringFormat="Cliente: {0}" />
+                                            </Label.Text>
+                                        </Label>
 
-                                            <!--Formato para visualización del lugar de entrega del pedido-->
-                                            <Label FontSize="10" LineBreakMode="WordWrap" MaximumWidthRequest="162">
-                                                <Label.Text>
-                                                    <Binding Path="lugarEntregaPedido" StringFormat="Entrega en: {0}" />
-                                                </Label.Text>
-                                            </Label>
+                                        <!--  Formato para visualización del lugar de entrega del pedido  -->
+                                        <Label
+                                            Margin="5,0,0,0"
+                                            FontSize="10"
+                                            LineBreakMode="WordWrap"
+                                            MaximumWidthRequest="162">
+                                            <Label.Text>
+                                                <Binding Path="lugarEntregaPedido" StringFormat="Entrega en: {0}" />
+                                            </Label.Text>
+                                        </Label>
 
 
-                                            <!--Formato para visualización de la sucursal a recoger el pedido-->
-                                            <Label FontSize="10">
-                                                <Label.Text>
-                                                    <Binding Path="sucursalPedido" StringFormat="Recoger en: {0}" />
-                                                </Label.Text>
-                                            </Label>
+                                        <!--  Formato para visualización de la sucursal a recoger el pedido  -->
+                                        <Label Margin="5,0,0,0" FontSize="10">
+                                            <Label.Text>
+                                                <Binding Path="sucursalPedido" StringFormat="Recoger en: {0}" />
+                                            </Label.Text>
+                                        </Label>
 
-                                        </StackLayout>
-                                        <Image Grid.Column="2" Grid.Row="1" Source="ImagenesRepartidor/checkpedidosrepartidor.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="5,0,0,0"/>
-                                    </Grid>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate> 
-                    </CollectionView>
-                </StackLayout>
-            </ScrollView>
-            <!--Menú de Opciones-->
-            <StackLayout  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="3" WidthRequest="360" HeightRequest="65">
-                <Image Source="ImagenesRepartidor/botonera.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"></Image>
+                                    </StackLayout>
+                                    <Image
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Margin="15,0,0,15"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="ImagenesRepartidor/checkpedidosrepartidor.png"
+                                        VerticalOptions="CenterAndExpand" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
-            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand" Grid.Row="3" Orientation="Horizontal">
+        </ScrollView>
+
+
+        <!--  Menú de Opciones  -->
+        <Frame
+            Grid.Row="2"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
                 <ImageButton
                     x:Name="btnInicioRepartidor"
                     Margin="20,0,10,0"
@@ -121,9 +200,7 @@
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/botoninicio.png"
-                    Margin="15,0,5,5"
-                    WidthRequest="55">
-                </ImageButton>
+                    WidthRequest="40" />
                 <ImageButton
                     x:Name="btnPedidosRepartidor"
                     Margin="0,0,10,0"
@@ -133,9 +210,7 @@
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/botonpedidos.svg"
-                    Margin="0,0,5,5"
-                    WidthRequest="50">
-                </ImageButton>
+                    WidthRequest="40" />
                 <ImageButton
                     x:Name="btnIngresosRepartidor"
                     Margin="0,0,10,0"
@@ -145,9 +220,7 @@
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/botoningresos.svg"
-                    Margin="0,0,5,5"
-                    WidthRequest="50">
-                </ImageButton>
+                    WidthRequest="40" />
                 <ImageButton
                     x:Name="btnHistorialPedidosRepartidor"
                     Margin="0,0,10,0"
@@ -157,9 +230,7 @@
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/botonhistorialpedidos.svg"
-                    Margin="0,0,5,5"
-                    WidthRequest="50">
-                </ImageButton>
+                    WidthRequest="40" />
                 <ImageButton
                     x:Name="btnPerfilRepartidor"
                     Margin="0,0,10,0"
@@ -169,9 +240,7 @@
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/perfilrepartidor.svg"
-                    Margin="0,0,5,5"
-                    WidthRequest="50">
-                </ImageButton>
+                    WidthRequest="40" />
                 <ImageButton
                     x:Name="btnLogOutRepartidor"
                     Margin="0,0,20,0"
@@ -181,10 +250,9 @@
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/salirmenu.png"
-                    Margin="0,0,5,5"
-                    WidthRequest="50">
-                </ImageButton>
+                    WidthRequest="40" />
             </StackLayout>
-        </Grid>
-    </AbsoluteLayout>
+        </Frame>
+
+    </Grid>
 </ContentPage>

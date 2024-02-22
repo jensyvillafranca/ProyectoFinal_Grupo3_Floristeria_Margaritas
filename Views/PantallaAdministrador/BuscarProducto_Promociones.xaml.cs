@@ -5,8 +5,8 @@ public partial class BuscarProducto_Promociones : ContentPage
 {
     public ObservableCollection<ListaProductos_Buscar> ListaProductos { get; set; }
     public BuscarProducto_Promociones()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         //RemoveLinePickercs.remove_stripe();
         // Inicia objetos de prueba para collection view
         ListaProductos = new ObservableCollection<ListaProductos_Buscar>
@@ -14,7 +14,7 @@ public partial class BuscarProducto_Promociones : ContentPage
                 new ListaProductos_Buscar { imagenProducto = "Productos/flowers2.png", nomProducto = "Ramo de rosas", precio = "L. 590", cantidad = "5", fechaVencimiento = "Ninguna"},
                 new ListaProductos_Buscar { imagenProducto = "Productos/flowers2.png", nomProducto = "Ramo de rosas", precio = "L. 590", cantidad = "5", fechaVencimiento = "Ninguna"},
                 new ListaProductos_Buscar { imagenProducto= "Productos/flowers2.png", nomProducto = "Chocolates", precio = "L. 590", cantidad = "5", fechaVencimiento ="2024-02-03"}
-              
+
             };
         collectionViewPedidosRepartidor.ItemsSource = ListaProductos;
     }
