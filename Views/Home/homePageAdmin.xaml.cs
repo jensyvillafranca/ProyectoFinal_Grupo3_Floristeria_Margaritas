@@ -126,7 +126,7 @@ public partial class homePageAdmin : ContentPage
 
     private void btnStock_Clicked(object sender, EventArgs e)
     {
-
+        Navigation.PushAsync(new Views.CreacionProductos.AgregarProductos());
     }
 
     private void btnEstadisticas_Clicked(object sender, EventArgs e)

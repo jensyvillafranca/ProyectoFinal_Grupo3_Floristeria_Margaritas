@@ -132,7 +132,8 @@ public partial class homePageUser : ContentPage
 
     private async void TapGesturePerfil_Tapped(object sender, TappedEventArgs e)
     {
-        await AnimationUtilities.ChangeFrameColor(framePerfil, Color.FromRgb(46, 117, 182), Color.FromRgb(65, 185, 254), 250);
+        await AnimationUtilities.ChangeFrameColor(framePerfil, Color.FromRgb(0, 0, 0), Color.FromRgb(211, 211, 211), 250);
+        await Navigation.PushAsync(new Profile.profilePageUser());
     }
 
     private async void TapGestureCarousel_Tapped(object sender, TappedEventArgs e)
