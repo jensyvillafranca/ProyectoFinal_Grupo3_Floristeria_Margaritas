@@ -335,6 +335,9 @@
 	  <MauiXaml Update="Views\PantallaAdministrador\CrearPromociones.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallaAdministrador\notificacionesAdministrador.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\historialEntregas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

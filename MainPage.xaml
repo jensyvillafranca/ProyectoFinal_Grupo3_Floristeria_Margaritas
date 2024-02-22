@@ -90,6 +90,12 @@
                 SemanticProperties.Hint="Pagina de historial de entregas"
                 Text="Historial Entregas" />
             <Button
+                x:Name="btnNotificaciones"
+                Clicked="btnNotificaciones_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de notificaciones"
+                Text="Notificaciones Admin" />
+            <Button
                 x:Name="btnlogin"
                 Clicked="btnlogin_Clicked"
                 HorizontalOptions="Center"
