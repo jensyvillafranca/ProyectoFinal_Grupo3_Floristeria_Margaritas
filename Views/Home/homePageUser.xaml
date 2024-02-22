@@ -72,7 +72,9 @@
                         BackgroundColor="{DynamicResource AzulMedio}"
                         BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
-                        HasShadow="True">
+                        HasShadow="True"
+                        HeightRequest="200"
+                        HorizontalOptions="FillAndExpand">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
                                 x:Name="TapGestureProductos"
@@ -103,7 +105,9 @@
                         BackgroundColor="{DynamicResource AzulOscuro}"
                         BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
-                        HasShadow="True">
+                        HasShadow="True"
+                        HeightRequest="200"
+                        HorizontalOptions="FillAndExpand">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
                                 x:Name="TapGestureCarrito"
@@ -193,7 +197,9 @@
                         BackgroundColor="{DynamicResource AzulOscuro}"
                         BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
-                        HasShadow="True">
+                        HasShadow="True"
+                        HeightRequest="200"
+                        HorizontalOptions="FillAndExpand">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
                                 x:Name="TapGesturePedidos"
@@ -224,7 +230,9 @@
                         BackgroundColor="{DynamicResource AzulMedio}"
                         BorderColor="{DynamicResource AzulBotones}"
                         CornerRadius="10"
-                        HasShadow="True">
+                        HasShadow="True"
+                        HeightRequest="200"
+                        HorizontalOptions="FillAndExpand">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
                                 x:Name="TapGesturePerfil"

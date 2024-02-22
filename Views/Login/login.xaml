@@ -1,36 +1,142 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login.login"
-             Title="login">
-    <AbsoluteLayout>
-        <Image Source="imglogin/fondologinn.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1" AbsoluteLayout.LayoutFlags="All"/>
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login.login"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="imglogin/fondologinn.png">
 
-        <Label Text="Usuario" TextColor="White" AbsoluteLayout.LayoutBounds="0.5,0.3,0.7,0.05" AbsoluteLayout.LayoutFlags="All"/>
-        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.2,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
-        <Entry TextColor="White" Placeholder="Ingrese su usuario" AbsoluteLayout.LayoutBounds="0.5,0.33,0.7,0.05" AbsoluteLayout.LayoutFlags="All"/>
+    <Frame
+        Margin="10,50,10,0"
+        BackgroundColor="Transparent"
+        BorderColor="Transparent"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="CenterAndExpand">
+        <StackLayout>
+
+            <Label
+                Margin="10,0,0,5"
+                FontAttributes="Bold"
+                FontSize="14"
+                Text="Usuario"
+                TextColor="White" />
+            <Frame
+                Margin="10,0,0,20"
+                Padding="0,0,0,0"
+                BackgroundColor="White"
+                CornerRadius="10">
+                <Entry
+                    x:Name="entryUsername"
+                    Margin="5,0,5,0"
+                    BackgroundColor="Transparent"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    HorizontalTextAlignment="Center"
+                    Placeholder="Ingrese su usuario"
+                    PlaceholderColor="Gray"
+                    TextColor="Black" />
+            </Frame>
+
+            <Label
+                Margin="10,0,0,5"
+                FontAttributes="Bold"
+                FontSize="14"
+                Text="Contraseña"
+                TextColor="White" />
+
+            <Frame
+                Margin="10,0,0,5"
+                Padding="0,0,0,0"
+                BackgroundColor="White"
+                CornerRadius="10">
+                <Entry
+                    x:Name="entryPassword"
+                    Margin="5,0,0,5"
+                    BackgroundColor="Transparent"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    HorizontalTextAlignment="Center"
+                    IsPassword="True"
+                    Placeholder="Ingrese su Contraseña"
+                    PlaceholderColor="Gray"
+                    TextColor="Black" />
+            </Frame>
+
+            <StackLayout
+                Margin="10,0,10,10"
+                Padding="0,0,0,0"
+                Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
+                    <Switch
+                        x:Name="switchRecordar"
+                        HorizontalOptions="StartAndExpand"
+                        InputTransparent="False"
+                        IsToggled="false"
+                        OnColor="{DynamicResource AzulBotones}"
+                        ThumbColor="Gray"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="11"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Recordar contraseña"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+
+                <Label
+                    x:Name="labelRecuperar"
+                    FontAttributes="Bold"
+                    FontSize="11"
+                    HorizontalOptions="EndAndExpand"
+                    Text="Olvidé mi contraseña"
+                    TextColor="White"
+                    TextDecorations="Underline"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
 
 
-        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.4,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
-
-        <Label Text="Contraseña" TextColor="White" AbsoluteLayout.LayoutBounds="0.5,0.43,0.7,0.05" AbsoluteLayout.LayoutFlags="All"/>
-        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.2,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
-        <Entry TextColor="White" Placeholder="Ingrese su Contraseña" IsPassword="True" AbsoluteLayout.LayoutBounds="0.5,0.46,0.7,0.05" AbsoluteLayout.LayoutFlags="All"/>
-
-        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.4,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
-
-        <Switch IsToggled="false" ThumbColor="LightBlue" AbsoluteLayout.LayoutBounds="0.06,0.55,0.2,0.04" AbsoluteLayout.LayoutFlags="All" OnColor="#273AA0" InputTransparent="False"/>
-        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.2,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
-        <Label Text="Recordar contraseña"  FontSize="10" TextColor="LightBlue"  AbsoluteLayout.LayoutBounds="0.4,0.55,0.4,0.02" AbsoluteLayout.LayoutFlags="All"/>
-        <BoxView Color="Transparent" HeightRequest="0" AbsoluteLayout.LayoutBounds="0.5,0.6,0.7,0.005" AbsoluteLayout.LayoutFlags="All"/>
-        <Label Text="Olvidé mi contraseña" FontSize="10" TextColor="LightBlue" TextDecorations="Underline" AbsoluteLayout.LayoutBounds="1.02,0.55,0.4,0.02" AbsoluteLayout.LayoutFlags="All"/>
 
 
-        <Button Text="Entrar" FontSize="11" WidthRequest="335" HeightRequest="37" TextColor="White" BackgroundColor="DodgerBlue" CornerRadius="20" AbsoluteLayout.LayoutBounds="0.5,0.705,0.1,0.3" AbsoluteLayout.LayoutFlags="All"/>
-        <Button Text="Registrarse" FontSize="11" WidthRequest="335" HeightRequest="37" TextColor="White" BackgroundColor="CornflowerBlue" CornerRadius="20" AbsoluteLayout.LayoutBounds="0.5,0.805,0.1,0.3" AbsoluteLayout.LayoutFlags="All"/>
-        <Button Text="Aplicar como repartidor" FontSize="11" WidthRequest="335" HeightRequest="37" TextColor="White" BackgroundColor="RoyalBlue" CornerRadius="20" AbsoluteLayout.LayoutBounds="0.5,0.905,0.1,0.3" AbsoluteLayout.LayoutFlags="All"/>
-
-    </AbsoluteLayout>
-       
-
+            <Button
+                x:Name="btnEntrar"
+                Margin="20,50,20,10"
+                BackgroundColor="{DynamicResource AzulBotones}"
+                BorderColor="{DynamicResource AzulOscuro}"
+                Clicked="btnEntrar_Clicked"
+                CornerRadius="20"
+                FontAttributes="Bold"
+                FontSize="12"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Text="Entrar"
+                TextColor="White" />
+            <Button
+                x:Name="btnRegistrarse"
+                Margin="20,0,20,10"
+                BackgroundColor="CornflowerBlue"
+                BorderColor="{DynamicResource AzulOscuro}"
+                Clicked="btnRegistrarse_Clicked"
+                CornerRadius="20"
+                FontAttributes="Bold"
+                FontSize="12"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Text="Registrarse"
+                TextColor="White" />
+            <Button
+                x:Name="btnAplicar"
+                Margin="20,0,20,10"
+                BackgroundColor="RoyalBlue"
+                BorderColor="{DynamicResource AzulOscuro}"
+                Clicked="btnAplicar_Clicked"
+                CornerRadius="20"
+                FontAttributes="Bold"
+                FontSize="12"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Text="Aplicar como repartidor"
+                TextColor="White" />
+        </StackLayout>
+    </Frame>
 </ContentPage>

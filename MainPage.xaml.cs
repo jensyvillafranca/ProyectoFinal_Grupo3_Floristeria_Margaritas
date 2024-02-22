@@ -105,12 +105,6 @@ public partial class MainPage : ContentPage
     {
         Navigation.PushAsync(new Views.PantallaAdministrador.notificacionesAdministrador());
     }
-}
-
-        private void btnIngresosRepartidor_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new Views.PantallasRepartidor.IngresosRepartidor());
-        }
     private void btnIngresosRepartidor_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.PantallasRepartidor.IngresosRepartidor());
