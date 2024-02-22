@@ -48,55 +48,66 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Calificacion
             }
         }
 
-        private void OnStar_Clicked(object sender, EventArgs e)
+        private void OnStar_Checked(object sender, CheckedChangedEventArgs e)
         {
-            if (sender is ImageButton starButton)
+            if (sender is CheckBox starCheckBox)
             {
-                // Obtener el índice de la estrella clicada
-                int indiceEstrella = int.Parse(starButton.AutomationId);
+                int indiceEstrella = int.Parse(starCheckBox.AutomationId);
 
-                // Verificar la imagen actual y cambiarla
-                if (starButton.Source.ToString().Contains("estrella_vacia.png"))
+                if (starCheckBox.IsChecked)
                 {
-                    // Llenar la estrella clicada y vaciar las siguientes
+                    // Si se selecciona una estrella, llenar hasta la estrella seleccionada
                     for (int i = 0; i <= indiceEstrella; i++)
                     {
                         estrellasLlenas[i] = true;
                     }
-
-                    // Vaciar las estrellas restantes
-                    for (int i = indiceEstrella + 1; i < estrellasLlenas.Length; i++)
-                    {
-                        estrellasLlenas[i] = false;
-                    }
-
-                    starButton.Source = "PantallaCalificacion/estrella_llena1.png";
                 }
                 else
                 {
-                    // Vaciar todas las estrellas a partir de la clicada
-                    for (int i = indiceEstrella; i < estrellasLlenas.Length; i++)
+                    // Si se deselecciona, vaciar todas las estrellas
+                    for (int i = 0; i < estrellasLlenas.Length; i++)
                     {
                         estrellasLlenas[i] = false;
                     }
-
-                    starButton.Source = "PantallaCalificacion/estrella_vacia.png";
                 }
 
-                // Actualizar las imágenes de las estrellas
+                // Actualizar las imágenes de todas las estrellas
                 for (int i = 0; i < estrellasLlenas.Length; i++)
                 {
-                    string imagenEstrella = estrellasLlenas[i] ? "PantallaCalificacion/estrella_llena1.png" : "PantallaCalificacion/estrella_vacia.png";
-                    // Encuentra la ImageButton correspondiente según el índice
-                    var estrella = this.FindByName<ImageButton>($"btnEstrella{i + 1}");
-                    estrella.Source = imagenEstrella;
+                    string imagenEstrella = estrellasLlenas[i] ? "PantallaCalificacion/estrella_llena3.png" : "PantallaCalificacion/estrella_vacia.png";
+                    var estrellaImage = this.FindByName<Image>($"imgEstrella{i + 1}");
+                    estrellaImage.Source = imagenEstrella;
                 }
             }
         }
 
-        private void BtnOpinion_Clicked(object sender, EventArgs e)
+        private void OnStarTapped(object sender, EventArgs e)
         {
+            if (sender is Image starImage)
+            {
+                int indiceEstrella = Convert.ToInt32(starImage.AutomationId);
 
+                // Cambiar la imagen y actualizar el estado para la estrella tocada
+                estrellasLlenas[indiceEstrella] = !estrellasLlenas[indiceEstrella];
+
+                // Actualizar las imágenes de todas las estrellas
+                for (int i = 0; i < estrellasLlenas.Length; i++)
+                {
+                    // Llenar estrellas hasta la estrella tocada y vaciar las siguientes
+                    if (i < indiceEstrella)
+                    {
+                        estrellasLlenas[i] = true;
+                    }
+                    else if (i > indiceEstrella)
+                    {
+                        estrellasLlenas[i] = false;
+                    }
+
+                    string imagenEstrella = estrellasLlenas[i] ? "PantallaCalificacion/estrella_llena3.png" : "PantallaCalificacion/estrella_vacia.png";
+                    var estrellaImage = this.FindByName<Image>($"imgEstrella{i + 1}");
+                    estrellaImage.Source = imagenEstrella;
+                }
+            }
         }
 
         private void btnConfirmar_Clicked(object sender, EventArgs e)
@@ -104,4 +115,6 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Calificacion
             Navigation.PushAsync(new Views.Calificacion.CalificacionFinalizada());
         }
     }
+
+
 }
