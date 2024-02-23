@@ -96,7 +96,7 @@
                                         Grid.ColumnSpan="3"
                                         HorizontalOptions="Start"
                                         x:Name="iconoEstadoPedido"
-                                        Source="ImagenesRepartidor/estadolistoingresos.png"/>
+                                        Source="ImagenesRepartidor/estado_listo_ingresos.png"/>
 
                                     <StackLayout
                                         Grid.Column="1"
@@ -160,75 +160,75 @@
 
         <!--  Menú de Opciones  -->
         <Frame
-    Grid.Row="2"
-    Padding="0,10,0,10"
-    BackgroundColor="{DynamicResource BlackWithTransparency}"
-    BorderColor="{DynamicResource AzulBotones}"
-    CornerRadius="20">
+            Grid.Row="2"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
             <StackLayout
-        Padding="0,0,0,0"
-        BackgroundColor="Transparent"
-        Orientation="Horizontal">
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    Orientation="Horizontal">
                 <ImageButton
-            x:Name="btnInicioRepartidor"
-            Margin="20,0,10,0"
-            Aspect="AspectFit"
-            BackgroundColor="Transparent"
-            BorderColor="{DynamicResource AzulOscuro}"
-            HeightRequest="40"
-            HorizontalOptions="FillAndExpand"
-            Source="ImagenesRepartidor/botoninicio.png"
-            WidthRequest="40" />
+                        x:Name="btnInicioRepartidor"
+                        Margin="20,0,10,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        BorderColor="{DynamicResource AzulOscuro}"
+                        HeightRequest="40"
+                        HorizontalOptions="FillAndExpand"
+                        Source="ImagenesRepartidor/botoninicio.png"
+                        WidthRequest="40" />
                 <ImageButton
-            x:Name="btnPedidosRepartidor"
-            Margin="0,0,10,0"
-            Aspect="AspectFit"
-            BackgroundColor="Transparent"
-            BorderColor="{DynamicResource AzulOscuro}"
-            HeightRequest="40"
-            HorizontalOptions="FillAndExpand"
-            Source="ImagenesRepartidor/botonpedidos.svg"
-            WidthRequest="40" />
+                        x:Name="btnPedidosRepartidor"
+                        Margin="0,0,10,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        BorderColor="{DynamicResource AzulOscuro}"
+                        HeightRequest="40"
+                        HorizontalOptions="FillAndExpand"
+                        Source="ImagenesRepartidor/botonpedidos.svg"
+                        WidthRequest="40" />
                 <ImageButton
-            x:Name="btnIngresosRepartidor"
-            Margin="0,0,10,0"
-            Aspect="AspectFit"
-            BackgroundColor="Transparent"
-            BorderColor="{DynamicResource AzulOscuro}"
-            HeightRequest="40"
-            HorizontalOptions="FillAndExpand"
-            Source="ImagenesRepartidor/botoningresos.svg"
-            WidthRequest="40" />
+                        x:Name="btnIngresosRepartidor"
+                        Margin="0,0,10,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        BorderColor="{DynamicResource AzulOscuro}"
+                        HeightRequest="40"
+                        HorizontalOptions="FillAndExpand"
+                        Source="ImagenesRepartidor/botoningresos.svg"
+                        WidthRequest="40" />
                 <ImageButton
-            x:Name="btnHistorialPedidosRepartidor"
-            Margin="0,0,10,0"
-            Aspect="AspectFit"
-            BackgroundColor="Transparent"
-            BorderColor="{DynamicResource AzulOscuro}"
-            HeightRequest="40"
-            HorizontalOptions="FillAndExpand"
-            Source="ImagenesRepartidor/botonhistorialpedidos.svg"
-            WidthRequest="40" />
+                        x:Name="btnHistorialPedidosRepartidor"
+                        Margin="0,0,10,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        BorderColor="{DynamicResource AzulOscuro}"
+                        HeightRequest="40"
+                        HorizontalOptions="FillAndExpand"
+                        Source="ImagenesRepartidor/botonhistorialpedidos.svg"
+                        WidthRequest="40" />
                 <ImageButton
-            x:Name="btnPerfilRepartidor"
-            Margin="0,0,10,0"
-            Aspect="AspectFit"
-            BackgroundColor="Transparent"
-            BorderColor="{DynamicResource AzulOscuro}"
-            HeightRequest="40"
-            HorizontalOptions="FillAndExpand"
-            Source="ImagenesRepartidor/perfilrepartidor.svg"
-            WidthRequest="40" />
+                        x:Name="btnPerfilRepartidor"
+                        Margin="0,0,10,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        BorderColor="{DynamicResource AzulOscuro}"
+                        HeightRequest="40"
+                        HorizontalOptions="FillAndExpand"
+                        Source="ImagenesRepartidor/perfilrepartidor.svg"
+                        WidthRequest="40" />
                 <ImageButton
-            x:Name="btnLogOutRepartidor"
-            Margin="0,0,20,0"
-            Aspect="AspectFit"
-            BackgroundColor="Transparent"
-            BorderColor="{DynamicResource AzulOscuro}"
-            HeightRequest="40"
-            HorizontalOptions="FillAndExpand"
-            Source="ImagenesRepartidor/salirmenu.png"
-            WidthRequest="40" />
+                        x:Name="btnLogOutRepartidor"
+                        Margin="0,0,20,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        BorderColor="{DynamicResource AzulOscuro}"
+                        HeightRequest="40"
+                        HorizontalOptions="FillAndExpand"
+                        Source="ImagenesRepartidor/salirmenu.png"
+                        WidthRequest="40" />
             </StackLayout>
         </Frame>
     </StackLayout>

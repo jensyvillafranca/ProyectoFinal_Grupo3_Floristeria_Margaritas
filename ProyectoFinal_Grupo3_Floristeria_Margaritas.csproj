@@ -142,13 +142,14 @@
 	  <None Remove="Resources\Images\ImagenesRepartidor\desplegar.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\dni.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\encabezado_repartidores.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\estado_listo_ingresos.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\estrellallenarepartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\estrellavaciarepartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\estadolistoingresos.png" />
-	  <None Remove="Resources\Images\ImagenesRepartidor\fechaestimada_cliente.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\fecha_nacimiento.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.svg" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\genero.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\haz_llegado.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\historial_entregas.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\ingresos_repartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\llamada_cliente.png" />
@@ -158,9 +159,11 @@
 	  <None Remove="Resources\Images\ImagenesRepartidor\perfilrepartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\perfilrepartidor_home.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\producto_cliente.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\recoger_pedido_sucursal.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\recoger_sucursal.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\repartidor.svg" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\salirmenu.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\salir_modal.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\telefono_cliente.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\telefono_repartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\ubicacion_cliente.png" />
@@ -226,11 +229,11 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
+		<PackageReference Include="Geolocator.Plugin" Version="1.0.2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.7" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.8" />
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.6" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -291,9 +294,11 @@
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\desplegar.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\dni.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\encabezado_repartidores.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\estado_listo_ingresos.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fecha_nacimiento.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.svg" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\genero.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\haz_llegado.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\historial_entregas.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\ingresos_repartidor.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\llamada_cliente.png" />
@@ -303,9 +308,11 @@
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\perfilrepartidor.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\perfilrepartidor_home.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\producto_cliente.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\recoger_pedido_sucursal.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\recoger_sucursal.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\repartidor.svg" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\salirmenu.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\salir_modal.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\telefono_cliente.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\telefono_repartidor.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\ubicacion_cliente.png" />
@@ -409,6 +416,9 @@
 	  <MauiXaml Update="Views\PantallaAdministrador\CrearPromociones.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallaAdministrador\NotificacionStockProductos.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\IngresosRepartidor.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -416,6 +426,15 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\historialEntregas.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallasRepartidor\MapaEntregaCliente.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallasRepartidor\MapaSucursal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallasRepartidor\Modal_Pedidos.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\PantallaPedidosEntrantes.xaml">
@@ -475,6 +494,9 @@
 	<ItemGroup>
 	  <Compile Update="Views\Login\signin.xaml.cs">
 	    <DependentUpon>signin.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PantallasRepartidor\Modal_Pedidos.xaml.cs">
+	    <DependentUpon>Modal_Pedidos.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

@@ -2,10 +2,10 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Profile;
 
 public partial class editPageUserProfile : ContentPage
 {
-	public editPageUserProfile()
-	{
-		InitializeComponent();
-	}
+    public editPageUserProfile()
+    {
+        InitializeComponent();
+    }
 
     private void btnImagenAtras_Clicked(object sender, EventArgs e)
     {
@@ -13,7 +13,7 @@ public partial class editPageUserProfile : ContentPage
     }
     private void btnActualizarPefil_Clicked(object sender, EventArgs e)
     {
-        
+
     }
 
     private void ImageButton_Clicked(object sender, EventArgs e)
@@ -22,7 +22,7 @@ public partial class editPageUserProfile : ContentPage
         PopupMenu.IsVisible = !PopupMenu.IsVisible;
     }
 
- 
+
 
     private void SubirGaleria_Clicked(object sender, EventArgs e)
     {

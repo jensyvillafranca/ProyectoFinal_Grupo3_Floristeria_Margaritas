@@ -1,7 +1,39 @@
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.DireccionesUsuario;
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-windows10.0.19041.0)'
+Antes:
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+Después:
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-ios)'
+Antes:
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+Después:
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-maccatalyst)'
+Antes:
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+Después:
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+*/
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using System.Collections.ObjectModel;
 
 public partial class DireccionesGuardas : ContentPage
 

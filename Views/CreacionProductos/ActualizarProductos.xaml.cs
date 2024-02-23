@@ -8,8 +8,8 @@ public partial class ActualizarProductos : ContentPage
 
     string categorias;
     public ActualizarProductos()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         categoria = new ObservableCollection<string>
             {
@@ -19,7 +19,7 @@ public partial class ActualizarProductos : ContentPage
                 "Flores de boda",
                 "Flores con chocolates",
                 "Flores de cumpleaños",
-             
+
         };
 
         cotegoriaPicker.ItemsSource = categoria;
@@ -28,13 +28,13 @@ public partial class ActualizarProductos : ContentPage
 
 
 
-private void cotegoriaPicker_SelectedIndexChanged(object sender, EventArgs e)
-{
-    categorias = cotegoriaPicker.SelectedItem as string;
-}
+    private void cotegoriaPicker_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        categorias = cotegoriaPicker.SelectedItem as string;
+    }
 
 
-private void btnImagenAtras_Clicked(object sender, EventArgs e)
+    private void btnImagenAtras_Clicked(object sender, EventArgs e)
     {
 
     }
@@ -51,7 +51,7 @@ private void btnImagenAtras_Clicked(object sender, EventArgs e)
         NoButton.IsVisible = false;
     }
 
-  
+
 
     private void btnHome_Clicked(object sender, EventArgs e)
     {
