@@ -23,6 +23,8 @@ public partial class PantallaPedidosEntrantes : ContentPage
         collectionViewPedidosRepartidor.ItemsSource = ListaPedidosRepartidor;
     }
 
+  
+
     //Modelo Temporal para cargar los datos de los pedidos.
     public class ListaPedidos
     {

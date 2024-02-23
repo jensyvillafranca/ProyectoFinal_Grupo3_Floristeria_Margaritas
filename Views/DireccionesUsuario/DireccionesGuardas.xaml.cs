@@ -14,14 +14,14 @@ public partial class DireccionesGuardas : ContentPage
 
         ListaPedidosRepartidor = new ObservableCollection<DireccionesAgregadas>
             {
-                new DireccionesAgregadas {  imagenCasa = "Profile/casa.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casa.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casa.png", referencia = "Avenida la hacienda", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casa.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casa.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casa.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casa.png", referencia = "Avenida la hacienda  ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casa.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
+                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
+                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
+                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
+                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
+                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
+                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
+                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda  ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
+                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
             };
         collectionViewPedidosRepartidor.ItemsSource = ListaPedidosRepartidor;
     }

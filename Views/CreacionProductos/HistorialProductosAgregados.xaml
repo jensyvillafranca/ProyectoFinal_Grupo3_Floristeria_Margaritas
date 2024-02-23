@@ -137,7 +137,7 @@
                                         <ImageButton
                                              Grid.Column="2" Grid.Row="1" 
                                              WidthRequest="26"
-                                             Source="Profile/eliminar.png" 
+                                             Source="Productos/eliminar2.png" 
                                              HorizontalOptions="CenterAndExpand" 
                                              VerticalOptions="CenterAndExpand" 
                                              Margin="70,0,19,0"

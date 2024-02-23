@@ -187,6 +187,25 @@
 	  <None Remove="Resources\Images\Productos\tarjetacolor.png" />
 	  <None Remove="Resources\Images\Productos\tarjetacredito.png" />
 	  <None Remove="Resources\Images\Productos\ubicacionactual.png" />
+	  <None Remove="Resources\Images\Profile\agregardireccion.png" />
+	  <None Remove="Resources\Images\Profile\atrasperfil.png" />
+	  <None Remove="Resources\Images\Profile\cambiarcontra.png" />
+	  <None Remove="Resources\Images\Profile\casa.png" />
+	  <None Remove="Resources\Images\Profile\editarperfil.png" />
+	  <None Remove="Resources\Images\Profile\eliminar.png" />
+	  <None Remove="Resources\Images\Profile\encabezadoperfil.png" />
+	  <None Remove="Resources\Images\Profile\fondo.jpg" />
+	  <None Remove="Resources\Images\Profile\fondoprincipal.png" />
+	  <None Remove="Resources\Images\Profile\historialcompras.png" />
+	  <None Remove="Resources\Images\Profile\historialproductosagredado.png" />
+	  <None Remove="Resources\Images\Profile\listo.png" />
+	  <None Remove="Resources\Images\Profile\listofondo.png" />
+	  <None Remove="Resources\Images\Profile\perfilvacio.jpg" />
+	  <None Remove="Resources\Images\Profile\primerextrenia.png" />
+	  <None Remove="Resources\Images\Profile\segundaestre.png" />
+	  <None Remove="Resources\Images\Profile\tomarfoto.png" />
+	  <None Remove="Resources\Images\Profile\ubicacioneditar.png" />
+	  <None Remove="Resources\Images\Profile\ubucacionguardas.png" />
 	  <None Remove="Resources\Images\proyecciones.png" />
 	</ItemGroup>
 
@@ -299,9 +318,26 @@
 	  <MauiImage Include="Resources\Images\Productos\tarjetacolor.png" />
 	  <MauiImage Include="Resources\Images\Productos\tarjetacredito.png" />
 	  <MauiImage Include="Resources\Images\Productos\ubicacionactual.png" />
+	  <MauiImage Include="Resources\Images\Profile\agregardireccion.png" />
+	  <MauiImage Include="Resources\Images\Profile\atrasperfil.png" />
+	  <MauiImage Include="Resources\Images\Profile\cambiarcontra.png" />
+	  <MauiImage Include="Resources\Images\Profile\editarperfil.png" />
+	  <MauiImage Include="Resources\Images\Profile\encabezadoperfil.png" />
+	  <MauiImage Include="Resources\Images\Profile\fondo.jpg" />
+	  <MauiImage Include="Resources\Images\Profile\fondoprincipal.png" />
+	  <MauiImage Include="Resources\Images\Profile\historialproductosagredado.png" />
+	  <MauiImage Include="Resources\Images\Profile\listo.png" />
+	  <MauiImage Include="Resources\Images\Profile\listofondo.png" />
+	  <MauiImage Include="Resources\Images\Profile\perfilvacio.jpg" />
+	  <MauiImage Include="Resources\Images\Profile\primerextrenia.png" />
+	  <MauiImage Include="Resources\Images\Profile\segundaestre.png" />
+	  <MauiImage Include="Resources\Images\Profile\tomarfoto.png" />
+	  <MauiImage Include="Resources\Images\Profile\ubicacioneditar.png" />
+	  <MauiImage Include="Resources\Images\Profile\ubucacionguardas.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+		
 	  <MauiXaml Update="Views\Calificacion\CalificacionFinalizada.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -374,6 +410,7 @@
 	  <MauiXaml Update="Views\Profile\profilePageUser.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+		  
 	</ItemGroup>
 
 	<ItemGroup>
