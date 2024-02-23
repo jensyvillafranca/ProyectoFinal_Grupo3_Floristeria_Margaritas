@@ -6,4 +6,9 @@ public partial class singin : ContentPage
     {
         InitializeComponent();
     }
+
+    private void btnRegistrarse_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }

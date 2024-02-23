@@ -175,6 +175,7 @@
 	  <None Remove="Resources\Images\Menu\pedidosmenu.png" />
 	  <None Remove="Resources\Images\Menu\perfilmenu.png" />
 	  <None Remove="Resources\Images\Menu\productocliente.png" />
+	  <None Remove="Resources\Images\Menu\promocionesmenu.png" />
 	  <None Remove="Resources\Images\notificacion.png" />
 	  <None Remove="Resources\Images\piechart.png" />
 	  <None Remove="Resources\Images\Productos\add.png" />
@@ -293,6 +294,7 @@
 	  <MauiImage Include="Resources\Images\Menu\pedidosmenu.png" />
 	  <MauiImage Include="Resources\Images\Menu\perfilmenu.png" />
 	  <MauiImage Include="Resources\Images\Menu\productocliente.png" />
+	  <MauiImage Include="Resources\Images\Menu\promocionesmenu.png" />
 	  <MauiImage Include="Resources\Images\Menu\proyecciones.png" />
 	  <MauiImage Include="Resources\Images\Productos\add.png" />
 	  <MauiImage Include="Resources\Images\Productos\agregartarjeta.png" />

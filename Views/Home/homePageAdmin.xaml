@@ -557,7 +557,7 @@
                     Clicked="btnAnuncios_Clicked"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
-                    Source="Menu/anouncements.png"
+                    Source="Menu/promocionesmenu.png"
                     WidthRequest="40" />
 
                 <!--  Perfil Button  -->
