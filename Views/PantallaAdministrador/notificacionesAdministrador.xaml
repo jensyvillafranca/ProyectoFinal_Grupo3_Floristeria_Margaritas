@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallaAdministrador.notificacionesAdministrador"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="fondo_todas_pantallas.png">
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!--  Header  -->
+
+        <StackLayout Grid.Row="0">
+
+            <Frame
+                Margin="0,0,0,0"
+                Padding="5,10,5,10"
+                BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
+                CornerRadius="20">
+                <StackLayout
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    Orientation="Horizontal">
+                    <ImageButton
+                        x:Name="btnAtras"
+                        Margin="10,0,20,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnAtras_Clicked"
+                        HeightRequest="40"
+                        Source="ImagenesRepartidor/atras.png"
+                        WidthRequest="40" />
+                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                    <Label
+                        Margin="0,0,50,0"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        HorizontalOptions="Center"
+                        Text="Historial de Entregas"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+
+                    <ImageButton
+                        x:Name="btnNotification"
+                        Margin="10,0,20,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnNotification_Clicked"
+                        HeightRequest="40"
+                        Source="Home/notificacion.png"
+                        WidthRequest="40" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+
+        <!--  Body: Collection View  -->
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <CollectionView
+                    x:Name="collectionViewNotificaciones"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding Notificaciones}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                x:Name="frameSolicitud"
+                                Margin="5"
+                                Padding="5"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
+                                CornerRadius="10"
+                                HasShadow="True">
+                                <StackLayout
+                                    HorizontalOptions="CenterAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            x:Name="labelIntro"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Margin="5,5,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelIntro, StringFormat='{}{0} ha solicitado unirse como repartidor'}"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            x:Name="labelFecha"
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Grid.ColumnSpan="2"
+                                            Margin="0,5,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelFecha}"
+                                            TextColor="Gray"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Frame
+                                            Grid.Row="1"
+                                            Grid.RowSpan="3"
+                                            Grid.Column="0"
+                                            Margin="0,0,0,0"
+                                            Padding="0,0,0,0"
+                                            BackgroundColor="FloralWhite"
+                                            BorderColor="{DynamicResource AzulBotones}"
+                                            CornerRadius="10"
+                                            HasShadow="True">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label
+                                                    x:Name="labelNombre"
+                                                    Margin="5,3,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding LabelNombre, StringFormat='Nombre: {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelCorreo"
+                                                    Margin="5,0,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding LabelCorreo, StringFormat='Correo Electrónico: {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelTelefono"
+                                                    Margin="5,0,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding LabelTelefono, StringFormat='Telefóno: {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelDNI"
+                                                    Margin="5,0,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding LabelDNI, StringFormat='DNI: {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelReqEdad"
+                                                    Margin="5,0,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding LabelReqEdad}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelDireccion"
+                                                    Margin="5,0,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding LabelDireccion, StringFormat='Pertenece al departamento de {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelGenero"
+                                                    Margin="5,0,5,5"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding LabelGenero, StringFormat='Género: {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                            </StackLayout>
+                                        </Frame>
+                                        <Button
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Grid.ColumnSpan="2"
+                                            Margin="5,0,5,0"
+                                            BackgroundColor="{DynamicResource AzulBotones}"
+                                            BorderColor="{DynamicResource AzulOscuro}"
+                                            CornerRadius="20"
+                                            FontAttributes="Bold"
+                                            FontSize="8"
+                                            HeightRequest="35"
+                                            HorizontalOptions="FillAndExpand"
+                                            SemanticProperties.Hint="Ver Imagenes"
+                                            Text="Ver Imagenes" />
+                                        <Button
+                                            Grid.Row="2"
+                                            Grid.Column="2"
+                                            Grid.ColumnSpan="2"
+                                            Margin="5,0,5,0"
+                                            BackgroundColor="{DynamicResource VerdePersonalizado}"
+                                            BorderColor="{DynamicResource AzulOscuro}"
+                                            CornerRadius="20"
+                                            FontAttributes="Bold"
+                                            FontSize="8"
+                                            HeightRequest="35"
+                                            HorizontalOptions="FillAndExpand"
+                                            SemanticProperties.Hint="Aceptar Solicitud"
+                                            Text="Aceptar" />
+                                        <Button
+                                            Grid.Row="3"
+                                            Grid.Column="2"
+                                            Grid.ColumnSpan="2"
+                                            Margin="5,0,5,0"
+                                            BackgroundColor="{DynamicResource RojoPersonalizado}"
+                                            BorderColor="{DynamicResource AzulOscuro}"
+                                            CornerRadius="20"
+                                            FontAttributes="Bold"
+                                            FontSize="8"
+                                            HeightRequest="35"
+                                            HorizontalOptions="FillAndExpand"
+                                            SemanticProperties.Hint="Rechazar Solicitud"
+                                            Text="Rechazar" />
+                                        <Label
+                                            x:Name="labelLicencia"
+                                            Grid.Row="4"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="5,5,5,5"
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelLicencia}"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+
+        <!--  Bottom Navigation Bar  -->
+        <Frame
+            Grid.Row="2"
+            Margin="0,0,0,0"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+
+                <!--  Home Button  -->
+                <ImageButton
+                    x:Name="btnHome"
+                    Margin="20,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnHome_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botoninicio.png"
+                    WidthRequest="40" />
+
+                <!--  Inventario Button  -->
+                <ImageButton
+                    x:Name="btnStock"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnStock_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Menu/historialcompras.png"
+                    WidthRequest="40" />
+
+                <!--  Estadisticas Button  -->
+                <ImageButton
+                    x:Name="btnEstadisticas"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnEstadisticas_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botonhistorialpedidos.svg"
+                    WidthRequest="40" />
+
+                <!--  Anuncios Button  -->
+                <ImageButton
+                    x:Name="btnAnuncios"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnAnuncios_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Menu/anouncements.png"
+                    WidthRequest="40" />
+
+                <!--  Perfil Button  -->
+                <ImageButton
+                    x:Name="btnPerfil"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnPerfil_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Home/perfilmenu.png"
+                    WidthRequest="40" />
+
+                <!--  Logout Button  -->
+                <ImageButton
+                    x:Name="btnLogout"
+                    Margin="0,0,20,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnLogout_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/salirmenu.png"
+                    WidthRequest="40" />
+            </StackLayout>
+        </Frame>
+
+    </Grid>
+</ContentPage>

@@ -38,7 +38,7 @@
                 <Label
                     Margin="0,0,95,0"
                     FontAttributes="Bold"
-                    Text="Calificacion Finalizada"
+                    Text="Calificación Finalizada"
                     TextColor="White"
                     VerticalOptions="CenterAndExpand" />
 

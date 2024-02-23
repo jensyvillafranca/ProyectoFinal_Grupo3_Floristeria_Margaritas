@@ -4,7 +4,7 @@
              x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.AplicarRepartidor"
              Title="AplicarRepartidor"
              Shell.NavBarIsVisible="False"
-             BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.png">
+             BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.svg">
     <StackLayout>
         <!--  Header  -->
         <Frame
