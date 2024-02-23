@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "773209825579",
+    "project_id": "floristeriamargaritas-c74d1",
+    "storage_bucket": "floristeriamargaritas-c74d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773209825579:android:ff76f4675dc33a7cf2656e",
+        "android_client_info": {
+          "package_name": "com.example.floristeriamargaritas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8hxLpl4SXahMIi20on6Aw6vWY3WOnsp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
