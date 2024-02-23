@@ -161,6 +161,13 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina de Mapa Sucursal"
                 Text="Mapa Cliente" />
+
+            <Button
+                x:Name="btnAlertas"
+                Clicked="btnAlertas_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Alerta de Stock"
+                Text="Notificación Stock" />
         </VerticalStackLayout>
     </ScrollView>
 

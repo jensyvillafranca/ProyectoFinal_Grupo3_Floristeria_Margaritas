@@ -98,6 +98,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\Fredoka-Light.ttf" />
+	  <None Remove="Resources\Fonts\JosefinSans-Bold.ttf" />
+	  <None Remove="Resources\Fonts\JosefinSans-Thin.ttf" />
 	  <None Remove="Resources\Images\anouncements.png" />
 	  <None Remove="Resources\Images\backarrow.png" />
 	  <None Remove="Resources\Images\barchart.png" />
@@ -116,6 +119,7 @@
 	  <None Remove="Resources\Images\Home\pedidoscolor.png" />
 	  <None Remove="Resources\Images\Home\perfilcolor.png" />
 	  <None Remove="Resources\Images\iconoadmin.png" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\alerta.png" />
 	  <None Remove="Resources\Images\ImagenesAdministrador\botonproductos.svg" />
 	  <None Remove="Resources\Images\ImagenesAdministrador\botonpromociones.svg" />
 	  <None Remove="Resources\Images\ImagenesAdministrador\buscar.png" />
@@ -128,6 +132,7 @@
 	  <None Remove="Resources\Images\ImagenesCalificacion\estrella_vacia.png" />
 	  <None Remove="Resources\Images\ImagenesCalificacion\fondo_pantalla.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\adjuntar_fotografia.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\alerta.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\aplicar_repartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\atras.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\botonera.png" />
@@ -256,6 +261,7 @@
 	  <MauiImage Include="Resources\Images\Home\perfilcolor.png" />
 	  <MauiImage Include="Resources\Images\Home\piechart.png" />
 	  <MauiImage Include="Resources\Images\Home\productos.png" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\alerta.png" />
 	  <MauiImage Include="Resources\Images\ImagenesAdministrador\botonproductos.svg" />
 	  <MauiImage Include="Resources\Images\ImagenesAdministrador\botonpromociones.svg" />
 	  <MauiImage Include="Resources\Images\ImagenesAdministrador\buscar.png" />

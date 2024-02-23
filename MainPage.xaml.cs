@@ -111,12 +111,7 @@ public partial class MainPage : ContentPage
     private void btnIngresosRepartidor_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.PantallasRepartidor.IngresosRepartidor());
-
-    private void btnIngresosRepartidor_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Views.PantallasRepartidor.IngresosRepartidor());
     }
-
 
     private void btnDetallePedido_Clicked(object sender, EventArgs e)
     {
@@ -198,5 +193,10 @@ public partial class MainPage : ContentPage
     private void btnMapaCliente_Clicked_1(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.PantallasRepartidor.MapaEntregaCliente());
+    }
+
+    private void btnAlertas_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.PantallaAdministrador.NotificacionStockProductos());
     }
 }

@@ -1,12 +1,78 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallaAdministrador.NotificacionStockProductos"
              Title="NotificacionStockProductos">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView HeightRequest="600">
+        <!--  Lista de los pedidos  -->
+        <StackLayout>
+            <Label
+                Margin="0,0,0,10"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                Text="Notificaciones Stock Productos"
+                TextColor="{StaticResource AzulPersonalizado}"
+                VerticalOptions="Start"
+                VerticalTextAlignment="Center" 
+                FontFamily="Fredoka-Light"/>
+            <CollectionView
+                x:Name="collectionViewAlertasAdministrador"
+                ItemSizingStrategy="MeasureFirstItem"
+                ItemsSource="{Binding ListaNotificacionesStock}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            x:Name="drawableNotificaciones"
+                            Margin="10,0,10,10"
+                            Padding="10"
+                            BackgroundColor="FloralWhite"
+                            HorizontalOptions="FillAndExpand">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15"></RoundRectangle>
+                            </Border.StrokeShape>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="58"/>
+                                <ColumnDefinition Width="190"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <!--Imagen de Advertencia-->
+                                <Border BackgroundColor="#ff8000" WidthRequest="60" HeightRequest="60" Grid.Column="0" VerticalOptions="Start">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="100"></RoundRectangle>
+                                </Border.StrokeShape>
+                                <Image Source="ImagenesAdministrador/alerta.png" WidthRequest="40" HeightRequest="30"/>
+                            </Border>
+
+                            <!--Etiquetas-->
+                            <Grid Grid.Column="1" VerticalOptions="Start">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                    <Label Text="Alerta de Stock" FontSize ="15" TextColor="Black"  FontFamily="JosefinSans-Bold" CharacterSpacing="1" Padding="10,0,10,5"></Label>
+                                    <Label Text="{Binding nombreProducto, StringFormat='Producto: {0}'}" Grid.Row="1" FontFamily="Fredoka-Light" Padding="10,0,0,0"></Label>
+                                    <Label Text="{Binding alertaStock}" Grid.Row="2" FontFamily="Fredoka-Light" Padding="10,0,0,0" TextColor="#ff8000" FontAttributes="Bold"></Label>
+                                    <Label Text="Se recomienda aumentar su stock" Grid.Row="3" FontFamily="Fredoka-Light" Padding="10,0,0,0"></Label>
+                            </Grid>
+                            <!--Unidades Restantes-->
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="80"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Text="Unidades Restantes" Grid.Row="0" FontFamily="JosefinSans-Bold"></Label>
+                                <Label Text="{Binding unidadesRestantes}" Grid.Row="1" FontSize="30" FontFamily="JosefinSans-Bold" HorizontalOptions="Center"></Label>
+                            </Grid>
+                        </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
