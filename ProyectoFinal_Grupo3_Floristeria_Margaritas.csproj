@@ -170,6 +170,11 @@
 	  <None Remove="Resources\Images\imglogin\fondologinn.png" />
 	  <None Remove="Resources\Images\imglogin\fondologsig.png" />
 	  <None Remove="Resources\Images\imglogin\fondosignin.png" />
+	  <None Remove="Resources\Images\Login\codigoverificacion.png" />
+	  <None Remove="Resources\Images\Login\fondocodigoverificacion.png" />
+	  <None Remove="Resources\Images\Login\ingresarnuevacontra.png" />
+	  <None Remove="Resources\Images\Login\problemsesion.png" />
+	  <None Remove="Resources\Images\Login\recuperarcontra.png" />
 	  <None Remove="Resources\Images\Logo\logo_margaritas.png" />
 	  <None Remove="Resources\Images\Logo\logp.png" />
 	  <None Remove="Resources\Images\Menu\pedidosmenu.png" />
@@ -303,6 +308,11 @@
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\ubicacion_repartidor.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\visualizar_productos.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\whastapp.png" />
+	  <MauiImage Include="Resources\Images\Login\codigoverificacion.png" />
+	  <MauiImage Include="Resources\Images\Login\fondocodigoverificacion.png" />
+	  <MauiImage Include="Resources\Images\Login\ingresarnuevacontra.png" />
+	  <MauiImage Include="Resources\Images\Login\problemsesion.png" />
+	  <MauiImage Include="Resources\Images\Login\recuperarcontra.png" />
 	  <MauiImage Include="Resources\Images\Logo\logo.png" />
 	  <MauiImage Include="Resources\Images\Logo\logo_margaritas.png" />
 	  <MauiImage Include="Resources\Images\Logo\logp.png" />
