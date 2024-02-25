@@ -140,12 +140,12 @@ public partial class carritoCompras : ContentPage
 
     private void btnBack_Clicked(object sender, EventArgs e)
     {
-
+        Navigation.PopAsync();
     }
 
     private void btnProductos_Clicked(object sender, EventArgs e)
     {
-
+        Navigation.PushAsync(new Views.Productos.productos());
     }
 
     private void btnRealizarOrden_Clicked(object sender, EventArgs e)

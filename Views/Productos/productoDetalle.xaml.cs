@@ -1,18 +1,28 @@
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using Microsoft.Extensions.Primitives;
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
 public partial class productoDetalle : ContentPage
 {
-
+    private DetalleProductoViewModel _viewModel;
+    private ProductoModel _productoModel;
     private CustomPopupViewAgregar customPopup;
     //Variables de prueba
     double precioTotal = 0;
-    double precioProducto = 1700;
+    double precioProducto = 0;
 
-    public productoDetalle()
+    public productoDetalle(ProductoModel selectedProduct)
     {
         InitializeComponent();
+        _productoModel = selectedProduct;
+        _viewModel = new DetalleProductoViewModel(selectedProduct);
         customPopup = new CustomPopupViewAgregar();
+
+        // Coloca el contexto de la pagina al viewmodel
+        this.BindingContext = _viewModel;
+        precioProducto = Double.Parse(_productoModel.precioventa);
     }
 
     private void btnBack_Clicked(object sender, EventArgs e)

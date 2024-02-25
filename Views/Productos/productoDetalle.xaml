@@ -66,7 +66,7 @@
                             Margin="20,20,20,10"
                             Aspect="AspectFit"
                             HorizontalOptions="FillAndExpand"
-                            Source="Productos/flowers2.png" />
+                            Source="{Binding ImageSource}" />
 
                         <Label
                             x:Name="labelNombreProducto"
@@ -74,7 +74,7 @@
                             FontAttributes="Bold"
                             FontSize="20"
                             HorizontalTextAlignment="Center"
-                            Text="Esplendor Floral"
+                            Text="{Binding NombreProducto}"
                             TextColor="Black" />
 
                         <Label
@@ -83,7 +83,7 @@
                             FontSize="13"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
-                            Text="Arreglo floral elaborado con 10 rosas  y flores complemento, expuesto  en cofre de madera artesanal."
+                            Text="{Binding Descripcion}"
                             TextColor="Black"
                             VerticalOptions="Start"
                             VerticalTextAlignment="Center" />
@@ -133,7 +133,7 @@
                                 FontAttributes="Bold"
                                 FontSize="18"
                                 HorizontalOptions="Center"
-                                Text="L. 1,700.00"
+                                Text="{Binding Precio}"
                                 TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>
