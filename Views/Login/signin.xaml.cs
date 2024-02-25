@@ -11,4 +11,14 @@ public partial class singin : ContentPage
     {
 
     }
+
+    private async void LabelIngresar_Tapped(object sender, System.EventArgs e)
+    {
+        // Animación de escala al hacer clic en el Label
+        await labelIngresar.ScaleTo(0.8, 50, Easing.Linear);
+        await labelIngresar.ScaleTo(1, 50, Easing.Linear);
+
+        // Aquí puedes navegar a la página deseada
+        await Navigation.PushAsync(new Views.Login.login());
+    }
 }
