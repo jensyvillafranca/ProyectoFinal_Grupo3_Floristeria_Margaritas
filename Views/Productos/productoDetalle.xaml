@@ -70,12 +70,22 @@
 
                         <Label
                             x:Name="labelNombreProducto"
-                            Margin="0,5,0,10"
+                            Margin="0,5,0,5"
                             FontAttributes="Bold"
                             FontSize="20"
                             HorizontalTextAlignment="Center"
                             Text="{Binding NombreProducto}"
                             TextColor="Black" />
+
+                        <Label
+                            x:Name="labelDisponible"
+                            Margin="0,0,0,10"
+                            FontAttributes="Bold"
+                            FontSize="10"
+                            HorizontalTextAlignment="Center"
+                            Text=""
+                            TextColor="{DynamicResource VerdeCantidad}" />
+
 
                         <Label
                             x:Name="labelDescripcion"

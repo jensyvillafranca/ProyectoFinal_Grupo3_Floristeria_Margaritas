@@ -23,11 +23,12 @@ public partial class productoDetalle : ContentPage
         // Coloca el contexto de la pagina al viewmodel
         this.BindingContext = _viewModel;
         precioProducto = Double.Parse(_productoModel.precioventa);
+        labelDisponible.Text = $"Cantidad Disponible: {CalculateQuantityLimit()}";
     }
 
     private void btnBack_Clicked(object sender, EventArgs e)
     {
-
+        Navigation.PopAsync();
     }
 
     private async void btnAgregar_Clicked(object sender, EventArgs e)
@@ -39,11 +40,13 @@ public partial class productoDetalle : ContentPage
     {
         if (int.TryParse(quantityEntry.Text, out int quantity) && quantity > 1)
         {
-            // Decrement the quantity, but ensure it doesn't go below 1
+            // La cantidad no baja de 1
             quantity--;
+
             quantityEntry.Text = quantity.ToString();
-            precioTotal = double.Parse(quantityEntry.Text) * precioProducto;
-            labelPrecio.Text = $"L{precioTotal:N2}";
+
+            // Actualizar el precio total basado en la cantidad
+            UpdateTotalPrice();
         }
     }
 
@@ -51,11 +54,48 @@ public partial class productoDetalle : ContentPage
     {
         if (int.TryParse(quantityEntry.Text, out int quantity))
         {
-            // Increment the quantity
             quantity++;
-            quantityEntry.Text = quantity.ToString();
-            precioTotal = double.Parse(quantityEntry.Text) * precioProducto;
-            labelPrecio.Text = $"L {precioTotal:N2}";
+
+            // Revisa si la cantidad no sobrepasa el limite
+            if (quantity <= CalculateQuantityLimit())
+            {
+                quantityEntry.Text = quantity.ToString();
+
+                UpdateTotalPrice();
+            }
+            else
+            {
+                // Muestra mensaje cuando se llega al limite
+                CheckQuantityLimit();
+            }
         }
+    }
+
+    private void UpdateTotalPrice()
+    {
+        precioTotal = double.Parse(quantityEntry.Text) * precioProducto;
+        labelPrecio.Text = $"L {precioTotal:N2}";
+    }
+
+    private void CheckQuantityLimit()
+    {
+        // Calcula el limite de productos disponibles basado en el stock
+        int limit = CalculateQuantityLimit();
+
+        DisplayAlert("Límite de Productos Alcanzado", $"Puedes comprar hasta {limit} de este producto.", "OK");
+    }
+
+    private int CalculateQuantityLimit()
+    {
+        // Calcula el limite basado en el stock (La mitad del stock)
+        int limit = _productoModel.stock / 2;
+
+        // Si la mitad es un numero inpar lo redondea abajo
+        if (_productoModel.stock % 2 != 0)
+        {
+            limit--;
+        }
+
+        return limit > 0 ? limit : 1; // Se asegura que el limite sea mayor a uno
     }
 }
