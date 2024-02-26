@@ -32,6 +32,7 @@
     <Color x:Key="AzulOscuro">#21345B</Color>
     <Color x:Key="AzulMedio">#2E75B6</Color>
     <Color x:Key="VerdeCantidad">#2B514C</Color>
+    <Color x:Key="RojoDescuento">#F44336</Color>
 
     <!--  Colores Personalizados Jensy  -->
     <Color x:Key="AzulPersonalizado">#204999</Color>

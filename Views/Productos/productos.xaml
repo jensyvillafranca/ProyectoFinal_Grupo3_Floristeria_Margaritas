@@ -184,7 +184,7 @@
                                 Margin="5"
                                 Padding="5"
                                 BackgroundColor="FloralWhite"
-                                BorderColor="{DynamicResource AzulBotones}"
+                                BorderColor="{Binding BorderColor}"
                                 CornerRadius="10"
                                 HasShadow="True">
                                 <Frame.GestureRecognizers>
@@ -199,18 +199,51 @@
                                         WidthRequest="100" />
                                     <Label
                                         x:Name="labelNombreProducto"
+                                        Margin="0,0,0,10"
                                         FontAttributes="Bold"
                                         FontSize="14"
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding LabelText}"
                                         TextColor="Black" />
+                                    <StackLayout
+                                        Margin="0,5,0,5"
+                                        HeightRequest="30"
+                                        HorizontalOptions="Center"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Label
+                                            x:Name="labelDescuento"
+                                            Margin="0,5,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            IsVisible="{Binding IsDescuentoVisible}"
+                                            Text="{Binding LabelDescuento}"
+                                            TextColor="{DynamicResource RojoDescuento}"
+                                            VerticalOptions="CenterAndExpand"
+                                            VerticalTextAlignment="Center" />
+                                        <Image
+                                            x:Name="imgDescuento"
+                                            Margin="0,5,0,5"
+                                            Aspect="AspectFit"
+                                            HeightRequest="24"
+                                            HorizontalOptions="Center"
+                                            IsVisible="{Binding IsDescuentoImageVisible}"
+                                            Source="Productos/descuentoproducto.png"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="24" />
+                                    </StackLayout>
                                     <Label
                                         x:Name="labelPrecioProducto"
-                                        Margin="0,0,0,5"
-                                        FontSize="12"
+                                        Margin="0,10,0,5"
+                                        FontAttributes="Bold"
+                                        FontSize="13"
+                                        HorizontalOptions="CenterAndExpand"
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding LabelPrecio}"
                                         TextColor="Black" />
+
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

@@ -5,8 +5,37 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos
 {
     public class FrameOrden : INotifyPropertyChanged
     {
-        private string _imageSource;
-        public string ImageSource
+
+        private int _idItem;
+        public int IdItem
+        {
+            get { return _idItem; }
+            set
+            {
+                if (_idItem != value)
+                {
+                    _idItem = value;
+                    OnPropertyChanged(nameof(IdItem));
+                }
+            }
+        }
+
+        private int _idProducto;
+        public int IdProducto
+        {
+            get { return _idProducto; }
+            set
+            {
+                if (_idProducto != value)
+                {
+                    _idProducto = value;
+                    OnPropertyChanged(nameof(IdProducto));
+                }
+            }
+        }
+
+        private string? _imageSource;
+        public string? ImageSource
         {
             get { return _imageSource; }
             set
@@ -19,8 +48,8 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos
             }
         }
 
-        private string _labelNombreProducto;
-        public string LabelNombreProducto
+        private string? _labelNombreProducto;
+        public string? LabelNombreProducto
         {
             get { return _labelNombreProducto; }
             set
@@ -33,8 +62,8 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos
             }
         }
 
-        private string _labelPrecioTotal;
-        public string LabelPrecioTotal
+        private string? _labelPrecioTotal;
+        public string? LabelPrecioTotal
         {
             get { return _labelPrecioTotal; }
             set
@@ -43,6 +72,20 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos
                 {
                     _labelPrecioTotal = value;
                     OnPropertyChanged(nameof(LabelPrecioTotal));
+                }
+            }
+        }
+
+        private string? _Descuento;
+        public string? Descuento
+        {
+            get { return _Descuento; }
+            set
+            {
+                if (_Descuento != value)
+                {
+                    _Descuento = value;
+                    OnPropertyChanged(nameof(Descuento));
                 }
             }
         }
@@ -75,11 +118,25 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos
             }
         }
 
-        public ICommand TappedCommand { get; set; }
-        public ICommand substractCommand { get; set; }
-        public ICommand addCommand { get; set; }
+        private int _stockQuantity;
+        public int StockQuantity
+        {
+            get { return _stockQuantity; }
+            set
+            {
+                if (_stockQuantity != value)
+                {
+                    _stockQuantity = value;
+                    OnPropertyChanged(nameof(StockQuantity));
+                }
+            }
+        }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ICommand? TappedCommand { get; set; }
+        public ICommand? substractCommand { get; set; }
+        public ICommand? addCommand { get; set; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
         {

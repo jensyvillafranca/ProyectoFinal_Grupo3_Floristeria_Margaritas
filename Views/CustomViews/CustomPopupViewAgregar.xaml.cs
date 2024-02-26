@@ -10,11 +10,11 @@ public partial class CustomPopupViewAgregar : ContentPage
 
     private void btnAgregarMas_Clicked(object sender, EventArgs e)
     {
-
+        Navigation.PushAsync(new Views.Productos.productos());
     }
 
     private void btnCarrito_Clicked(object sender, EventArgs e)
     {
-
+        Navigation.PushAsync(new Views.Productos.carritoCompras());
     }
 }

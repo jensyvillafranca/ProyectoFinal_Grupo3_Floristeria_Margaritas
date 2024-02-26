@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Windows.Input;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
@@ -11,7 +12,11 @@ public partial class productos : ContentPage
     private ApiService _apiService = new ApiService();
     public ObservableCollection<FrameItem> Items { get; set; }
     public ObservableCollection<FiltroItem> Filtros { get; set; }
+
     private int currentIndex = 0; // Para saber el indice del carrusel
+    private double precioProducto = 0;
+    private double discountPercentage = 0;
+    private double discountedPrice = 0;
 
     //Para Filtrar los productos
     private FiltroItem _selectedFilter = null;
@@ -50,6 +55,7 @@ public partial class productos : ContentPage
     public productos()
     {
         InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
 
         Items = new ObservableCollection<FrameItem>();
         Filtros = new ObservableCollection<FiltroItem>();
@@ -74,15 +80,36 @@ public partial class productos : ContentPage
 
         foreach (var producto in productos)
         {
-            Items.Add(new FrameItem
+            precioProducto = Double.Parse(producto.precioventa);
+            discountPercentage = Double.Parse(producto.descuento) / 100.0;
+            discountedPrice = Math.Round(precioProducto - (precioProducto * discountPercentage), 2);
+
+            var frameItem = new FrameItem
             {
                 ImageSource = producto.enlacefoto,
                 LabelText = producto.nombreproducto,
-                LabelPrecio = $"L {producto.precioventa}",
+                LabelPrecio = $"L {discountedPrice:N2}",
                 Categoria = producto.categoria,
+                Descripcion = producto.descripcion,
+                LabelDescuento = producto.descuento,
                 TappedCommand = new Command(() => HandleItemTapped(producto))
-            });
+            };
+
+            // Controla la visibilidad basado en el descuento
+            frameItem.IsDescuentoVisible = int.Parse(producto.descuento) != 0;
+            frameItem.IsDescuentoImageVisible = int.Parse(producto.descuento) != 0;
+            if(int.Parse(producto.descuento)!= 0)
+            {
+                frameItem.BorderColor = Color.FromHex("#F44336");
+            }
+            else
+            {
+                frameItem.BorderColor = Color.FromHex("#41B9FE");
+            }
+
+            Items.Add(frameItem);
         }
+
         collectionViewProductos.ItemsSource = null;
         collectionViewProductos.ItemsSource = Items;
     }
@@ -122,7 +149,8 @@ public partial class productos : ContentPage
                 (SelectedFilter == null || SelectedFilter.LabelText == "Ninguno" || item.Categoria == SelectedFilter.LabelText) &&
                 (string.IsNullOrEmpty(SearchQuery) ||
                 item.LabelText.ToLower().Contains(SearchQuery.ToLower()) ||
-                item.Categoria.ToLower().Contains(SearchQuery.ToLower()))
+                item.Categoria.ToLower().Contains(SearchQuery.ToLower()) ||
+                item.Descripcion.ToLower().Contains(SearchQuery.ToLower()))
             );
 
             collectionViewProductos.ItemsSource = new ObservableCollection<FrameItem>(filteredItems);
@@ -135,7 +163,12 @@ public partial class productos : ContentPage
         public string? LabelText { get; set; }
         public string? LabelPrecio { get; set; }
         public string? Categoria { get; set; }
+        public string? Descripcion { get; set; }
+        public string? LabelDescuento { get; set; }
         public ICommand? TappedCommand { get; set; }
+        public bool IsDescuentoVisible { get; set; }
+        public bool IsDescuentoImageVisible { get; set; }
+        public Color BorderColor { get; set; }
     }
 
     public class FiltroItem

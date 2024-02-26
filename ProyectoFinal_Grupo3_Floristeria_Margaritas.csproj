@@ -192,6 +192,7 @@
 	  <None Remove="Resources\Images\Productos\casa.png" />
 	  <None Remove="Resources\Images\Productos\casa2.png" />
 	  <None Remove="Resources\Images\Productos\confirmacionpago.png" />
+	  <None Remove="Resources\Images\Productos\descuentoproducto.png" />
 	  <None Remove="Resources\Images\Productos\editar.png" />
 	  <None Remove="Resources\Images\Productos\eliminar.png" />
 	  <None Remove="Resources\Images\Productos\eliminar2.png" />
@@ -223,10 +224,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.6" />
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.7" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.8" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -337,6 +341,7 @@
 	  <MauiImage Include="Resources\Images\Productos\casa.png" />
 	  <MauiImage Include="Resources\Images\Productos\casa2.png" />
 	  <MauiImage Include="Resources\Images\Productos\confirmacionpago.png" />
+	  <MauiImage Include="Resources\Images\Productos\descuentoproducto.png" />
 	  <MauiImage Include="Resources\Images\Productos\editar.png" />
 	  <MauiImage Include="Resources\Images\Productos\eliminar.png" />
 	  <MauiImage Include="Resources\Images\Productos\eliminar2.png" />
