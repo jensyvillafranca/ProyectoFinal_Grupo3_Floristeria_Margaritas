@@ -439,6 +439,9 @@
 	  <MauiXaml Update="Views\Profile\profilePageUser.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Profile\profilePageUserAdmin.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 		  
 	</ItemGroup>
 

@@ -1,5 +1,6 @@
 ﻿namespace ProyectoFinal_Grupo3_Floristeria_Margaritas;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 public partial class MainPage : ContentPage
 {
 
@@ -86,7 +87,7 @@ public partial class MainPage : ContentPage
         Navigation.PushAsync(new Views.Calificacion.PantallaCalificacion());
     }
 
-    private void btnAplicarRepartidor_Clicked(object sender, EventArgs e)
+    private async void btnAplicarRepartidor_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.PantallasRepartidor.AplicarRepartidor());
     }

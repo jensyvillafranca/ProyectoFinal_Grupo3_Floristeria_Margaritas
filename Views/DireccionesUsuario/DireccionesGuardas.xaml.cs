@@ -47,7 +47,7 @@ public partial class DireccionesGuardas : ContentPage
     }
     private async void TapGestureAgregarDireccion_Tapped(object sender, TappedEventArgs e)
     {
-        await AnimationUtilities.ChangeFrameColor(frameAgregarDirecciones, Color.FromRgb(53, 172, 226), Color.FromRgb(211, 211, 211), 250);
+        await AnimationUtilities.ChangeFrameColor(frameAgregarDirecciones, Color.FromRgb(255, 255, 255), Color.FromRgb(65, 185, 254), 250);
         await Navigation.PushAsync(new AgregarDireccionNueva());
     }
 
