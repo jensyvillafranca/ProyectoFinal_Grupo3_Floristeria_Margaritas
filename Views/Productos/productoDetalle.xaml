@@ -66,16 +66,26 @@
                             Margin="20,20,20,10"
                             Aspect="AspectFit"
                             HorizontalOptions="FillAndExpand"
-                            Source="Productos/flowers2.png" />
+                            Source="{Binding ImageSource}" />
 
                         <Label
                             x:Name="labelNombreProducto"
-                            Margin="0,5,0,10"
+                            Margin="0,5,0,5"
                             FontAttributes="Bold"
                             FontSize="20"
                             HorizontalTextAlignment="Center"
-                            Text="Esplendor Floral"
+                            Text="{Binding NombreProducto}"
                             TextColor="Black" />
+
+                        <Label
+                            x:Name="labelDisponible"
+                            Margin="0,0,0,10"
+                            FontAttributes="Bold"
+                            FontSize="10"
+                            HorizontalTextAlignment="Center"
+                            Text=""
+                            TextColor="{DynamicResource VerdeCantidad}" />
+
 
                         <Label
                             x:Name="labelDescripcion"
@@ -83,10 +93,44 @@
                             FontSize="13"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
-                            Text="Arreglo floral elaborado con 10 rosas  y flores complemento, expuesto  en cofre de madera artesanal."
+                            Text="{Binding Descripcion}"
                             TextColor="Black"
                             VerticalOptions="Start"
                             VerticalTextAlignment="Center" />
+
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                x:Name="labelDescuento"
+                                Margin="0,10,0,5"
+                                FontAttributes="Bold"
+                                FontSize="10"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="False"
+                                Text="{Binding LabelDescuento}"
+                                TextColor="{DynamicResource RojoDescuento}"
+                                VerticalTextAlignment="Center" />
+                            <Image
+                                x:Name="imgDescuento"
+                                Margin="0,10,10,5"
+                                Aspect="AspectFit"
+                                HeightRequest="24"
+                                IsVisible="False"
+                                Source="Productos/descuentoproducto.png"
+                                WidthRequest="24" />
+                            <Label
+                                x:Name="labelPrecioOriginal"
+                                Margin="0,10,0,5"
+                                FontAttributes="Bold"
+                                FontSize="10"
+                                HorizontalTextAlignment="End"
+                                IsVisible="False"
+                                Text="{Binding LabelPrecioOriginal}"
+                                TextColor="{DynamicResource RojoDescuento}"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -133,7 +177,7 @@
                                 FontAttributes="Bold"
                                 FontSize="18"
                                 HorizontalOptions="Center"
-                                Text="L. 1,700.00"
+                                Text="{Binding Precio}"
                                 TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>

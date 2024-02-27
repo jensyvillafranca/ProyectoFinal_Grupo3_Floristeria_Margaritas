@@ -7,7 +7,7 @@
     BackgroundImageSource="imglogin/fondologinn.png">
 
     <Frame
-        Margin="10,50,10,0"
+        Margin="10,100,10,0"
         BackgroundColor="Transparent"
         BorderColor="Transparent"
         HorizontalOptions="FillAndExpand"
@@ -92,11 +92,18 @@
                     Text="Olvidé mi contraseña"
                     TextColor="White"
                     TextDecorations="Underline"
-                    VerticalOptions="CenterAndExpand" />
+                    VerticalOptions="CenterAndExpand" 
+                   
+                    >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="LabelRecuperar_Tapped"
+                            NumberOfTapsRequired="1"
+                            />
+                    </Label.GestureRecognizers>
+             
+                </Label>
             </StackLayout>
-
-
-
 
             <Button
                 x:Name="btnEntrar"

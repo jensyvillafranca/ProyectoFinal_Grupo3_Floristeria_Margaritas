@@ -31,7 +31,7 @@ public partial class MainPage : ContentPage
 
     private void btnProductoDetalle_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Views.Productos.productoDetalle());
+        
     }
 
     private void btnPedidosRepartidor_Clicked(object sender, EventArgs e)

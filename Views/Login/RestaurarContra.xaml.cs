@@ -54,6 +54,24 @@ public partial class RestaurarContra : ContentPage
 
     }
 
+    private async void BtnBack_Clicked(object sender, System.EventArgs e)
+    {
+        // Aquí puedes navegar a la página deseada
+        await Navigation.PushAsync(new Views.Login.login());
+    }
+
+    private void BtnBack_Pressed(object sender, System.EventArgs e)
+    {
+        // Animación de escala al presionar el botón
+        btnBack.ScaleTo(0.8, 100, Easing.Linear);
+    }
+
+    private void BtnBack_Released(object sender, System.EventArgs e)
+    {
+        // Animación de retorno a la escala original cuando se suelta el botón
+        btnBack.ScaleTo(1, 100, Easing.Linear);
+    }
+
 
 }
 
