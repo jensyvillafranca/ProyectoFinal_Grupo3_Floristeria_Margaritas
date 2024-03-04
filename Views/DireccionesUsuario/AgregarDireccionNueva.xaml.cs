@@ -2,9 +2,6 @@ using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
-using Microsoft.Maui.Controls.Internals;
-using System.Net;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.DireccionesUsuario;
 
