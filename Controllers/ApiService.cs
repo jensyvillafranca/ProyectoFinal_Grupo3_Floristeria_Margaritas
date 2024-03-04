@@ -60,5 +60,25 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers
                 return default;
             }
         }
+
+        public async Task<bool> PostSuccessAsync(string endpoint, object data)
+        {
+            var apiUrl = "https://phpclusters-164276-0.cloudclusters.net/";
+
+            try
+            {
+                var jsonData = JsonConvert.SerializeObject(data);
+                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync($"{apiUrl}{endpoint}", content);
+
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in PostSuccessAsync: {ex.Message}");
+                return false;
+            }
+        }
     }
 }

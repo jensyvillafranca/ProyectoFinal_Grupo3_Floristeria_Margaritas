@@ -54,12 +54,6 @@
                 SemanticProperties.Hint="Pagina del carrito de compras"
                 Text="Carrito de Compras" />
             <Button
-                x:Name="btnDireccion"
-                Clicked="btnDireccion_Clicked"
-                HorizontalOptions="Center"
-                SemanticProperties.Hint="Pagina de eleccion de direccion"
-                Text="Pago - Direccion" />
-            <Button
                 x:Name="btnPagoTarjeta"
                 Clicked="btnPagoTarjeta_Clicked"
                 HorizontalOptions="Center"
@@ -147,6 +141,18 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina de Detalle de Pedidos"
                 Text="Detalle de Pedidos" />
+            <Button
+                x:Name="btnDireccionesGuardadas"
+                Clicked="btnDireccionesGuardadas_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Direcciones Guardadas"
+                Text="Direcciones Guardadas" />
+            <Button
+                x:Name="btnEditarDireccion"
+                Clicked="btnEditarDireccion_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Editar Direccion"
+                Text="Editar Direccion" />
         </VerticalStackLayout>
     </ScrollView>
 

@@ -5,156 +5,211 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title=""
     BackgroundImageSource="imglogin/fondosignin.png">
-    <Frame
-        Margin="10,70,10,0"
-        BackgroundColor="Transparent"
-        BorderColor="Transparent"
-        HorizontalOptions="FillAndExpand"
-        VerticalOptions="CenterAndExpand">
-        <StackLayout>
+    <StackLayout Orientation="Vertical">
+        <Frame
+            Margin="10,135,10,0"
+            BackgroundColor="Transparent"
+            BorderColor="Transparent"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand">
+            <ScrollView>
+                <StackLayout>
 
-            <Label
-                Margin="10,0,0,5"
-                FontAttributes="Bold"
-                FontSize="14"
-                Text="Primer Nombre"
-                TextColor="White" />
+                    <Label
+                        Margin="10,0,0,5"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Primer Nombre"
+                        TextColor="White" />
 
-            <Frame
-                Margin="10,0,0,20"
-                Padding="0,0,0,0"
-                BackgroundColor="White"
-                CornerRadius="10">
-                <Entry
-                    x:Name="entryPrimerNombre"
-                    Margin="5,0,5,0"
-                    BackgroundColor="Transparent"
-                    FontAttributes="Bold"
-                    FontSize="12"
-                    HorizontalTextAlignment="Start"
-                    Placeholder="Ingrese su primer nombre"
-                    PlaceholderColor="Gray"
-                    TextColor="Black" />
-            </Frame>
+                    <Frame
+                        Margin="10,0,0,20"
+                        Padding="0,0,0,0"
+                        BackgroundColor="White"
+                        CornerRadius="10">
+                        <Entry
+                            x:Name="entryPrimerNombre"
+                            Margin="5,0,5,0"
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Start"
+                            Placeholder="Ingrese su primer nombre"
+                            PlaceholderColor="Gray"
+                            TextColor="Black" />
+                    </Frame>
 
 
-            <Label
-                Margin="10,0,0,5"
-                FontAttributes="Bold"
-                FontSize="14"
-                Text="Primer Apellido"
-                TextColor="White" />
+                    <Label
+                        Margin="10,0,0,5"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Primer Apellido"
+                        TextColor="White" />
 
-            <Frame
-                Margin="10,0,0,20"
-                Padding="0,0,0,0"
-                BackgroundColor="White"
-                CornerRadius="10">
-                <Entry
-                    x:Name="entryPrimerApellido"
-                    Margin="5,0,5,0"
-                    BackgroundColor="Transparent"
-                    FontAttributes="Bold"
-                    FontSize="12"
-                    HorizontalTextAlignment="Start"
-                    Placeholder="Ingrese su primer apellido"
-                    PlaceholderColor="Gray"
-                    TextColor="Black" />
-            </Frame>
+                    <Frame
+                        Margin="10,0,0,20"
+                        Padding="0,0,0,0"
+                        BackgroundColor="White"
+                        CornerRadius="10">
+                        <Entry
+                            x:Name="entryPrimerApellido"
+                            Margin="5,0,5,0"
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Start"
+                            Placeholder="Ingrese su primer apellido"
+                            PlaceholderColor="Gray"
+                            TextColor="Black" />
+                    </Frame>
 
-            <Label
-                Margin="10,0,0,5"
-                FontAttributes="Bold"
-                FontSize="14"
-                Text="Correo Electrónico"
-                TextColor="White" />
+                    <Label
+                        Margin="10,0,0,5"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Correo Electrónico"
+                        TextColor="White" />
 
-            <Frame
-                Margin="10,0,0,20"
-                Padding="0,0,0,0"
-                BackgroundColor="White"
-                CornerRadius="10">
-                <Entry
-                    x:Name="entryCorreo"
-                    Margin="5,0,5,0"
-                    BackgroundColor="Transparent"
-                    FontAttributes="Bold"
-                    FontSize="12"
-                    HorizontalTextAlignment="Start"
-                    Placeholder="Ingrese su correo electrónico"
-                    PlaceholderColor="Gray"
-                    TextColor="Black" />
-            </Frame>
+                    <Frame
+                        Margin="10,0,0,20"
+                        Padding="0,0,0,0"
+                        BackgroundColor="White"
+                        CornerRadius="10">
+                        <Entry
+                            x:Name="entryCorreo"
+                            Margin="5,0,5,0"
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Start"
+                            Placeholder="Ingrese su correo electrónico"
+                            PlaceholderColor="Gray"
+                            TextColor="Black" />
+                    </Frame>
 
-            <Label
-                Margin="10,0,0,5"
-                FontAttributes="Bold"
-                FontSize="14"
-                Text="Contraseña"
-                TextColor="White" />
+                    <Label
+                        Margin="10,0,0,5"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Telefono"
+                        TextColor="White" />
 
-            <Frame
-                Margin="10,0,0,20"
-                Padding="0,0,0,0"
-                BackgroundColor="White"
-                CornerRadius="10">
-                <Entry
-                    x:Name="entryContrasena"
-                    Margin="5,0,5,0"
-                    BackgroundColor="Transparent"
-                    FontAttributes="Bold"
-                    FontSize="12"
-                    HorizontalTextAlignment="Start"
-                    IsPassword="True"
-                    Placeholder="Ingrese su contraseña"
-                    PlaceholderColor="Gray"
-                    TextColor="Black" />
-            </Frame>
+                    <Frame
+                        Margin="10,0,0,20"
+                        Padding="0,0,0,0"
+                        BackgroundColor="White"
+                        CornerRadius="10">
+                        <Entry
+                            x:Name="entryTelefono"
+                            Margin="5,0,5,0"
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Start"
+                            Placeholder="Ingrese su número de teléfono"
+                            PlaceholderColor="Gray"
+                            TextColor="Black" />
+                    </Frame>
 
-            <Label
-                Margin="10,0,0,5"
-                FontAttributes="Bold"
-                FontSize="14"
-                Text="Confirmar Contraseña"
-                TextColor="White" />
+                    <Label
+                        Margin="10,0,0,5"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Usuario"
+                        TextColor="White" />
 
-            <Frame
-                Margin="10,0,0,20"
-                Padding="0,0,0,0"
-                BackgroundColor="White"
-                CornerRadius="10">
-                <Entry
-                    x:Name="entryConfirmarContrasena"
-                    Margin="5,0,5,0"
-                    BackgroundColor="Transparent"
-                    FontAttributes="Bold"
-                    FontSize="12"
-                    HorizontalTextAlignment="Start"
-                    IsPassword="True"
-                    Placeholder="Ingrese nuevamente su contraseña"
-                    PlaceholderColor="Gray"
-                    TextColor="Black" />
-            </Frame>
+                    <Frame
+                        Margin="10,0,0,20"
+                        Padding="0,0,0,0"
+                        BackgroundColor="White"
+                        CornerRadius="10">
+                        <Entry
+                            x:Name="entryUsuario"
+                            Margin="5,0,5,0"
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Start"
+                            Placeholder="Ingrese un usuario"
+                            PlaceholderColor="Gray"
+                            TextColor="Black" />
+                    </Frame>
 
-            <Label
-                x:Name="labelIngresar"
-                Margin="190,0,0,15"
-                FontAttributes="Bold"
-                FontSize="11"
-                HorizontalOptions="Center"
-                Text="Ya tengo una cuenta"
-                TextColor="White"
-                TextDecorations="Underline"  
-             >
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                 Tapped="LabelIngresar_Tapped"
-                 NumberOfTapsRequired="1"
-                />
-                </Label.GestureRecognizers>
+                    <Label
+                        Margin="10,0,0,5"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Contraseña"
+                        TextColor="White" />
 
-            </Label>
+                    <Frame
+                        Margin="10,0,0,20"
+                        Padding="0,0,0,0"
+                        BackgroundColor="White"
+                        CornerRadius="10">
+                        <Entry
+                            x:Name="entryContrasena"
+                            Margin="5,0,5,0"
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Start"
+                            IsPassword="True"
+                            Placeholder="Ingrese su contraseña"
+                            PlaceholderColor="Gray"
+                            TextColor="Black" />
+                    </Frame>
 
+                    <Label
+                        Margin="10,0,0,5"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Confirmar Contraseña"
+                        TextColor="White" />
+
+                    <Frame
+                        Margin="10,0,0,20"
+                        Padding="0,0,0,0"
+                        BackgroundColor="White"
+                        CornerRadius="10">
+                        <Entry
+                            x:Name="entryConfirmarContrasena"
+                            Margin="5,0,5,0"
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Start"
+                            IsPassword="True"
+                            Placeholder="Ingrese nuevamente su contraseña"
+                            PlaceholderColor="Gray"
+                            TextColor="Black" />
+                    </Frame>
+
+                    <Label
+                        x:Name="labelIngresar"
+                        Margin="190,0,0,15"
+                        FontAttributes="Bold"
+                        FontSize="11"
+                        HorizontalOptions="Center"
+                        Text="Ya tengo una cuenta"
+                        TextColor="White"
+                        TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelIngresar_Tapped" />
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+
+                </StackLayout>
+            </ScrollView>
+        </Frame>
+
+        <Frame
+            Padding="0,0,0,0"
+            BackgroundColor="Transparent"
+            BorderColor="Transparent">
             <Button
                 x:Name="btnRegistrarse"
                 Margin="20,20,20,10"
@@ -168,13 +223,6 @@
                 HorizontalOptions="FillAndExpand"
                 Text="Crear Cuenta"
                 TextColor="White" />
-        </StackLayout>
-    </Frame>
-
-
-
-
-
-
-
+        </Frame>
+    </StackLayout>
 </ContentPage>

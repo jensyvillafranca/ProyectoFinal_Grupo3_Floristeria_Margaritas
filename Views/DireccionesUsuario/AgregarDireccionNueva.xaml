@@ -1,169 +1,309 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.DireccionesUsuario.AgregarDireccionNueva"
-             Title="">
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.DireccionesUsuario.AgregarDireccionNueva"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="fondo_todas_pantallas.png">
     <Grid>
-        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" >
-            <Image Source="Profile/fondoprincipal.png" Aspect="AspectFill" HeightRequest="1000"/>
-        </StackLayout>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <ScrollView >
-                <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="10" Grid.Row="0" WidthRequest="340">
-                    <Image Source="Profile/encabezadoperfil.png"/>
-                </StackLayout>
-            </ScrollView>
-            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="15" Grid.Row="0">
-                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <!--Boton de atras-->
-                    <ImageButton
-                 x:Name="btnImagenAtras"
-                 Margin="25,6,20,0"
-                 Clicked="btnImagenAtras_Clicked"
-                 Grid.Column="0"
-                  HeightRequest="40"
-                 Source="Profile/atrasperfil.png"
-                 HorizontalOptions="Start"
-                 WidthRequest="40" />
-                    <Label
-                 Margin="105,8,50,0"
-                 FontAttributes="Bold"
-                 Text="Editar Direcciones"
-                 FontSize="20"
-                 TextColor="White"
-                 VerticalOptions="CenterAndExpand" />
-                </Grid>
+        <!--  Header  -->
+        <Frame
+            Grid.Row="0"
+            Margin="0,0,0,10"
+            Padding="5,10,5,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+                <ImageButton
+                    x:Name="btnBack"
+                    Margin="10,0,0,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnBack_Clicked"
+                    HeightRequest="40"
+                    Source="Productos/backarrow.png"
+                    WidthRequest="40" />
+                <!--  Spacer  -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Label
+                    Margin="0,0,120,0"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Text="Agregar Dirección"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
             </StackLayout>
-        </Grid>
+        </Frame>
 
-        <Grid Grid.Row="1">
-            <ScrollView>
-                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                    <Frame 
-                     WidthRequest="355" 
-                     HeightRequest="535"
+
+        <!--  Body  -->
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <!--  Nueva Direccion Frame  -->
+                <Frame
+                    x:Name="frameNuevaDireccion"
+                    Margin="5"
+                    Padding="0"
                     BackgroundColor="{DynamicResource BlackWithTransparency}"
-                    BorderColor="{DynamicResource TealPrimary}"
-                    CornerRadius="20"
+                    BorderColor="{DynamicResource AzulBotones}"
+                    CornerRadius="10"
                     HasShadow="True"
-                    Margin="50,80,50,20"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center">
-                    </Frame>
-                </StackLayout>
-            </ScrollView>
-        </Grid>
+                    VerticalOptions="CenterAndExpand">
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+                        <Label
+                            x:Name="labelDescripcion"
+                            Margin="10,5,0,10"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalTextAlignment="Start"
+                            Text="Ingrese una Descripción"
+                            TextColor="White" />
+
+                        <Frame
+                            Margin="10,0,10,20"
+                            Padding="0,0,0,0"
+                            BackgroundColor="White"
+                            CornerRadius="10">
+                            <Entry
+                                x:Name="entryDescripcion"
+                                Margin="5,0,5,0"
+                                BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                FontSize="12"
+                                HorizontalTextAlignment="Center"
+                                Placeholder="Descripción"
+                                PlaceholderColor="Gray"
+                                TextColor="Black" />
+                        </Frame>
+
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                <Label
+                                    x:Name="labelDepartamento"
+                                    Margin="10,5,0,10"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalTextAlignment="Start"
+                                    Text="Departamento"
+                                    TextColor="White" />
+
+                                <Frame
+                                    Margin="10,0,10,20"
+                                    Padding="0,0,0,0"
+                                    BackgroundColor="White"
+                                    CornerRadius="10"
+                                    HorizontalOptions="FillAndExpand">
+                                    <Picker
+                                        x:Name="departamentoPicker"
+                                        Title="Departamento"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        SelectedIndexChanged="departamentoPicker_SelectedIndexChanged" />
+                                </Frame>
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                <Label
+                                    x:Name="labelCiudad"
+                                    Margin="10,5,0,10"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalTextAlignment="Start"
+                                    Text="Municipio"
+                                    TextColor="White" />
+
+                                <Frame
+                                    Margin="10,0,10,20"
+                                    Padding="0,0,0,0"
+                                    BackgroundColor="White"
+                                    CornerRadius="10"
+                                    HorizontalOptions="FillAndExpand">
+                                    <Picker
+                                        x:Name="ciudadPicker"
+                                        Title="Ciudad"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        SelectedIndexChanged="ciudadPicker_SelectedIndexChanged" />
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
 
 
-        <Grid>
-            <Frame
-                     WidthRequest="310"
-                    HeightRequest="45"
-                    CornerRadius="5"
-                    Margin="0,-295,0,0">
-            </Frame>
-            <Entry 
-                     WidthRequest="240"
-                     HeightRequest="40"
-                     Placeholder="Ingrese un punto de referencia" 
-                     Text="{Binding Nombres}" 
-                     Margin="0,-295,60,0"/>
-
-            <Image
-             Source="Profile/casaeditar.png"
-             WidthRequest="200"
-             HeightRequest="25"
-             Margin="250,-295,0,0"
-             />
-
-            <!--Agregacion de calle-->
-            <Frame
-                  WidthRequest="310"
-                 HeightRequest="45"
-                 CornerRadius="5"
-                 Margin="0,-110,0,0">
-            </Frame>
-            <Entry 
-                  WidthRequest="240"
-                  HeightRequest="40"
-                  Placeholder="Ingrese la nueva direccion" 
-                  Text="{Binding Nombres}" 
-                  Margin="0,-110,60,0"/>
-
-            <Image
-              Source="Profile/ubicacioneditar.png"
-              WidthRequest="200"
-              HeightRequest="30"
-              Margin="250,-105,0,0"
-              />
-
-            <!--Agregacion de ciudad-->
-            <Frame
-               WidthRequest="310"
-              HeightRequest="45"
-              CornerRadius="5"
-              Margin="0,70,0,0">
-            </Frame>
-            <Entry 
-               WidthRequest="240"
-               HeightRequest="40"
-               Placeholder="Ingrese su ciudad" 
-               Text="{Binding Nombres}" 
-               Margin="0,70,60,0"/>
-
-            <Image
-               Source="Profile/ciudad.png"
-               WidthRequest="200"
-               HeightRequest="25"
-               Margin="250,75,0,0"
-               />
 
 
-            <!--Agregacion de Departamento-->
-            <Frame
-               WidthRequest="310"
-              HeightRequest="45"
-              CornerRadius="5"
-              Margin="0,250,0,0">
-            </Frame>
-            <Entry 
-               WidthRequest="240"
-               HeightRequest="40"
-               Placeholder="Ingrese su departamento" 
-               Text="{Binding Nombres}" 
-               Margin="0,250,60,0"/>
 
-            <Image
-               Source="Profile/ciudad.png"
-               WidthRequest="200"
-               HeightRequest="25"
-               Margin="250,250,0,0"
-               />
+                        <Label
+                            x:Name="labelDireccion"
+                            Margin="10,5,0,10"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalTextAlignment="Start"
+                            Text="Ingrese la Dirección"
+                            TextColor="White" />
 
-        </Grid>
+                        <StackLayout Orientation="Horizontal">
+                            <Frame
+                                Margin="10,0,5,20"
+                                Padding="0,0,0,0"
+                                BackgroundColor="White"
+                                CornerRadius="10"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand">
+                                <Entry
+                                    x:Name="entryDireccion"
+                                    Margin="5,0,5,0"
+                                    BackgroundColor="Transparent"
+                                    Completed="entryDireccion_Completed"
+                                    FontAttributes="Bold"
+                                    FontSize="12"
+                                    HorizontalTextAlignment="Center"
+                                    Placeholder="Ingrese la dirección completa"
+                                    PlaceholderColor="Gray"
+                                    TextColor="Black" />
+                            </Frame>
+                            <ImageButton
+                                x:Name="btnBorrar"
+                                Margin="0,0,0,15"
+                                Aspect="AspectFit"
+                                BackgroundColor="Transparent"
+                                Clicked="btnBorrar_Clicked"
+                                HeightRequest="30"
+                                Source="Productos/cancelar.png"
+                                VerticalOptions="Center"
+                                WidthRequest="30" />
+                        </StackLayout>
 
-        <Button
-         WidthRequest="305"
-         HeightRequest="60"
-         Margin="12,440,10,0"
-         FontSize="17"
-          FontAttributes="Bold"
-         CornerRadius="10"
-         Text="Crear Direccion "
-         BackgroundColor="#00d0ff"
-         />
+
+
+                        <Label
+                            x:Name="labelReferencia"
+                            Margin="10,5,0,10"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalTextAlignment="Start"
+                            Text="Ingrese un Punto de Referencia"
+                            TextColor="White" />
+
+                        <Frame
+                            Margin="10,0,10,20"
+                            Padding="0,0,0,0"
+                            BackgroundColor="White"
+                            CornerRadius="10">
+                            <Entry
+                                x:Name="entryreferencia"
+                                Margin="5,0,5,0"
+                                BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                FontSize="12"
+                                HorizontalTextAlignment="Center"
+                                Placeholder="Punto de Referencia"
+                                PlaceholderColor="Gray"
+                                TextColor="Black" />
+                        </Frame>
+
+
+                        <Label
+                            x:Name="labelGeolocation"
+                            Margin="0,5,0,5"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="Geolocalización"
+                            TextColor="White" />
+
+                        <Label
+                            x:Name="labelGeolocationInstruccion"
+                            Margin="10,5,10,5"
+                            FontAttributes="Bold"
+                            FontSize="10"
+                            HorizontalTextAlignment="Center"
+                            Text="Por favor asegúrese que la dirección es relativamente correcta en el mapa:"
+                            TextColor="White" />
+
+                        <Image
+                            x:Name="imgLocation"
+                            Margin="10,0,0,10"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            HeightRequest="300"
+                            WidthRequest="300" />
+
+                        <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                            <Frame
+                                Margin="10,0,0,20"
+                                Padding="0,0,0,0"
+                                BackgroundColor="White"
+                                CornerRadius="10">
+                                <Label
+                                    x:Name="labelLatitud"
+                                    Margin="0,5,0,5"
+                                    FontAttributes="Bold"
+                                    FontSize="10"
+                                    HorizontalTextAlignment="Center"
+                                    Text="00.00"
+                                    TextColor="Gray" />
+                            </Frame>
+
+                            <Frame
+                                Margin="10,0,0,20"
+                                Padding="0,0,0,0"
+                                BackgroundColor="White"
+                                CornerRadius="10">
+                                <Label
+                                    x:Name="labelLongitud"
+                                    Margin="0,5,0,5"
+                                    FontAttributes="Bold"
+                                    FontSize="10"
+                                    HorizontalTextAlignment="Center"
+                                    Text="00.00"
+                                    TextColor="Gray" />
+                            </Frame>
+
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+        <!--  Bottom Navigation Bar  -->
+        <Frame
+            Grid.Row="2"
+            Margin="0,10,0,0"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="btnAgregar"
+                    Margin="30,0,30,0"
+                    BackgroundColor="{DynamicResource AzulBotones}"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnAgregar_Clicked"
+                    CornerRadius="20"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    SemanticProperties.Hint="Agregar Dirección"
+                    Text="Agregar Dirección" />
+            </StackLayout>
+        </Frame>
     </Grid>
 </ContentPage>

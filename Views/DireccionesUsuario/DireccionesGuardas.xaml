@@ -1,179 +1,302 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.DireccionesUsuario.DireccionesGuardas"
-             Title="">
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.DireccionesUsuario.DireccionesGuardas"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="fondo_todas_pantallas.png">
+
+
     <Grid>
-        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" >
-            <Image Source="Profile/fondoprincipal.png" Aspect="AspectFill" HeightRequest="1000"/>
-        </StackLayout>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <ScrollView >
-                <Frame
-                    WidthRequest="600"
-                    HeightRequest="160"
-                    CornerRadius="2"
-                    Margin="-20,-2,200,0"
-                    BackgroundColor="{DynamicResource BlackWithTransparency}"
-                    BorderColor="{DynamicResource TealPrimary}"
-                    >
-                    
-                </Frame>
-            </ScrollView>
-            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="15" Grid.Row="0">
-                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <!--Boton de atras-->
-                    <ImageButton
-                        x:Name="btnImagenAtras"
-                        Margin="10,10,50,0"
-                        Clicked="btnImagenAtras_Clicked"
-                        Grid.Column="0"
-                         HeightRequest="40"
-                        Source="Profile/atrasperfil.png"
-                        HorizontalOptions="Start"
-                        WidthRequest="40" />
-                    <Label
-                        Margin="80,10,50,0"
-                        FontAttributes="Bold"
-                        Text="Direcciones Agregadas"
-                        FontSize="20"
-                        TextColor="White"
-                        VerticalOptions="CenterAndExpand" />
-                </Grid>
+        <!--  Header  -->
+        <Frame
+            Grid.Row="0"
+            Margin="0,0,0,15"
+            Padding="5,10,5,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+                <ImageButton
+                    x:Name="btnBack"
+                    Margin="10,0,0,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnBack_Clicked"
+                    HeightRequest="40"
+                    Source="Productos/backarrow.png"
+                    WidthRequest="40" />
+                <!--  Spacer  -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Label
+                    Margin="0,0,120,0"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Text="Direcciones Agregadas"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
             </StackLayout>
+        </Frame>
 
-        </Grid>
 
-        <Grid>
-            <ScrollView Grid.Row="2" MaximumHeightRequest="530">
-                <!--Lista de los pedidos-->
-                <StackLayout Margin="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <CollectionView x:Name="collectionViewPedidosRepartidor" ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding ListaPedidosRepartidor}">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Horizontal" Span="20" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame x:Name="drawablePedido" Margin="23,0,40,10" WidthRequest="340" Padding="10" BackgroundColor="White" CornerRadius="20" HasShadow="True">
-                                    <Grid ColumnSpacing="10">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
 
+        <!--  Body - Collection view  -->
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <CollectionView
+                    x:Name="collectionViewDirecciones"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding Direcciones}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                x:Name="frameDireccionCollection"
+                                Margin="5"
+                                Padding="5"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
+                                CornerRadius="10"
+                                HasShadow="True"
+                                HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="FillAndExpand">
+                                    <Image
+                                        Margin="3,10,3,10"
+                                        Aspect="AspectFit"
+                                        HeightRequest="80"
+                                        Source="Productos/casa2.png"
+                                        WidthRequest="80" />
+                                    <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-
-                                        
-
-                                        <Frame Grid.Column="0" Grid.Row="1" 
-                                               WidthRequest="75" HeightRequest="75" 
-                                               CornerRadius="5" 
-                                               Margin="0,-1,0,0"
-                                               Padding="0">
-                                            <Image Source="{Binding imagenCasa}" Aspect="AspectFill"/>
-                                        </Frame>
-
-                                        <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Vertical" Spacing="5">
-                                            <!--Formato para visualización del nombre del cliente-->
-                                            <Label  FontSize="12">
-                                                <Label.Text>
-                                                    <Binding Path="referencia" StringFormat="Referencia.: {0}" />
-                                                </Label.Text>
-                                            </Label>
-
-                                            <!--Formato para visualización del lugar de entrega del pedido-->
-                                            <Label FontSize="12" 
-                                                   Margin="0,0,0,0">
-                                                <Label.Text>
-                                                    <Binding Path="direccion" StringFormat="Direcion: {0}" />
-                                                </Label.Text>
-                                            </Label>
-
-
-                                            <!--Formato para visualización de la sucursal a recoger el pedido-->
-                                            <Label FontSize="12">
-                                                <Label.Text>
-                                                    <Binding Path="ciudad" StringFormat="Ciudad en: {0}" />
-                                                </Label.Text>
-                                            </Label>
-
-                                            <!--Formato para visualización de la sucursal a recoger el pedido-->
-                                            <Label FontSize="12">
-                                                <Label.Text>
-                                                    <Binding Path="departamento" StringFormat="Depar. en: {0}" />
-                                                </Label.Text>
-                                            </Label>
-
-                                        </StackLayout>
-                                        <ImageButton
-                                            Grid.Column="2" Grid.Row="1" 
-                                            WidthRequest="26"
-                                            Source="Profile/editar.png" 
-                                            HorizontalOptions="CenterAndExpand" 
-                                            VerticalOptions="CenterAndExpand" 
-                                            Margin="0,0,19,0"
-                                            Clicked="BtnEditarDireccion_Clicked"/>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            x:Name="labelDescripcion"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="20,10,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Descripcion}"
+                                            TextColor="{StaticResource AzulPersonalizado}"
+                                            WidthRequest="200" />
+                                        <Label
+                                            x:Name="labelDireccion"
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="20,0,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="11"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Direccion}"
+                                            TextColor="Black"
+                                            WidthRequest="200" />
+                                        <Label
+                                            x:Name="labelReferencia"
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="20,0,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="11"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Referencia}"
+                                            TextColor="Black"
+                                            WidthRequest="200" />
+                                        <Label
+                                            x:Name="labelCiudad"
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Margin="20,0,5,10"
+                                            FontAttributes="Bold,Italic"
+                                            FontSize="10"
+                                            HorizontalOptions="End"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Ciudad, StringFormat='{0},'}"
+                                            TextColor="Black" />
+                                        <Label
+                                            x:Name="labelDepartamento"
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            Margin="0,0,0,10"
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="Start"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Departamento}"
+                                            TextColor="Black" />
 
                                     </Grid>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
-            </ScrollView>
+                                    <ImageButton
+                                        x:Name="btnEliminar"
+                                        Margin="0,0,0,0"
+                                        Aspect="AspectFit"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding TappedCommand}"
+                                        CommandParameter="{Binding .}"
+                                        HeightRequest="28"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="Productos/eliminar2.png"
+                                        WidthRequest="28" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
-            <Frame
-                    x:Name="frameAgregarDirecciones"
+                <Frame
+                    x:Name="frameAgregarDireccion"
+                    Margin="5"
+                    Padding="5"
+                    BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}"
                     CornerRadius="10"
-                    WidthRequest="345" 
-                    HeightRequest="70"
-                    BackgroundColor="White"
-                    Padding="0"
-                    Margin="10,755,10,85">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer
-                        x:Name="TapGestureAgregarDirecciones"
-                        CommandParameter="Perfil"
-                        Tapped="TapGestureAgregarDireccion_Tapped"/>
-                </Frame.GestureRecognizers>
-                <StackLayout>
-                    <Image
-                        Aspect="AspectFit"
-                        HeightRequest="50"
-                        Source="Profile/agregardireccion.png"
-                        Margin="0,10,230,80"/>
-                    <Label
-                        Text="AGREGAR DIRECCION"
-                         FontAttributes="Bold"
-                         HorizontalOptions="Center" 
-                         VerticalOptions="Center"
-                         Margin="30,-118,0,0"
-                         FontSize="17"
-                         TextColor="#2f599f"/>
+                    HasShadow="True"
+                    HorizontalOptions="FillAndExpand">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            x:Name="TapGestureNuevaDireccion"
+                            CommandParameter="Nueva Direccion"
+                            Tapped="TapGestureNuevaDireccion_Tapped" />
+                    </Frame.GestureRecognizers>
 
-                </StackLayout>
-            </Frame>
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="FillAndExpand">
+                        <Image
+                            Margin="3,10,3,10"
+                            Aspect="AspectFit"
+                            HeightRequest="80"
+                            Source="Productos/agregarubicacion2.png"
+                            WidthRequest="80" />
 
+                        <Label
+                            x:Name="labelNuevaDireccion"
+                            Grid.Row="0"
+                            Margin="5,10,0,5"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="Agregar otra Dirección"
+                            TextColor="{StaticResource AzulPersonalizado}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="200" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
 
+        <!--  Bottom Navigation Bar  -->
+        <Frame
+            Grid.Row="2"
+            Margin="0,0,0,0"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
 
-        </Grid>
+                <!--  Home Button  -->
+                <ImageButton
+                    x:Name="btnHome"
+                    Margin="20,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnHome_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botoninicio.png"
+                    WidthRequest="40" />
+
+                <!--  Productos Button  -->
+                <ImageButton
+                    x:Name="btnProductos"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnProductos_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Menu/productocliente.png"
+                    WidthRequest="40" />
+
+                <!--  Pedidos Button  -->
+                <ImageButton
+                    x:Name="btnPedidos"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnPedidos_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Menu/pedidosmenu.png"
+                    WidthRequest="40" />
+
+                <!--  Perfil Button  -->
+                <ImageButton
+                    x:Name="btnPerfil"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnPerfil_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Home/perfilmenu.png"
+                    WidthRequest="40" />
+
+                <!--  Logout Button  -->
+                <ImageButton
+                    x:Name="btnLogout"
+                    Margin="0,0,20,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnLogout_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/salirmenu.png"
+                    WidthRequest="40" />
+            </StackLayout>
+        </Frame>
 
     </Grid>
 </ContentPage>

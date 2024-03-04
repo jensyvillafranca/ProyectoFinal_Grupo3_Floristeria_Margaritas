@@ -92,11 +92,14 @@
                                 x:Name="frameDireccionCollection"
                                 Margin="5"
                                 Padding="5"
-                                BackgroundColor="FloralWhite"
+                                BackgroundColor="{Binding FrameBackgroundColor}"
                                 BorderColor="{DynamicResource AzulBotones}"
                                 CornerRadius="10"
                                 HasShadow="True"
                                 HorizontalOptions="FillAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TappedCommand}" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
                                 <StackLayout
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
@@ -112,53 +115,75 @@
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
                                         <Label
                                             x:Name="labelDescripcion"
                                             Grid.Row="0"
-                                            Margin="5,10,0,5"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="20,10,0,5"
                                             FontAttributes="Bold"
                                             FontSize="16"
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelDescripcion}"
-                                            TextColor="Black"
+                                            Text="{Binding Descripcion}"
+                                            TextColor="{StaticResource AzulPersonalizado}"
                                             WidthRequest="200" />
                                         <Label
                                             x:Name="labelDireccion"
                                             Grid.Row="1"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
                                             Margin="20,0,0,5"
                                             FontAttributes="Bold"
-                                            FontSize="12"
+                                            FontSize="11"
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelDireccion}"
+                                            Text="{Binding Direccion}"
                                             TextColor="Black"
                                             WidthRequest="200" />
                                         <Label
-                                            x:Name="labelCiudadDept"
+                                            x:Name="labelReferencia"
                                             Grid.Row="2"
-                                            Margin="20,0,0,0"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="20,0,0,5"
                                             FontAttributes="Bold"
-                                            FontSize="12"
+                                            FontSize="11"
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelCiudadDept}"
+                                            Text="{Binding Referencia}"
                                             TextColor="Black"
                                             WidthRequest="200" />
+                                        <Label
+                                            x:Name="labelCiudad"
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Margin="20,0,5,10"
+                                            FontAttributes="Bold,Italic"
+                                            FontSize="10"
+                                            HorizontalOptions="End"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Ciudad, StringFormat='{0},'}"
+                                            TextColor="Black" />
+                                        <Label
+                                            x:Name="labelDepartamento"
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            Margin="0,0,0,10"
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="Start"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Departamento}"
+                                            TextColor="Black" />
 
                                     </Grid>
-                                    <ImageButton
-                                        x:Name="btnEditar"
-                                        Margin="0,0,0,0"
-                                        Aspect="AspectFit"
-                                        BackgroundColor="Transparent"
-                                        Command="{Binding TappedCommand}"
-                                        CommandParameter="{Binding .}"
-                                        HeightRequest="24"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Source="Productos/editar.png"
-                                        WidthRequest="24" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

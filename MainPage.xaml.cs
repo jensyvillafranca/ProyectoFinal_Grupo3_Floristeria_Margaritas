@@ -54,11 +54,6 @@ public partial class MainPage : ContentPage
 
     }
 
-    private void btnDireccion_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Views.Productos.pagoDireccion());
-    }
-
     private void btnPagoTarjeta_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.Productos.PagoTarjeta());
@@ -113,5 +108,15 @@ public partial class MainPage : ContentPage
     private void btnDetallePedido_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.PantallasRepartidor.DetallePedido());
+    }
+
+    private void btnDireccionesGuardadas_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.DireccionesUsuario.DireccionesGuardas());
+    }
+
+    private void btnEditarDireccion_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.DireccionesUsuario.EditarDireccion());
     }
 }

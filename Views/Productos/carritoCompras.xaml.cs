@@ -1,6 +1,7 @@
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using System.Collections.ObjectModel;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
@@ -226,6 +227,14 @@ public partial class carritoCompras : ContentPage
 
     private void btnRealizarOrden_Clicked(object sender, EventArgs e)
     {
+        var data = new PagoDireccionTotalesModel
+        {
+            TotalPrecio = TotalPrecio,
+            ISV = ISV,
+            Envio = Envio,
+            Total = Total
+        };
 
+        Navigation.PushAsync(new Views.Productos.pagoDireccion { BindingContext = data });
     }
 }

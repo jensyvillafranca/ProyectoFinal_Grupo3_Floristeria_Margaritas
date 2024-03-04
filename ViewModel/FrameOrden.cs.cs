@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
 
-namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos
+namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel
 {
     public class FrameOrden : INotifyPropertyChanged
     {

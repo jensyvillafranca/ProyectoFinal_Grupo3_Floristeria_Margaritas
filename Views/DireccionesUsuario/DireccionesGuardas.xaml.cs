@@ -1,54 +1,142 @@
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.DireccionesUsuario;
+
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 
 public partial class DireccionesGuardas : ContentPage
-
 {
+    public ObservableCollection<DireccionesViewModel>? Direcciones { get; set; }
+    private ApiService _apiService;
 
-    public ObservableCollection<DireccionesAgregadas> ListaPedidosRepartidor { get; set; }
     public DireccionesGuardas()
     {
         InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
+        BindingContext = this;
+        _apiService = new ApiService();
 
-        ListaPedidosRepartidor = new ObservableCollection<DireccionesAgregadas>
+        InitializeAsync();
+    }
+
+    private async void InitializeAsync()
+    {
+        var direcciones = await _apiService.PostDataAsync<DireccionModel[]>("obtenerDireccionesPorID.php", new { idcliente = Config.activeUserId });
+
+        Direcciones = new ObservableCollection<DireccionesViewModel>();
+
+        foreach (var direccion in direcciones)
+        {
+
+            DireccionesViewModel direccionesViewModel = new DireccionesViewModel
             {
-                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda  ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/casahistorial.png", referencia = "Avenida la hacienda ", direccion = "Villeda Morales", ciudad = "Tegucigalpa", departamento="Francisco Morazan"},
+                IdDireccion = direccion.iddireccion,
+                Direccion = direccion.direccion,
+                Ciudad = direccion.ciudad,
+                Departamento = direccion.departamento,
+                IdCliente = direccion.fk_idcliente,
+                Descripcion = direccion.descripcion,
+                Longitud = direccion.longitud,
+                Latitud = direccion.latitude,
+                Referencia = direccion.referencia,
+                TappedCommand = new Command(() => HandleTappedCommand(direccion.iddireccion, direccion.fk_idcliente)),
             };
-        collectionViewPedidosRepartidor.ItemsSource = ListaPedidosRepartidor;
+
+            Direcciones.Add(direccionesViewModel);
+        }
+
+        collectionViewDirecciones.ItemsSource = Direcciones;
     }
-    public class DireccionesAgregadas
+
+    private async void HandleTappedCommand(int idDireccion, int idCliente)
+    {
+        bool userConfirmed = await DisplayAlert("Confirmación", "¿Está seguro de que desea eliminar esta dirección?", "Si", "No");
+
+        if (userConfirmed)
+        {
+            var data = new
+            {
+                iddireccion = idDireccion,
+                idcliente = idCliente
+            };
+
+            bool isSuccess = await _apiService.PostSuccessAsync("eliminarDireccion.php", data);
+
+            if (isSuccess)
+            {
+                // Find the index of the item to be removed
+                int indexToRemove = -1;
+
+                for (int i = 0; i < Direcciones.Count; i++)
+                {
+                    if (Direcciones[i].IdDireccion == idDireccion)
+                    {
+                        indexToRemove = i;
+                        break;
+                    }
+                }
+
+                if (indexToRemove != -1)
+                {
+                    // Remove the item from the ObservableCollection
+                    Direcciones.RemoveAt(indexToRemove);
+
+                    // Update the ItemsSource of the CollectionView
+                    collectionViewDirecciones.ItemsSource = null;
+                    collectionViewDirecciones.ItemsSource = Direcciones;
+
+                    await DisplayAlert("Alerta", "La dirección ha sido eliminada!", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "No se encontró la dirección en la colección.", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "Error al eliminar la dirección!", "OK");
+            }
+        }
+    }
+
+
+    private void btnBack_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PopAsync();
+    }
+
+    private async void TapGestureNuevaDireccion_Tapped(object sender, TappedEventArgs e)
+    {
+        await AnimationUtilities.ChangeFrameColor(frameAgregarDireccion, Color.FromRgb(255, 250, 240), Color.FromRgb(65, 185, 254), 250);
+        await Navigation.PushAsync(new Views.DireccionesUsuario.AgregarDireccionNueva(1));
+    }
+
+    private void btnHome_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.Home.homePageUser());
+    }
+
+    private void btnProductos_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.Productos.productos());
+    }
+
+    private void btnPedidos_Clicked(object sender, EventArgs e)
     {
 
-        public string imagenCasa { get; set; }
-        public string referencia { get; set; }
-        public string direccion { get; set; }
-        public string ciudad { get; set; }
-        public string departamento { get; set; }
     }
 
-
-    private void btnImagenAtras_Clicked(object sender, EventArgs e)
+    private void btnPerfil_Clicked(object sender, EventArgs e)
     {
 
     }
 
-    private void BtnEditarDireccion_Clicked(object sender, EventArgs e)
+    private void btnLogout_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new DireccionesUsuario.EditarDireccion());
-    }
-    private async void TapGestureAgregarDireccion_Tapped(object sender, TappedEventArgs e)
-    {
-        await AnimationUtilities.ChangeFrameColor(frameAgregarDirecciones, Color.FromRgb(53, 172, 226), Color.FromRgb(211, 211, 211), 250);
-        await Navigation.PushAsync(new AgregarDireccionNueva());
-    }
 
+    }
 }
