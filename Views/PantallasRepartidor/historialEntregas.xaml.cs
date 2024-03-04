@@ -8,8 +8,8 @@ public partial class historialEntregas : ContentPage
     public ObservableCollection<EntregaItem> Entregas { get; set; }
     ObservableCollection<string> filtros;
     public historialEntregas()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         // Inicia objetos de prueba para collection view
         Entregas = new ObservableCollection<EntregaItem>

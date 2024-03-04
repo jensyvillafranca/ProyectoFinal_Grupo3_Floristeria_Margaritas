@@ -1,5 +1,8 @@
 ﻿namespace ProyectoFinal_Grupo3_Floristeria_Margaritas;
+using GeolocatorPlugin;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+
 public partial class MainPage : ContentPage
 {
 
@@ -81,7 +84,7 @@ public partial class MainPage : ContentPage
         Navigation.PushAsync(new Views.Calificacion.PantallaCalificacion());
     }
 
-    private void btnAplicarRepartidor_Clicked(object sender, EventArgs e)
+    private async void btnAplicarRepartidor_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.PantallasRepartidor.AplicarRepartidor());
     }
@@ -108,6 +111,88 @@ public partial class MainPage : ContentPage
     private void btnDetallePedido_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.PantallasRepartidor.DetallePedido());
+    }
+
+    private void btnMapaSucursal_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.PantallasRepartidor.MapaSucursal());
+    }
+
+    //Permisos de geolocalización para los mapas de repartidores.
+
+    //Solicitar permisos de geolocalización
+    private async Task CheckAndRequestLocationPermissionAsync()
+    {
+        var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+
+        if (status != PermissionStatus.Granted)
+        {
+            status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+        }
+
+        if (status == PermissionStatus.Granted)
+        {
+            //GetLocationAsync();
+        }
+        else if (status == PermissionStatus.Denied)
+        {
+            await DisplayAlert("Advertencia", "Esta aplicacion no puede funcionar si no tiene los permisos", "OK");
+        }
+    }
+    public async Task CheckAndRequestPermissionAsync()
+    {
+        // Verificar si el permiso ya ha sido otorgado
+        var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+
+        if (status != PermissionStatus.Granted)
+        {
+            // Solicitar el permiso
+            status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+        }
+
+        // Manejar el resultado del permiso
+        if (status == PermissionStatus.Granted)
+        {
+            await DisplayAlert("Aviso", "Permiso otorgado", "OK");
+        }
+        else if (status == PermissionStatus.Denied)
+        {
+            await DisplayAlert("Aviso", "Permiso denegado", "OK");
+        }
+    }
+    protected async override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        var connection = Connectivity.NetworkAccess;
+        var local = CrossGeolocator.Current;
+
+        if (connection == NetworkAccess.Internet)
+        {
+            if (local == null || !local.IsGeolocationAvailable || !local.IsGeolocationEnabled)
+            {
+                // Si la geolocalización no está disponible o no está habilitada
+                CheckAndRequestLocationPermissionAsync();
+            }
+            else
+            {
+                //GetLocationAsync();
+            }
+        }
+        else
+        {
+            await DisplayAlert("Sin Acceso a internet", "Por favor, revisa tu conexion a internet para continuar.", "OK");
+        }
+    }
+
+    private void btnMapaCliente_Clicked_1(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.PantallasRepartidor.MapaEntregaCliente());
+    }
+
+    private void btnAlertas_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.PantallaAdministrador.NotificacionStockProductos());
     }
 
     private void btnDireccionesGuardadas_Clicked(object sender, EventArgs e)

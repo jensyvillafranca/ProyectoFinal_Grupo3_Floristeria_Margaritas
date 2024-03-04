@@ -1,8 +1,33 @@
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CreacionProductos;
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-windows10.0.19041.0)'
+Antes:
 using System.Collections.ObjectModel;
 using Microsoft.Maui.Controls;
+Después:
+using Microsoft.Maui.Controls;
 using System;
-using System.Threading.Tasks;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-ios)'
+Antes:
+using System.Collections.ObjectModel;
+using Microsoft.Maui.Controls;
+Después:
+using Microsoft.Maui.Controls;
+using System;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-maccatalyst)'
+Antes:
+using System.Collections.ObjectModel;
+using Microsoft.Maui.Controls;
+Después:
+using Microsoft.Maui.Controls;
+using System;
+*/
+using Microsoft.Maui.Controls;
+using System.Collections.ObjectModel;
 public partial class AgregarProductos : ContentPage
 {
 
@@ -11,8 +36,8 @@ public partial class AgregarProductos : ContentPage
 
     string categorias;
     public AgregarProductos()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         categoria = new ObservableCollection<string>
             {
@@ -74,7 +99,7 @@ public partial class AgregarProductos : ContentPage
 
     private void btnStock_Clicked(object sender, EventArgs e)
     {
-       
+
     }
 
     private void btnEstadisticas_Clicked(object sender, EventArgs e)

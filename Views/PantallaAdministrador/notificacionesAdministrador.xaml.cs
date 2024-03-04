@@ -1,13 +1,12 @@
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallaAdministrador;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 public partial class notificacionesAdministrador : ContentPage
 {
     public ObservableCollection<SolicitudItem> Solicitudes { get; set; }
     public notificacionesAdministrador()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         Solicitudes = new ObservableCollection<SolicitudItem>
             {
                 new SolicitudItem { LabelIntro = "Juan López", LabelFecha = "12-05-2024", LabelNombre = "Juan José López", LabelCorreo = "juanjose@gmail.com", LabelTelefono = "9548-9132", LabelDNI = "0502-2003-00820", LabelReqEdad = "Cumple con el requerimiento de ser mayor de edad. (20 años)", LabelDireccion = "Cortés, Ciudad Choloma", LabelGenero = "Masculino", LabelLicencia = "Cuenta con licencia de vehículo liviano"},

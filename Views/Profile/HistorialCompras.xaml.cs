@@ -6,9 +6,9 @@ public partial class HistorialCompras : ContentPage
 {
     public ObservableCollection<DireccionesAgregadas> ListaPedidosRepartidor { get; set; }
     public HistorialCompras()
-	{
+    {
 
-		InitializeComponent();
+        InitializeComponent();
 
         ListaPedidosRepartidor = new ObservableCollection<DireccionesAgregadas>
             {

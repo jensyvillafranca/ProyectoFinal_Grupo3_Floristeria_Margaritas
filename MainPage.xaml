@@ -141,6 +141,27 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina de Detalle de Pedidos"
                 Text="Detalle de Pedidos" />
+
+            <Button
+                x:Name="btnMapaSucursal"
+                Clicked="btnMapaSucursal_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Mapa Sucursal"
+                Text="Mapa Sucursal" />
+
+            <Button
+                x:Name="btnMapaCliente"
+                Clicked="btnMapaCliente_Clicked_1"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Mapa Sucursal"
+                Text="Mapa Cliente" />
+
+            <Button
+                x:Name="btnAlertas"
+                Clicked="btnAlertas_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Alerta de Stock"
+                Text="Notificación Stock" />
             <Button
                 x:Name="btnDireccionesGuardadas"
                 Clicked="btnDireccionesGuardadas_Clicked"

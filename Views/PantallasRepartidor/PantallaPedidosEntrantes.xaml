@@ -46,7 +46,8 @@
                         HorizontalOptions="Center"
                         Text="Pedidos entrantes"
                         TextColor="White"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center"
+                        FontFamily="Fredoka-Light"/>
 
                     <!--  Icono de notificación  -->
                     <StackLayout
@@ -75,7 +76,8 @@
                     Text="¡Pedidos confirmados y listos para ser procesados&#x0a;por tí!"
                     TextColor="{StaticResource AzulPersonalizado}"
                     VerticalOptions="Start"
-                    VerticalTextAlignment="Center" />
+                    VerticalTextAlignment="Center" 
+                    FontFamily="Fredoka-Light"/>
                 <!--  -Para poder dar un salto de línea lo hacemos con: &#x0a;  -->
 
                 <CollectionView
@@ -117,7 +119,8 @@
                                         HorizontalOptions="Start"
                                         HorizontalTextAlignment="Start"
                                         Text="{Binding codPedido, StringFormat='Código: {0}'}"
-                                        TextColor="Black" />
+                                        TextColor="Black" 
+                                        FontFamily="Fredoka-Light"/>
 
                                     <Frame
                                         Grid.Row="1"
@@ -138,7 +141,8 @@
                                         <Label
                                             Margin="5,0,0,0"
                                             FontAttributes="Bold"
-                                            FontSize="13">
+                                            FontSize="13"
+                                            FontFamily="Fredoka-Light">
                                             <Label.Text>
                                                 <Binding Path="clientePedido" StringFormat="Cliente: {0}" />
                                             </Label.Text>
@@ -147,9 +151,11 @@
                                         <!--  Formato para visualización del lugar de entrega del pedido  -->
                                         <Label
                                             Margin="5,0,0,0"
-                                            FontSize="10"
+                                            FontSize="11"
                                             LineBreakMode="WordWrap"
-                                            MaximumWidthRequest="162">
+                                            MaximumWidthRequest="162"
+                                            FontFamily="Fredoka-Light"
+                                            HorizontalOptions="Start">
                                             <Label.Text>
                                                 <Binding Path="lugarEntregaPedido" StringFormat="Entrega en: {0}" />
                                             </Label.Text>
@@ -157,7 +163,7 @@
 
 
                                         <!--  Formato para visualización de la sucursal a recoger el pedido  -->
-                                        <Label Margin="5,0,0,0" FontSize="10">
+                                        <Label Margin="5,0,0,0" FontSize="11" FontFamily="Fredoka-Light">
                                             <Label.Text>
                                                 <Binding Path="sucursalPedido" StringFormat="Recoger en: {0}" />
                                             </Label.Text>
@@ -253,6 +259,5 @@
                     WidthRequest="40" />
             </StackLayout>
         </Frame>
-
     </Grid>
 </ContentPage>

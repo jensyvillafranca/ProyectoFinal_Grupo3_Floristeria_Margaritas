@@ -13,7 +13,10 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                    fonts.AddFont("JosefinSans-Bold.ttf", "JosefinSansBold");
+                    fonts.AddFont("JosefinSans-Thin.ttf", "JosefinSansBold");
+                    fonts.AddFont("Fredoka-Light.ttf", "FredokaLight");
+                }).UseMauiMaps();
 
 #if DEBUG
             builder.Logging.AddDebug();

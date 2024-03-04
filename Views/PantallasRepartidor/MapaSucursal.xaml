@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.MapaSucursal"
+             Title="Mapa Sucursal"
+             Shell.NavBarIsVisible="False"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.svg">
+    <StackLayout>
+        <Grid Margin="10">
+            <Image Aspect="AspectFill" HorizontalOptions="Start" VerticalOptions="Start" Source="background_top.svg"/>
+
+            <StackLayout Margin="5">
+                <Frame Margin="5,0,5,5" Padding="0,5,0,5" BackgroundColor="{DynamicResource BlackWithTransparency}" CornerRadius="20" HeightRequest="70" WidthRequest="340">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Source="ImagenesRepartidor/atras.png"/>
+                        <Label Grid.Column="1" TextColor="White" FontSize="16" FontAttributes="Bold" Text="Detalle de Pedido" HorizontalOptions="Center" VerticalOptions="Start"></Label>
+                        <Label Grid.Column="1" Margin="0,-20,0,-45" TextColor="White" FontSize="12" FontAttributes="Bold" Text="Código de Pedido: PED-56546" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                        <Image Grid.Column="2" Source="ImagenesRepartidor/notificacion_repartidor.png" WidthRequest="25" HeightRequest="25"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </Grid>
+        <Border Grid.Column="0" HeightRequest="448" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="345">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12"/>
+            </Border.StrokeShape>
+            <maps:Map x:Name="mapa" MapType="Street" />
+        </Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="Hemos notificado a la tienda que te diriges allí para asegurarte de que el producto esté listo." HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black" FontSize="13" Margin="0,0,0,7" FontAttributes="Bold"></Label>
+            <Image Grid.Row="1" Source="ImagenesRepartidor/recoger_pedido_sucursal.png" Margin="0,0,0,7"></Image>
+            <Button x:Name="btnEntregarPedido" Grid.Row="2" Text="Entregar Pedido" WidthRequest="330" BackgroundColor="#46b0f1" FontAttributes="Bold" Clicked="btnEntregarPedido_Clicked"></Button>
+        </Grid>
+    </StackLayout>
+</ContentPage>
