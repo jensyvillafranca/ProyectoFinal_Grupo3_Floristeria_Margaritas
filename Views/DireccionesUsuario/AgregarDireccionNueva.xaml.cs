@@ -17,6 +17,7 @@ public partial class AgregarDireccionNueva : ContentPage
 
     public ObservableCollection<DepartamentoModel> Departamentos { get; set; }
     public ObservableCollection<CiudadModel> Ciudades { get; set; }
+    public List<SucursalModel>? Sucursales { get; set; }
 
     //Para el Picker de Departamentos
     private DepartamentoModel _selectedDepartamento;
@@ -65,7 +66,22 @@ public partial class AgregarDireccionNueva : ContentPage
 
     private async void AsyncTaskExec()
     {
-        if(tipoNavegacion != 0)
+        var sucursales = await _apiService.GetDataAsync<SucursalModel[]>("obtenerSucursales.php");
+
+        Sucursales = new List<SucursalModel>();
+
+        foreach (var sucursal in sucursales)
+        {
+            SucursalModel sucursalModel = new SucursalModel
+            {
+                idsucursal = sucursal.idsucursal,
+                ciudad = sucursal.ciudad
+            };
+
+            Sucursales.Add(sucursalModel);
+        }
+
+        if (tipoNavegacion != 0)
         {
             await LoadDepartamentosDataAsync();
         }
@@ -83,6 +99,7 @@ public partial class AgregarDireccionNueva : ContentPage
 
     private async Task getLocationService()
     {
+
         var locationPermissionStatus = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
 
         if (locationPermissionStatus == PermissionStatus.Granted)
@@ -100,6 +117,12 @@ public partial class AgregarDireccionNueva : ContentPage
                 double Lng = location.Longitude;
 
                 var result = await _geocodingService.GetCoordinateDetailsAsync(Lat, Lng);
+
+                if (Sucursales?.Any(sucursal => sucursal.ciudad == result.Ciudad) != true)
+                {
+                    await DisplayAlert("Alerta", $"Por el momento no contamos con servicio de entrega en {result.Ciudad} !", "OK");
+                    await Navigation.PopAsync();
+                }
 
                 entryDireccion.Text = result.Direccion;
                 ciudadPicker.Items.Add(result.Ciudad);
@@ -215,14 +238,25 @@ public partial class AgregarDireccionNueva : ContentPage
         Navigation.PopAsync();
     }
 
-    private void ciudadPicker_SelectedIndexChanged(object sender, EventArgs e)
+    private async void ciudadPicker_SelectedIndexChanged(object sender, EventArgs e)
     {
+        btnAgregar.IsEnabled = true;
+        entryDireccion.IsEnabled = true;
+
         int selectedIndex = ciudadPicker.SelectedIndex;
 
         if (selectedIndex >= 0 && selectedIndex < Ciudades.Count)
         {
             SelectedCiudad = Ciudades[selectedIndex];
             Console.WriteLine($"Selected Ciudad: {SelectedCiudad?.ciudad}");
+
+            if (Sucursales?.Any(sucursal => sucursal.ciudad == SelectedCiudad.ciudad) != true)
+            {
+                await DisplayAlert("Alerta", "Por el momento no contamos con servicio de entrega en la Municipalidad seleccionada!", "OK");
+                btnAgregar.IsEnabled = false;
+                entryDireccion.IsEnabled = false;
+                return;
+            }
         }
         else
         {

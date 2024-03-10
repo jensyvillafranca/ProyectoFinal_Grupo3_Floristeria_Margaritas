@@ -15,6 +15,11 @@ public partial class pagoDireccion : ContentPage
     private ApiService _apiService;
     private Modelos.DireccionModel SelectedDireccion { get; set; }
 
+    private double TotalPrecio;
+    private double ISV;
+    private double Envio;
+    private double Total;
+
     public pagoDireccion()
     {
         InitializeComponent();
@@ -31,6 +36,11 @@ public partial class pagoDireccion : ContentPage
 
         if (BindingContext is PagoDireccionTotalesModel data)
         {
+            TotalPrecio = (data.TotalPrecio);
+            ISV = (data.ISV);
+            Envio = (data.Envio);
+            Total = (data.Total);
+
             labelSubtotal.Text = $"L {Math.Round(data.TotalPrecio, 2):F2}";
             labelISV.Text = $"L {Math.Round(data.ISV, 2):F2}";
             labelEnvio.Text = $"L {Math.Round(data.Envio, 2):F2}";
@@ -45,7 +55,7 @@ public partial class pagoDireccion : ContentPage
 
     private async void InitializeAsync()
     {
-        var direcciones = await _apiService.PostDataAsync<DireccionModel[]>("obtenerDireccionesPorID.php", new { idcliente = Config.Config.activeUserId });
+        var direcciones = await _apiService.PostDataAsync<DireccionModel[]>("obtenerDireccionesPorID.php", new { idcliente = Config.Config.activeUserId });      
 
         Direcciones = new ObservableCollection<DireccionesViewModel>();
 
@@ -73,7 +83,7 @@ public partial class pagoDireccion : ContentPage
         collectionViewDirecciones.ItemsSource = Direcciones;
     }
 
-    private async void HandleTappedCommand(DireccionModel direccion)
+    private void HandleTappedCommand(DireccionModel direccion)
     {
         SelectedDireccion = direccion;
 
@@ -101,9 +111,24 @@ public partial class pagoDireccion : ContentPage
         Navigation.PopToRootAsync();
     }
 
-    private void btnRealizarPago_Clicked(object sender, EventArgs e)
+    private async void btnRealizarPago_Clicked(object sender, EventArgs e)
     {
+        if (SelectedDireccion == null)
+        {
+            await DisplayAlert("Aviso", "Por favor seleccione una dirección de entrega o agregue una nueva", "OK");
+            return;
+        }
 
+        var data = new PagoDireccionTotalesModel
+        {
+            TotalPrecio = TotalPrecio,
+            ISV = ISV,
+            Envio = Envio,
+            Total = Total
+        };
+
+        var combinedData = new Tuple<PagoDireccionTotalesModel, DireccionModel>(data, SelectedDireccion);
+        await Navigation.PushAsync(new Views.Productos.PagoTarjeta { BindingContext = combinedData });
     }
 
     private async void TapGestureNuevaDireccion_Tapped(object sender, TappedEventArgs e)

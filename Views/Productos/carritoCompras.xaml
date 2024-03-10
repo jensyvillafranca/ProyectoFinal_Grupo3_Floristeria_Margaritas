@@ -107,7 +107,7 @@
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding LabelNombreProducto}"
-                                            TextColor="Black" />
+                                            TextColor="{StaticResource AzulLetraLogo}" />
                                         <StackLayout
                                             Grid.Row="1"
                                             Grid.Column="0"

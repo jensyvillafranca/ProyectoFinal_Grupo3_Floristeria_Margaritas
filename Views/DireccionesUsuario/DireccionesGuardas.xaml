@@ -105,7 +105,7 @@
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding Descripcion}"
-                                            TextColor="{StaticResource AzulPersonalizado}"
+                                            TextColor="{StaticResource AzulLetraLogo}"
                                             WidthRequest="200" />
                                         <Label
                                             x:Name="labelDireccion"
@@ -210,6 +210,48 @@
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             Text="Agregar otra Dirección"
+                            TextColor="{StaticResource AzulPersonalizado}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="200" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame
+                    x:Name="frameUbicacionActual"
+                    Margin="5"
+                    Padding="5"
+                    BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}"
+                    CornerRadius="10"
+                    HasShadow="True"
+                    HorizontalOptions="FillAndExpand">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            x:Name="TapGestureUbicacionActual"
+                            CommandParameter="Ubicacion Actual"
+                            Tapped="TapGestureUbicacionActual_Tapped" />
+                    </Frame.GestureRecognizers>
+
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="FillAndExpand">
+                        <Image
+                            Margin="3,10,3,10"
+                            Aspect="AspectFit"
+                            HeightRequest="80"
+                            Source="Productos/ubicacionactual.png"
+                            WidthRequest="80" />
+
+                        <Label
+                            x:Name="labelUbicacionActual"
+                            Grid.Row="0"
+                            Margin="5,10,0,5"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="Ubicación Actual"
                             TextColor="{StaticResource AzulPersonalizado}"
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="200" />

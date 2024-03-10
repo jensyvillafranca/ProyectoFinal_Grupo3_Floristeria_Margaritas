@@ -204,7 +204,7 @@
                                         FontSize="14"
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding LabelText}"
-                                        TextColor="Black" />
+                                        TextColor="{StaticResource AzulLetraLogo}" />
                                     <StackLayout
                                         Margin="0,5,0,5"
                                         HeightRequest="30"

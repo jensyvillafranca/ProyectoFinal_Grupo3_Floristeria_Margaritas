@@ -75,7 +75,7 @@
                             FontSize="20"
                             HorizontalTextAlignment="Center"
                             Text="{Binding NombreProducto}"
-                            TextColor="Black" />
+                            TextColor="{StaticResource AzulLetraLogo}" />
 
                         <Label
                             x:Name="labelDisponible"

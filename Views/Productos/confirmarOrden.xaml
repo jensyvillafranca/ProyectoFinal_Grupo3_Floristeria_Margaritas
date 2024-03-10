@@ -16,7 +16,7 @@
         <!--  Header  -->
         <StackLayout
             Grid.Row="0"
-            Margin="0,0,0,15"
+            Margin="0,0,0,0"
             BackgroundColor="Transparent"
             Orientation="Vertical">
             <Frame
@@ -63,9 +63,119 @@
         </StackLayout>
 
 
-        <!--  Body - Collection view  -->
+        <!--  Body  -->
         <ScrollView Grid.Row="1">
             <StackLayout VerticalOptions="CenterAndExpand">
+                <Frame
+                    Padding="0,0,0,0"
+                    BackgroundColor="{DynamicResource AzulOscuro}"
+                    BorderColor="{DynamicResource AzulBotones}">
+                    <Label
+                        Margin="0,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalTextAlignment="Center"
+                        Text="Productos Agregados"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </Frame>
+                <!--  Collection View Productos  -->
+                <CollectionView
+                    x:Name="collectionViewCarrito"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding Ordenes}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                x:Name="frameOrden"
+                                Margin="5"
+                                Padding="5"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
+                                CornerRadius="10"
+                                HasShadow="True"
+                                HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="FillAndExpand">
+                                    <Image
+                                        Margin="3,10,3,10"
+                                        Aspect="AspectFit"
+                                        HeightRequest="80"
+                                        Source="{Binding ImageSource}"
+                                        WidthRequest="80" />
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            x:Name="labelNombreProducto"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Margin="5,10,0,0"
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelNombreProducto}"
+                                            TextColor="{StaticResource AzulLetraLogo}" />
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Margin="10,0,0,0"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Orientation="Horizontal">
+                                            <Label
+                                                x:Name="labelCantidad"
+                                                BackgroundColor="FloralWhite"
+                                                FontAttributes="Bold"
+                                                FontSize="12"
+                                                HeightRequest="40"
+                                                HorizontalTextAlignment="Center"
+                                                Text="Cantidad:"
+                                                VerticalTextAlignment="Center"
+                                                WidthRequest="60" />
+                                            <Label
+                                                x:Name="quantityEntry"
+                                                BackgroundColor="FloralWhite"
+                                                FontAttributes="Bold"
+                                                HeightRequest="40"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding EntryQuantity, Mode=TwoWay}"
+                                                VerticalTextAlignment="Center"
+                                                WidthRequest="40" />
+
+                                        </StackLayout>
+                                        <Label
+                                            x:Name="labelPrecioTotal"
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="20,10,0,0"
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding LabelPrecioTotal, StringFormat='L {0:N2}'}"
+                                            TextColor="Black"
+                                            WidthRequest="100" />
+                                    </Grid>
+
+
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
                 <!--  Frame Direccion  -->
                 <Frame
                     Padding="0,0,0,0"
@@ -115,7 +225,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 Text=""
-                                TextColor="Black"
+                                TextColor="{StaticResource AzulLetraLogo}"
                                 WidthRequest="200" />
                             <Label
                                 x:Name="labelDireccion"
@@ -193,7 +303,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 Text=""
-                                TextColor="Black"
+                                TextColor="{StaticResource AzulLetraLogo}"
                                 WidthRequest="200" />
                             <Label
                                 x:Name="labelNumeroTarjeta"

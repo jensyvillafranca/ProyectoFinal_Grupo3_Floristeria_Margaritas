@@ -93,11 +93,14 @@
                                 x:Name="frameTarjetaCollection"
                                 Margin="5"
                                 Padding="5"
-                                BackgroundColor="FloralWhite"
+                                BackgroundColor="{Binding FrameBackgroundColor}"
                                 BorderColor="{DynamicResource AzulBotones}"
                                 CornerRadius="10"
                                 HasShadow="True"
                                 HorizontalOptions="FillAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TappedCommand}" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
                                 <StackLayout
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
@@ -122,8 +125,8 @@
                                             FontSize="16"
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelDescripcion}"
-                                            TextColor="Black"
+                                            Text="{Binding Descripcion}"
+                                            TextColor="{StaticResource AzulLetraLogo}"
                                             WidthRequest="200" />
                                         <Label
                                             x:Name="labelNumeroTarjeta"
@@ -133,7 +136,7 @@
                                             FontSize="12"
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelNumeroTarjeta}"
+                                            Text="{Binding NumeroTarjeta}"
                                             TextColor="Black"
                                             WidthRequest="200" />
                                         <Label
@@ -144,7 +147,7 @@
                                             FontSize="12"
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelNombreTarjeta}"
+                                            Text="{Binding Nombre}"
                                             TextColor="Black"
                                             WidthRequest="200" />
                                     </Grid>
@@ -165,9 +168,9 @@
                     HorizontalOptions="FillAndExpand">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer
-                            x:Name="TapGestureNuevaDireccion"
-                            CommandParameter="Nueva Direccion"
-                            Tapped="TapGestureNuevaDireccion_Tapped" />
+                            x:Name="TapGestureNuevaTarjeta"
+                            CommandParameter="Nueva Tarjeta"
+                            Tapped="TapGestureNuevaTarjeta_Tapped" />
                     </Frame.GestureRecognizers>
 
                     <StackLayout
@@ -190,7 +193,7 @@
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             Text="Agregar Tarjeta"
-                            TextColor="Black"
+                            TextColor="{StaticResource AzulPersonalizado}"
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="200" />
                     </StackLayout>

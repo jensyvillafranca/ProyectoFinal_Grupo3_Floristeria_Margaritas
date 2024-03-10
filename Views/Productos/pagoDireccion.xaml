@@ -132,7 +132,7 @@
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding Descripcion}"
-                                            TextColor="{StaticResource AzulPersonalizado}"
+                                            TextColor="{StaticResource AzulLetraLogo}"
                                             WidthRequest="200" />
                                         <Label
                                             x:Name="labelDireccion"
@@ -226,7 +226,7 @@
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             Text="Agregar otra Dirección"
-                            TextColor="Black"
+                            TextColor="{StaticResource AzulPersonalizado}"
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="200" />
                     </StackLayout>
@@ -268,7 +268,7 @@
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             Text="Ubicación Actual"
-                            TextColor="Black"
+                            TextColor="{StaticResource AzulPersonalizado}"
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="200" />
                     </StackLayout>

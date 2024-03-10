@@ -52,7 +52,32 @@
                     HasShadow="True">
                     <Label
                         FontAttributes="Bold"
-                        FontSize="14"
+                        FontSize="13"
+                        HorizontalTextAlignment="Center"
+                        Text="La hora estimada de entrega de su pedido es:"
+                        TextColor="White" />
+                </Frame>
+                <Frame
+                    BackgroundColor="{DynamicResource BlackWithTransparency}"
+                    BorderColor="Transparent"
+                    CornerRadius="10"
+                    HasShadow="True">
+                    <Label
+                        x:Name="labelHoraEstimada"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalTextAlignment="Center"
+                        Text=""
+                        TextColor="{DynamicResource AzulBotones}" />
+                </Frame>
+                <Frame
+                    BackgroundColor="Transparent"
+                    BorderColor="Transparent"
+                    CornerRadius="10"
+                    HasShadow="True">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
                         HorizontalTextAlignment="Center"
                         Text="Porfavor espera mientras es redireccionado..."
                         TextColor="White" />

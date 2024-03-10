@@ -100,5 +100,11 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers
 
             return 0;
         }
+
+        public async Task<int> DeleteAllProductos()
+        {
+            await Init();
+            return await _connection.DeleteAllAsync<ShoppingCartItem>();
+        }
     }
 }

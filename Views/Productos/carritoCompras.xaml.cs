@@ -9,6 +9,7 @@ public partial class carritoCompras : ContentPage
 {
     private ShoppingCartController shoppingCartController;
     private ApiService _apiService;
+    private List<Modelos.ShoppingCartItem> shoppingCartItems;
     public ObservableCollection<FrameOrden> Ordenes { get; set; }
     private double TotalPrecio { get; set; }
     private double ISV { get; set; }
@@ -29,7 +30,7 @@ public partial class carritoCompras : ContentPage
     {
         shoppingCartController = new ShoppingCartController();
 
-        List<Modelos.ShoppingCartItem> shoppingCartItems = await shoppingCartController.getListProductos();
+        shoppingCartItems = await shoppingCartController.getListProductos();
 
         //Para guardar items actualizados
         List<Modelos.ShoppingCartItem> shoppingCartItemsUpdated = new List<ShoppingCartItem>();
@@ -66,7 +67,7 @@ public partial class carritoCompras : ContentPage
                 ImageSource = item.enlacefoto,
                 LabelNombreProducto = item.nombreproducto,
                 LabelPrecioTotal = $"{item.cantidad * discountedPrice:N2}",
-                PrecioProducto = ParsePrecio(item.precioventa),
+                PrecioProducto = discountedPrice,
                 EntryQuantity = item.cantidad,
                 StockQuantity = item.stock,
                 TappedCommand = new Command(() => HandleItemTapped(item.Id)),
@@ -195,6 +196,7 @@ public partial class carritoCompras : ContentPage
             CalculateTotalPrecio();
             OnPropertyChanged(nameof(item.EntryQuantity));
             OnPropertyChanged(nameof(item.LabelPrecioTotal));
+            updateCantidad(item);
         }
     }
 
@@ -207,11 +209,24 @@ public partial class carritoCompras : ContentPage
             CalculateTotalPrecio();
             OnPropertyChanged(nameof(item.EntryQuantity));
             OnPropertyChanged(nameof(item.LabelPrecioTotal));
+            updateCantidad(item);
         }
         else
         {
             CheckQuantityLimit(item);
         }       
+    }
+
+    private async void updateCantidad(FrameOrden frame)
+    {
+        foreach (var item in shoppingCartItems)
+        {
+            if(item.idproducto == frame.IdProducto)
+            {
+                item.cantidad = frame.EntryQuantity;
+                await shoppingCartController.updateProducto(item);
+            }   
+        }
     }
 
 
@@ -225,8 +240,14 @@ public partial class carritoCompras : ContentPage
         Navigation.PushAsync(new Views.Productos.productos());
     }
 
-    private void btnRealizarOrden_Clicked(object sender, EventArgs e)
+    private async void btnRealizarOrden_Clicked(object sender, EventArgs e)
     {
+        if(Ordenes.Count()==0)
+        {
+            await DisplayAlert("Aviso", "Su carrito de compras esta vacío", "OK");
+            return;
+        }
+
         var data = new PagoDireccionTotalesModel
         {
             TotalPrecio = TotalPrecio,
@@ -235,6 +256,6 @@ public partial class carritoCompras : ContentPage
             Total = Total
         };
 
-        Navigation.PushAsync(new Views.Productos.pagoDireccion { BindingContext = data });
+        await Navigation.PushAsync(new Views.Productos.pagoDireccion { BindingContext = data });
     }
 }
