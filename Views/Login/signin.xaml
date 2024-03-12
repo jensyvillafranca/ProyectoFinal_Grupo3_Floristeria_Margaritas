@@ -7,7 +7,40 @@
     BackgroundImageSource="imglogin/fondosignin.png">
     <StackLayout Orientation="Vertical">
         <Frame
-            Margin="10,135,10,0"
+            Margin="0,18,0,0"
+            Padding="0,10,0,10"
+            BackgroundColor="Transparent"
+            BorderColor="Transparent"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <Image
+                    Margin="0,10,0,10"
+                    Aspect="AspectFit"
+                    HeightRequest="120"
+                    Source="Logo/logp.png"
+                    WidthRequest="120" />
+            </StackLayout>
+        </Frame>
+        <Frame
+            Margin="30,0,30,0"
+            Padding="0,0,0,0"
+            BackgroundColor="{DynamicResource AzulOscuro}"
+            BorderColor="Transparent">
+            <Label
+                Margin="0,5,0,5"
+                FontAttributes="Bold"
+                FontSize="12"
+                HorizontalTextAlignment="Center"
+                Text="Ingrese sus Datos Personales"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand" />
+        </Frame>
+        <Frame
+            Margin="10,0,10,0"
             BackgroundColor="Transparent"
             BorderColor="Transparent"
             HorizontalOptions="FillAndExpand"
@@ -83,8 +116,10 @@
                             FontAttributes="Bold"
                             FontSize="12"
                             HorizontalTextAlignment="Start"
+                            Keyboard="Email"
                             Placeholder="Ingrese su correo electrónico"
                             PlaceholderColor="Gray"
+                            TextChanged="entryCorreo_TextChanged"
                             TextColor="Black" />
                     </Frame>
 
@@ -107,6 +142,7 @@
                             FontAttributes="Bold"
                             FontSize="12"
                             HorizontalTextAlignment="Start"
+                            Keyboard="Telephone"
                             Placeholder="Ingrese su número de teléfono"
                             PlaceholderColor="Gray"
                             TextColor="Black" />
@@ -120,7 +156,7 @@
                         TextColor="White" />
 
                     <Frame
-                        Margin="10,0,0,20"
+                        Margin="10,0,0,0"
                         Padding="0,0,0,0"
                         BackgroundColor="White"
                         CornerRadius="10">
@@ -133,8 +169,17 @@
                             HorizontalTextAlignment="Start"
                             Placeholder="Ingrese un usuario"
                             PlaceholderColor="Gray"
+                            TextChanged="entryUsuario_TextChanged"
                             TextColor="Black" />
                     </Frame>
+                    <Label
+                        x:Name="existeUsuarioLabel"
+                        Margin="0,2,10,5"
+                        FontAttributes="Bold"
+                        FontSize="10"
+                        HorizontalOptions="End"
+                        Text=""
+                        TextColor="White" />
 
                     <Label
                         Margin="10,0,0,5"
@@ -158,6 +203,7 @@
                             IsPassword="True"
                             Placeholder="Ingrese su contraseña"
                             PlaceholderColor="Gray"
+                            TextChanged="entryContrasena_TextChanged"
                             TextColor="Black" />
                     </Frame>
 
@@ -183,27 +229,38 @@
                             IsPassword="True"
                             Placeholder="Ingrese nuevamente su contraseña"
                             PlaceholderColor="Gray"
+                            TextChanged="entryConfirmarContrasena_TextChanged"
                             TextColor="Black" />
                     </Frame>
-
                     <Label
-                        x:Name="labelIngresar"
-                        Margin="190,0,0,15"
+                        x:Name="validationLabel"
+                        Margin="15,0,0,5"
                         FontAttributes="Bold"
-                        FontSize="11"
-                        HorizontalOptions="Center"
-                        Text="Ya tengo una cuenta"
-                        TextColor="White"
-                        TextDecorations="Underline">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelIngresar_Tapped" />
-                        </Label.GestureRecognizers>
-
-                    </Label>
-
-
+                        FontSize="12"
+                        Text=""
+                        TextColor="White" />
                 </StackLayout>
             </ScrollView>
+        </Frame>
+
+        <Frame
+            Margin="30,0,40,0"
+            Padding="0,0,0,0"
+            BackgroundColor="Transparent"
+            BorderColor="Transparent">
+            <Label
+                x:Name="labelIngresar"
+                Margin="0,0,0,20"
+                FontAttributes="Bold"
+                FontSize="12"
+                HorizontalOptions="End"
+                Text="Ya tengo una cuenta"
+                TextColor="White"
+                TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelIngresar_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
         </Frame>
 
         <Frame

@@ -15,6 +15,7 @@ public partial class confirmarOrden : ContentPage
     private TarjetaModel selectedTarjeta { get; set; }
     private ShoppingCartRequest shoppingCartRequest { get; set; }
 
+
     //variable para controlar si el usuario preciona el boton de atras una vez hecho el pedido
     private bool allowed = true;
 

@@ -31,11 +31,6 @@ public partial class MainPage : ContentPage
         Navigation.PushAsync(new Views.Productos.productos());
     }
 
-    private void btnProductoDetalle_Clicked(object sender, EventArgs e)
-    {
-        
-    }
-
     private void btnPedidosRepartidor_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.PantallasRepartidor.PantallaPedidosEntrantes());
@@ -56,24 +51,6 @@ public partial class MainPage : ContentPage
         Navigation.PushAsync(new Views.Login.singin());
 
     }
-
-    private void btnPagoTarjeta_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Views.Productos.PagoTarjeta());
-    }
-
-    private void btnFinalizar_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Views.Productos.confirmarOrden());
-    }
-
-    private async void btnPopupPago_Clicked(object sender, EventArgs e)
-    {
-        CustomPopupPagoRealizado customPopup = new CustomPopupPagoRealizado();
-        await Navigation.PushModalAsync(new NavigationPage(customPopup));
-    }
-
-
     private void btnCalificacionFinalizada_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.Calificacion.CalificacionFinalizada());
@@ -200,8 +177,23 @@ public partial class MainPage : ContentPage
         Navigation.PushAsync(new Views.DireccionesUsuario.DireccionesGuardas());
     }
 
-    private void btnEditarDireccion_Clicked(object sender, EventArgs e)
+    private void btnVerificacionCorreo_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Views.DireccionesUsuario.EditarDireccion());
+        Navigation.PushAsync(new Views.Login.CrearCuenta());
+    }
+
+    private void btnEnviarCodigo_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.Login.EnviarCodigo());
+    }
+
+    private void btnRestaurarContrasena_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.Login.RestaurarContra());
+    }
+
+    private void btnVerificarContrasena_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.Login.VerificarContra());
     }
 }

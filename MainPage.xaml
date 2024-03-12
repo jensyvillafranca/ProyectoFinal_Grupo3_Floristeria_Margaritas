@@ -36,41 +36,53 @@
                 SemanticProperties.Hint="Home Screen Admin"
                 Text="Home Admin" />
             <Button
+                x:Name="btnlogin"
+                Clicked="btnlogin_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de log in"
+                Text="Log In" />
+            <Button
+                x:Name="btnsignin"
+                Clicked="btnsignin_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de sign in"
+                Text="Sign In" />
+            <Button
+                x:Name="btnVerificacionCorreo"
+                Clicked="btnVerificacionCorreo_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Codigo Verificacion"
+                Text="Codigo Verificacion" />
+            <Button
+                x:Name="btnEnviarCodigo"
+                Clicked="btnEnviarCodigo_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Olvidar Contrasena"
+                Text="Olvidar Contrasena" />
+            <Button
+                x:Name="btnVerificarContrasena"
+                Clicked="btnVerificarContrasena_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Verificar Contrasena"
+                Text="Verificar Contrasena" />
+            <Button
+                x:Name="btnRestaurarContrasena"
+                Clicked="btnRestaurarContrasena_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Restaurar Contrasena"
+                Text="Nueva Contrasena" />
+            <Button
                 x:Name="btnProductos"
                 Clicked="btnProductos_Clicked"
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina de Productos"
                 Text="Productos" />
             <Button
-                x:Name="btnProductoDetalle"
-                Clicked="btnProductoDetalle_Clicked"
-                HorizontalOptions="Center"
-                SemanticProperties.Hint="Pagina de detalles producto"
-                Text="Detalle Producto" />
-            <Button
                 x:Name="btnCarrito"
                 Clicked="btnCarrito_Clicked"
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina del carrito de compras"
                 Text="Carrito de Compras" />
-            <Button
-                x:Name="btnPagoTarjeta"
-                Clicked="btnPagoTarjeta_Clicked"
-                HorizontalOptions="Center"
-                SemanticProperties.Hint="Pagina de eleccion de tarjeta"
-                Text="Pago - Tarjeta" />
-            <Button
-                x:Name="btnFinalizar"
-                Clicked="btnFinalizar_Clicked"
-                HorizontalOptions="Center"
-                SemanticProperties.Hint="Pagina de finalizar orden"
-                Text="Finalizar Orden" />
-            <Button
-                x:Name="btnPopupPago"
-                Clicked="btnPopupPago_Clicked"
-                HorizontalOptions="Center"
-                SemanticProperties.Hint="Pantalla de popup de confirmacion de pago"
-                Text="Confirmacion Pago" />
             <Button
                 x:Name="btnPedidosRepartidor"
                 Clicked="btnPedidosRepartidor_Clicked"
@@ -89,18 +101,6 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Pagina de notificaciones"
                 Text="Notificaciones Admin" />
-            <Button
-                x:Name="btnlogin"
-                Clicked="btnlogin_Clicked"
-                HorizontalOptions="Center"
-                SemanticProperties.Hint="Pagina de log in"
-                Text="Log In" />
-            <Button
-                x:Name="btnsignin"
-                Clicked="btnsignin_Clicked"
-                HorizontalOptions="Center"
-                SemanticProperties.Hint="Pagina de sign in"
-                Text="Sign In" />
 
             <Button
                 x:Name="btnPantallaCalificacion"
@@ -168,12 +168,6 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Direcciones Guardadas"
                 Text="Direcciones Guardadas" />
-            <Button
-                x:Name="btnEditarDireccion"
-                Clicked="btnEditarDireccion_Clicked"
-                HorizontalOptions="Center"
-                SemanticProperties.Hint="Editar Direccion"
-                Text="Editar Direccion" />
         </VerticalStackLayout>
     </ScrollView>
 

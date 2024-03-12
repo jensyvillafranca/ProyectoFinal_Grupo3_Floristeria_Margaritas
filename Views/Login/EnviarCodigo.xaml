@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login.EnviarCodigo"
-                      Title=""
-         BackgroundImageSource="fondocodigoverificacion.png">
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login.EnviarCodigo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="fondocodigoverificacion.png">
 
     <Grid>
         <!--  Content Grid  -->
@@ -34,8 +35,7 @@
 
         <!--  Body - Collection view  -->
         <ScrollView Grid.Row="1">
-            <StackLayout
-            Padding="10,10,0,0">
+            <StackLayout Padding="10,10,0,0">
 
                 <Label
                     x:Name="labelTextProblem"
@@ -50,35 +50,33 @@
                 <Image
                     Margin="0,30,0,0"
                     Aspect="AspectFit"
-                    HeightRequest="150" 
-                    WidthRequest="150" 
+                    HeightRequest="150"
                     Source="problemsesion.png"
-                   />
+                    WidthRequest="150" />
 
                 <Label
                     x:Name="labelTextInfo"
                     Margin="0,50,10,0"
                     FontSize="17"
-                    VerticalOptions="Start"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Text="Para obtener un código de verificación, primero debes confirmar el correo electrónico que añadiste a tu cuenta:"
-                    TextColor="White"/>
+                    TextColor="White"
+                    VerticalOptions="Start" />
 
 
                 <StackLayout>
                     <Frame
-                       WidthRequest="310"
-                       HeightRequest="45"
-                       CornerRadius="5"
-                      Margin="0,60,5,0">
-                    </Frame>
-                    <Entry 
-                          Placeholder="Ingrese su correo electronico" 
-                          WidthRequest="290"
-                          HeightRequest="40"
-                          TextColor="Black"
-                          Margin="0,-45,10,0"/>
+                        Margin="0,60,5,0"
+                        CornerRadius="5"
+                        HeightRequest="45"
+                        WidthRequest="310" />
+                    <Entry
+                        Margin="0,-45,10,0"
+                        HeightRequest="40"
+                        Placeholder="Ingrese su correo electronico"
+                        TextColor="Black"
+                        WidthRequest="290" />
                 </StackLayout>
 
 
@@ -100,17 +98,17 @@
 
             <Button
                 x:Name="btnEnviarCodig"
+                Margin="0,0,0,70"
+                Padding="2"
                 BackgroundColor="{DynamicResource AzulBotones}"
                 Command="{Binding substractCommand}"
                 CommandParameter="{Binding .}"
+                CornerRadius="20"
                 FontAttributes="Bold"
                 FontSize="18"
-                Margin="0,0,0,70"
-                Padding="2"
                 HeightRequest="40"
                 Text="Enviar Codigó"
-                CornerRadius="20"
-                WidthRequest="300"/>
+                WidthRequest="300" />
 
 
 
