@@ -177,23 +177,8 @@ public partial class MainPage : ContentPage
         Navigation.PushAsync(new Views.DireccionesUsuario.DireccionesGuardas());
     }
 
-    private void btnVerificacionCorreo_Clicked(object sender, EventArgs e)
+    private void btnConfirmacionPopUp_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Views.Login.CrearCuenta());
-    }
-
-    private void btnEnviarCodigo_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Views.Login.EnviarCodigo());
-    }
-
-    private void btnRestaurarContrasena_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Views.Login.RestaurarContra());
-    }
-
-    private void btnVerificarContrasena_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Views.Login.VerificarContra());
+        Navigation.PushAsync(new Views.CustomViews.CustomPopupPagoRealizado());
     }
 }

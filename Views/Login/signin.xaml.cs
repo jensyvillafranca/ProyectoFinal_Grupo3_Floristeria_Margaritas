@@ -11,12 +11,6 @@ public partial class singin : ContentPage
     private System.Threading.Timer textChangedTimer;
     private ApiService _apiService = new ApiService();
 
-    public class existeUsuario
-    {
-        public bool existe { get; set; }
-
-    }
-
     public singin()
     {
         InitializeComponent();
@@ -51,7 +45,16 @@ public partial class singin : ContentPage
             }
             else
             {
-                await DisplayAlert("Alerta", "Ya existe una cuenta con el correo electrónico ingresado.", "Iniciar Sesión", "Recuperar Cuenta");
+                bool userResponse = await DisplayAlert("Alerta", "Ya existe una cuenta con el correo electrónico ingresado.", "Iniciar Sesión", "Recuperar Cuenta");
+
+                if (userResponse)
+                {
+                    await Navigation.PushAsync(new Views.Login.login());
+                }
+                else
+                {
+                    await Navigation.PushAsync(new Views.Login.EnviarCodigo());
+                }
             }
         }
     }

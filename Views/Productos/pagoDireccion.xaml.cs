@@ -55,32 +55,37 @@ public partial class pagoDireccion : ContentPage
 
     private async void InitializeAsync()
     {
-        var direcciones = await _apiService.PostDataAsync<DireccionModel[]>("obtenerDireccionesPorID.php", new { idcliente = Config.Config.activeUserId });      
-
-        Direcciones = new ObservableCollection<DireccionesViewModel>();
-
-        foreach (var direccion in direcciones)
+        try
         {
+            var direcciones = await _apiService.PostDataAsync<DireccionModel[]>("obtenerDireccionesPorID.php", new { idcliente = Config.Config.activeUserId }); 
+            Direcciones = new ObservableCollection<DireccionesViewModel>();
 
-            DireccionesViewModel direccionesViewModel = new DireccionesViewModel
+            foreach (var direccion in direcciones)
             {
-                IdDireccion = direccion.iddireccion,
-                Direccion = direccion.direccion,
-                Ciudad = direccion.ciudad,
-                Departamento = direccion.departamento,
-                IdCliente = direccion.fk_idcliente,
-                Descripcion = direccion.descripcion,
-                Longitud = direccion.longitud,
-                Latitud = direccion.latitude,
-                FrameBackgroundColor = Color.FromRgb(255, 250, 240),
-                Referencia = direccion.referencia,
-            TappedCommand = new Command(() => HandleTappedCommand(direccion))
-            };
 
-            Direcciones.Add(direccionesViewModel);
-        }
+                DireccionesViewModel direccionesViewModel = new DireccionesViewModel
+                {
+                    IdDireccion = direccion.iddireccion,
+                    Direccion = direccion.direccion,
+                    Ciudad = direccion.ciudad,
+                    Departamento = direccion.departamento,
+                    IdCliente = direccion.fk_idcliente,
+                    Descripcion = direccion.descripcion,
+                    Longitud = direccion.longitud,
+                    Latitud = direccion.latitude,
+                    FrameBackgroundColor = Color.FromRgb(255, 250, 240),
+                    Referencia = direccion.referencia,
+                TappedCommand = new Command(() => HandleTappedCommand(direccion))
+                };
 
-        collectionViewDirecciones.ItemsSource = Direcciones;
+                Direcciones.Add(direccionesViewModel);
+            }
+
+            collectionViewDirecciones.ItemsSource = Direcciones;
+        } catch(Exception ex) 
+        { 
+
+        }   
     }
 
     private void HandleTappedCommand(DireccionModel direccion)
@@ -106,9 +111,9 @@ public partial class pagoDireccion : ContentPage
         Navigation.PopAsync();
     }
 
-    private void btnCancelar_Clicked(object sender, EventArgs e)
+    private async void btnCancelar_Clicked(object sender, EventArgs e)
     {
-        Navigation.PopToRootAsync();
+        await Navigation.PushAsync(new Views.Productos.carritoCompras());
     }
 
     private async void btnRealizarPago_Clicked(object sender, EventArgs e)

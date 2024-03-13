@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login.RestaurarContra"
-             Title=""
-             BackgroundImageSource="fondocodigoverificacion.png">
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login.RestaurarContra"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="fondocodigoverificacion.png">
 
     <Grid>
         <!--  Content Grid  -->
@@ -14,142 +15,174 @@
         </Grid.RowDefinitions>
 
         <!--  Header  -->
-   
-            <StackLayout
-                Grid.Row="0"
+
+        <StackLayout
+            Grid.Row="0"
+            Margin="0,0,0,15"
+            BackgroundColor="Transparent"
+            Orientation="Vertical">
+            <Frame
                 Margin="0,0,0,0"
-                Padding="0,20,0,0"
+                Padding="0,10,0,10"
                 BackgroundColor="Transparent"
-                Orientation="Horizontal">
-                <ImageButton
-                    x:Name="btnBack"
-                    Margin="12,0,0,0"
-                    Aspect="AspectFit"
-                    HeightRequest="35"
-                    Source="atras.png"
-                    WidthRequest="35"
-                    Pressed="BtnBack_Pressed"
-                    Released="BtnBack_Released"
-                    Clicked="BtnBack_Clicked"/>
-                
-            </StackLayout>
+                BorderColor="Transparent"
+                CornerRadius="20">
+                <StackLayout
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    Orientation="Horizontal">
+                    <ImageButton
+                        x:Name="btnBack"
+                        Margin="10,0,0,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnBack_Clicked"
+                        HeightRequest="40"
+                        Source="Productos/backarrow.png"
+                        WidthRequest="40" />
+                    <!--  Spacer  -->
+                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                    <Label
+                        Margin="0,0,100,0"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Recuperar Contraseña"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Frame>
+            <Frame
+                Margin="10,10,10,0"
+                Padding="0,0,0,0"
+                BackgroundColor="{DynamicResource AzulOscuro}"
+                BorderColor="{DynamicResource AzulBotones}">
+                <Label
+                    Margin="0,5,0,5"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    HorizontalTextAlignment="Center"
+                    Text="Ingresa una nueva contraseña"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+            </Frame>
+        </StackLayout>
 
 
         <!--  Body - Collection view  -->
         <ScrollView Grid.Row="1">
-            <StackLayout
-                Padding="10,10,0,0">
-            
-            <Label
-                x:Name="labelRecuperarContra"
-                Margin="0,60,0,0"
-                FontAttributes="Bold"
-                FontSize="20"
-                HorizontalOptions="CenterAndExpand"
-                HorizontalTextAlignment="Center"
-                Text="Recuperar Contraseña"
-                TextColor="White" />
-            
-            <Image
-                Margin="0,30,0,0"
-                Aspect="AspectFit"
-                HeightRequest="150" 
-                WidthRequest="150" 
-                Source="ingresarnuevacontra.png"/>
+            <StackLayout Padding="5" VerticalOptions="CenterAndExpand">
 
-             <!--  Ingrese nueva contraseña  -->
-            <Label
-                x:Name="labelTextNuevaContra"
-                Margin="0,55,60,10"
-                FontSize="18"
-                VerticalOptions="Start"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="Ingrese una nueva contraseña:"
-                TextColor="White"/>
+                <Image
+                    Margin="0,0,0,50"
+                    Aspect="AspectFit"
+                    HeightRequest="150"
+                    Source="ingresarnuevacontra.png"
+                    WidthRequest="150" />
+
+                <!--  Ingrese nueva contraseña  -->
+                <Label
+                    x:Name="labelTextNuevaContra"
+                    Margin="20,0,20,10"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Ingrese una nueva contraseña:"
+                    TextColor="White"
+                    VerticalOptions="Start" />
 
 
-                <StackLayout>
-                    <Frame
-                        Margin="30,0,30,0"
-                        Padding="0,0,0,0"
-                        BackgroundColor="White"
-                        CornerRadius="10">
-                        <Entry
-                            x:Name="entryIngreContra"
-                            Margin="5,0,0,5"
-                            BackgroundColor="Transparent"
-                            FontAttributes="Bold"
-                            FontSize="12"
-                            HorizontalTextAlignment="Center"
-                            IsPassword="True"
-                            Placeholder=""
-                            PlaceholderColor="Gray"
-                            TextColor="Black" />
-                    </Frame>
-                </StackLayout>
+                <Frame
+                    Margin="20,0,20,25"
+                    Padding="0,0,0,0"
+                    BackgroundColor="White"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="entryContrasenia"
+                        Margin="5,0,5,0"
+                        BackgroundColor="Transparent"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalTextAlignment="Center"
+                        IsPassword="True"
+                        Placeholder="Ingrese su Contraseña"
+                        PlaceholderColor="Gray"
+                        TextChanged="entryContrasenia_TextChanged"
+                        TextColor="Black" />
+                </Frame>
 
-
-                <!--  Confirmar nueva contraseña  -->
                 <Label
                     x:Name="labelTextConfContra"
-                    Margin="0,30,110,10"
-                    FontSize="18"
-                    VerticalOptions="Start"
+                    Margin="20,0,20,10"
+                    FontAttributes="Bold"
+                    FontSize="14"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Text="Confirme su contraseña:"
-                    TextColor="White"/>
+                    TextColor="White"
+                    VerticalOptions="Start" />
 
-                <StackLayout>
-                    <Frame
-                        Margin="30,0,30,0"
-                        Padding="0,0,0,0"
-                        BackgroundColor="White"
-                        CornerRadius="10">
-                          <Entry
-                            x:Name="entryConfContra"
-                            Margin="5,0,0,5"
-                            BackgroundColor="Transparent"
-                            FontAttributes="Bold"
-                            FontSize="12"
-                            HorizontalTextAlignment="Center"
-                            IsPassword="True"
-                            Placeholder=""
-                            PlaceholderColor="Gray"
-                            TextColor="Black" />
-                    </Frame>
-                </StackLayout>
-                
+                <Frame
+                    Margin="20,0,20,50"
+                    Padding="0,0,0,0"
+                    BackgroundColor="White"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="entryConfirmarContrasenia"
+                        Margin="5,0,5,0"
+                        BackgroundColor="Transparent"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalTextAlignment="Center"
+                        IsPassword="True"
+                        Placeholder="Confirme la Contraseña"
+                        PlaceholderColor="Gray"
+                        TextChanged="entryConfirmarContrasenia_TextChanged"
+                        TextColor="Black" />
+                </Frame>
+                <Label
+                    x:Name="validationLabel"
+                    Margin="15,0,0,5"
+                    FontAttributes="Bold"
+                    FontSize="10"
+                    Text=""
+                    TextColor="White" />
+
             </StackLayout>
 
-            </ScrollView>
+        </ScrollView>
 
 
         <!--  Boton Restaurar  -->
 
-        <StackLayout
-                Grid.Row="2"
+        <Frame
+            Grid.Row="2"
+            Margin="0,10,0,0"
+            Padding="0,10,0,10"
+            BackgroundColor="Transparent"
+            BorderColor="Transparent"
+            CornerRadius="20">
+            <StackLayout
+                Margin="0,0,0,10"
                 Padding="0,0,0,0"
                 BackgroundColor="Transparent"
-                Orientation="Vertical">
-
-            <Button
-                    x:Name="btnRestaurar"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="btnGuardarContrasenia"
+                    Margin="30,0,30,0"
                     BackgroundColor="{DynamicResource AzulBotones}"
-                    Command="{Binding substractCommand}"
-                    CommandParameter="{Binding .}"
-                    FontAttributes="Bold"
-                    FontSize="18"
-                    Margin="0,0,0,70"
-                    HeightRequest="40"
-                    Text="Restaurar Contraseña"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnGuardarContrasenia_Clicked"
                     CornerRadius="20"
-                    WidthRequest="300"/>
-
-
-
-        </StackLayout>
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    SemanticProperties.Hint="Guardar Contraseña"
+                    Text="Guardar Contraseña" />
+            </StackLayout>
+        </Frame>
 
 
     </Grid>

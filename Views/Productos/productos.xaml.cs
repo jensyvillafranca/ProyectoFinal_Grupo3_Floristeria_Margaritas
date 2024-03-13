@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Windows.Input;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
@@ -208,7 +209,8 @@ public partial class productos : ContentPage
 
     private void btnLogout_Clicked(object sender, EventArgs e)
     {
-
+        UserPreferences.Logout();
+        Navigation.PushAsync(new Views.Login.login());
     }
 
     private void btnCarrito_Clicked(object sender, EventArgs e)

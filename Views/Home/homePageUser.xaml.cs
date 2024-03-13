@@ -1,4 +1,5 @@
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using System.Collections.ObjectModel;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home;
@@ -42,6 +43,27 @@ public partial class homePageUser : ContentPage
         });
     }
 
+    protected async override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (Config.Config.activeUserId == -1)
+        {
+            await DisplayAlert("Alerta", "Su sesión no es válida, por favor ingrese de nuevo.", "OK");
+            await Navigation.PushAsync(new Views.Login.login());
+            return;
+        }
+
+        if (PreferencesManager.GetInt("tipoUsuario") != 1)
+        {
+            await DisplayAlert("Alerta", "Su sesión no es válida, por favor ingrese de nuevo.", "OK");
+            await Navigation.PushAsync(new Views.Login.login());
+            return;
+        }
+    }
+
+
+
     private void MoveToNextItem()
     {
         currentIndex = (currentIndex + 1) % TestItems.Count;
@@ -74,7 +96,8 @@ public partial class homePageUser : ContentPage
 
     private void btnLogout_Clicked(object sender, EventArgs e)
     {
-
+        UserPreferences.Logout();
+        Navigation.PushAsync(new Views.Login.login());
     }
 
     private async void TapGestureProductos_Tapped(object sender, TappedEventArgs e)

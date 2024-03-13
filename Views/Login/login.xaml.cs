@@ -8,6 +8,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
     {
         private Color originalBackgroundColor;
         private ApiService _apiService = new ApiService();
+        private int recordarValue = 0;
 
         public login()
         {
@@ -40,7 +41,26 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
                 {
                     var clientDetails = await _apiService.PostDataAsync<clientIdModel>("loginToken.php", new { idusuario = loginDetails.idusuario });
 
-                    await Navigation.PushAsync(new Views.Home.homePageUser());
+                    PreferencesManager.SaveInt("clienteID", clientDetails.idcliente);
+                    PreferencesManager.SaveInt("userID", loginDetails.idusuario);
+                    PreferencesManager.SaveString("usuario", loginDetails.usuario);
+                    PreferencesManager.SaveInt("tipoUsuario", loginDetails.fk_idtipousuario);
+                    PreferencesManager.SaveInt("stayLogged", recordarValue);
+
+                    if (loginDetails.fk_idtipousuario == 1)
+                    {
+                        await Navigation.PushAsync(new Views.Home.homePageUser());
+                    }
+                    else if (loginDetails.fk_idtipousuario == 2)
+                    {
+                        await Navigation.PushAsync(new Views.Home.homePageAdmin());
+                    }
+                    else if (loginDetails.fk_idtipousuario == 3)
+                    {
+                        await Navigation.PushAsync(new Views.Home.homePageRepartidor());
+                    }
+
+                    
                 }
                 else
                 {
@@ -72,7 +92,12 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
             await labelRecuperar.ScaleTo(1, 50, Easing.Linear);
 
             // Aquí puedes navegar a la página deseada
-            await Navigation.PushAsync(new Views.Login.RestaurarContra());
+            await Navigation.PushAsync(new Views.Login.EnviarCodigo());
+        }
+
+        private void switchRecordar_Toggled(object sender, ToggledEventArgs e)
+        {
+            recordarValue = e.Value ? 1 : 0;
         }
     }
 }

@@ -69,7 +69,7 @@ public partial class CrearCuenta : ContentPage
         if(notValid)
         {
             await DisplayAlert("Alerta", "Esta sesión ya no es válida.", "OK");
-            await Navigation.PopToRootAsync();
+            await Navigation.PushAsync(new Views.Login.login());
             return;
         }
 

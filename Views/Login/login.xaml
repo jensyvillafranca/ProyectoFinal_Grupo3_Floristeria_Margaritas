@@ -94,6 +94,7 @@
                         IsToggled="false"
                         OnColor="{DynamicResource AzulBotones}"
                         ThumbColor="Gray"
+                        Toggled="switchRecordar_Toggled"
                         VerticalOptions="CenterAndExpand" />
                     <Label
                         FontAttributes="Bold"

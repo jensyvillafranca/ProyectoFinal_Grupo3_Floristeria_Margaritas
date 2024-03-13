@@ -1,4 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Hosting;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
 {
@@ -7,6 +11,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -16,7 +21,8 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
                     fonts.AddFont("JosefinSans-Bold.ttf", "JosefinSansBold");
                     fonts.AddFont("JosefinSans-Thin.ttf", "JosefinSansBold");
                     fonts.AddFont("Fredoka-Light.ttf", "FredokaLight");
-                }).UseMauiMaps();
+                })
+                .UseMauiMaps();
 
 #if DEBUG
             builder.Logging.AddDebug();

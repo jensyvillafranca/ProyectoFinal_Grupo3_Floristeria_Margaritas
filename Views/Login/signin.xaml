@@ -215,7 +215,7 @@
                         TextColor="White" />
 
                     <Frame
-                        Margin="10,0,0,20"
+                        Margin="10,0,0,10"
                         Padding="0,0,0,0"
                         BackgroundColor="White"
                         CornerRadius="10">
@@ -236,7 +236,7 @@
                         x:Name="validationLabel"
                         Margin="15,0,0,5"
                         FontAttributes="Bold"
-                        FontSize="12"
+                        FontSize="10"
                         Text=""
                         TextColor="White" />
                 </StackLayout>

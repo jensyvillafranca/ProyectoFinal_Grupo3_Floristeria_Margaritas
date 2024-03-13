@@ -76,12 +76,14 @@
                     CornerRadius="10"
                     HasShadow="True">
                     <Label
+                        x:Name="labelSegundos"
                         FontAttributes="Bold"
-                        FontSize="12"
+                        FontSize="11"
                         HorizontalTextAlignment="Center"
-                        Text="Porfavor espera mientras es redireccionado..."
+                        Text=""
                         TextColor="White" />
                 </Frame>
+
             </StackLayout>
         </Frame>
 

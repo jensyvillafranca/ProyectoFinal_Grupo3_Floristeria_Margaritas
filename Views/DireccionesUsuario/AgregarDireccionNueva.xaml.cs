@@ -56,6 +56,7 @@ public partial class AgregarDireccionNueva : ContentPage
     public AgregarDireccionNueva(int tipo)
 	{
 		InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
         _geocodingService = new GeocodingService(Config.Config.GoogleApiKey);
         Departamentos = new ObservableCollection<DepartamentoModel>();
         Ciudades = new ObservableCollection<CiudadModel>();

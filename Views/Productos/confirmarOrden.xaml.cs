@@ -44,7 +44,7 @@ public partial class confirmarOrden : ContentPage
 
         if (allowed == false)
         {
-            Navigation.PopToRootAsync();
+            Navigation.PushAsync(new Views.Home.homePageUser());
         }
 
         BindingContext = this;
@@ -89,10 +89,6 @@ public partial class confirmarOrden : ContentPage
 
         foreach (var item in shoppingCartItems)
         {
-            
-
-            
-
             double precioProducto = Double.Parse(item.precioventa);
             double discountPercentage = Double.Parse(item.descuento) / 100.0;
             double discountedPrice = Math.Round(precioProducto - (precioProducto * discountPercentage), 2);
@@ -123,9 +119,9 @@ public partial class confirmarOrden : ContentPage
         return 0.0;
     }
 
-    private void btnCancelar_Clicked(object sender, EventArgs e)
+    private async void btnCancelar_Clicked(object sender, EventArgs e)
     {
-        Navigation.PopToRootAsync();
+        await Navigation.PushAsync(new Views.Productos.carritoCompras());
     }
 
     private void btnBack_Clicked(object sender, EventArgs e)
@@ -191,7 +187,7 @@ public partial class confirmarOrden : ContentPage
         else
         {
             await DisplayAlert("Error", "Este pedido ya esta en Proceso", "OK");
-            await Navigation.PopToRootAsync();
+            await Navigation.PushAsync(new Views.Home.homePageUser());
         }
     }
 }

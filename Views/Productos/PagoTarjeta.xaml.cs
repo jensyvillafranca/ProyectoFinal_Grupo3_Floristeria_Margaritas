@@ -59,29 +59,36 @@ public partial class PagoTarjeta : ContentPage
 
     private async void InitializeAsync()
     {
-        var tarjetas = await _apiService.PostDataAsync<TarjetaModel[]>("obtenerTarjetaPorID.php", new { idcliente = Config.Config.activeUserId });
+        try
+        {
+            var tarjetas = await _apiService.PostDataAsync<TarjetaModel[]>("obtenerTarjetaPorID.php", new { idcliente = Config.Config.activeUserId });
 
-        Tarjetas = new ObservableCollection<TarjetasViewModel>();
+            Tarjetas = new ObservableCollection<TarjetasViewModel>();
 
-        foreach (var tarjeta in tarjetas)
+            foreach (var tarjeta in tarjetas)
+            {
+
+                TarjetasViewModel tarjetasViewModel = new TarjetasViewModel
+                {
+                    IdTarjeta = tarjeta.idtarjeta,
+                    NumeroTarjeta = tarjeta.numerotarjeta,
+                    FechaVencimiento = tarjeta.fechavencimiento,
+                    IdCliente = tarjeta.fk_idcliente,
+                    Nombre = tarjeta.nombre,
+                    Descripcion = tarjeta.descripcion,
+                    FrameBackgroundColor = Color.FromRgb(255, 250, 240),
+                    TappedCommand = new Command(() => HandleTappedCommand(tarjeta))
+                };
+
+                Tarjetas.Add(tarjetasViewModel);
+            }
+
+            collectionViewTarjetas.ItemsSource = Tarjetas;
+
+        }catch (Exception ex)
         {
 
-            TarjetasViewModel tarjetasViewModel = new TarjetasViewModel
-            {
-                IdTarjeta = tarjeta.idtarjeta,
-                NumeroTarjeta = tarjeta.numerotarjeta,
-                FechaVencimiento = tarjeta.fechavencimiento,
-                IdCliente = tarjeta.fk_idcliente,
-                Nombre = tarjeta.nombre,
-                Descripcion = tarjeta.descripcion,
-                FrameBackgroundColor = Color.FromRgb(255, 250, 240),
-                TappedCommand = new Command(() => HandleTappedCommand(tarjeta))
-            };
-
-            Tarjetas.Add(tarjetasViewModel);
         }
-
-        collectionViewTarjetas.ItemsSource = Tarjetas;
     }
 
     private void HandleTappedCommand(TarjetaModel tarjeta)
@@ -105,9 +112,9 @@ public partial class PagoTarjeta : ContentPage
         Navigation.PopAsync();
     }
 
-    private void btnCancelar_Clicked(object sender, EventArgs e)
+    private async void btnCancelar_Clicked(object sender, EventArgs e)
     {
-        Navigation.PopToRootAsync();
+        await Navigation.PushAsync(new Views.Productos.carritoCompras());
     }
 
     private async void btnSiguiente_Clicked(object sender, EventArgs e)
