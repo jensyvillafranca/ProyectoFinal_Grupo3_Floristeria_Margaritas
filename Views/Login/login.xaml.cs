@@ -30,46 +30,54 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
                 return;
             }
 
-            var loginDetails = await _apiService.PostDataAsync<loginModel>("login.php", new { usuario = entryUsername.Text });
-            if (loginDetails != null)
+            try
             {
-                string enteredPassword = entryPassword.Text;
-                string storedPassword = loginDetails.contrasenia;
-                bool passwordMatch = PasswordHandler.VerifyPassword(enteredPassword, storedPassword);
-
-                if (passwordMatch)
+                var loginDetails = await _apiService.PostDataAsync<loginModel>("login.php", new { usuario = entryUsername.Text });
+                if (loginDetails != null)
                 {
-                    var clientDetails = await _apiService.PostDataAsync<clientIdModel>("loginToken.php", new { idusuario = loginDetails.idusuario });
+                    string enteredPassword = entryPassword.Text;
+                    string storedPassword = loginDetails.contrasenia;
+                    bool passwordMatch = PasswordHandler.VerifyPassword(enteredPassword, storedPassword);
 
-                    PreferencesManager.SaveInt("clienteID", clientDetails.idcliente);
-                    PreferencesManager.SaveInt("userID", loginDetails.idusuario);
-                    PreferencesManager.SaveString("usuario", loginDetails.usuario);
-                    PreferencesManager.SaveInt("tipoUsuario", loginDetails.fk_idtipousuario);
-                    PreferencesManager.SaveInt("stayLogged", recordarValue);
+                    if (passwordMatch)
+                    {
+                        var clientDetails = await _apiService.PostDataAsync<clientIdModel>("loginToken.php", new { idusuario = loginDetails.idusuario });
 
-                    if (loginDetails.fk_idtipousuario == 1)
-                    {
-                        await Navigation.PushAsync(new Views.Home.homePageUser());
-                    }
-                    else if (loginDetails.fk_idtipousuario == 2)
-                    {
-                        await Navigation.PushAsync(new Views.Home.homePageAdmin());
-                    }
-                    else if (loginDetails.fk_idtipousuario == 3)
-                    {
-                        await Navigation.PushAsync(new Views.Home.homePageRepartidor());
-                    }
+                        PreferencesManager.SaveInt("clienteID", clientDetails.idcliente);
+                        PreferencesManager.SaveInt("userID", loginDetails.idusuario);
+                        PreferencesManager.SaveString("usuario", loginDetails.usuario);
+                        PreferencesManager.SaveInt("tipoUsuario", loginDetails.fk_idtipousuario);
+                        PreferencesManager.SaveInt("stayLogged", recordarValue);
 
-                    
+                        if (loginDetails.fk_idtipousuario == 1)
+                        {
+                            await Navigation.PushAsync(new Views.Home.homePageUser());
+                        }
+                        else if (loginDetails.fk_idtipousuario == 2)
+                        {
+                            await Navigation.PushAsync(new Views.Home.homePageAdmin());
+                        }
+                        else if (loginDetails.fk_idtipousuario == 3)
+                        {
+                            await Navigation.PushAsync(new Views.Home.homePageRepartidor());
+                        }
+
+
+                    }
+                    else
+                    {
+                        await DisplayAlert("Alerta", "Su contraseña es incorrecta.", "OK");
+                    }
                 }
                 else
                 {
-                    await DisplayAlert("Alerta", "Su contraseña es incorrecta.", "OK");
+                    await DisplayAlert("Alerta", "El Usuario que ha ingresado no existe.", "OK");
                 }
             }
-            else
+            catch (Exception ex)
             {
                 await DisplayAlert("Alerta", "El Usuario que ha ingresado no existe.", "OK");
+                return;
             }
         }
 
