@@ -1,34 +1,30 @@
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home;
 
 public partial class homePageUser : ContentPage
 {
-    public ObservableCollection<TestItem> TestItems { get; set; }
+    private ApiService _apiService = new ApiService();
+    public ObservableCollection<CarouselItem> CarouselItems { get; set; }
     private int currentIndex = 0; // Para saber el indice del carrusel
+    private double precioProducto = 0;
+    private double discountPercentage = 0;
+    private double discountedPrice = 0;
 
     public homePageUser()
     {
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
+        CarouselItems = new ObservableCollection<CarouselItem>();
+        carouselView.ItemsSource = CarouselItems;
 
-        // Inicia objetos de prueba para el carrusel
-        TestItems = new ObservableCollection<TestItem>
-        {
-                new TestItem { ImagePath = "Home/descuento.png", LabelText = "Item 1" },
-                new TestItem { ImagePath = "Home/descuento.png", LabelText = "Item 2" },
-                new TestItem { ImagePath = "Home/descuento.png", LabelText = "Item 3" },
-                new TestItem { ImagePath = "Home/descuento.png", LabelText = "Item 4" },
-                new TestItem { ImagePath = "Home/descuento.png", LabelText = "Item 5" }
-            };
-
-        // Coloca la coleccion como la fuente de objetos para el carrusel
-        carouselView.ItemsSource = TestItems;
-
-        // Coloca el binding context
-        BindingContext = this;
+        AsyncTaskExec();
 
         SizeChanged += OnSizeChanged;
 
@@ -37,7 +33,7 @@ public partial class homePageUser : ContentPage
         {
             while (true)
             {
-                await Task.Delay(TimeSpan.FromSeconds(3));
+                await Task.Delay(TimeSpan.FromSeconds(5));
                 MoveToNextItem();
             }
         });
@@ -62,11 +58,70 @@ public partial class homePageUser : ContentPage
         }
     }
 
+    private async void AsyncTaskExec()
+    {
+        await LoadDataAsync();
+    }
+
+    private async Task LoadDataAsync()
+    {
+        try
+        {
+            var productos = await _apiService.GetDataAsync<ProductoModel[]>("obtenerProductosDescuento.php");
+
+            Console.WriteLine($"Received {productos.Length} products from the server.");
+
+            foreach (var producto in productos)
+            {
+                precioProducto = Double.Parse(producto.precioventa);
+                discountPercentage = Double.Parse(producto.descuento) / 100.0;
+                discountedPrice = Math.Round(precioProducto - (precioProducto * discountPercentage), 2);
+
+                var carouselItem = new CarouselItem
+                {
+                    ImageSource = producto.enlacefoto,
+                    LabelText = producto.nombreproducto,
+                    LabelPrecio = $"L {discountedPrice:N2}",
+                    LabelDescuento = producto.descuento,
+                    TappedCommand = new Command(() => HandleItemTapped(producto))
+                };
+
+                carouselItem.IsDescuentoImageVisible = true;
+
+                CarouselItems.Add(carouselItem);
+            }
+
+            carouselView.ItemsSource = null;
+            carouselView.ItemsSource = CarouselItems;
+        }
+        catch (Exception ex)
+        {
+            // Error, NO hay ningun producto en descuento
+            Console.WriteLine($"Error loading data: {ex.Message}");
+
+            // Create a default item
+            var defaultItem = new CarouselItem
+            {
+                ImageSource = "logp.png",
+                LabelText = "Floristeria Margaritas - Por el momento no hay ofertas",
+                LabelPrecio = "", // Set the default price
+                LabelDescuento = "",
+                TappedCommand = new Command(() => HandleItemTapped(null))
+            };
+
+            defaultItem.IsDescuentoImageVisible = false;
+
+            // Clear existing items and add the default one
+            carouselView.ItemsSource = null;
+            carouselView.ItemsSource = new List<CarouselItem> { defaultItem };
+        }
+    }
+
 
 
     private void MoveToNextItem()
     {
-        currentIndex = (currentIndex + 1) % TestItems.Count;
+        currentIndex = (currentIndex + 1) % CarouselItems.Count;
         carouselView.Position = currentIndex;
     }
 
@@ -88,10 +143,22 @@ public partial class homePageUser : ContentPage
         //carouselView.HeightRequest = screenHeight * carouselHeightPercentage;
     }
 
-    public class TestItem
+    public class CarouselItem
     {
-        public string? ImagePath { get; set; }
+        public string? ImageSource { get; set; }
         public string? LabelText { get; set; }
+        public string? LabelPrecio { get; set; }
+        public string? LabelDescuento { get; set; }
+        public bool IsDescuentoImageVisible { get; set; }
+        public ICommand? TappedCommand { get; set; }
+    }
+
+    private void HandleItemTapped(ProductoModel selectedProduct)
+    {
+        if (selectedProduct != null)
+        {
+            Navigation.PushAsync(new Views.Productos.productoDetalle(selectedProduct));
+        }
     }
 
     private void btnLogout_Clicked(object sender, EventArgs e)

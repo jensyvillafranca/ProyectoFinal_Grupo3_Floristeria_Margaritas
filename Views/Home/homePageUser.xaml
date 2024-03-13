@@ -162,20 +162,70 @@
                                     BackgroundColor="{DynamicResource AzulMedio}"
                                     BorderColor="{DynamicResource AzulBotones}"
                                     CornerRadius="10"
-                                    HasShadow="True">
+                                    HasShadow="True"
+                                    HeightRequest="150">
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            x:Name="TapGestureCarousel"
-                                            CommandParameter="Carousel"
-                                            Tapped="TapGestureCarousel_Tapped" />
+                                        <TapGestureRecognizer Command="{Binding TappedCommand}" />
                                     </Frame.GestureRecognizers>
-                                    <StackLayout>
-                                        <Image Aspect="Center" Source="{Binding ImagePath}" />
+                                    <StackLayout
+                                        Margin="0,0,0,0"
+                                        Padding="0,0,0,0"
+                                        Orientation="Vertical">
                                         <Label
+                                            Margin="0,0,0,10"
+                                            FontAttributes="Bold"
+                                            FontSize="13"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding LabelText}"
                                             TextColor="White" />
+                                        <StackLayout
+                                            Margin="0,5,0,5"
+                                            HorizontalOptions="Center"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Image
+                                                x:Name="imgProducto"
+                                                Margin="0,0,30,10"
+                                                Aspect="AspectFit"
+                                                HeightRequest="100"
+                                                HorizontalOptions="Start"
+                                                Source="{Binding ImageSource}"
+                                                WidthRequest="100" />
+                                            <Label
+                                                x:Name="labelDescuento"
+                                                Margin="0,5,0,5"
+                                                FontAttributes="Bold"
+                                                FontSize="18"
+                                                HorizontalOptions="CenterAndExpand"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding LabelDescuento}"
+                                                TextColor="{DynamicResource RojoDescuento}"
+                                                VerticalOptions="CenterAndExpand"
+                                                VerticalTextAlignment="Center" />
+                                            <Image
+                                                x:Name="imgDescuento"
+                                                Margin="0,5,30,5"
+                                                Aspect="AspectFit"
+                                                HeightRequest="32"
+                                                HorizontalOptions="Center"
+                                                IsVisible="{Binding IsDescuentoImageVisible}"
+                                                Source="Productos/descuentoproducto.png"
+                                                VerticalOptions="Center"
+                                                WidthRequest="32" />
+                                            <Label
+                                                x:Name="labelPrecioProducto"
+                                                Margin="0,10,0,15"
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                HorizontalOptions="CenterAndExpand"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding LabelPrecio}"
+                                                TextColor="White"
+                                                VerticalOptions="CenterAndExpand"
+                                                VerticalTextAlignment="Center" />
+                                        </StackLayout>
                                     </StackLayout>
+
                                 </Frame>
                             </DataTemplate>
                         </CarouselView.ItemTemplate>
