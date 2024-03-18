@@ -108,6 +108,11 @@
 	  <None Remove="Resources\Images\cancelar.png" />
 	  <None Remove="Resources\Images\carritomas.png" />
 	  <None Remove="Resources\Images\coin.png" />
+	  <None Remove="Resources\Images\Estados\cancelado.jpg" />
+	  <None Remove="Resources\Images\Estados\delivery.jpg" />
+	  <None Remove="Resources\Images\Estados\empty.png" />
+	  <None Remove="Resources\Images\Estados\encamino.png" />
+	  <None Remove="Resources\Images\Estados\procesando.png" />
 	  <None Remove="Resources\Images\flowers.png" />
 	  <None Remove="Resources\Images\flowers2.png" />
 	  <None Remove="Resources\Images\handslideblack.png" />
@@ -244,6 +249,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Estados\cancelado.jpg" />
+	  <MauiImage Include="Resources\Images\Estados\delivery.jpg" />
+	  <MauiImage Include="Resources\Images\Estados\empty.png" />
+	  <MauiImage Include="Resources\Images\Estados\encamino.png" />
+	  <MauiImage Include="Resources\Images\Estados\procesando.png" />
 	  <MauiImage Include="Resources\Images\Home\barchart.png" />
 	  <MauiImage Include="Resources\Images\Home\carrito.png" />
 	  <MauiImage Include="Resources\Images\Home\carritocolor.png" />
@@ -446,6 +456,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\PantallaPedidosEntrantes.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pedidos\pedidosPrincipal.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Productos\carritoCompras.xaml">

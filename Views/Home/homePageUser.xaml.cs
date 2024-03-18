@@ -182,6 +182,7 @@ public partial class homePageUser : ContentPage
     private async void TapGesturePedidos_Tapped(object sender, TappedEventArgs e)
     {
         await AnimationUtilities.ChangeFrameColor(framePedidos, Color.FromRgb(33, 52, 91), Color.FromRgb(65, 185, 254), 250);
+        await Navigation.PushAsync(new Views.Pedidos.pedidosPrincipal());
     }
 
     private async void TapGesturePerfil_Tapped(object sender, TappedEventArgs e)

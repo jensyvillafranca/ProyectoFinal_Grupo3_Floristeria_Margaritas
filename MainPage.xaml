@@ -60,6 +60,12 @@
                 SemanticProperties.Hint="Pagina de Productos"
                 Text="Productos" />
             <Button
+                x:Name="btnPedidos"
+                Clicked="btnPedidos_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Pagina de Pedidos"
+                Text="Pedidos" />
+            <Button
                 x:Name="btnCarrito"
                 Clicked="btnCarrito_Clicked"
                 HorizontalOptions="Center"

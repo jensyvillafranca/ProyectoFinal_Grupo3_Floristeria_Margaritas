@@ -230,7 +230,7 @@ public partial class productos : ContentPage
 
     private void btnPedidos_Clicked(object sender, EventArgs e)
     {
-
+        Navigation.PushAsync(new Views.Pedidos.pedidosPrincipal());
     }
 
     private void btnPerfil_Clicked(object sender, EventArgs e)

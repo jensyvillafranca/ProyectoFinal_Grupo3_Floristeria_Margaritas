@@ -24,31 +24,39 @@ public partial class DireccionesGuardas : ContentPage
 
     private async void InitializeAsync()
     {
-        var direcciones = await _apiService.PostDataAsync<DireccionModel[]>("obtenerDireccionesPorID.php", new { idcliente = Config.activeUserId });
+        try
+        {
+            var direcciones = await _apiService.PostDataAsync<DireccionModel[]>("obtenerDireccionesPorID.php", new { idcliente = Config.activeUserId });
 
-        Direcciones = new ObservableCollection<DireccionesViewModel>();
+            Direcciones = new ObservableCollection<DireccionesViewModel>();
 
-        foreach (var direccion in direcciones)
+            foreach (var direccion in direcciones)
+            {
+
+                DireccionesViewModel direccionesViewModel = new DireccionesViewModel
+                {
+                    IdDireccion = direccion.iddireccion,
+                    Direccion = direccion.direccion,
+                    Ciudad = direccion.ciudad,
+                    Departamento = direccion.departamento,
+                    IdCliente = direccion.fk_idcliente,
+                    Descripcion = direccion.descripcion,
+                    Longitud = direccion.longitud,
+                    Latitud = direccion.latitude,
+                    Referencia = direccion.referencia,
+                    TappedCommand = new Command(() => HandleTappedCommand(direccion.iddireccion, direccion.fk_idcliente)),
+                };
+
+                Direcciones.Add(direccionesViewModel);
+            }
+
+            collectionViewDirecciones.ItemsSource = Direcciones;
+        }
+        catch (Exception ex)
         {
 
-            DireccionesViewModel direccionesViewModel = new DireccionesViewModel
-            {
-                IdDireccion = direccion.iddireccion,
-                Direccion = direccion.direccion,
-                Ciudad = direccion.ciudad,
-                Departamento = direccion.departamento,
-                IdCliente = direccion.fk_idcliente,
-                Descripcion = direccion.descripcion,
-                Longitud = direccion.longitud,
-                Latitud = direccion.latitude,
-                Referencia = direccion.referencia,
-                TappedCommand = new Command(() => HandleTappedCommand(direccion.iddireccion, direccion.fk_idcliente)),
-            };
-
-            Direcciones.Add(direccionesViewModel);
         }
 
-        collectionViewDirecciones.ItemsSource = Direcciones;
     }
 
     private async void HandleTappedCommand(int idDireccion, int idCliente)

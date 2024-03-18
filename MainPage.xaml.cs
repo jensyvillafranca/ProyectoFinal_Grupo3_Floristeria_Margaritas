@@ -181,4 +181,9 @@ public partial class MainPage : ContentPage
     {
         Navigation.PushAsync(new Views.CustomViews.CustomPopupPagoRealizado());
     }
+
+    private void btnPedidos_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.Pedidos.pedidosPrincipal());
+    }
 }
