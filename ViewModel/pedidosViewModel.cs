@@ -80,6 +80,20 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel
             }
         }
 
+        private string? _fechaPedido;
+        public string? FechaPedido
+        {
+            get { return _fechaPedido; }
+            set
+            {
+                if (_fechaPedido != value)
+                {
+                    _fechaPedido = value;
+                    OnPropertyChanged(nameof(FechaPedido));
+                }
+            }
+        }
+
         private double _totalPedido;
         public double TotalPedido
         {
@@ -104,6 +118,20 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel
                 {
                     _frameBackgroundColor = value;
                     OnPropertyChanged(nameof(FrameBackgroundColor));
+                }
+            }
+        }
+
+        private Color _textColor;
+        public Color TextColor
+        {
+            get { return _textColor; }
+            set
+            {
+                if (_textColor != value)
+                {
+                    _textColor = value;
+                    OnPropertyChanged(nameof(TextColor));
                 }
             }
         }

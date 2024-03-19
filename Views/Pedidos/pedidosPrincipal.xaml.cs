@@ -63,6 +63,7 @@ public partial class pedidosPrincipal : ContentPage
                 }
 
                 string? horaFormateada = (pedido.fechaestimadaentrega).ToString("h:mm tt");
+                string? fechaFormateada = (pedido.fechapedido).ToString("d/M/yyyy");
 
 
                 pedidosViewModel pedidosViewModel = new pedidosViewModel
@@ -72,8 +73,10 @@ public partial class pedidosPrincipal : ContentPage
                     EstadoPedido = $"Estado: {estado}",
                     DireccionEntrega = pedido.direccion,
                     HoraEntrega = horaFormateada,
+                    FechaPedido = fechaFormateada,
                     TotalPedido = pedido.total,
                     FrameBackgroundColor = color,
+                    TextColor = color,
                     Visibilidad = true,
                     TappedCommand = new Command(() => HandleTappedCommand(pedido))
                 };
@@ -139,6 +142,7 @@ public partial class pedidosPrincipal : ContentPage
                 }
 
                 string? horaFormateada;
+                string? fechaFormateada = (pedido.fechapedido).ToString("d/M/yyyy");
 
                 //convertir de string a formato hora
                 if (pedido.fechaentregado != null)
@@ -161,8 +165,10 @@ public partial class pedidosPrincipal : ContentPage
                     EstadoPedido = $"Estado: {estado}",
                     DireccionEntrega = pedido.direccion,
                     HoraEntrega = horaFormateada,
+                    FechaPedido = fechaFormateada,
                     TotalPedido = pedido.total,
                     FrameBackgroundColor = color,
+                    TextColor = color,
                     Visibilidad = true,
                     TappedCommand = new Command(() => HandleTappedCommand(pedido))
                 };
