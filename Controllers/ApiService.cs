@@ -15,7 +15,8 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers
 
         public ApiService()
         {
-            _httpClient = new HttpClient();
+            //_httpClient = new HttpClient();
+            _httpClient = CreateHttpClient();
         }
 
         public async Task<T> GetDataAsync<T>(string endpoint)
@@ -80,6 +81,20 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers
                 Console.WriteLine($"Error in PostSuccessAsync: {ex.Message}");
                 return false;
             }
+        }
+
+        public static HttpClient CreateHttpClient()
+        {
+            // Create a handler that ignores SSL certificate errors
+            var handler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+            };
+
+            // Create HttpClient with the custom handler
+            var httpClient = new HttpClient(handler);
+
+            return httpClient;
         }
     }
 }
