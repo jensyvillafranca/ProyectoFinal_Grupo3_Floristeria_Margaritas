@@ -198,9 +198,9 @@ public partial class pedidosPrincipal : ContentPage
 
     }
 
-    private void HandleTappedCommand(pedidoModel pedido)
+    private async void HandleTappedCommand(pedidoModel pedido)
     {
-        
+        await Navigation.PushAsync(new Views.Pedidos.detallePedido(pedido));
     }
 
     private void btnNotification_Clicked(object sender, EventArgs e)

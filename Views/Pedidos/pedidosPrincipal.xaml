@@ -90,6 +90,9 @@
                                 CornerRadius="10"
                                 HasShadow="True"
                                 HorizontalOptions="FillAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TappedCommand}" />
+                                </Frame.GestureRecognizers>
                                 <StackLayout
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
@@ -286,6 +289,9 @@
                                 CornerRadius="10"
                                 HasShadow="True"
                                 HorizontalOptions="FillAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TappedCommand}" />
+                                </Frame.GestureRecognizers>
                                 <StackLayout
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
