@@ -1,12 +1,11 @@
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 using System;
 using System.Collections.ObjectModel;
 using PdfSharp.Pdf;
-using PdfSharp.Drawing;
-using System.Net;
-using System.Diagnostics;
+using Color = Microsoft.Maui.Graphics.Color;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Pedidos;
 
@@ -15,7 +14,13 @@ public partial class detallePedido : ContentPage
     private pedidoModel _pedidoModel;
     private ApiService _apiService;
     private PdfDocument pdf = new PdfDocument();
+
     public ObservableCollection<productoDetalleModel>? ProductosList { get; set; }
+
+    public class enlaceFactura
+    {
+        public string? factura { get; set; }
+    }
 
     public detallePedido(pedidoModel pedido)
 	{
@@ -176,17 +181,63 @@ public partial class detallePedido : ContentPage
 
     private async void btnPDF_Clicked(object sender, EventArgs e)
     {
-        PdfPage page = pdf.AddPage();
-        XGraphics gfx = XGraphics.FromPdfPage(page);
-        string imageUrl = "https://firebasestorage.googleapis.com/v0/b/floristeriamargaritas-c74d1.appspot.com/o/Encabezados%2FBannerFactura.png?alt=media";
-        string localImagePath = DownloadImageToLocalFile(imageUrl);
-        XImage image = XImage.FromFile(localImagePath);
-        gfx.DrawImage(image, 0, 0, page.Width, 100);
-        string pdfFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "output.pdf");
-        pdf.Save(pdfFilePath);
-        string pdfUrl = "https://firebasestorage.googleapis.com/v0/b/floristeriamargaritas-c74d1.appspot.com/o/Prueba%2FDiploma.pdf?alt=media";
-        await OpenUrlAsync(pdfUrl);
+        bool userConfirmed = await DisplayAlert("Atención", "¿Desea descargar su factura en formato PDF?", "Si", "No");
+
+        if (userConfirmed)
+        {
+            if (string.IsNullOrEmpty(_pedidoModel.factura))
+            {
+                await DisplayAlert("Atención", "Factura vacia", "OK");
+                try
+                {
+                    var data = new
+                    {
+                        idpedido = _pedidoModel.idpedido,
+                        nombresucursal = _pedidoModel.nombresucursal,
+                        direccionsucursal = _pedidoModel.direccionsucursal,
+                        nombrecliente = _pedidoModel.nombrescliente,
+                        direccioncliente = _pedidoModel.direccion,
+                        nombretarjeta = _pedidoModel.nombretarjeta,
+                        numerotarjeta = _pedidoModel.numerotarjeta,
+                        fechapedido = (_pedidoModel.fechapedido).ToString("MM/dd/yyyy hh:mm:ss tt"),
+                        subtotal = _pedidoModel.subtotal,
+                        isv = _pedidoModel.isv,
+                        envio = _pedidoModel.envio,
+                        propina = _pedidoModel.propina,
+                        total = _pedidoModel.total
+                    };
+
+                    var result = await _apiService.PostDataAsync<enlaceFactura>("subirPDF.php", data);
+
+                    string? urlFactura = result.factura;
+
+                    if (!string.IsNullOrEmpty(urlFactura))
+                    {
+                        _pedidoModel.factura = urlFactura;
+                        await OpenUrlAsync(urlFactura);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+                return;
+            }
+            else
+            {
+                await DisplayAlert("Atención", "Factura", "OK");
+                await OpenUrlAsync(_pedidoModel.factura);
+                return;
+            }
+        }
+        else
+        {
+            return;
+        }     
     }
+
+
 
     async Task OpenUrlAsync(string url)
     {
@@ -199,25 +250,5 @@ public partial class detallePedido : ContentPage
             // Handle any exceptions
             Console.WriteLine($"Error opening URL: {ex.Message}");
         }
-    }
-
-    private string DownloadImageToLocalFile(string imageUrl)
-    {
-        string localFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "temp_image.jpg");
-
-        try
-        {
-            using (WebClient webClient = new WebClient())
-            {
-                webClient.DownloadFile(imageUrl, localFilePath);
-            }
-
-            return localFilePath;
-        }
-        catch (Exception ex)
-        {
-
-        }
-        return string.Empty;
     }
 }

@@ -37,5 +37,6 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos
         public int fk_idtarjeta { get; set; }
         public string? numerotarjeta { get; set; }
         public string? nombretarjeta { get; set; }
+        public string? factura { get; set; }
     }
 }
