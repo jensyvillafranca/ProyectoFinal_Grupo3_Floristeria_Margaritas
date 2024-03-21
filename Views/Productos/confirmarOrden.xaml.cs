@@ -14,6 +14,8 @@ public partial class confirmarOrden : ContentPage
     private DireccionModel selectedDireccion { get; set; }
     private TarjetaModel selectedTarjeta { get; set; }
     private ShoppingCartRequest shoppingCartRequest { get; set; }
+    private double propina = 0;
+    private double total = 0;
 
 
     //variable para controlar si el usuario preciona el boton de atras una vez hecho el pedido
@@ -34,6 +36,7 @@ public partial class confirmarOrden : ContentPage
         public int idTarjeta { get; set; }
         public string titulonota { get; set; }
         public string nota { get; set; }
+        public double propina { get; set; }
         public ShoppingCartItems shoppingCartItems { get; set; }
     }
 
@@ -47,6 +50,8 @@ public partial class confirmarOrden : ContentPage
             Navigation.PushAsync(new Views.Home.homePageUser());
         }
 
+        propinaPicker.IsEnabled = false;
+        
         BindingContext = this;
         _apiService = new ApiService();
 
@@ -70,9 +75,12 @@ public partial class confirmarOrden : ContentPage
             labelNumeroTarjeta.Text = selectedTarjeta.numerotarjeta;
             labelNombreTarjeta.Text = selectedTarjeta.nombre;
 
+            total = data.Total;
+
             labelSubtotal.Text = $"L {Math.Round(data.TotalPrecio, 2):F2}";
             labelISV.Text = $"L {Math.Round(data.ISV, 2):F2}";
             labelEnvio.Text = $"L {Math.Round(data.Envio, 2):F2}";
+            labelPropina.Text = $"L {Math.Round(propina, 2):F2}";
             labelTotal.Text = $"L {Math.Round(data.Total, 2):F2}";
 
             InitializeAsync();
@@ -166,6 +174,7 @@ public partial class confirmarOrden : ContentPage
                     idTarjeta = selectedTarjeta.idtarjeta,
                     titulonota = entryTitulo.Text.ToString(),
                     nota = entryMensaje.Text.ToString(),
+                    propina = propina,
                     shoppingCartItems = new ShoppingCartItems
                     {
                         ID = ID,
@@ -189,5 +198,43 @@ public partial class confirmarOrden : ContentPage
             await DisplayAlert("Error", "Este pedido ya esta en Proceso", "OK");
             await Navigation.PushAsync(new Views.Home.homePageUser());
         }
+    }
+
+    private void propinaPicker_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        double holder = total;
+        propina =  double.Parse(propinaPicker.SelectedItem.ToString());
+        holder = holder + propina;
+        labelPropina.Text = $"L {Math.Round(propina, 2):F2}";
+        labelTotal.Text = $"L {Math.Round(holder, 2):F2}";
+    }
+
+    private void switchPropina_Toggled(object sender, ToggledEventArgs e)
+    {
+        if(switchPropina.IsToggled)
+        {
+            labelMsjPropina.Text = "Si";
+            labelMsjPropina.TextColor = Color.FromRgb(0, 0, 0);
+            propinaPicker.IsEnabled = true;
+            
+            if(propinaPicker.SelectedIndex != -1) 
+            {
+                double holder = total; 
+                propina = int.Parse(propinaPicker.SelectedItem.ToString());
+                holder = holder + propina;
+                labelPropina.Text = $"L {Math.Round(propina, 2):F2}";
+                labelTotal.Text = $"L {Math.Round(holder, 2):F2}";
+            }        
+        }
+        else
+        {
+            labelMsjPropina.Text = "Ahora No";
+            labelMsjPropina.TextColor = Color.FromRgb(128, 128, 128);
+            propinaPicker.IsEnabled = false;
+            propina = 0;
+            labelPropina.Text = $"L {Math.Round(propina, 2):F2}";
+            labelTotal.Text = $"L {Math.Round(total, 2):F2}";
+        }
+        
     }
 }

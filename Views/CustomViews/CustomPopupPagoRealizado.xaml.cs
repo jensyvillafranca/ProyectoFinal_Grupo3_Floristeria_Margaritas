@@ -44,6 +44,6 @@ public partial class CustomPopupPagoRealizado : ContentPage
             countdownSeconds--;
         }
 
-        await Navigation.PushAsync(new Views.Home.homePageUser());
+        await Navigation.PushAsync(new Views.Pedidos.pedidosPrincipal());
     }
 }

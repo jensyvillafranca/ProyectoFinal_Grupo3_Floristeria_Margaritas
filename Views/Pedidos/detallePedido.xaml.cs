@@ -187,7 +187,6 @@ public partial class detallePedido : ContentPage
         {
             if (string.IsNullOrEmpty(_pedidoModel.factura))
             {
-                await DisplayAlert("Atención", "Factura vacia", "OK");
                 try
                 {
                     var data = new
@@ -226,7 +225,6 @@ public partial class detallePedido : ContentPage
             }
             else
             {
-                await DisplayAlert("Atención", "Factura", "OK");
                 await OpenUrlAsync(_pedidoModel.factura);
                 return;
             }
