@@ -72,7 +72,7 @@ public partial class detallePedido : ContentPage
             telefonoRepartidor = _pedidoModel.telefonorepartidor;
         }
 
-        if (_pedidoModel.idestadopedido == 2)
+        if (_pedidoModel.idestadopedido == 2 || _pedidoModel.idestadopedido == 1)
         {
             image = "Estados/procesando.png";
             estado = "Procesando";
@@ -94,6 +94,7 @@ public partial class detallePedido : ContentPage
             DateTime horaEntregado;
             DateTime.TryParse(_pedidoModel.fechaentregado, out horaEntregado);
             horaEntrega = horaEntregado.ToString("MM/dd/yyyy");
+            btnCancelar.IsEnabled = false;
         }
         else if (_pedidoModel.idestadopedido == 5)
         {
@@ -101,6 +102,7 @@ public partial class detallePedido : ContentPage
             estado = "Cancelado";
             color = Color.FromRgb(255, 0, 0);
             horaEntrega = "Pedido Cancelado";
+            btnCancelar.IsEnabled = false;
         }
 
         labelTitulo.Text = $"#PED-{_pedidoModel.idpedido}";
@@ -155,7 +157,7 @@ public partial class detallePedido : ContentPage
     {
         if (string.IsNullOrEmpty(_pedidoModel.telefonorepartidor))
         {
-            await DisplayAlert("Atención", "Aun no se asigna ningún repartidor al pedido", "OK");
+            await DisplayAlert("Atención", $"Aun no se asigna ningún repartidor al pedido", "OK");
             return;
         }
 
@@ -174,9 +176,56 @@ public partial class detallePedido : ContentPage
 
     }
 
-    private void btnCancelar_Clicked(object sender, EventArgs e)
+    private async void btnCancelar_Clicked(object sender, EventArgs e)
     {
+        if(_pedidoModel.idestadopedido == 1 || _pedidoModel.idestadopedido == 2 || _pedidoModel.idestadopedido == 3)
+        {
+            double tempSubtotal = _pedidoModel.subtotal * 0.10;
+            double tempISV = tempSubtotal * 0.12;
+            double tempTotal = tempSubtotal + tempISV + _pedidoModel.envio;
 
+            bool userConfirmed = await DisplayAlert("Atención", $" Por favor confirme si desea cancelar el pedido, se le cobrara un 10% del valor " +
+                $"total de los productos mas el costo de envió. Su costo de cancelación seria: L{Math.Round(tempTotal, 2):F2}. ¡Esta acción es FINAL!", "Si", "No");
+
+            if (userConfirmed)
+            {
+                try
+                {
+                    var data = new
+                    {
+                        idpedido = _pedidoModel.idpedido,
+                        nombresucursal = _pedidoModel.nombresucursal,
+                        direccionsucursal = _pedidoModel.direccionsucursal,
+                        nombrecliente = _pedidoModel.nombrescliente,
+                        direccioncliente = _pedidoModel.direccion,
+                        nombretarjeta = _pedidoModel.nombretarjeta,
+                        numerotarjeta = _pedidoModel.numerotarjeta,
+                        fechapedido = (_pedidoModel.fechapedido).ToString("MM/dd/yyyy hh:mm:ss tt"),
+                        subtotal = _pedidoModel.subtotal,
+                        isv = _pedidoModel.isv,
+                        envio = _pedidoModel.envio,
+                        propina = _pedidoModel.propina,
+                        total = _pedidoModel.total
+                    };
+
+                    var result = await _apiService.PostDataAsync<enlaceFactura>("cancelarPedido.php", data);
+
+                    string? urlFactura = result.factura;
+
+                    if (!string.IsNullOrEmpty(urlFactura))
+                    {
+                        await DisplayAlert("Atención", $"El pedido #PED:{_pedidoModel.idpedido} ha sido cancelado.", "OK");
+                        await Navigation.PushAsync(new Views.Pedidos.pedidosPrincipal());
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+        
     }
 
     private async void btnPDF_Clicked(object sender, EventArgs e)

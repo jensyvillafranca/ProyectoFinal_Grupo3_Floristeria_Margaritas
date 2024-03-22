@@ -37,7 +37,7 @@ public partial class pedidosPrincipal : ContentPage
                 string? estado = null;
                 Color? color = null;
 
-                if(pedido.idestadopedido == 2)
+                if(pedido.idestadopedido == 2 || pedido.idestadopedido == 1)
                 {
                     image = "Estados/procesando.png";
                     estado = "Procesando";
@@ -116,7 +116,7 @@ public partial class pedidosPrincipal : ContentPage
                 string? estado = null;
                 Color? color = null;
 
-                if (pedido.idestadopedido == 2)
+                if (pedido.idestadopedido == 2 || pedido.idestadopedido == 1)
                 {
                     image = "Estados/procesando.png";
                     estado = "Procesando";
