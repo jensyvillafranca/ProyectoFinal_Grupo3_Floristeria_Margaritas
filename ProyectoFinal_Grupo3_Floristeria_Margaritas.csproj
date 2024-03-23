@@ -83,6 +83,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="google-services.json" />
 	  <None Remove="Resources\Fonts\Fredoka-Light.ttf" />
 	  <None Remove="Resources\Fonts\JosefinSans-Bold.ttf" />
 	  <None Remove="Resources\Fonts\JosefinSans-Thin.ttf" />
@@ -224,6 +225,10 @@
 	  <None Remove="Resources\Images\Profile\ubicacioneditar.png" />
 	  <None Remove="Resources\Images\Profile\ubucacionguardas.png" />
 	  <None Remove="Resources\Images\proyecciones.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <GoogleServicesJson Include="google-services.json" />
 	</ItemGroup>
 
 	<ItemGroup>
