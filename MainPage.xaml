@@ -18,6 +18,13 @@
                 Text="Aqui pueden poner sus de prueba" />
 
             <Button
+                x:Name="btnFirebase"
+                Clicked="btnFirebase_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Firebase"
+                Text="Firebase" />
+
+            <Button
                 x:Name="CounterBtn"
                 Clicked="CounterBtn_Clicked"
                 HorizontalOptions="Center"

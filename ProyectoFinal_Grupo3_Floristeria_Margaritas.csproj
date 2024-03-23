@@ -84,6 +84,7 @@
 
 	<ItemGroup>
 	  <None Remove="google-services.json" />
+	  <None Remove="Platforms\Android\Resources\values\strings.xml" />
 	  <None Remove="Resources\Fonts\Fredoka-Light.ttf" />
 	  <None Remove="Resources\Fonts\JosefinSans-Bold.ttf" />
 	  <None Remove="Resources\Fonts\JosefinSans-Thin.ttf" />
@@ -240,15 +241,8 @@
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.14" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="PDFsharp" Version="6.0.0" />
-		<PackageReference Include="Plugin.Firebase.Analytics" Version="2.0.2" />
-		<PackageReference Include="Plugin.Firebase.Auth" Version="2.0.7" />
-		<PackageReference Include="Plugin.Firebase.CloudMessaging" Version="2.0.4" />
-		<PackageReference Include="Plugin.Firebase.Core" Version="2.0.1" />
 		<PackageReference Include="Plugin.Firebase.Crashlytics" Version="2.0.3" />
-		<PackageReference Include="Plugin.Firebase.DynamicLinks" Version="2.0.1" />
-		<PackageReference Include="Plugin.Firebase.Functions" Version="2.0.2" />
-		<PackageReference Include="Plugin.Firebase.RemoteConfig" Version="2.0.1" />
-		<PackageReference Include="Plugin.Firebase.Storage" Version="2.0.2" />
+		<PackageReference Include="Plugin.Firebase" Version="2.0.12" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.8" />
 	</ItemGroup>

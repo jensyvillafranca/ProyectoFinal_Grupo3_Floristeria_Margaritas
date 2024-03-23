@@ -6,7 +6,13 @@ using Microsoft.Maui.Hosting;
 using Microsoft.Maui.LifecycleEvents;
 using Plugin.Firebase.Auth;
 using Plugin.Firebase.Crashlytics;
+using Plugin.Firebase.Bundled.Shared;
 using Plugin.Firebase.Core.Platforms.Android;
+#if IOS
+using Plugin.Firebase.Bundled.Platforms.iOS;
+#else
+using Plugin.Firebase.Bundled.Platforms.Android;
+#endif
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
 {
@@ -35,18 +41,18 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
             return builder.Build();
         }
 
-        public static MauiAppBuilder RegisterFirebaseServices(this MauiAppBuilder builder)
+        private static MauiAppBuilder RegisterFirebaseServices(this MauiAppBuilder builder)
         {
-            builder.ConfigureLifecycleEvents(events =>
-            {
+            builder.ConfigureLifecycleEvents(events => {
 #if IOS
-                events.AddiOS(iOS => iOS.FinishedLaunching((app, launchOptions) => {
+            events.AddiOS(iOS => iOS.FinishedLaunching((app, launchOptions) => {
                 CrossFirebase.Initialize(CreateCrossFirebaseSettings());
-                }));
+                return false;
+            }));
 #else
                 events.AddAndroid(android => android.OnCreate((activity, _) =>
-                CrossFirebase.Initialize(activity, CreateCrossFirebaseSettings())));
-
+                    Plugin.Firebase.Bundled.Platforms.Android.CrossFirebase.Initialize(activity, CreateCrossFirebaseSettings())));
+                CrossFirebaseCrashlytics.Current.SetCrashlyticsCollectionEnabled(true);
 #endif
             });
 
@@ -56,7 +62,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
 
         private static CrossFirebaseSettings CreateCrossFirebaseSettings()
         {
-            return new CrossFirebaseSettings(isAuthEnabled: true);
+            return new CrossFirebaseSettings(isAuthEnabled: true, isCloudMessagingEnabled: true, isAnalyticsEnabled: true);
         }
     }
 }

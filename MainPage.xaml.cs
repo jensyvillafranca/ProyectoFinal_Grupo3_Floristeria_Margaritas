@@ -2,6 +2,7 @@
 using GeolocatorPlugin;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using Plugin.Firebase.CloudMessaging;
 
 public partial class MainPage : ContentPage
 {
@@ -185,5 +186,12 @@ public partial class MainPage : ContentPage
     private void btnPedidos_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.Pedidos.pedidosPrincipal());
+    }
+
+    private async void btnFirebase_Clicked(object sender, EventArgs e)
+    {
+        await CrossFirebaseCloudMessaging.Current.CheckIfValidAsync();
+        var token = await CrossFirebaseCloudMessaging.Current.GetTokenAsync();
+        await DisplayAlert("Atencion", $"Token: {token}", "OK");
     }
 }
