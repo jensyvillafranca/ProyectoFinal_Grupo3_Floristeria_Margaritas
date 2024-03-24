@@ -194,4 +194,9 @@ public partial class MainPage : ContentPage
         var token = await CrossFirebaseCloudMessaging.Current.GetTokenAsync();
         await DisplayAlert("Atencion", $"Token: {token}", "OK");
     }
+
+    private async void btnCambiarCorreo_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Views.Profile.cambiarCorreo());
+    }
 }

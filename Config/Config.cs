@@ -11,6 +11,8 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Config
     {
         public static string GoogleApiKey = "AIzaSyB9XVzR_GxYa7YPvfLTz3hOZhLjx-WP89E";
         public static string BingMapsApiKey = "Au7sMtQzyQZRzuQ2krOIbZg8j2MGoHzzOJAmVym6vQjHq_BJ8a1YQGX3iCosFh8u";
+
+        //ID de Cliente
         public static int activeUserId
         {
             get
