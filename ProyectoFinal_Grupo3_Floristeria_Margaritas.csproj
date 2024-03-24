@@ -217,11 +217,13 @@
 	  <None Remove="Resources\Images\Profile\fondoprincipal.png" />
 	  <None Remove="Resources\Images\Profile\historialcompras.png" />
 	  <None Remove="Resources\Images\Profile\historialproductosagredado.png" />
+	  <None Remove="Resources\Images\Profile\iconotelefono.png" />
 	  <None Remove="Resources\Images\Profile\listo.png" />
 	  <None Remove="Resources\Images\Profile\listofondo.png" />
 	  <None Remove="Resources\Images\Profile\perfilvacio.jpg" />
 	  <None Remove="Resources\Images\Profile\primerextrenia.png" />
 	  <None Remove="Resources\Images\Profile\segundaestre.png" />
+	  <None Remove="Resources\Images\Profile\telefonocliente.png" />
 	  <None Remove="Resources\Images\Profile\tomarfoto.png" />
 	  <None Remove="Resources\Images\Profile\ubicacioneditar.png" />
 	  <None Remove="Resources\Images\Profile\ubucacionguardas.png" />
@@ -396,11 +398,13 @@
 	  <MauiImage Include="Resources\Images\Profile\fondo.jpg" />
 	  <MauiImage Include="Resources\Images\Profile\fondoprincipal.png" />
 	  <MauiImage Include="Resources\Images\Profile\historialproductosagredado.png" />
+	  <MauiImage Include="Resources\Images\Profile\iconotelefono.png" />
 	  <MauiImage Include="Resources\Images\Profile\listo.png" />
 	  <MauiImage Include="Resources\Images\Profile\listofondo.png" />
 	  <MauiImage Include="Resources\Images\Profile\perfilvacio.jpg" />
 	  <MauiImage Include="Resources\Images\Profile\primerextrenia.png" />
 	  <MauiImage Include="Resources\Images\Profile\segundaestre.png" />
+	  <MauiImage Include="Resources\Images\Profile\telefonocliente.png" />
 	  <MauiImage Include="Resources\Images\Profile\tomarfoto.png" />
 	  <MauiImage Include="Resources\Images\Profile\ubicacioneditar.png" />
 	  <MauiImage Include="Resources\Images\Profile\ubucacionguardas.png" />
@@ -496,6 +500,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Profile\cambiarCorreo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Profile\cambiarTelefono.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Profile\ConfirmacionContrasenia.xaml">

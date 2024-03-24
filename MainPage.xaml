@@ -170,6 +170,13 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Cambiar Correo"
                 Text="Cambiar Correo" />
+
+            <Button
+                x:Name="btnCambiarNumero"
+                Clicked="btnCambiarNumero_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Cambiar Numero"
+                Text="Cambiar Numero" />
         </VerticalStackLayout>
     </ScrollView>
 
