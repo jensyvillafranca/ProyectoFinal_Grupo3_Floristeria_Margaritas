@@ -161,10 +161,15 @@ public partial class homePageUser : ContentPage
         }
     }
 
-    private void btnLogout_Clicked(object sender, EventArgs e)
+    private async void btnLogout_Clicked(object sender, EventArgs e)
     {
-        UserPreferences.Logout();
-        Navigation.PushAsync(new Views.Login.login());
+        bool isSuccess = await logout.PerformLogoutAsync(_apiService);
+
+        if (isSuccess)
+        {
+            await Navigation.PushAsync(new Views.Login.login());
+        }
+        
     }
 
     private async void TapGestureProductos_Tapped(object sender, TappedEventArgs e)

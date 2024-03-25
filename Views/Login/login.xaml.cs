@@ -1,6 +1,7 @@
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using Plugin.Firebase.CloudMessaging;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
 {
@@ -41,17 +42,40 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
 
                     if (passwordMatch)
                     {
-                        var clientDetails = await _apiService.PostDataAsync<clientIdModel>("loginToken.php", new { idusuario = loginDetails.idusuario });
-
-                        PreferencesManager.SaveInt("clienteID", clientDetails.idcliente);
-                        PreferencesManager.SaveInt("userID", loginDetails.idusuario);
-                        PreferencesManager.SaveString("usuario", loginDetails.usuario);
-                        PreferencesManager.SaveInt("tipoUsuario", loginDetails.fk_idtipousuario);
-                        PreferencesManager.SaveInt("stayLogged", recordarValue);
-
                         if (loginDetails.fk_idtipousuario == 1)
                         {
-                            await Navigation.PushAsync(new Views.Home.homePageUser());
+                            var clientDetails = await _apiService.PostDataAsync<clientIdModel>("loginToken.php", new { idusuario = loginDetails.idusuario });
+
+                            try
+                            {
+                                await CrossFirebaseCloudMessaging.Current.CheckIfValidAsync();
+                                var deviceToken = await CrossFirebaseCloudMessaging.Current.GetTokenAsync();
+
+                                var data = new
+                                {
+                                    idcliente = clientDetails.idcliente,
+                                    token = deviceToken
+                                };
+
+                                bool isSuccess = await _apiService.PostSuccessAsync("updateTokenCliente.php", data);
+
+                                if (isSuccess)
+                                {
+                                    PreferencesManager.SaveInt("clienteID", clientDetails.idcliente);
+                                    PreferencesManager.SaveInt("userID", loginDetails.idusuario);
+                                    PreferencesManager.SaveString("usuario", loginDetails.usuario);
+                                    PreferencesManager.SaveInt("tipoUsuario", loginDetails.fk_idtipousuario);
+                                    PreferencesManager.SaveInt("stayLogged", recordarValue);
+                                    await Navigation.PushAsync(new Views.Home.homePageUser());
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                await DisplayAlert("Alerta", "Se produjo un error, intente de nuevo", "OK");
+                                return;
+                            }
+
+                            
                         }
                         else if (loginDetails.fk_idtipousuario == 2)
                         {
