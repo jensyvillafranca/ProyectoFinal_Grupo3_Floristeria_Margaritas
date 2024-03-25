@@ -135,7 +135,7 @@
                 <CollectionView
                     x:Name="collectionViewEntregas"
                     ItemSizingStrategy="MeasureFirstItem"
-                    ItemsSource="{Binding Entregas}"
+                    ItemsSource="{Binding Historiales}"
                     SelectionMode="Single">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
@@ -143,16 +143,13 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame
-                                x:Name="frameProducto"
+                                x:Name="frameHistorial"
                                 Margin="5"
                                 Padding="5"
                                 BackgroundColor="FloralWhite"
-                                BorderColor="{DynamicResource AzulBotones}"
+                                BorderColor="{Binding FrameBackgroundColor}"
                                 CornerRadius="10"
                                 HasShadow="True">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding TappedCommand}" />
-                                </Frame.GestureRecognizers>
                                 <StackLayout
                                     HorizontalOptions="CenterAndExpand"
                                     Orientation="Horizontal"
@@ -166,7 +163,9 @@
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
@@ -182,82 +181,115 @@
                                             FontSize="14"
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelCodigoPedido, StringFormat='Cód. Pedido {0}'}"
+                                            Text="{Binding IdItem}"
                                             TextColor="{DynamicResource AzulPersonalizado}" />
                                         <Label
-                                            x:Name="labelAcreditado"
+                                            x:Name="labelNombreCliente"
                                             Grid.Row="1"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="10,10,0,0"
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            IsVisible="{Binding Visibilidad}"
+                                            Text="{Binding NombresCliente}"
+                                            TextColor="Black" />
+                                        <Label
+                                            x:Name="labelAcreditado"
+                                            Grid.Row="2"
                                             Grid.Column="1"
                                             Margin="5,10,0,5"
                                             FontAttributes="Bold"
-                                            FontSize="10"
+                                            FontSize="12"
+                                            HeightRequest="40"
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="Acreditado"
+                                            IsVisible="{Binding Visibilidad}"
+                                            Text="{Binding Ganancia, StringFormat='L {0:N2}'}"
                                             TextColor="Black"
-                                            VerticalOptions="CenterAndExpand" />
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="50" />
                                         <StackLayout
-                                            Grid.Row="1"
+                                            Grid.Row="2"
                                             Grid.Column="0"
                                             Margin="10,0,0,5"
                                             HorizontalOptions="CenterAndExpand"
+                                            IsVisible="{Binding Visibilidad}"
                                             Orientation="Horizontal"
                                             VerticalOptions="CenterAndExpand">
                                             <Image
                                                 Margin="0,0,0,0"
                                                 Aspect="AspectFit"
                                                 HeightRequest="24"
-                                                Source="ImagenesRepartidor/estrellallenarepartidor.png"
+                                                Source="{Binding ImageStar1}"
                                                 WidthRequest="24" />
                                             <Image
                                                 Margin="0,0,0,0"
                                                 Aspect="AspectFit"
                                                 HeightRequest="24"
-                                                Source="ImagenesRepartidor/estrellallenarepartidor.png"
+                                                Source="{Binding ImageStar2}"
                                                 WidthRequest="24" />
                                             <Image
                                                 Margin="0,0,0,0"
                                                 Aspect="AspectFit"
                                                 HeightRequest="24"
-                                                Source="ImagenesRepartidor/estrellallenarepartidor.png"
+                                                Source="{Binding ImageStar3}"
                                                 WidthRequest="24" />
                                             <Image
                                                 Margin="0,0,0,0"
                                                 Aspect="AspectFit"
                                                 HeightRequest="24"
-                                                Source="ImagenesRepartidor/estrellallenarepartidor.png"
+                                                Source="{Binding ImageStar4}"
                                                 WidthRequest="24" />
                                             <Image
                                                 Margin="0,0,0,0"
                                                 Aspect="AspectFit"
                                                 HeightRequest="24"
-                                                Source="ImagenesRepartidor/estrellavaciarepartidor.png"
+                                                Source="{Binding ImageStar5}"
                                                 WidthRequest="24" />
                                         </StackLayout>
                                         <Label
                                             x:Name="labelFechaEntrega"
                                             Grid.Row="0"
                                             Grid.Column="1"
-                                            Margin="0,10,0,0"
+                                            Margin="0,10,0,5"
                                             FontAttributes="Bold"
-                                            FontSize="12"
+                                            FontSize="10"
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelFechaEntrega}"
+                                            IsVisible="{Binding Visibilidad}"
+                                            Text="{Binding FechaPedidoFormateada}"
                                             TextColor="Black"
                                             WidthRequest="100" />
                                         <Label
                                             x:Name="labelComentario"
-                                            Grid.Row="2"
+                                            Grid.Row="3"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                            Margin="0,2,0,5"
+                                            Margin="10,2,0,5"
                                             FontAttributes="Bold"
-                                            FontSize="10"
+                                            FontSize="11"
                                             HorizontalOptions="StartAndExpand"
                                             HorizontalTextAlignment="Start"
-                                            Text="{Binding LabelComentario}"
+                                            Text="{Binding MotivoCalificacion}"
                                             TextColor="Black"
+                                            WidthRequest="200" />
+                                        <Label
+                                            x:Name="labelEstado"
+                                            Grid.Row="4"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="10,2,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="11"
+                                            HeightRequest="45"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            IsVisible="{Binding Visibilidad}"
+                                            Text="{Binding EstadoPedido}"
+                                            TextColor="{Binding TextColor}"
                                             WidthRequest="200" />
                                     </Grid>
                                 </StackLayout>
