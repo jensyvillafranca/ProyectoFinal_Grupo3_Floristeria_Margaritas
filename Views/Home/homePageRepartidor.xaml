@@ -61,6 +61,7 @@
 
                 <!--  Body: First Row  -->
                 <Label
+                    x:Name="labelBienvenido"
                     Margin="0,10,0,70"
                     FontAttributes="Bold"
                     FontSize="18"

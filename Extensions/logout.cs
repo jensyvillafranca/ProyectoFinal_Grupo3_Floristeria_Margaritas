@@ -11,22 +11,42 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions
     {
         public static async Task<bool> PerformLogoutAsync(ApiService _apiService)
         {
-            
-            var data = new
+            //Logout Cliente
+            if(Config.Config.tipoUsuario == 1)
             {
-                idcliente = Config.Config.activeUserId
-            };
+                var data = new
+                {
+                    idcliente = Config.Config.activeUserId
+                };
 
-            
+                bool isSuccess = await _apiService.PostSuccessAsync("logoutCliente.php", data);
 
-            bool isSuccess = await _apiService.PostSuccessAsync("logoutCliente.php", data);
+                if (isSuccess)
+                {
+                    UserPreferences.Logout();
+                }
 
-            if (isSuccess)
+                return isSuccess;
+            }
+            //Logout Repartidor
+            else if(Config.Config.tipoUsuario == 3)
             {
-                UserPreferences.Logout();
+                var data = new
+                {
+                    idrepartidor = Config.Config.activeRepartidorId
+                };
+
+                bool isSuccess = await _apiService.PostSuccessAsync("logoutRepartidor.php", data);
+
+                if (isSuccess)
+                {
+                    UserPreferences.Logout();
+                }
+
+                return isSuccess;
             }
 
-            return isSuccess;
+            return false;          
         }
     }
 }

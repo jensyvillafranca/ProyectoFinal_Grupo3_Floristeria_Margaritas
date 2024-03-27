@@ -44,6 +44,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
                     {
                         if (loginDetails.fk_idtipousuario == 1)
                         {
+                            //Login Cliente
                             var clientDetails = await _apiService.PostDataAsync<clientIdModel>("loginToken.php", new { idusuario = loginDetails.idusuario });
 
                             try
@@ -77,13 +78,44 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
 
                             
                         }
-                        else if (loginDetails.fk_idtipousuario == 2)
-                        {
-                            await Navigation.PushAsync(new Views.Home.homePageAdmin());
-                        }
                         else if (loginDetails.fk_idtipousuario == 3)
                         {
-                            await Navigation.PushAsync(new Views.Home.homePageRepartidor());
+                            //Login Repartidor
+                            var repartidorDetails = await _apiService.PostDataAsync<repartidorIdModel>("loginTokenRepartidor.php", new { idusuario = loginDetails.idusuario });
+
+                            try
+                            {
+                                await CrossFirebaseCloudMessaging.Current.CheckIfValidAsync();
+                                var deviceToken = await CrossFirebaseCloudMessaging.Current.GetTokenAsync();
+
+                                var data = new
+                                {
+                                    idrepartidor = repartidorDetails.idrepartidor,
+                                    token = deviceToken
+                                };
+
+                                bool isSuccess = await _apiService.PostSuccessAsync("updateTokenRepartidor.php", data);
+
+                                if (isSuccess)
+                                {
+                                    PreferencesManager.SaveInt("repartidorID", repartidorDetails.idrepartidor);
+                                    PreferencesManager.SaveInt("userID", loginDetails.idusuario);
+                                    PreferencesManager.SaveString("usuario", loginDetails.usuario);
+                                    PreferencesManager.SaveInt("tipoUsuario", loginDetails.fk_idtipousuario);
+                                    PreferencesManager.SaveInt("stayLogged", recordarValue);
+                                    await Navigation.PushAsync(new Views.Home.homePageRepartidor());
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                await DisplayAlert("Alerta", "Se produjo un error, intente de nuevo", "OK");
+                                return;
+                            }       
+                        }
+                        else if (loginDetails.fk_idtipousuario == 2)
+                        {
+                            
+                            await Navigation.PushAsync(new Views.Home.homePageAdmin());
                         }
 
 
