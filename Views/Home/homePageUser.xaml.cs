@@ -56,6 +56,25 @@ public partial class homePageUser : ContentPage
             await Navigation.PushAsync(new Views.Login.login());
             return;
         }
+
+        try
+        {
+            var resultado = await _apiService.PostDataAsync<existeUsuario>("revisarNotificaciones.php", new { idcliente = Config.Config.activeUserId });
+            bool existe = resultado.existe;
+
+            if (existe)
+            {
+                btnNotification.Source = "Iconos/notificacionn.png";
+            }
+            else
+            {
+                btnNotification.Source = "Iconos/notificacione.png";
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 
     private async void AsyncTaskExec()
@@ -201,8 +220,8 @@ public partial class homePageUser : ContentPage
         await AnimationUtilities.ChangeFrameColor((Frame)sender, Color.FromRgb(46, 117, 182), Color.FromRgb(65, 185, 254), 250);
     }
 
-    private void btnNotification_Clicked(object sender, EventArgs e)
+    private async void btnNotification_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Notificaciones.notificacionesEstadoPedidos());
     }
 }

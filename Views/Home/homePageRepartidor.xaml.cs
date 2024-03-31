@@ -29,9 +29,9 @@ public partial class homePageRepartidor : ContentPage
         framePerfil.HeightRequest = screenHeight * frameHeightPercentage;
     }
 
-    private void btnNotification_Clicked(object sender, EventArgs e)
+    private async void btnNotification_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Notificaciones.notificacionesRepartidor());
     }
 
     private async void TapGesturePedidos_Tapped(object sender, TappedEventArgs e)

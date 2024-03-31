@@ -23,6 +23,30 @@ public partial class pedidosPrincipal : ContentPage
         InitializeAsync();
     }
 
+    protected async override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        try
+        {
+            var resultado = await _apiService.PostDataAsync<existeUsuario>("revisarNotificaciones.php", new { idcliente = Config.Config.activeUserId });
+            bool existe = resultado.existe;
+
+            if (existe)
+            {
+                btnNotification.Source = "Iconos/notificacionn.png";
+            }
+            else
+            {
+                btnNotification.Source = "Iconos/notificacione.png";
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
     private async void InitializeAsync()
     {
         //CollectionView Pedidos Activos
@@ -203,9 +227,9 @@ public partial class pedidosPrincipal : ContentPage
         await Navigation.PushAsync(new Views.Pedidos.detallePedido(pedido));
     }
 
-    private void btnNotification_Clicked(object sender, EventArgs e)
+    private async void btnNotification_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Notificaciones.notificacionesEstadoPedidos());
     }
 
     private async void btnHome_Clicked(object sender, EventArgs e)

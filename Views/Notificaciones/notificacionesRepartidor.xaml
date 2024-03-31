@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Notificaciones.notificacionesRepartidor"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="fondo_todas_pantallas.png">
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--  Header  -->
+        <StackLayout
+            Grid.Row="0"
+            Margin="0,0,0,15"
+            BackgroundColor="Transparent"
+            Orientation="Vertical">
+            <Frame
+                Margin="0,0,0,0"
+                Padding="0,10,0,10"
+                BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
+                CornerRadius="20">
+                <StackLayout
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    Orientation="Horizontal">
+                    <ImageButton
+                        x:Name="btnBack"
+                        Margin="10,0,0,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnBack_Clicked"
+                        HeightRequest="40"
+                        Source="Productos/backarrow.png"
+                        WidthRequest="40" />
+                    <!--  Spacer  -->
+                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                    <Label
+                        Margin="0,0,90,0"
+                        FontAttributes="Bold"
+                        Text="Notificaciones"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                    <ImageButton
+                        x:Name="btnRefresh"
+                        Margin="10,0,10,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnRefresh_Clicked"
+                        HeightRequest="40"
+                        Source="Iconos/refresh.png"
+                        WidthRequest="40" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+
+        <!--  Body - Collection view  -->
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <CollectionView
+                    x:Name="collectionViewNotificaciones"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding Notificaciones}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                x:Name="frameNotificacion"
+                                Margin="5"
+                                Padding="5"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{Binding FrameBackgroundColor}"
+                                CornerRadius="10"
+                                HasShadow="True"
+                                HorizontalOptions="FillAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TappedCommand}" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                                <StackLayout
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="FillAndExpand">
+                                    <Image
+                                        Margin="3,10,3,10"
+                                        Aspect="AspectFit"
+                                        HeightRequest="80"
+                                        Source="{Binding ImageSource}"
+                                        WidthRequest="80" />
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            x:Name="labelTitulo"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="20,10,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Titulo}"
+                                            TextColor="{StaticResource AzulLetraLogo}"
+                                            WidthRequest="200" />
+                                        <ImageButton
+                                            x:Name="btnEliminar"
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            Margin="30,0,0,10"
+                                            Aspect="AspectFit"
+                                            BackgroundColor="Transparent"
+                                            Command="{Binding EliminarCommand}"
+                                            CommandParameter="{Binding .}"
+                                            HeightRequest="24"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Source="Productos/eliminar2.png"
+                                            WidthRequest="24" />
+                                        <Label
+                                            x:Name="labelCuerpo"
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="20,0,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="11"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Cuerpo}"
+                                            TextColor="Black"
+                                            WidthRequest="200" />
+                                        <Label
+                                            x:Name="labelFecha"
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="20,0,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="11"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Fecha}"
+                                            TextColor="Black"
+                                            WidthRequest="200" />
+                                        <Label
+                                            x:Name="labelLectura"
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="1"
+                                            Margin="20,10,5,10"
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="End"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Lectura}"
+                                            TextColor="{Binding TextColor}" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
