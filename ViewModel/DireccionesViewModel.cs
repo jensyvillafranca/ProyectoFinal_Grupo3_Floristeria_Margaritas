@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define el ViewModel para la gestión de direcciones en la aplicación Floristeria Margaritas.
+ * Proporciona propiedades para almacenar información sobre una dirección, como su ID, dirección, ciudad,
+ * departamento, longitud, latitud, referencia y color de fondo del marco.
+ * También incluye un ICommand opcional para manejar eventos de toque en la dirección.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

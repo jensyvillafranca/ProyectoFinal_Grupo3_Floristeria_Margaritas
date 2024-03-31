@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada ShoppingCartController en el espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers.
+ * La clase gestiona las operaciones CRUD (crear, leer, actualizar y eliminar) en la tabla de carrito de compras en una base de datos SQLite.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

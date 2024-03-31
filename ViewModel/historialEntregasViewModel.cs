@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define el ViewModel para un elemento del historial de entregas en la aplicación Floristeria Margaritas.
+ * Proporciona propiedades para almacenar información sobre cada entrega, como el ID del ítem, la fecha del pedido,
+ * los nombres del cliente, la ganancia, el estado del pedido, la calificación, el motivo de la calificación, la fecha
+ * del pedido formateada, el color de fondo del marco, el color del texto, las imágenes de estrellas de calificación,
+ * la visibilidad del elemento y maneja el evento PropertyChanged.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

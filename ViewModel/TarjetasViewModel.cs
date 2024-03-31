@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define el ViewModel para las tarjetas en la aplicación Floristeria Margaritas.
+ * Proporciona propiedades para almacenar información sobre cada tarjeta, como el ID de la tarjeta,
+ * el número de la tarjeta, la fecha de vencimiento, el ID del cliente, el nombre y la descripción,
+ * el color de fondo del marco y maneja los eventos relacionados con PropertyChanged.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

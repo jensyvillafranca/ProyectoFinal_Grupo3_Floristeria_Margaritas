@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada ApiService en el espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers.
+ * La clase proporciona métodos para interactuar con un servicio web API, como obtener y enviar datos utilizando solicitudes HTTP GET y POST.
+ * Utiliza HttpClient para realizar las solicitudes HTTP y Newtonsoft.Json para la serialización y deserialización de objetos JSON.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,12 +20,14 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers
     {
         private readonly HttpClient _httpClient;
 
+        // Constructor
         public ApiService()
         {
-            //_httpClient = new HttpClient();
-            _httpClient = CreateHttpClient();
+            _httpClient = new HttpClient();
+            //_httpClient = CreateHttpClient();
         }
 
+        // Método para realizar una solicitud HTTP GET y obtener datos del servidor
         public async Task<T> GetDataAsync<T>(string endpoint)
         {
             try
@@ -36,6 +45,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers
             }
         }
 
+        // Método para realizar una solicitud HTTP POST y enviar datos al servidor
         public async Task<TResponse> PostDataAsync<TResponse>(string endpoint, object data)
         {
             var apiUrl = "https://phpclusters-164276-0.cloudclusters.net/";
@@ -63,6 +73,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers
             }
         }
 
+        // Método para realizar una solicitud HTTP POST y verificar si fue exitosa
         public async Task<bool> PostSuccessAsync(string endpoint, object data)
         {
             var apiUrl = "https://phpclusters-164276-0.cloudclusters.net/";
@@ -83,6 +94,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers
             }
         }
 
+        // Método estático para crear un HttpClient con un handler personalizado que ignora los errores de certificado SSL
         public static HttpClient CreateHttpClient()
         {
             // Create a handler that ignores SSL certificate errors

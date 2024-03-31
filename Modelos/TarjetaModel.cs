@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada TarjetaModel dentro del espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos.
+ * Esta clase representa una tarjeta de crédito o débito y contiene propiedades que representan los atributos de una tarjeta, como el ID, número de tarjeta, fecha de vencimiento, etc.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;

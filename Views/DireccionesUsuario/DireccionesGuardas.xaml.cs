@@ -1,3 +1,9 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'DireccionesGuardas' de la aplicación Floristeria Margaritas.
+ * Permite al usuario gestionar sus direcciones guardadas, incluyendo la visualización, eliminación y adición de nuevas direcciones.
+ */
+
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.DireccionesUsuario;
 
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
@@ -9,9 +15,11 @@ using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 
 public partial class DireccionesGuardas : ContentPage
 {
+    //Api service y collection view
     public ObservableCollection<DireccionesViewModel>? Direcciones { get; set; }
     private ApiService _apiService;
 
+    // Constructor
     public DireccionesGuardas()
     {
         InitializeComponent();
@@ -22,19 +30,24 @@ public partial class DireccionesGuardas : ContentPage
         InitializeAsync();
     }
 
+    // Método para inicializar la página y cargar las direcciones guardadas
     private async void InitializeAsync()
     {
         try
         {
+            // Obtener las direcciones guardadas del servidor
             var direcciones = await _apiService.PostDataAsync<DireccionModel[]>("obtenerDireccionesPorID.php", new { idcliente = Config.activeUserId });
 
+            // Inicializar la colección de direcciones
             Direcciones = new ObservableCollection<DireccionesViewModel>();
 
+            // Iterar sobre las direcciones obtenidas y agregarlas a la colección de direcciones
             foreach (var direccion in direcciones)
             {
 
                 DireccionesViewModel direccionesViewModel = new DireccionesViewModel
                 {
+                    // Mapear los datos de la dirección al modelo de vista
                     IdDireccion = direccion.iddireccion,
                     Direccion = direccion.direccion,
                     Ciudad = direccion.ciudad,
@@ -47,18 +60,21 @@ public partial class DireccionesGuardas : ContentPage
                     TappedCommand = new Command(() => HandleTappedCommand(direccion.iddireccion, direccion.fk_idcliente)),
                 };
 
+                // Agregar la dirección mapeada al modelo de vista a la colección de direcciones
                 Direcciones.Add(direccionesViewModel);
             }
 
+            // Asignar la colección de direcciones al origen de datos del CollectionView
             collectionViewDirecciones.ItemsSource = Direcciones;
         }
         catch (Exception ex)
         {
-
+            // Manejar cualquier excepción que ocurra durante la inicialización
         }
 
     }
 
+    // Método para manejar el evento TappedCommand cuando se selecciona una dirección para eliminar
     private async void HandleTappedCommand(int idDireccion, int idCliente)
     {
         bool userConfirmed = await DisplayAlert("Confirmación", "¿Está seguro de que desea eliminar esta dirección?", "Si", "No");
@@ -75,7 +91,7 @@ public partial class DireccionesGuardas : ContentPage
 
             if (isSuccess)
             {
-                // Find the index of the item to be removed
+                // Encontrar el índice del elemento a eliminar en la colección de direcciones
                 int indexToRemove = -1;
 
                 for (int i = 0; i < Direcciones.Count; i++)
@@ -89,10 +105,10 @@ public partial class DireccionesGuardas : ContentPage
 
                 if (indexToRemove != -1)
                 {
-                    // Remove the item from the ObservableCollection
+                    // Eliminar el elemento de la colección de direcciones
                     Direcciones.RemoveAt(indexToRemove);
 
-                    // Update the ItemsSource of the CollectionView
+                    // Actualizar el origen de datos del CollectionView
                     collectionViewDirecciones.ItemsSource = null;
                     collectionViewDirecciones.ItemsSource = Direcciones;
 
@@ -110,7 +126,7 @@ public partial class DireccionesGuardas : ContentPage
         }
     }
 
-
+    // Métodos para manejar eventos de navegación y acciones del usuario
     private void btnBack_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();

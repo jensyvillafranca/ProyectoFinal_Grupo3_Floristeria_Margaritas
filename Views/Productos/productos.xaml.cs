@@ -1,3 +1,9 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'productos' de la aplicación Floristeria Margaritas, que muestra una lista de productos con opciones de filtrado y búsqueda.
+ * Incluye la carga de productos desde la API, la gestión de filtros y la búsqueda de productos.
+ */
+
 using System.Collections.ObjectModel;
 using System.Text.Json;
 using System.Windows.Input;
@@ -10,6 +16,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
 public partial class productos : ContentPage
 {
+    // Variables de instancia y servicio de API
     private ApiService _apiService = new ApiService();
     public ObservableCollection<FrameItem> Items { get; set; }
     public ObservableCollection<FiltroItem> Filtros { get; set; }
@@ -52,7 +59,7 @@ public partial class productos : ContentPage
         }
     }
 
-
+    // Constructor para la página 'productos'
     public productos()
     {
         InitializeComponent();
@@ -66,6 +73,7 @@ public partial class productos : ContentPage
         AsyncTaskExec();
         
     }
+
 
     protected async override void OnAppearing()
     {
@@ -91,12 +99,14 @@ public partial class productos : ContentPage
         }
     }
 
+    // Método para ejecutar las tareas asíncronas de carga de filtros y productos
     private async void AsyncTaskExec()
     {
         await LoadFiltrosDataAsync();
         await LoadDataAsync();
     }
 
+    // Método para cargar los datos de productos de manera asíncrona
     private async Task LoadDataAsync()
     {
         var productos = await _apiService.GetDataAsync<ProductoModel[]>("obtenerProductosGeneral.php");
@@ -139,6 +149,7 @@ public partial class productos : ContentPage
         collectionViewProductos.ItemsSource = Items;
     }
 
+    // Método para cargar los datos de filtros de manera asíncrona
     private async Task LoadFiltrosDataAsync()
     {
         var filtros = await _apiService.GetDataAsync<FiltroModel[]>("obtenerFiltros.php");
@@ -159,7 +170,7 @@ public partial class productos : ContentPage
         carouselViewFiltros.ItemsSource = Filtros;
     }
 
-    //Para actualizar los filtros basado en el filtro seleccionado
+    // Método para actualizar los elementos filtrados basados en los filtros seleccionados y la búsqueda
     private void UpdateFilteredItems()
     {
         // If no filter is selected and no search query, show all items
@@ -201,6 +212,7 @@ public partial class productos : ContentPage
         public string? LabelText { get; set; }
     }
 
+    // Método para manejar el evento de pulsación en un elemento de producto
     private void HandleItemTapped(ProductoModel selectedProduct)
     {
         if (selectedProduct != null)
@@ -209,11 +221,13 @@ public partial class productos : ContentPage
         }
     }
 
+    // Método para manejar el evento de clic en el botón de notificación
     private async void btnNotification_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Views.Notificaciones.notificacionesEstadoPedidos());
     }
 
+    // Métodos para manejar el evento de presionar el botón de búsqueda y el cambio de texto en el cuadro de búsqueda
     private void searchBarProducots_SearchButtonPressed(object sender, EventArgs e)
     {
         SearchQuery = searchBarProductos.Text;
@@ -231,6 +245,7 @@ public partial class productos : ContentPage
         }
     }
 
+    // Métodos para manejar el evento de clic en los botones de navegación
     private void btnLogout_Clicked(object sender, EventArgs e)
     {
         UserPreferences.Logout();
@@ -262,6 +277,7 @@ public partial class productos : ContentPage
 
     }
 
+    // Métodos para manejar el evento de clic en los botones de filtro
     private void TapGestureCarouselFiltros_Tapped(object sender, TappedEventArgs e)
     {
 
@@ -289,6 +305,7 @@ public partial class productos : ContentPage
         }
     }
 
+    // Método para manejar el cambio de elemento actual en el carrusel de filtros
     private void carouselViewFiltros_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
     {
         if (e.CurrentItem != null)

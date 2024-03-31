@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada ProductoModel dentro del espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos.
+ * Esta clase representa un modelo para un producto, incluyendo información como el ID del producto, el nombre, la categoría, el precio de venta,
+ * el stock disponible, el enlace a la foto del producto, el descuento aplicado y una descripción del producto.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

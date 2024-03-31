@@ -1,3 +1,10 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'historialEntregas' de la aplicación Floristeria Margaritas.
+ * Permite al repartidor ver un historial de entregas, incluyendo detalles como la fecha de entrega, el estado del pedido,
+ * la calificación del cliente, etc. Además, ofrece funcionalidades de búsqueda y filtrado por fecha.
+ */
+
 using Java.Time;
 using Org.Apache.Http.Cookies;
 using Plugin.Firebase.Firestore.Platforms.Android.Extensions;
@@ -47,6 +54,7 @@ public partial class historialEntregas : ContentPage
         }
     }
 
+    // Constructor
     public historialEntregas()
     {
         InitializeComponent();
@@ -67,12 +75,14 @@ public partial class historialEntregas : ContentPage
         filtroPicker.ItemsSource = filtros;
     }
 
+    // Método que se ejecuta cuando la página se muestra
     protected override async void OnAppearing()
     {
         base.OnAppearing();
 
         try
         {
+            // Obtener historial de entregas
             var historial = await _apiService.PostDataAsync<historialEntregasModel[]>("historialEntregas.php", new { idrepartidor = 4 });
             Historiales = new ObservableCollection<historialEntregasViewModel>();
 
@@ -191,21 +201,25 @@ public partial class historialEntregas : ContentPage
         
     }
 
+    // Método para manejar el evento Clicked del botón de retroceso
     private void btnAtras_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();
     }
 
+    // Método para manejar el evento Clicked del botón de notificaciones
     private void btnNotification_Clicked(object sender, EventArgs e)
     {
 
     }
 
+    // Método para manejar el evento de búsqueda
     private void searchBarEntregas_SearchButtonPressed(object sender, EventArgs e)
     {
         SearchQuery = searchBarEntregas.Text;
     }
 
+    // Método para manejar el cambio de texto en la barra de búsqueda
     private void searchBarEntregas_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (string.IsNullOrWhiteSpace(e.NewTextValue))
@@ -218,6 +232,7 @@ public partial class historialEntregas : ContentPage
         }
     }
 
+    // Método para actualizar los elementos filtrados
     private void UpdateFilteredItems()
     {
         // Get the start and end dates based on the selected filter
@@ -264,6 +279,7 @@ public partial class historialEntregas : ContentPage
         }
     }
 
+    // Métodos para manejar eventos de botones
     private void btnInicioRepartidor_Clicked(object sender, EventArgs e)
     {
 
@@ -294,6 +310,7 @@ public partial class historialEntregas : ContentPage
 
     }
 
+    // Método para manejar el cambio de selección en el filtro
     private void filtroPicker_SelectedIndexChanged(object sender, EventArgs e)
     {
         SelectedFilter = filtroPicker.SelectedIndex;

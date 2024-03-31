@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada productoDetalleModel dentro del espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos.
+ * Esta clase representa un modelo para los detalles de un producto en un pedido, incluyendo información como el ID del producto, la cantidad,
+ * el precio unitario del producto, el precio total, el descuento aplicado, el nombre del producto y el enlace a la foto del producto.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

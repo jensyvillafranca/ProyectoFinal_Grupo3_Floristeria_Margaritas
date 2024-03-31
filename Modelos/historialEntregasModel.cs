@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada historialEntregasModel dentro del espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos.
+ * Esta clase representa un modelo para el historial de entregas, con propiedades que incluyen el ID del pedido, la fecha del pedido, los nombres del cliente, las ganancias, el ID del estado del pedido, la calificación y el motivo de la calificación.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada GeocodingService en el espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers.
+ * La clase proporciona métodos para interactuar con servicios de geocodificación, como obtener coordenadas geográficas a partir de una dirección y obtener detalles de coordenadas.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
@@ -20,6 +26,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers
             _apiKey = apiKey;
         }
 
+        // Obtiene coordenadas geográficas y ciudad a partir de una dirección
         public async Task<(double Latitude, double Longitude, string? City)> GetCoordinatesAndCityAsync(string address)
         {
             string apiUrl = $"https://maps.googleapis.com/maps/api/geocode/json?address={Uri.EscapeDataString(address)}&key={_apiKey}";
@@ -72,6 +79,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers
             return (0, 0, string.Empty);
         }
 
+        // Obtiene detalles de coordenadas (departamento, ciudad y dirección) a partir de coordenadas geográficas
         public async Task<(string? Departamento, string? Ciudad, string? Direccion)> GetCoordinateDetailsAsync(double Lat, double Lng)
         {
             string apiUrl = $"https://maps.googleapis.com/maps/api/geocode/json?latlng={Lat},{Lng}&key={_apiKey}";
@@ -126,7 +134,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers
         }
 
 
-
+        // Obtiene la URL de la imagen estática del mapa con un marcador en las coordenadas dadas
         public string GetStaticMapImageUrl(double latitude, double longitude)
         {
             // Example URL, you may customize the parameters as needed

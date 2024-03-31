@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada notificacionRepartidorModel dentro del espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos.
+ * Esta clase representa un modelo para una notificación de repartidor, con propiedades que incluyen el ID de la notificación del repartidor, el título, el cuerpo, el ID del pedido,
+ * la fecha de creación, el estado de lectura, el ID del repartidor y el tipo de notificación.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

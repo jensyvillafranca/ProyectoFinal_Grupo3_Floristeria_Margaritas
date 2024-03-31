@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define el ViewModel para la vista de detalle de producto en la aplicación Floristeria Margaritas.
+ * Proporciona datos para mostrar la información detallada de un producto, incluyendo su imagen, nombre, descripción,
+ * precio con descuento (si aplica) y precio original.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

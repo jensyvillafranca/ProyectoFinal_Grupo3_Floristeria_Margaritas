@@ -1,3 +1,10 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'detallePedido' de la aplicación Floristeria Margaritas.
+ * Permite al usuario ver los detalles de un pedido específico, incluidos los productos, el estado, la dirección de entrega, etc.
+ * Además, ofrece funcionalidades como comunicarse con el repartidor, cancelar el pedido y descargar la factura en formato PDF.
+ */
+
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
@@ -15,13 +22,16 @@ public partial class detallePedido : ContentPage
     private ApiService _apiService;
     private PdfDocument pdf = new PdfDocument();
 
+    // Lista de productos del pedido
     public ObservableCollection<productoDetalleModel>? ProductosList { get; set; }
 
+    // Clase para el enlace de la factura
     public class enlaceFactura
     {
         public string? factura { get; set; }
     }
 
+    // Constructor
     public detallePedido(pedidoModel pedido)
 	{
 		InitializeComponent();
@@ -31,12 +41,14 @@ public partial class detallePedido : ContentPage
         _pedidoModel = pedido;
     }
 
+    // Método que se ejecuta cuando la página se muestra
     protected override async void OnAppearing()
     {
         base.OnAppearing();
 
         try
         {
+            // Obtener los productos del detalle del pedido
             var productos = await _apiService.PostDataAsync<productoDetalleModel[]>("obtenerProductosDetalle.php", new { idpedido = _pedidoModel.idpedido });
             ProductosList = new ObservableCollection<productoDetalleModel>();
 
@@ -50,7 +62,7 @@ public partial class detallePedido : ContentPage
         }
         catch (Exception ex)
         {
-
+            // Manejar cualquier excepción que ocurra durante la obtención de productos del detalle del pedido
         }
 
         string? image = null;
@@ -105,6 +117,7 @@ public partial class detallePedido : ContentPage
             btnCancelar.IsEnabled = false;
         }
 
+        // Determinar el estado del pedido y asignar valores correspondientes a las etiquetas
         labelTitulo.Text = $"#PED-{_pedidoModel.idpedido}";
         labelHora.Text = horaEntrega;
         imgProducto.Source = image;
@@ -130,11 +143,13 @@ public partial class detallePedido : ContentPage
 
     }
 
+    // Método para manejar el evento Clicked del botón de retroceso
     private void btnBack_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();
     }
 
+    // Método para manejar el evento Clicked del botón de WhatsApp del repartidor
     private async void btnWhatsappRepartidor_Clicked(object sender, EventArgs e)
     {
         if (string.IsNullOrEmpty(_pedidoModel.telefonorepartidor))
@@ -153,6 +168,7 @@ public partial class detallePedido : ContentPage
         
     }
 
+    // Método para manejar el evento Clicked del botón de llamada al repartidor
     private async void btnLlamadaRepartidor_Clicked(object sender, EventArgs e)
     {
         if (string.IsNullOrEmpty(_pedidoModel.telefonorepartidor))
@@ -171,11 +187,13 @@ public partial class detallePedido : ContentPage
         
     }
 
+    // Método para manejar el evento Clicked del botón de calificación
     private void btnCalificar_Clicked(object sender, EventArgs e)
     {
 
     }
 
+    // Método para manejar el evento Clicked del botón de cancelación del pedido
     private async void btnCancelar_Clicked(object sender, EventArgs e)
     {
         if(_pedidoModel.idestadopedido == 1 || _pedidoModel.idestadopedido == 2 || _pedidoModel.idestadopedido == 3)
@@ -228,6 +246,7 @@ public partial class detallePedido : ContentPage
         
     }
 
+    // Método para manejar el evento Clicked del botón de descarga de PDF de la factura
     private async void btnPDF_Clicked(object sender, EventArgs e)
     {
         bool userConfirmed = await DisplayAlert("Atención", "¿Desea descargar su factura en formato PDF?", "Si", "No");
@@ -285,7 +304,7 @@ public partial class detallePedido : ContentPage
     }
 
 
-
+    // Método para abrir una URL en el navegador
     async Task OpenUrlAsync(string url)
     {
         try

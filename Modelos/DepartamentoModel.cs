@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada DepartamentoModel en el espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos.
+ * La clase representa un modelo de datos para un departamento, con propiedades para el ID del departamento y el nombre del mismo.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

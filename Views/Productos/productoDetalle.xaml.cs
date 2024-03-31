@@ -1,3 +1,9 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'productoDetalle' de la aplicación Floristeria Margaritas, que muestra los detalles de un producto seleccionado.
+ * Incluye la gestión de la adición de productos al carrito de compras, actualización de la cantidad y cálculo del precio total.
+ */
+
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
@@ -7,6 +13,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
 public partial class productoDetalle : ContentPage
 {
+    // Variables de instancia
     private DetalleProductoViewModel _viewModel;
     private ProductoModel _productoModel;
     private CustomPopupViewAgregar customPopup;
@@ -18,6 +25,7 @@ public partial class productoDetalle : ContentPage
     double discountPercentage = 0;
     double discountedPrice = 0;
 
+    // Constructor que recibe el producto seleccionado como parámetro
     public productoDetalle(ProductoModel selectedProduct)
     {
         InitializeComponent();
@@ -30,7 +38,8 @@ public partial class productoDetalle : ContentPage
         // Coloca el contexto de la pagina al viewmodel
         this.BindingContext = _viewModel;
 
-        if(int.Parse(_productoModel.descuento) != 0)
+        // Configuración de visibilidad y estilo basado en el descuento del producto
+        if (int.Parse(_productoModel.descuento) != 0)
         {
             labelDescuento.IsVisible = true;
             imgDescuento.IsVisible = true;
@@ -51,11 +60,13 @@ public partial class productoDetalle : ContentPage
         labelDisponible.Text = $"Cantidad Disponible: {CalculateQuantityLimit()}";
     }
 
+    // Método para manejar el evento de clic en el botón de retroceso
     private void btnBack_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();
     }
 
+    // Método para manejar el evento de clic en el botón de agregar al carrito
     private async void btnAgregar_Clicked(object sender, EventArgs e)
     {
         var producto = new Modelos.ShoppingCartItem
@@ -101,6 +112,7 @@ public partial class productoDetalle : ContentPage
         }
     }
 
+    // Método para manejar el evento de clic en el botón de agregar al carrito
     private void btnSubstract_Clicked(object sender, EventArgs e)
     {
         if (int.TryParse(quantityEntry.Text, out int quantity) && quantity > 1)
@@ -115,6 +127,7 @@ public partial class productoDetalle : ContentPage
         }
     }
 
+    // Método para manejar el evento de clic en el botón de aumentar cantidad
     private void btnAdd_Clicked(object sender, EventArgs e)
     {
         if (int.TryParse(quantityEntry.Text, out int quantity))
@@ -136,12 +149,14 @@ public partial class productoDetalle : ContentPage
         }
     }
 
+    // Método para actualizar el precio total basado en la cantidad
     private void UpdateTotalPrice()
     {
         precioTotal = double.Parse(quantityEntry.Text) * discountedPrice;
         labelPrecio.Text = $"L {precioTotal:N2}";
     }
 
+    // Método para mostrar un mensaje cuando se alcanza el límite de cantidad
     private void CheckQuantityLimit()
     {
         // Calcula el limite de productos disponibles basado en el stock
@@ -150,6 +165,7 @@ public partial class productoDetalle : ContentPage
         DisplayAlert("Límite de Productos Alcanzado", $"Puedes comprar hasta {limit} de este producto.", "OK");
     }
 
+    // Método para calcular el límite de cantidad basado en el stock
     private int CalculateQuantityLimit()
     {
         // Calcula el limite basado en el stock (La mitad del stock)

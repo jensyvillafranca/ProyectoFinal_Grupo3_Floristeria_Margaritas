@@ -1,3 +1,9 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'cambiarCorreo' de la aplicación Floristeria Margaritas.
+ * Permite al usuario cambiar su dirección de correo electrónico después de verificar su contraseña.
+ */
+
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
@@ -10,12 +16,15 @@ public partial class cambiarCorreo : ContentPage
     private ApiService _apiService = new ApiService();
     private string? storedPassword;
     private bool formatoCorreo = false;
+
+    // Constructor
     public cambiarCorreo()
 	{
 		InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
     }
 
+    // Método para cargar la página
     protected override async void OnAppearing()
     {
         base.OnAppearing();
@@ -34,12 +43,14 @@ public partial class cambiarCorreo : ContentPage
         }
         catch (Exception ex)
         {
-
+            // Manejar la excepción
         }
     }
 
+    // Método para manejar el evento Clicked del botón 'btnActualizar'
     private async void btnActualizar_Clicked(object sender, EventArgs e)
     {
+        //Validaciones
         if (string.IsNullOrEmpty(entryPassword.Text))
         {
             await DisplayAlert("Alerta", "Por favor ingrese su contraseña", "OK");
@@ -89,6 +100,7 @@ public partial class cambiarCorreo : ContentPage
         }
     }
 
+    // Método para validar el formato del correo electrónico al cambiar el texto en el campo 'entryCorreo'
     private void entryCorreo_TextChanged(object sender, TextChangedEventArgs e)
     {
         bool isValid = (Regex.IsMatch(e.NewTextValue, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"));
@@ -99,6 +111,7 @@ public partial class cambiarCorreo : ContentPage
         formatoCorreo = isValid;
     }
 
+    // Método para validar el formato del correo electrónico al cambiar el texto en el campo 'entryConfirmarCorreo'
     private void entryConfirmarCorreo_TextChanged(object sender, TextChangedEventArgs e)
     {
         // Valida el correo Electonico
@@ -108,6 +121,7 @@ public partial class cambiarCorreo : ContentPage
         ((Entry)sender).TextColor = isValid ? Color.FromRgb(0, 0, 0) : Color.FromRgb(244, 67, 54);
     }
 
+    // Método para manejar el evento Clicked del botón 'btnBack'
     private void btnBack_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();

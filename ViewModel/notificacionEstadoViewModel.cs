@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define el ViewModel para las notificaciones de estado en la aplicación Floristeria Margaritas.
+ * Proporciona propiedades para almacenar información sobre cada notificación, como el ID del ítem, la fuente de la imagen,
+ * el título, el cuerpo, la fecha, el estado de lectura, el color de fondo del marco, el color del texto, y maneja los eventos
+ * relacionados con PropertyChanged.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
