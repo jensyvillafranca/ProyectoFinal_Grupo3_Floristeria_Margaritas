@@ -169,6 +169,7 @@ public partial class PagoTarjeta : ContentPage
     // Método para manejar el evento de tap en la opción de nueva tarjeta
     private void TapGestureNuevaTarjeta_Tapped(object sender, TappedEventArgs e)
     {
+         Navigation.PushAsync(new AgregarTarjetas(1));
 
     }
 }

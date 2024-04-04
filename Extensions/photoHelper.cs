@@ -42,5 +42,33 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Utilities
             }
             return null;
         }
+
+        public static string ImageToBase64(string filePath)
+        {
+            try
+            {
+                // Check if the file exists
+                if (!File.Exists(filePath))
+                {
+                    Console.WriteLine("File does not exist.");
+                    return null;
+                }
+
+                // Read the image file as bytes
+                byte[] imageBytes = File.ReadAllBytes(filePath);
+
+                // Convert the byte array to a base64 string
+                string base64String = Convert.ToBase64String(imageBytes);
+
+                return base64String;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                return null;
+            }
+        }
+    
+
     }
 }

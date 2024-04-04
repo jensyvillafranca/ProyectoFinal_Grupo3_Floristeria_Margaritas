@@ -213,6 +213,7 @@
 	  <None Remove="Resources\Images\Profile\atrasperfil.png" />
 	  <None Remove="Resources\Images\Profile\cambiarcontra.png" />
 	  <None Remove="Resources\Images\Profile\casa.png" />
+	  <None Remove="Resources\Images\Profile\chispss.png" />
 	  <None Remove="Resources\Images\Profile\editarperfil.png" />
 	  <None Remove="Resources\Images\Profile\eliminar.png" />
 	  <None Remove="Resources\Images\Profile\encabezadoperfil.png" />
@@ -399,6 +400,7 @@
 	  <MauiImage Include="Resources\Images\Profile\agregardireccion.png" />
 	  <MauiImage Include="Resources\Images\Profile\atrasperfil.png" />
 	  <MauiImage Include="Resources\Images\Profile\cambiarcontra.png" />
+	  <MauiImage Include="Resources\Images\Profile\chispss.png" />
 	  <MauiImage Include="Resources\Images\Profile\editarperfil.png" />
 	  <MauiImage Include="Resources\Images\Profile\encabezadoperfil.png" />
 	  <MauiImage Include="Resources\Images\Profile\fondo.jpg" />
@@ -422,6 +424,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Calificacion\PantallaCalificacion.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CreacionProductos\AgregarProducto.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CreacionProductos\HistorialProductosAgregados.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\CustomViews\CustomPopupPagoRealizado.xaml">
@@ -488,6 +496,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pedidos\pedidosPrincipal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Productos\AgregarTarjetas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Productos\carritoCompras.xaml">

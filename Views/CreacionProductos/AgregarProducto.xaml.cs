@@ -1,21 +1,21 @@
-using System.Collections.ObjectModel;
+namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CreacionProductos;
 using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using System.Text.RegularExpressions;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Utilities;
 
-namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CreacionProductos;
-
-public partial class ActualizarProductos : ContentPage
+public partial class AgregarProducto : ContentPage
 {
     private ApiService _apiService = new ApiService();
     //Imagen
     private byte[] imagenPrducto;
     private string imagenFilePath;
     private string base64Imagen;
-    private ProductoModel actualizacionProducto; 
+  
     FileResult imagen;
 
     public ObservableCollection<FiltroModel> Categorias { get; set; }
@@ -50,22 +50,15 @@ public partial class ActualizarProductos : ContentPage
         }
     }
     string categorias;
-    public ActualizarProductos(int tipo, ProductoModel producto)
-    {
-        InitializeComponent();
+
+    public AgregarProducto(int tipo)
+	{
+
+		InitializeComponent();
         Categorias = new ObservableCollection<FiltroModel>();
         LoadFiltrosCategoriaDataAsync();
         tipoNavegacion = tipo;
-        actualizacionProducto = producto;
-        txtNombreproductos.Text = producto.nombreproducto;
-        txtPresioVenta.Text = (producto.precioventa).ToString();
-        txtStock.Text = (producto.stock ).ToString();
-        txtAgregarDescuento.Text = (producto.descuento).ToString();
-        SelectorImagenes.Source = producto.enlacefoto;
-        entryDescripcion.Text = producto.descripcion;
-
     }
-
 
     private void SwitchDescuento_Toggled(object sender, ToggledEventArgs e)
     {
@@ -78,6 +71,10 @@ public partial class ActualizarProductos : ContentPage
         categorias = categoriaPicker.SelectedItem as string;
     }
 
+    //Para obtener los datos de categorias
+    /*
+  * Método asincrónico para cargar los datos de filtros de categoría desde el servidor.
+  */
     private async Task LoadFiltrosCategoriaDataAsync()
     {
         // Realiza una solicitud al servidor para obtener los filtros de categoría.
@@ -114,24 +111,13 @@ public partial class ActualizarProductos : ContentPage
         categoriaPicker.SelectedIndex = -1;
     }
 
-    public string? GetImg64()
-    {
-        if (imagen != null)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                Stream stream = imagen.OpenReadAsync().Result;
-                stream.CopyTo(ms);
-                byte[] data = ms.ToArray();
+    //Get64
+   
 
-                String Base64 = Convert.ToBase64String(data);
-
-                return Base64;
-            }
-        }
-        return null;
-    }
-
+    //Boton para agregar productos 
+    /*
+  * Método que maneja el evento click del botón para agregar un producto.
+  */
     private async void btnAgregarproducto_clickend(object sender, EventArgs e)
     {
         // Verifica si el campo de texto para el nombre del producto está vacío o contiene caracteres no alfabéticos.
@@ -159,18 +145,14 @@ public partial class ActualizarProductos : ContentPage
             return;
         }
         // Verifica si el valor de stock ingresado es mayor que 50.
-        else if (Convert.ToInt32(txtStock.Text) > 50)
+        else if (Convert.ToInt32(txtStock.Text) > 100)
         {
-            await DisplayAlert("Alerta", "El stock no puede ser mayor que 50", "OK");
+            await DisplayAlert("Alerta", "El stock no puede ser mayor que 100", "OK");
             return;
         }
 
         // Verifica si no se ha ingresado una imagen del producto.
-        if (string.IsNullOrEmpty(base64Imagen))
-        {
-            await DisplayAlert("Alerta", "Por favor ingrese una imagen del producto", "OK");
-            return;
-        }
+      
         // Verifica si el campo de texto para el descuento está vacío.
         else if (string.IsNullOrEmpty(txtAgregarDescuento.Text))
         {
@@ -206,9 +188,10 @@ public partial class ActualizarProductos : ContentPage
         {
             // Define un objeto de datos con la información del producto.
             nombreproducto = txtNombreproductos.Text,
+            categoria = categoriaPicker.SelectedItem,
             precioventa = txtPresioVenta.Text,
             stock = txtStock.Text,
-            enlacefoto = SelectorImagenes?.ToString(),
+            enlacefoto = photoHelper.ImageToBase64(imagenFilePath),
             descuento = txtAgregarDescuento.Text,
             descripcion = entryDescripcion.Text
         };
@@ -223,7 +206,7 @@ public partial class ActualizarProductos : ContentPage
             categoriaPicker.SelectedIndex = -1;
             labelPrecioVenta.Text = string.Empty;
             labelStock.Text = string.Empty;
-            base64Imagen = string.Empty;
+            imagenFilePath = string.Empty;
             labelIngresaDescuento.Text = string.Empty;
             labelDescripcion.Text = string.Empty;
 
@@ -248,6 +231,7 @@ public partial class ActualizarProductos : ContentPage
         }
     }
 
+
     private async void btnSubirGaleria_Cliecked(object sender, EventArgs e)
     {
         try
@@ -263,6 +247,7 @@ public partial class ActualizarProductos : ContentPage
 
                 // Establece la imagen seleccionada como origen de la imagen en la interfaz de usuario.
                 SelectorImagenes.Source = ImageSource.FromFile(galeria.FullPath);
+                imagenFilePath = galeria.FullPath;
             }
             else
             {
@@ -283,26 +268,27 @@ public partial class ActualizarProductos : ContentPage
         }
     }
 
+   
 
     private void btnBack_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();
     }
 
+
+
+
     private void btnHome_Clicked(object sender, EventArgs e)
     {
 
     }
 
-    private void btnStock_Clicked(object sender, EventArgs e)
+    private void BtnHistorialProductos_Clicked(object sender, EventArgs e)
     {
-
+        Navigation.PushAsync(new HistorialProductosAgregados());
     }
 
-    private void btnEstadisticas_Clicked(object sender, EventArgs e)
-    {
-
-    }
+   
 
     private void btnAnuncios_Clicked(object sender, EventArgs e)
     {
@@ -323,6 +309,5 @@ public partial class ActualizarProductos : ContentPage
     {
 
     }
-
 
 }

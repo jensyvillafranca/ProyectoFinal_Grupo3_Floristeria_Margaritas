@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CreacionProductos.AgregarProducto"
+              BackgroundImageSource="fondo_todas_pantallas.png">
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Header  -->
+        <Frame
+         Grid.Row="0"
+         Margin="0,0,0,10"
+         Padding="5,10,5,10"
+         BackgroundColor="{DynamicResource BlackWithTransparency}"
+         BorderColor="{DynamicResource AzulBotones}"
+         CornerRadius="20">
+            <StackLayout
+             Margin="0,0,0,0"
+             Padding="0,0,0,0"
+             BackgroundColor="Transparent"
+             Orientation="Horizontal">
+                <ImageButton
+                 x:Name="btnBack"
+                 Margin="10,0,0,0"
+                 Aspect="AspectFit"
+                 BackgroundColor="Transparent"
+                  Clicked="btnBack_Clicked"
+                 HeightRequest="40"
+                 Source="Productos/backarrow.png"
+                 WidthRequest="40" />
+                <!--  Spacer  -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Label
+                 Margin="0,0,120,0"
+                 FontAttributes="Bold"
+                 HorizontalTextAlignment="Center"
+                 Text="Agregar Productos"
+                 TextColor="White"
+                 VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+        </Frame>
+
+
+        <!--  Body  -->
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <!--  Nueva Direccion Frame  -->
+                <Frame
+                 x:Name="frameNuevaDireccion"
+                 Margin="5"
+                 Padding="0"
+                 BackgroundColor="{DynamicResource BlackWithTransparency}"
+                 BorderColor="{DynamicResource AzulBotones}"
+                 CornerRadius="10"
+                 HasShadow="True"
+                 VerticalOptions="CenterAndExpand">
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                        <Label
+                         x:Name="labelProductos"
+                         Margin="10,5,0,10"
+                         FontAttributes="Bold"
+                         FontSize="14"
+                         HorizontalTextAlignment="Start"
+                         Text="Ingrese el nombre del produco"
+                         TextColor="White" />
+
+                        <Frame
+                         Margin="10,0,10,20"
+                         Padding="0,0,0,0"
+                         BackgroundColor="White"
+                         CornerRadius="10">
+                            <Entry
+                             x:Name="txtNombreproductos"
+                             Margin="5,0,5,0"
+                             BackgroundColor="Transparent"
+                             FontAttributes="Bold"
+                             FontSize="12"
+                             HorizontalTextAlignment="Center"
+                             Placeholder="Ingrese el nombre del producto"
+                             PlaceholderColor="Gray"
+                             TextColor="Black" />
+                        </Frame>
+
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                <Label
+                                 x:Name="labelCategoria"
+                                 Margin="10,5,0,10"
+                                 FontAttributes="Bold"
+                                 FontSize="14"
+                                 HorizontalTextAlignment="Start"
+                                 Text="Ingrese una categoria"
+                                 TextColor="White" />
+
+                                <Frame
+                                 Margin="10,0,10,20"
+                                 Padding="0,0,0,0"
+                                 BackgroundColor="White"
+                                 CornerRadius="10"
+                                 HorizontalOptions="FillAndExpand">
+                                    <Picker
+                                     x:Name="categoriaPicker"
+                                     Title="Categorias"
+                                     FontSize="12"
+                                     HorizontalTextAlignment="Center"
+                                     SelectedIndexChanged="cotegoriaPicker_SelectedIndexChanged"
+                                      />
+                                </Frame>
+                            </StackLayout>
+
+                        </StackLayout>
+                         <!--Ingresar precio de venta-->
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                <Label
+                                     x:Name="labelPrecioVenta"
+                                     Margin="10,5,0,10"
+                                     FontAttributes="Bold"
+                                     FontSize="14"
+                                     HorizontalTextAlignment="Start"
+                                     Text="Precio Venta"
+                                     TextColor="White" />
+
+                                <Frame
+                                     Margin="10,0,10,20"
+                                     Padding="0,0,0,0"
+                                     BackgroundColor="White"
+                                     CornerRadius="10"
+                                     HorizontalOptions="FillAndExpand">
+                                    <Entry
+                                         x:Name="txtPresioVenta"
+                                         Margin="5,0,5,0"
+                                         BackgroundColor="Transparent"
+                                         Keyboard="Numeric"
+                                         FontAttributes="Bold"
+                                         FontSize="12"
+                                         HorizontalTextAlignment="Center"
+                                         Placeholder="Ingrese un precio"
+                                         PlaceholderColor="Gray"
+                                         TextColor="Black" />
+                                </Frame>
+                            </StackLayout>
+
+                            <!--Ingresar el stock-->
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                <Label
+                                     x:Name="labelStock"
+                                     Margin="10,5,0,10"
+                                     FontAttributes="Bold"
+                                     FontSize="14"
+                                     HorizontalTextAlignment="Start"
+                                     Text="Stock"
+                                     TextColor="White" />
+
+                                <Frame
+                                     Margin="10,0,10,20"
+                                     Padding="0,0,0,0"
+                                     BackgroundColor="White"
+                                     CornerRadius="10"
+                                     HorizontalOptions="FillAndExpand">
+                                    <Entry
+                                         x:Name="txtStock"
+                                         Margin="5,0,5,0"
+                                         BackgroundColor="Transparent"
+                                         Keyboard="Numeric"
+                                         FontAttributes="Bold"
+                                         FontSize="12"
+                                         HorizontalTextAlignment="Center"
+                                         Placeholder="Ingrese el stock"
+                                         PlaceholderColor="Gray"
+                                         TextColor="Black" />
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!--Agregar imagen-->
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                <Label
+                                  x:Name="labelbtnImagen"
+                                  Margin="10,5,0,10"
+                                  FontAttributes="Bold"
+                                  FontSize="14"
+                                  HorizontalTextAlignment="Start"
+                                  Text="Imagen Producto"
+                                  TextColor="White" />
+
+                                <Button
+                                     x:Name="btnAgregarImagen"
+                                     Margin="10,13,30,0"
+                                     BackgroundColor="#0384FD"
+                                     BorderColor="{DynamicResource AzulOscuro}"
+                                     CornerRadius="10"
+                                     FontAttributes="Bold"
+                                     FontSize="14"
+                                     HeightRequest="60"
+                                     Clicked="btnSubirGaleria_Cliecked"
+                                     HorizontalOptions="FillAndExpand"
+                                     SemanticProperties.Hint="Agregar Imagen"
+                                     Text="Agregar Imagen" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                <Label
+                                  x:Name="labelImagen"
+                                  Margin="10,5,0,10"
+                                  FontAttributes="Bold"
+                                  FontSize="14"
+                                  HorizontalTextAlignment="Start"
+                                  Text="Imagen"
+                                  TextColor="White" />
+
+                                <Frame
+                                  Margin="30,0,60,15"
+                                  WidthRequest="150"
+                                  HeightRequest="90"
+                                  Padding="0,0,0,0"
+                                  BackgroundColor="White"
+                                  CornerRadius="10"
+                                  HorizontalOptions="FillAndExpand">
+                                    <Image x:Name="SelectorImagenes" 
+                                           Margin="5,0,5,0"
+                                           Aspect="AspectFit"
+                                            WidthRequest="170"
+                                            HeightRequest="150"/>
+                                   
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+                        
+                        <!--Agregar el switch-->
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                <Label
+                                     x:Name="labelDescuento"
+                                     Margin="10,5,0,10"
+                                     FontAttributes="Bold"
+                                     FontSize="14"
+                                     HorizontalTextAlignment="Start"
+                                     Text="Descuento del producto"
+                                     TextColor="White" />
+
+                                <Frame
+                                     Margin="10,0,10,20"
+                                     Padding="0,0,0,0"
+                                     BackgroundColor="White"
+                                     CornerRadius="30"
+                                     BorderColor="Blue"
+                                     HorizontalOptions="FillAndExpand">
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="No" 
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center"
+                                                Margin="30,0,0,0"
+                                               FontSize="15"
+                                               TextColor="Black" />
+                                        <Switch x:Name="SwitchDescuento"
+                                                HorizontalOptions="CenterAndExpand" 
+                                                VerticalOptions="Center"
+                                                Margin="0,0,0,0" 
+                                                 Style="{StaticResource CustomSwitchStyle}"
+                                                Toggled="SwitchDescuento_Toggled"/>
+                                        <Label Text="Si" 
+                                               HorizontalOptions="CenterAndExpand" 
+                                               VerticalOptions="Center"
+                                               Margin="0,0,40,0"
+                                               TextColor="Black"/>
+                                    </StackLayout>
+                                </Frame>
+
+                            </StackLayout>
+
+
+                            <!--Ingresar el descuento-->
+                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                <Label
+                                     x:Name="labelIngresaDescuento"
+                                     Margin="10,5,0,10"
+                                     FontAttributes="Bold"
+                                     FontSize="14"
+                                     HorizontalTextAlignment="Start"
+                                     Text="Descuento"
+                                     TextColor="White" />
+
+                                <Frame
+                                     Margin="10,0,10,20"
+                                     Padding="0,0,0,0"
+                                     BackgroundColor="White"
+                                     CornerRadius="10"
+                                     HorizontalOptions="FillAndExpand">
+                                    <Entry
+                                         x:Name="txtAgregarDescuento"
+                                         Margin="5,0,5,0"
+                                         BackgroundColor="Transparent"
+                                          IsEnabled="False" 
+                                         FontAttributes="Bold"
+                                         FontSize="12"
+                                         Keyboard="Numeric"
+                                         HorizontalTextAlignment="Center"
+                                         Placeholder="Ingrese el descuento"
+                                         PlaceholderColor="Gray"
+                                         TextColor="Black" />
+                                </Frame>
+                            </StackLayout>
+
+                        </StackLayout>
+                        
+                        <!--Agregar Descripcion-->
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                            <Label
+                                 x:Name="labelDescripcion"
+                                 Margin="10,5,0,10"
+                                 FontAttributes="Bold"
+                                 FontSize="14"
+                                 HorizontalTextAlignment="Start"
+                                 Text="Ingrese una Descripcion"
+                                 TextColor="White" />
+
+                            <Frame
+                                 Margin="10,0,10,20"
+                                 Padding="0,0,0,0"
+                                 BackgroundColor="White"
+                                 CornerRadius="10"
+                                 HorizontalOptions="FillAndExpand">
+                                <Editor
+                                     x:Name="entryDescripcion"
+                                     Margin="5,0,5,0"
+                                     BackgroundColor="Transparent"
+                                     FontAttributes="Bold"
+                                     HorizontalOptions="FillAndExpand"
+                                     FontSize="12"
+                                     HeightRequest="80"
+                                     HorizontalTextAlignment="Center"
+                                     Placeholder="Ingrese una descripcion"
+                                     PlaceholderColor="Gray"
+                                     VerticalOptions="CenterAndExpand"
+                                     VerticalTextAlignment="Center"
+                                     TextColor="Black" />   
+                            </Frame>
+                        </StackLayout>
+
+                      <!--Botones de agregar y cancelar-->
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+
+                                <Button
+                                     Margin="10,0,10,20"
+                                     Padding="0,0,0,0"
+                                     BackgroundColor="#0365FD"
+                                    TextColor="White"
+                                     CornerRadius="10"
+                                    FontAttributes="Bold"
+                                    FontSize="15"
+                                     HorizontalOptions="FillAndExpand"
+                                    Text="Cancelar Producto"
+                                    />
+                                
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+
+
+                                <Button
+                                      Margin="10,0,10,20"
+                                      Padding="0,0,0,0"
+                                      BackgroundColor="#0365FD"
+                                      TextColor="White"
+                                      FontAttributes="Bold"
+                                      Clicked="btnAgregarproducto_clickend"
+                                      CornerRadius="10"
+                                      FontSize="15"
+                                      HorizontalOptions="FillAndExpand"
+                                     Text="Agregar Producto"
+                                     />
+                            </StackLayout>
+                        </StackLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+        <!--Menú de Opciones-->
+        <StackLayout  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="3" WidthRequest="393" HeightRequest="65">
+            <Image Source="ImagenesRepartidor/botonera.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" 
+               AbsoluteLayout.LayoutFlags="All"></Image>
+        </StackLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                 AbsoluteLayout.LayoutFlags="All" 
+                 VerticalOptions="EndAndExpand"
+                 HorizontalOptions="StartAndExpand"
+                 Grid.Row="3" 
+                 Orientation="Horizontal">
+            <ImageButton
+              x:Name="btnInicioRepartidors"
+              Aspect="AspectFit"
+              BackgroundColor="Transparent"
+              HeightRequest="55"
+              Source="ImagenesRepartidor/botoninicio.png"
+              Margin="17,0,5,5"
+              WidthRequest="55">
+            </ImageButton>
+            <ImageButton
+              x:Name="btnPedidosRepartidor"
+              Aspect="AspectFit"
+              BackgroundColor="Transparent"
+              HeightRequest="55"
+              Source="ImagenesRepartidor/botonpedidos.svg"
+              Margin="5,0,5,5"
+              WidthRequest="50">
+            </ImageButton>
+            <ImageButton
+              x:Name="btnIngresosHistorial"
+              Aspect="AspectFit"
+              BackgroundColor="Transparent"
+              HeightRequest="55"
+             
+              Source="ImagenesRepartidor/botoningresos.svg"
+              Margin="5,0,5,5"
+              WidthRequest="50">
+            </ImageButton>
+            <ImageButton
+              x:Name="btnHistorialProductosAgregados"
+              Aspect="AspectFit"
+              BackgroundColor="Transparent"
+              HeightRequest="55"
+              Clicked="BtnHistorialProductos_Clicked"
+              Source="ImagenesRepartidor/botonhistorialpedidos.svg"
+              Margin="5,0,5,5"
+              WidthRequest="50">
+            </ImageButton>
+            <ImageButton
+              x:Name="btnPerfilRepartidor"
+              Aspect="AspectFit"
+              BackgroundColor="Transparent"
+              HeightRequest="55"
+              Source="ImagenesRepartidor/perfilrepartidor.svg"
+              Margin="5,0,5,5"
+              WidthRequest="50">
+            </ImageButton>
+            <ImageButton
+              x:Name="btnLogOutRepartidor"
+              Aspect="AspectFit"
+              BackgroundColor="Transparent"
+              HeightRequest="55"
+              Source="ImagenesRepartidor/salirmenu.png"
+              Margin="5,0,5,5"
+              WidthRequest="50">
+            </ImageButton>
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

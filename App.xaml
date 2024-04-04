@@ -10,6 +10,14 @@
 
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary >
+                    <Style TargetType="Switch" x:Key="CustomSwitchStyle">
+                        <Setter Property="WidthRequest" Value="60" />
+                        <Setter Property="HeightRequest" Value="40" />
+                        <Setter Property="ThumbColor" Value="Red" />
+                        <Setter Property="ThumbColor" Value="LightGray" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

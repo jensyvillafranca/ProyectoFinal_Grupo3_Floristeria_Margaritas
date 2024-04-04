@@ -18,8 +18,9 @@
 
             <ScrollView >
                 <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="0,-20,800,0" Grid.Row="0" 
-               WidthRequest="440"
-               HeightRequest="140"
+               WidthRequest="400"
+               HeightRequest="100"
+               
                >
                     <Image Source="Profile/listofondo.png"/>
                 </StackLayout>
