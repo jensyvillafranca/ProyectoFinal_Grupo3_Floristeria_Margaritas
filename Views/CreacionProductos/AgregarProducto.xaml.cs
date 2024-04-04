@@ -5,6 +5,8 @@ using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using System.Text.RegularExpressions;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Utilities;
 
 public partial class AgregarProducto : ContentPage
 {
@@ -13,6 +15,7 @@ public partial class AgregarProducto : ContentPage
     private byte[] imagenPrducto;
     private string imagenFilePath;
     private string base64Imagen;
+  
     FileResult imagen;
 
     public ObservableCollection<FiltroModel> Categorias { get; set; }
@@ -109,23 +112,7 @@ public partial class AgregarProducto : ContentPage
     }
 
     //Get64
-    public string? GetImg64()
-    {
-        if (imagen != null)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                Stream stream = imagen.OpenReadAsync().Result;
-                stream.CopyTo(ms);
-                byte[] data = ms.ToArray();
-
-                String Base64 = Convert.ToBase64String(data);
-
-                return Base64;
-            }
-        }
-        return null;
-    }
+   
 
     //Boton para agregar productos 
     /*
@@ -158,18 +145,14 @@ public partial class AgregarProducto : ContentPage
             return;
         }
         // Verifica si el valor de stock ingresado es mayor que 50.
-        else if (Convert.ToInt32(txtStock.Text) > 50)
+        else if (Convert.ToInt32(txtStock.Text) > 100)
         {
-            await DisplayAlert("Alerta", "El stock no puede ser mayor que 50", "OK");
+            await DisplayAlert("Alerta", "El stock no puede ser mayor que 100", "OK");
             return;
         }
 
         // Verifica si no se ha ingresado una imagen del producto.
-        if (string.IsNullOrEmpty(base64Imagen))
-        {
-            await DisplayAlert("Alerta", "Por favor ingrese una imagen del producto", "OK");
-            return;
-        }
+      
         // Verifica si el campo de texto para el descuento está vacío.
         else if (string.IsNullOrEmpty(txtAgregarDescuento.Text))
         {
@@ -205,9 +188,10 @@ public partial class AgregarProducto : ContentPage
         {
             // Define un objeto de datos con la información del producto.
             nombreproducto = txtNombreproductos.Text,
+            categoria = categoriaPicker.SelectedItem,
             precioventa = txtPresioVenta.Text,
             stock = txtStock.Text,
-            enlacefoto = SelectorImagenes?.ToString(),
+            enlacefoto = photoHelper.ImageToBase64(imagenFilePath),
             descuento = txtAgregarDescuento.Text,
             descripcion = entryDescripcion.Text
         };
@@ -222,7 +206,7 @@ public partial class AgregarProducto : ContentPage
             categoriaPicker.SelectedIndex = -1;
             labelPrecioVenta.Text = string.Empty;
             labelStock.Text = string.Empty;
-            base64Imagen = string.Empty;
+            imagenFilePath = string.Empty;
             labelIngresaDescuento.Text = string.Empty;
             labelDescripcion.Text = string.Empty;
 
@@ -263,6 +247,7 @@ public partial class AgregarProducto : ContentPage
 
                 // Establece la imagen seleccionada como origen de la imagen en la interfaz de usuario.
                 SelectorImagenes.Source = ImageSource.FromFile(galeria.FullPath);
+                imagenFilePath = galeria.FullPath;
             }
             else
             {
@@ -282,6 +267,8 @@ public partial class AgregarProducto : ContentPage
             Console.WriteLine($"Error picking photo: {ex.Message}"); // Mensaje en caso de que ocurra un error al seleccionar la foto.
         }
     }
+
+   
 
     private void btnBack_Clicked(object sender, EventArgs e)
     {

@@ -15,6 +15,7 @@ public partial class ActualizarProductos : ContentPage
     private byte[] imagenPrducto;
     private string imagenFilePath;
     private string base64Imagen;
+    private ProductoModel actualizacionProducto; 
     FileResult imagen;
 
     public ObservableCollection<FiltroModel> Categorias { get; set; }
@@ -49,14 +50,23 @@ public partial class ActualizarProductos : ContentPage
         }
     }
     string categorias;
-    public ActualizarProductos(int tipo)
+    public ActualizarProductos(int tipo, ProductoModel producto)
     {
         InitializeComponent();
         Categorias = new ObservableCollection<FiltroModel>();
         LoadFiltrosCategoriaDataAsync();
         tipoNavegacion = tipo;
+        actualizacionProducto = producto;
+        txtNombreproductos.Text = producto.nombreproducto;
+        txtPresioVenta.Text = (producto.precioventa).ToString();
+        txtStock.Text = (producto.stock ).ToString();
+        txtAgregarDescuento.Text = (producto.descuento).ToString();
+        SelectorImagenes.Source = producto.enlacefoto;
+        entryDescripcion.Text = producto.descripcion;
 
     }
+
+
     private void SwitchDescuento_Toggled(object sender, ToggledEventArgs e)
     {
         txtAgregarDescuento.IsEnabled = e.Value;

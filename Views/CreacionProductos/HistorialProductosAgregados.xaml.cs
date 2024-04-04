@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 
 using System.Windows.Input;
 using System.ComponentModel;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
 /* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-windows10.0.19041.0)'
 Antes:
@@ -105,7 +106,7 @@ public partial class HistorialProductosAgregados : ContentPage
                 LabelDescuento = historialproducto.descuento,
                 LabelStock = historialproducto.stock,
                 // Asigna un comando para manejar el evento de toque en el producto.
-                TappedCommand = new Command(() => HandleTappedCommand(historialproducto.idproducto)),
+                TappedCommand = new Command(() => HandleTappedCommand(historialproducto)),
             };
 
             // Controla la visibilidad de la imagen de descuento basado en el descuento aplicado.
@@ -122,8 +123,16 @@ public partial class HistorialProductosAgregados : ContentPage
         collectionViewHistorialAgregados.ItemsSource = HistorialProductos;
     }
 
+    private async void HandleTappedCommand(ProductoModel producto)
+    {
+        // Muestra un cuadro de diálogo de confirmación para que el usuario confirme la eliminación del producto.
+        await Navigation.PushAsync(new Views.CreacionProductos.ActualizarProductos(1, producto));
+
+     }
+
+
     //Boton para eliminar los productos agregados a la lista
-    private async void HandleTappedCommand(int idProducto)
+    private async void DeleteCommand(int idProducto)
     {
         // Muestra un cuadro de diálogo de confirmación para que el usuario confirme la eliminación del producto.
         bool userConfirmed = await DisplayAlert("Confirmación", "¿Está seguro de que desea eliminar este producto?", "Si", "No");
@@ -231,7 +240,7 @@ public partial class HistorialProductosAgregados : ContentPage
 
     private void btnActualizarProducto_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new ActualizarProductos(1));
+       
     }
 
     private void btnHome_Clicked(object sender, EventArgs e)
