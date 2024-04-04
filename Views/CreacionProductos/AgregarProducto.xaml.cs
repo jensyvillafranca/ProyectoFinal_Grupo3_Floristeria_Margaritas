@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CreacionProductos;
 using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
@@ -6,9 +6,7 @@ using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using System.Text.RegularExpressions;
 
-namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CreacionProductos;
-
-public partial class ActualizarProductos : ContentPage
+public partial class AgregarProducto : ContentPage
 {
     private ApiService _apiService = new ApiService();
     //Imagen
@@ -49,14 +47,16 @@ public partial class ActualizarProductos : ContentPage
         }
     }
     string categorias;
-    public ActualizarProductos(int tipo)
-    {
-        InitializeComponent();
+
+    public AgregarProducto(int tipo)
+	{
+
+		InitializeComponent();
         Categorias = new ObservableCollection<FiltroModel>();
         LoadFiltrosCategoriaDataAsync();
         tipoNavegacion = tipo;
-
     }
+
     private void SwitchDescuento_Toggled(object sender, ToggledEventArgs e)
     {
         txtAgregarDescuento.IsEnabled = e.Value;
@@ -68,6 +68,10 @@ public partial class ActualizarProductos : ContentPage
         categorias = categoriaPicker.SelectedItem as string;
     }
 
+    //Para obtener los datos de categorias
+    /*
+  * Método asincrónico para cargar los datos de filtros de categoría desde el servidor.
+  */
     private async Task LoadFiltrosCategoriaDataAsync()
     {
         // Realiza una solicitud al servidor para obtener los filtros de categoría.
@@ -104,6 +108,7 @@ public partial class ActualizarProductos : ContentPage
         categoriaPicker.SelectedIndex = -1;
     }
 
+    //Get64
     public string? GetImg64()
     {
         if (imagen != null)
@@ -122,6 +127,10 @@ public partial class ActualizarProductos : ContentPage
         return null;
     }
 
+    //Boton para agregar productos 
+    /*
+  * Método que maneja el evento click del botón para agregar un producto.
+  */
     private async void btnAgregarproducto_clickend(object sender, EventArgs e)
     {
         // Verifica si el campo de texto para el nombre del producto está vacío o contiene caracteres no alfabéticos.
@@ -238,6 +247,7 @@ public partial class ActualizarProductos : ContentPage
         }
     }
 
+
     private async void btnSubirGaleria_Cliecked(object sender, EventArgs e)
     {
         try
@@ -273,26 +283,25 @@ public partial class ActualizarProductos : ContentPage
         }
     }
 
-
     private void btnBack_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();
     }
+
+
+
 
     private void btnHome_Clicked(object sender, EventArgs e)
     {
 
     }
 
-    private void btnStock_Clicked(object sender, EventArgs e)
+    private void BtnHistorialProductos_Clicked(object sender, EventArgs e)
     {
-
+        Navigation.PushAsync(new HistorialProductosAgregados());
     }
 
-    private void btnEstadisticas_Clicked(object sender, EventArgs e)
-    {
-
-    }
+   
 
     private void btnAnuncios_Clicked(object sender, EventArgs e)
     {
@@ -313,6 +322,5 @@ public partial class ActualizarProductos : ContentPage
     {
 
     }
-
 
 }

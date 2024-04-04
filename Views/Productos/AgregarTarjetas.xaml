@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos.AgregarTarjetas"
+             Title=""
+              BackgroundImageSource="fondo_todas_pantallas.png">
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Header  -->
+        <Frame
+        Grid.Row="0"
+        Margin="0,0,0,10"
+        Padding="5,10,5,10"
+        BackgroundColor="{DynamicResource BlackWithTransparency}"
+        BorderColor="{DynamicResource AzulBotones}"
+        CornerRadius="20">
+            <StackLayout
+            Margin="0,0,0,0"
+            Padding="0,0,0,0"
+            BackgroundColor="Transparent"
+            Orientation="Horizontal">
+                <ImageButton
+                x:Name="btnBack"
+                Margin="10,0,0,0"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Clicked="btnBack_Clicked"
+                HeightRequest="40"
+                Source="Productos/backarrow.png"
+                WidthRequest="40" />
+                <!--  Spacer  -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Label
+                Margin="0,0,135,0"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                Text="Agregar Tarjeta"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+        </Frame>
+
+
+        <!--  Body  -->
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <!--  Nueva Direccion Frame  -->
+                <Frame
+                x:Name="frameNuevaDireccion"
+                Margin="5"
+                Padding="0"
+                BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
+                CornerRadius="10"
+                HasShadow="True"
+                VerticalOptions="CenterAndExpand">
+                    
+                    
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+                        <StackLayout>
+                            <Frame
+                              WidthRequest="350"
+                              HeightRequest="200"
+                              BackgroundColor="#2c5385"
+                              CornerRadius="10"
+                              Margin="0,20,0,0"
+                                BorderColor="#2c5385">
+                                <Image
+                                          Source="Profile/chispss.png"
+                                          WidthRequest="45"
+                                         Margin="0,-90,260,20"/>
+                            </Frame>
+
+                            <Label
+                                x:Name="NombreTarjetas"
+                                Margin="30,-130,0,0"
+                                Text="Nombre Completo:"
+                                TextColor="White"
+                                FontSize="18"/>
+
+                            <Label
+                                x:Name="NumeroTarjeta"
+                                Margin="30,10,0,0"
+                                Text="Numero cuenta"
+                                TextColor="White"
+                                FontSize="16"/>
+
+                            <Label
+                                  x:Name="FechaVencimientossss"
+                                  Text="Fecha Valida:"
+                                  Margin="30,10,0,0"
+                                  TextColor="White"
+                                  FontSize="18"/>
+                            <Label
+                              x:Name="FechaVencimientoss"
+                             
+                              Margin="140,-23,0,0"
+                              TextColor="White"
+                              FontAttributes="Bold"
+                              FontSize="16"/>
+                            
+                            <!--Pin-->
+                            <Label
+                              x:Name="IngresoPin"
+                                Text="Pin de la tarjeta"
+                              Margin="30,5,0,0"
+                              TextColor="White"
+                              FontSize="18"/>
+                            <Label
+                                    x:Name="Marca"
+                                    Text="VISA"
+                                    Margin="300,-25,0,0"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    FontSize="18"/>
+
+
+                        </StackLayout>
+                        
+                        <!--agrege su nombre-->
+                        <Label
+                        x:Name="labelNombre"
+                        Margin="10,40,0,10"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        HorizontalTextAlignment="Start"
+                        Text="Ingrese su nombre completo"
+                        TextColor="White" />
+                        
+
+                        <Frame
+                        Margin="10,0,10,20"
+                        Padding="0,0,0,0"
+                        BackgroundColor="White"
+                        CornerRadius="10">
+                            <Entry
+                            x:Name="entryIngreseNombre"
+                            TextChanged="EntryNombres"
+                            Margin="5,0,5,0"
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="Nombre de la tarjeta"
+                            PlaceholderColor="Gray"
+                            TextColor="Black" />
+                        </Frame>
+
+                        <!--agrege su numero de tarjeta-->
+
+                        <Label
+                                x:Name="labelNumeroTarjeta"
+                                Margin="10,5,0,10"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalTextAlignment="Start"
+                                Text="Ingrese su numero de tarjeta"
+                                TextColor="White" />
+
+                        <StackLayout Orientation="Horizontal">
+                            <Frame
+                                Margin="10,0,5,20"
+                                Padding="0,0,0,0"
+                                BackgroundColor="White"
+                                CornerRadius="10"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand">
+                            <Entry
+                                x:Name="entryNumeroTarjeta"
+                                TextChanged="EntryNumeroTarjeta"
+                                Margin="5,0,5,0"
+                                BackgroundColor="Transparent"
+                                Keyboard="Numeric"
+                                FontAttributes="Bold"
+                                FontSize="12"
+                                HorizontalTextAlignment="Center"
+                                Placeholder="Ingrese su numero de tarjeta"
+                                PlaceholderColor="Gray"
+                                TextColor="Black"
+                                MaxLength="16"/>
+                            </Frame>
+                            
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                               <!--Fecha de vencimientos-->
+                                <Label
+                                x:Name="labelFechaVencimiento"
+                                Margin="10,5,0,10"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalTextAlignment="Start"
+                                Text="Fecha Vencimiento"
+                                TextColor="White" />
+
+                                <Frame
+                                Margin="10,0,10,20"
+                                Padding="0,0,0,0"
+                                BackgroundColor="White"
+                                CornerRadius="10"
+                                HorizontalOptions="FillAndExpand">
+
+                                    <DatePicker  x:Name="FechaVencimiento" DateSelected="DatePicker_DateSelected" BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40" HorizontalOptions="Center"></DatePicker>
+                                    
+
+                                </Frame>
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                <Label
+                                x:Name="labelPin"
+                                Margin="10,5,0,10"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalTextAlignment="Center"
+                                Text="PIN"
+                                TextColor="White" />
+
+                                <Frame
+                                Margin="10,0,10,20"
+                                Padding="0,0,0,0"
+                                BackgroundColor="White"
+                                CornerRadius="10"
+                                HorizontalOptions="FillAndExpand">
+                                    <Entry
+                                     x:Name="Pin"
+                                      Placeholder="Ingrese PIN"
+                                      Keyboard="Numeric"
+                                     FontSize="12"
+                                     IsPassword="True"
+                                     MaxLength="3"
+                                     HorizontalTextAlignment="Center"/>
+
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!--Descripcion de la tarjeta-->
+                         <Label
+                        x:Name="labelDescripcionTarjeta"
+                        Margin="10,5,0,10"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        HorizontalTextAlignment="Start"
+                        Text="Ingrese una Descripcion de la tarjeta"
+                        TextColor="White" />
+
+                        <Frame
+                        Margin="10,0,10,20"
+                        Padding="0,0,0,0"
+                        BackgroundColor="White"
+                        CornerRadius="10">
+                            <Entry
+                            x:Name="entryDescripcion"
+                            Margin="5,0,5,0"
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="Ingrese una descripcion"
+                            PlaceholderColor="Gray"
+                            TextColor="Black" />
+                        </Frame>
+
+
+                        
+
+                        
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+        <!--  Bottom Navigation Bar  -->
+        <Frame
+        Grid.Row="2"
+        Margin="0,10,0,0"
+        Padding="0,10,0,10"
+        BackgroundColor="{DynamicResource BlackWithTransparency}"
+        BorderColor="{DynamicResource AzulBotones}"
+        CornerRadius="20">
+            <StackLayout
+            Padding="0,0,0,0"
+            BackgroundColor="Transparent"
+            Orientation="Horizontal">
+                <Button
+                x:Name="btnAgregar"
+                Margin="30,0,30,0"
+                BackgroundColor="{DynamicResource AzulBotones}"
+                BorderColor="{DynamicResource AzulOscuro}"
+                Clicked="btnAgregarTarjeta_Clicked"
+                CornerRadius="20"
+                FontAttributes="Bold"
+                FontSize="14"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                SemanticProperties.Hint="Agregar Tarjeta"
+                Text="Agregar Tarjeta" />
+            </StackLayout>
+        </Frame>
+    </Grid>
+
+
+</ContentPage>

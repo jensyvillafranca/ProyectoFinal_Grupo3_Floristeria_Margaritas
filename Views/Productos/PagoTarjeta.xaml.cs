@@ -139,6 +139,7 @@ public partial class PagoTarjeta : ContentPage
 
     private void TapGestureNuevaTarjeta_Tapped(object sender, TappedEventArgs e)
     {
+         Navigation.PushAsync(new AgregarTarjetas(1));
 
     }
 }

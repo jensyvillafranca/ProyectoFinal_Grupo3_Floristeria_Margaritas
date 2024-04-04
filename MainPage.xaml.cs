@@ -16,6 +16,11 @@ public partial class MainPage : ContentPage
         Navigation.PushAsync(new Views.Home.homePageUser());
     }
 
+    private void btnAgregarProductos_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Views.CreacionProductos.AgregarProducto(1));
+    }
+
     private void btnHomeRepartidor_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.Home.homePageRepartidor());

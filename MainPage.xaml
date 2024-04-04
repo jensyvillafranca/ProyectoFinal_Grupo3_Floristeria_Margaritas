@@ -156,6 +156,13 @@
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="Direcciones Guardadas"
                 Text="Direcciones Guardadas" />
+
+            <Button
+                x:Name="btnAgregarProductos"
+                Clicked="btnAgregarProductos_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Ingrese productos"
+                Text="Ingrese productos" />
         </VerticalStackLayout>
     </ScrollView>
 
