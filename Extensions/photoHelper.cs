@@ -21,7 +21,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Utilities
                     String Base64 = Convert.ToBase64String(data);
 
                     return Base64;
-                }
+                } 
             }
             return null;
         }
