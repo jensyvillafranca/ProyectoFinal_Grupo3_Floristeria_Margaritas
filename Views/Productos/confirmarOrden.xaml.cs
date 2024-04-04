@@ -1,3 +1,10 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'confirmarOrden' de la aplicación Floristeria Margaritas.
+ * Permite al usuario confirmar los detalles de su orden antes de finalizarla, incluyendo la dirección de entrega, tarjeta de pago,
+ * propina y mensaje adicional.
+ */
+
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
 using System.Collections.ObjectModel;
@@ -14,6 +21,8 @@ public partial class confirmarOrden : ContentPage
     private DireccionModel selectedDireccion { get; set; }
     private TarjetaModel selectedTarjeta { get; set; }
     private ShoppingCartRequest shoppingCartRequest { get; set; }
+    private double propina = 0;
+    private double total = 0;
 
 
     //variable para controlar si el usuario preciona el boton de atras una vez hecho el pedido
@@ -34,34 +43,42 @@ public partial class confirmarOrden : ContentPage
         public int idTarjeta { get; set; }
         public string titulonota { get; set; }
         public string nota { get; set; }
+        public double propina { get; set; }
         public ShoppingCartItems shoppingCartItems { get; set; }
     }
 
+    // Constructor
     public confirmarOrden()
     {
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
 
+        // Si no está permitido, redirige al usuario a la página de inicio
         if (allowed == false)
         {
             Navigation.PushAsync(new Views.Home.homePageUser());
         }
 
+        propinaPicker.IsEnabled = false;
+        
         BindingContext = this;
         _apiService = new ApiService();
 
     }
 
+    // Método que se ejecuta al aparecer la página
     protected override void OnAppearing()
     {
         base.OnAppearing();
 
+        // Si el contexto de enlace es una tupla de modelos combinados de pago, dirección y tarjeta
         if (BindingContext is Tuple<PagoDireccionTotalesModel, DireccionModel, TarjetaModel> combinedData)
         {
             PagoDireccionTotalesModel data = combinedData.Item1;
             selectedDireccion = combinedData.Item2;
             selectedTarjeta = combinedData.Item3;
 
+            // Actualiza la interfaz de usuario con los detalles de la dirección y tarjeta seleccionados
             labelDescripcionDireccion.Text = selectedDireccion.descripcion;
             labelDireccion.Text = selectedDireccion.direccion;
             labelCiudadDept.Text = $"{selectedDireccion.ciudad}, {selectedDireccion.departamento}";
@@ -70,23 +87,29 @@ public partial class confirmarOrden : ContentPage
             labelNumeroTarjeta.Text = selectedTarjeta.numerotarjeta;
             labelNombreTarjeta.Text = selectedTarjeta.nombre;
 
+            total = data.Total;
+
             labelSubtotal.Text = $"L {Math.Round(data.TotalPrecio, 2):F2}";
             labelISV.Text = $"L {Math.Round(data.ISV, 2):F2}";
             labelEnvio.Text = $"L {Math.Round(data.Envio, 2):F2}";
+            labelPropina.Text = $"L {Math.Round(propina, 2):F2}";
             labelTotal.Text = $"L {Math.Round(data.Total, 2):F2}";
 
             InitializeAsync();
         }
     }
 
+    // Método para inicializar los elementos del carrito de compras
     private async void InitializeAsync()
     {
         shoppingCartController = new ShoppingCartController();
 
+        // Obtiene los elementos del carrito de compras desde el controlador
         List<Modelos.ShoppingCartItem> shoppingCartItems = await shoppingCartController.getListProductos();
 
         Ordenes = new ObservableCollection<FrameOrden>();
 
+        // Itera sobre los elementos del carrito y los agrega a la colección observable
         foreach (var item in shoppingCartItems)
         {
             double precioProducto = Double.Parse(item.precioventa);
@@ -108,9 +131,11 @@ public partial class confirmarOrden : ContentPage
             Ordenes.Add(frameOrden);
         }
 
+        // Asigna la colección de órdenes a la vista
         collectionViewCarrito.ItemsSource = Ordenes;
     }
 
+    // Método para convertir el precio de string a double
     private double ParsePrecio(string precio)
     {
         if (double.TryParse(precio, out double result))
@@ -119,18 +144,22 @@ public partial class confirmarOrden : ContentPage
         return 0.0;
     }
 
+    // Método para manejar el evento de clic en el botón de cancelar
     private async void btnCancelar_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Views.Productos.carritoCompras());
     }
 
+    // Método para manejar el evento de clic en el botón de retroceso
     private void btnBack_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();
     }
 
+    // Método para manejar el evento de clic en el botón de finalizar pedido
     private async void btnFinalizar_Clicked(object sender, EventArgs e)
     {
+        // Verifica si se ha ingresado un título y un mensaje
         if (string.IsNullOrEmpty(entryTitulo.Text))
         {
             await DisplayAlert("Alerta", "Porfavor ingrese un título", "OK");
@@ -146,6 +175,7 @@ public partial class confirmarOrden : ContentPage
         {
             allowed = false;
 
+            // Solicita confirmación al usuario antes de finalizar el pedido
             bool userConfirmed = await DisplayAlert("Confirmación", "¿Está seguro que su orden es correcta?", "Si", "No");
 
             if (userConfirmed)
@@ -153,7 +183,8 @@ public partial class confirmarOrden : ContentPage
                 List<int> ID = new List<int>();
                 List<int> Cantidad = new List<int>();
 
-                foreach(var item in Ordenes)
+                // Construye la lista de IDs y cantidades para la solicitud al API
+                foreach (var item in Ordenes)
                 {
                     ID.Add(item.IdProducto);
                     Cantidad.Add(item.EntryQuantity);
@@ -166,6 +197,7 @@ public partial class confirmarOrden : ContentPage
                     idTarjeta = selectedTarjeta.idtarjeta,
                     titulonota = entryTitulo.Text.ToString(),
                     nota = entryMensaje.Text.ToString(),
+                    propina = propina,
                     shoppingCartItems = new ShoppingCartItems
                     {
                         ID = ID,
@@ -173,11 +205,14 @@ public partial class confirmarOrden : ContentPage
                     }
                 };
 
+                // Realiza la solicitud al API para agregar el pedido
                 var tiempoEstimado = await _apiService.PostDataAsync<deliveryTimeModel>("agregarPedido.php", shoppingCartRequest);
                 DateTime deliveryTime = tiempoEstimado.deliverytime;
 
+                // Elimina todos los productos del carrito de compras después de realizar el pedido
                 await shoppingCartController.DeleteAllProductos();
 
+                // Muestra una página modal de pago realizado con el tiempo estimado de entrega
                 var pagoRealizadoPage = new CustomPopupPagoRealizado();
                 pagoRealizadoPage.BindingContext = deliveryTime;
 
@@ -186,8 +221,49 @@ public partial class confirmarOrden : ContentPage
         }
         else
         {
+            // Si el pedido ya está en proceso, muestra un mensaje de error
             await DisplayAlert("Error", "Este pedido ya esta en Proceso", "OK");
             await Navigation.PushAsync(new Views.Home.homePageUser());
         }
+    }
+
+    // Método para manejar el cambio de índice en el selector de propina
+    private void propinaPicker_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        double holder = total;
+        propina =  double.Parse(propinaPicker.SelectedItem.ToString());
+        holder = holder + propina;
+        labelPropina.Text = $"L {Math.Round(propina, 2):F2}";
+        labelTotal.Text = $"L {Math.Round(holder, 2):F2}";
+    }
+
+    // Método para manejar el cambio de estado en el interruptor de propina
+    private void switchPropina_Toggled(object sender, ToggledEventArgs e)
+    {
+        if(switchPropina.IsToggled)
+        {
+            labelMsjPropina.Text = "Si";
+            labelMsjPropina.TextColor = Color.FromRgb(0, 0, 0);
+            propinaPicker.IsEnabled = true;
+            
+            if(propinaPicker.SelectedIndex != -1) 
+            {
+                double holder = total; 
+                propina = int.Parse(propinaPicker.SelectedItem.ToString());
+                holder = holder + propina;
+                labelPropina.Text = $"L {Math.Round(propina, 2):F2}";
+                labelTotal.Text = $"L {Math.Round(holder, 2):F2}";
+            }        
+        }
+        else
+        {
+            labelMsjPropina.Text = "Ahora No";
+            labelMsjPropina.TextColor = Color.FromRgb(128, 128, 128);
+            propinaPicker.IsEnabled = false;
+            propina = 0;
+            labelPropina.Text = $"L {Math.Round(propina, 2):F2}";
+            labelTotal.Text = $"L {Math.Round(total, 2):F2}";
+        }
+        
     }
 }

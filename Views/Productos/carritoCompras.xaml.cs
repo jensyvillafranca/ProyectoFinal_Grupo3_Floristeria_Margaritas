@@ -1,3 +1,10 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'carritoCompras' de la aplicación Floristeria Margaritas.
+ * Permite al usuario ver los productos en su carrito de compras, actualizar los precios si es necesario, modificar la cantidad de productos
+ * y proceder a realizar la orden de compra.
+ */
+
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using System.Collections.ObjectModel;
@@ -16,6 +23,7 @@ public partial class carritoCompras : ContentPage
     private double Envio { get; set; }
     private double Total { get; set; }
 
+    // Constructor
     public carritoCompras()
     {
         InitializeComponent();
@@ -26,6 +34,7 @@ public partial class carritoCompras : ContentPage
         InitializeAsync();
     }
 
+    // Método para inicializar la página
     private async void InitializeAsync()
     {
         shoppingCartController = new ShoppingCartController();
@@ -37,6 +46,7 @@ public partial class carritoCompras : ContentPage
 
         Ordenes = new ObservableCollection<FrameOrden>();
 
+        // Itera sobre los productos en el carrito
         foreach (var item in shoppingCartItems)
         {
             var productos = await _apiService.PostDataAsync<ProductoModel[]>("actualizarPrecios.php", new { idproducto = item.idproducto });
@@ -60,6 +70,7 @@ public partial class carritoCompras : ContentPage
             double discountPercentage = Double.Parse(item.descuento) / 100.0;
             double discountedPrice = Math.Round(precioProducto - (precioProducto * discountPercentage), 2);
 
+            // Crea un objeto FrameOrden para mostrar el producto en la interfaz de usuario
             FrameOrden frameOrden = new FrameOrden
             {
                 IdItem = item.Id,
@@ -87,7 +98,7 @@ public partial class carritoCompras : ContentPage
         showPrecioActualizadoAlert(shoppingCartItemsUpdated);
     }
 
-
+    // Método para calcular el precio total
     private void CalculateTotalPrecio()
     {
         TotalPrecio = Ordenes.Sum(item => item.EntryQuantity * item.PrecioProducto);
@@ -101,6 +112,7 @@ public partial class carritoCompras : ContentPage
         labelTotal.Text = $"L {Total:N2}";
     }
 
+    // Método para convertir el precio de string a double
     private double ParsePrecio(string precio)
     {
         if (double.TryParse(precio, out double result))
@@ -109,6 +121,7 @@ public partial class carritoCompras : ContentPage
         return 0.0;
     }
 
+    // Método para manejar el límite de cantidad de productos
     private void CheckQuantityLimit(FrameOrden frameOrden)
     {
         // Calcula el limite de productos disponibles basado en el stock
@@ -117,6 +130,7 @@ public partial class carritoCompras : ContentPage
         DisplayAlert("Límite de Productos Alcanzado", $"Puedes comprar hasta {limit} de este producto.", "OK");
     }
 
+    // Método para calcular el límite de cantidad de productos
     private int CalculateQuantityLimit(FrameOrden frameOrden)
     {
         // Calcula el limite basado en el stock (La mitad del stock)
@@ -131,6 +145,7 @@ public partial class carritoCompras : ContentPage
         return limit > 0 ? limit : 1; // Se asegura que el limite sea mayor a uno
     }
 
+    // Método para mostrar la alerta de precio actualizado
     private async void showPrecioActualizadoAlert(List<Modelos.ShoppingCartItem> items)
     {
         foreach(var item in items)
@@ -165,6 +180,7 @@ public partial class carritoCompras : ContentPage
         
     }
 
+    // Método para manejar el evento de toque en un elemento del carrito de compras
     private async void HandleItemTapped(int itemID)
     {
         var tappedItem = Ordenes.FirstOrDefault(item => item.IdItem == itemID);
@@ -185,6 +201,7 @@ public partial class carritoCompras : ContentPage
         }
     }
 
+    // Método para manejar la resta de la cantidad de un producto en el carrito
     private void HandleSubtractTapped(FrameOrden item, double precio)
     {
         int quantity = item.EntryQuantity;
@@ -200,6 +217,7 @@ public partial class carritoCompras : ContentPage
         }
     }
 
+    // Método para manejar la adición de la cantidad de un producto en el carrito
     private void HandleAddTapped(FrameOrden item, double precio)
     {     
         if (item.EntryQuantity+1 <= CalculateQuantityLimit(item))
@@ -217,6 +235,7 @@ public partial class carritoCompras : ContentPage
         }       
     }
 
+    // Método para actualizar la cantidad de un producto en el carrito
     private async void updateCantidad(FrameOrden frame)
     {
         foreach (var item in shoppingCartItems)
@@ -229,17 +248,19 @@ public partial class carritoCompras : ContentPage
         }
     }
 
-
+    // Método para manejar el evento Clicked del botón 'btnBack'
     private void btnBack_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.Home.homePageUser());
     }
 
+    // Método para manejar el evento Clicked del botón 'btnProductos'
     private void btnProductos_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.Productos.productos());
     }
 
+    // Método para manejar el evento Clicked del botón 'btnRealizarOrden'
     private async void btnRealizarOrden_Clicked(object sender, EventArgs e)
     {
         if(Ordenes.Count()==0)

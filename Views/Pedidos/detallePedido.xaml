@@ -5,10 +5,698 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title=""
     BackgroundImageSource="fondo_todas_pantallas.png">
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Header  -->
+        <Frame
+            Grid.Row="0"
+            Margin="0,0,0,5"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+                <ImageButton
+                    x:Name="btnBack"
+                    Margin="10,0,0,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnBack_Clicked"
+                    HeightRequest="40"
+                    Source="Productos/backarrow.png"
+                    WidthRequest="40" />
+                <!--  Spacer  -->
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Label
+                    x:Name="labelTitulo"
+                    Margin="0,0,100,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text=""
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+                <Label
+                    x:Name="labelHora"
+                    Margin="0,0,20,0"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    Text=""
+                    TextColor="{StaticResource AzulBotones}"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+        </Frame>
+
+
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <!--  Detalle Frame  -->
+                <Frame
+                    x:Name="frameDetalle"
+                    Margin="5"
+                    Padding="0"
+                    BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}"
+                    CornerRadius="10"
+                    HasShadow="True"
+                    VerticalOptions="CenterAndExpand">
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+                        <Image
+                            x:Name="imgProducto"
+                            Margin="20,20,20,10"
+                            Aspect="AspectFit"
+                            HeightRequest="120"
+                            HorizontalOptions="FillAndExpand"
+                            WidthRequest="120" />
+
+                        <Label
+                            x:Name="labelEstadoPedido"
+                            Margin="0,5,0,5"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            HorizontalTextAlignment="Center"
+                            Text=""
+                            TextColor="{StaticResource AzulLetraLogo}" />
+
+                        <StackLayout Orientation="Vertical">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Frame
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,0,0,5"
+                                    Padding="0,0,0,0"
+                                    BackgroundColor="{DynamicResource AzulOscuro}"
+                                    BorderColor="{DynamicResource AzulBotones}">
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Datos de Sucursal"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                </Frame>
+
+                                <Label
+                                    x:Name="labelNombreSurursal"
+                                    Grid.Row="1"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,0,0,0"
+                                    FontSize="12"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+
+                                <Label
+                                    x:Name="labelDireccionSucursal"
+                                    Grid.Row="2"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,0,0,5"
+                                    FontSize="12"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+
+                                <Frame
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,0,0,5"
+                                    Padding="0,0,0,0"
+                                    BackgroundColor="{DynamicResource AzulOscuro}"
+                                    BorderColor="{DynamicResource AzulBotones}">
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Datos del Repartidor"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                </Frame>
+
+                                <Label
+                                    x:Name="labelNombreRepartidor"
+                                    Grid.Row="4"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="1"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+
+                                <Label
+                                    x:Name="labelTelefonoRepartidor"
+                                    Grid.Row="4"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="1"
+                                    Margin="3,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+
+                                <ImageButton
+                                    x:Name="btnWhatsappRepartidor"
+                                    Grid.Row="4"
+                                    Grid.Column="2"
+                                    Margin="5,0,0,0"
+                                    Aspect="AspectFit"
+                                    BackgroundColor="Transparent"
+                                    Clicked="btnWhatsappRepartidor_Clicked"
+                                    HeightRequest="32"
+                                    Source="Iconos/whatsapp.png"
+                                    WidthRequest="32" />
+
+                                <ImageButton
+                                    x:Name="btnLlamadaRepartidor"
+                                    Grid.Row="4"
+                                    Grid.Column="3"
+                                    Margin="0,0,5,0"
+                                    Aspect="AspectFit"
+                                    BackgroundColor="Transparent"
+                                    Clicked="btnLlamadaRepartidor_Clicked"
+                                    HeightRequest="32"
+                                    Source="Iconos/llamada.png"
+                                    WidthRequest="32" />
+
+                                <Frame
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,5,0,5"
+                                    Padding="0,0,0,0"
+                                    BackgroundColor="{DynamicResource AzulOscuro}"
+                                    BorderColor="{DynamicResource AzulBotones}">
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Datos del Cliente"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                </Frame>
+
+                                <Label
+                                    x:Name="labelNombreCliente"
+                                    Grid.Row="6"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,0,0,0"
+                                    FontSize="12"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    x:Name="labelDireccionEntrega"
+                                    Grid.Row="7"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+
+                                <Frame
+                                    Grid.Row="8"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,5,0,5"
+                                    Padding="0,0,0,0"
+                                    BackgroundColor="{DynamicResource AzulOscuro}"
+                                    BorderColor="{DynamicResource AzulBotones}">
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Método de Pago"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                </Frame>
+
+                                <Label
+                                    x:Name="labelNombreTarjeta"
+                                    Grid.Row="9"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="1"
+                                    Margin="5,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    x:Name="labelNumeroTarjeta"
+                                    Grid.Row="9"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Frame
+                                    Grid.Row="10"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,5,0,5"
+                                    Padding="0,0,0,0"
+                                    BackgroundColor="{DynamicResource AzulOscuro}"
+                                    BorderColor="{DynamicResource AzulBotones}">
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Detalle del Pedido"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                </Frame>
+                                <Label
+                                    Grid.Row="11"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="1"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Fecha de Pedido:"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    x:Name="labelFechaPedido"
+                                    Grid.Row="11"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Row="12"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="1"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Hora de Entrega:"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    x:Name="labelHoraEntrega"
+                                    Grid.Row="12"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Row="13"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="1"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Subtotal:"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    x:Name="labelSubtotal"
+                                    Grid.Row="13"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Row="14"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="1"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="ISV (12%):"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    x:Name="labelISV"
+                                    Grid.Row="14"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Row="15"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="1"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Envio:"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    x:Name="labelEnvio"
+                                    Grid.Row="15"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Row="16"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="1"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Propina:"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    x:Name="labelPropina"
+                                    Grid.Row="16"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Row="17"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="1"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Total:"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    x:Name="labelTotal"
+                                    Grid.Row="17"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Frame
+                                    Grid.Row="18"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,5,0,5"
+                                    Padding="0,0,0,0"
+                                    BackgroundColor="{DynamicResource AzulOscuro}"
+                                    BorderColor="{DynamicResource AzulBotones}">
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Productos Ordenados"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                </Frame>
+
+                                <CollectionView
+                                    x:Name="collectionViewProductos"
+                                    Grid.Row="19"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,0,0,10"
+                                    ItemSizingStrategy="MeasureFirstItem"
+                                    ItemsSource="{Binding ProductosList}"
+                                    SelectionMode="Single">
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical" />
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Frame
+                                                x:Name="frameOrden"
+                                                Margin="5"
+                                                Padding="5"
+                                                BackgroundColor="FloralWhite"
+                                                BorderColor="{DynamicResource AzulBotones}"
+                                                CornerRadius="10"
+                                                HasShadow="True"
+                                                HorizontalOptions="FillAndExpand">
+                                                <StackLayout
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Orientation="Horizontal"
+                                                    VerticalOptions="FillAndExpand">
+                                                    <Image
+                                                        Margin="3,5,10,5"
+                                                        Aspect="AspectFit"
+                                                        HeightRequest="60"
+                                                        Source="{Binding enlacefoto}"
+                                                        WidthRequest="60" />
+                                                    <Label
+                                                        x:Name="labelNombreProducto"
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        Margin="10,5,0,0"
+                                                        FontAttributes="Bold"
+                                                        FontSize="12"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        Text="{Binding nombreproducto}"
+                                                        TextColor="{StaticResource AzulLetraLogo}"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="100" />
+                                                    <Label
+                                                        x:Name="labelCantidad"
+                                                        Margin="15,5,0,0"
+                                                        BackgroundColor="FloralWhite"
+                                                        FontAttributes="Bold"
+                                                        FontSize="10"
+                                                        HorizontalTextAlignment="Center"
+                                                        Text="Cantidad:"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="60" />
+                                                    <Label
+                                                        x:Name="quantityEntry"
+                                                        Margin="0,5,0,0"
+                                                        BackgroundColor="FloralWhite"
+                                                        FontAttributes="Bold"
+                                                        FontSize="10"
+                                                        HorizontalTextAlignment="Start"
+                                                        Text="{Binding cantidad, Mode=TwoWay}"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="40" />
+                                                    <Label
+                                                        x:Name="labelPrecioTotal"
+                                                        Grid.Row="0"
+                                                        Grid.Column="1"
+                                                        Margin="20,5,0,0"
+                                                        FontAttributes="Bold"
+                                                        FontSize="14"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        Text="{Binding preciototal, StringFormat='L {0:N2}'}"
+                                                        TextColor="Black"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="60" />
+                                                </StackLayout>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+        <!--  Boton Agregar a Carrito  -->
+        <Frame
+            Grid.Row="2"
+            Margin="0,0,0,0"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,10,0,10"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+
+                <ImageButton
+                    x:Name="btnCalificar"
+                    Margin="0,0,5,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnCalificar_Clicked"
+                    HeightRequest="32"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Iconos/calificar.png"
+                    WidthRequest="32" />
+
+                <ImageButton
+                    x:Name="btnCancelar"
+                    Margin="0,0,5,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnCancelar_Clicked"
+                    HeightRequest="32"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Estados/empty.png"
+                    WidthRequest="32" />
+
+                <ImageButton
+                    x:Name="btnPDF"
+                    Margin="0,0,5,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnPDF_Clicked"
+                    HeightRequest="32"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Iconos/pdf.png"
+                    WidthRequest="32" />
+
+
+
+            </StackLayout>
+        </Frame>
+
+    </Grid>
 </ContentPage>

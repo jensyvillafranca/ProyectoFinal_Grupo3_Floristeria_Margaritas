@@ -331,6 +331,78 @@
                     </StackLayout>
                 </Frame>
 
+                <!--  Frame Propina  -->
+                <Frame
+                    Padding="0,0,0,0"
+                    BackgroundColor="{DynamicResource AzulOscuro}"
+                    BorderColor="{DynamicResource AzulBotones}">
+                    <Label
+                        Margin="0,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalTextAlignment="Center"
+                        Text="Propina:"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </Frame>
+
+                <Frame
+                    Margin="5,0,5,10"
+                    Padding="0,0,0,0"
+                    BackgroundColor="FloralWhite"
+                    BorderColor="{DynamicResource AzulBotones}">
+                    <StackLayout Orientation="Horizontal">
+                        <Switch
+                            x:Name="switchPropina"
+                            Margin="20,0,0,0"
+                            HorizontalOptions="Start"
+                            InputTransparent="False"
+                            IsToggled="false"
+                            OnColor="{DynamicResource AzulBotones}"
+                            ThumbColor="Gray"
+                            Toggled="switchPropina_Toggled"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            x:Name="labelMsjPropina"
+                            Margin="0,0,0,0"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Text="Ahora No"
+                            TextColor="Gray"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            Margin="0,0,5,0"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalTextAlignment="End"
+                            Text="L"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                        <Picker
+                            x:Name="propinaPicker"
+                            Title="Cantidad"
+                            Margin="0,0,70,0"
+                            HorizontalTextAlignment="Center"
+                            SelectedIndexChanged="propinaPicker_SelectedIndexChanged"
+                            VerticalTextAlignment="Center">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>5</x:String>
+                                    <x:String>10</x:String>
+                                    <x:String>15</x:String>
+                                    <x:String>20</x:String>
+                                    <x:String>30</x:String>
+                                    <x:String>40</x:String>
+                                    <x:String>50</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </StackLayout>
+
+                </Frame>
+
                 <!--  Frames mensaje personal  -->
                 <Frame
                     Margin="0,0,0,5"
@@ -392,6 +464,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -432,6 +505,16 @@
 
                     <Label
                         Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="10,0,0,5"
+                        FontAttributes="Bold"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Propina:"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        Grid.Row="4"
                         Grid.Column="0"
                         Margin="10,0,0,0"
                         FontAttributes="Bold"
@@ -474,8 +557,18 @@
                         VerticalOptions="CenterAndExpand" />
 
                     <Label
-                        x:Name="labelTotal"
+                        x:Name="labelPropina"
                         Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="0,0,10,5"
+                        HorizontalOptions="EndAndExpand"
+                        Text=""
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        x:Name="labelTotal"
+                        Grid.Row="4"
                         Grid.Column="1"
                         Margin="0,0,10,0"
                         FontSize="16"

@@ -1,3 +1,9 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'CrearCuenta' de la aplicación Floristeria Margaritas, que maneja el proceso de creación de cuentas de usuario.
+ * Incluye la verificación del código de verificación, el envío de nuevos códigos de verificación, y el inicio de sesión del usuario después de la creación de la cuenta.
+ */
+
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
@@ -6,8 +12,10 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login;
 
 public partial class CrearCuenta : ContentPage
 {
+    // Instancia de ApiService para interacciones con la API
     private ApiService _apiService;
 
+    // Variables para los datos de la cuenta a crear
     private string? Nombre;
     private string? Apellido;
     private string? Correo;
@@ -22,6 +30,7 @@ public partial class CrearCuenta : ContentPage
     private int countdownSeconds = 30;
     private bool isCountdownRunning = false;
 
+    // Constructor para la página 'CrearCuenta'
     public CrearCuenta()
     {
         InitializeComponent();
@@ -37,6 +46,7 @@ public partial class CrearCuenta : ContentPage
         });
     }
 
+    // Método que se ejecuta al aparecer la página
     protected override void OnAppearing()
     {
         base.OnAppearing();
@@ -53,13 +63,18 @@ public partial class CrearCuenta : ContentPage
         }
     }
 
+    // Controlador de eventos para clic en el botón de retroceso
     private void btnBack_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();
     }
 
+    // Controlador de eventos para clic en el botón de verificación
     private async void btnVerificar_Clicked(object sender, EventArgs e)
     {
+        // Validar el código de verificación ingresado
+        // Crear la cuenta si el código es correcto
+        // Mostrar alertas en caso de errores
         if (string.IsNullOrEmpty(entryCodigo.Text))
         {
             await DisplayAlert("Alerta", "Por favor ingrese el código de verificación que recibió en su correo electrónico o pida un nuevo código.", "OK");
@@ -104,6 +119,7 @@ public partial class CrearCuenta : ContentPage
         }
     }
 
+    // Método para iniciar el conteo regresivo
     private void StartCountdown()
     {
         if (!isCountdownRunning)
@@ -113,6 +129,7 @@ public partial class CrearCuenta : ContentPage
         }
     }
 
+    // Método para ejecutar el conteo regresivo
     private async Task RunCountdown()
     {
         while (countdownSeconds > 0)
@@ -136,6 +153,7 @@ public partial class CrearCuenta : ContentPage
         });
     }
 
+    // Controlador de eventos para toque en la etiqueta de reenvío de código
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
         var resultadoCorreo = await _apiService.PostDataAsync<codigoVerificacionModel>("correoCodigoVerificacion.php", new { email = Correo, name = Nombre });

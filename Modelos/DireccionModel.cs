@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada DireccionModel en el espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos.
+ * La clase representa un modelo de datos para una dirección, con propiedades para el ID de la dirección, la dirección en sí, la ciudad,
+ * el departamento, el ID del cliente asociado, una descripción adicional, la longitud y la latitud, así como una referencia opcional.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

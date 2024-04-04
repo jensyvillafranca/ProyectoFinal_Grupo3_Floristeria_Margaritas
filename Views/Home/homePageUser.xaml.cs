@@ -1,3 +1,9 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'homePageUser' de la aplicación Floristeria Margaritas, destinada a los usuarios clientes.
+ * Incluye la carga dinámica de productos en descuento, gestión de notificaciones, navegación entre páginas y funcionalidades relacionadas con el carrito de compras y el perfil del usuario.
+ */
+
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
@@ -10,6 +16,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home;
 
 public partial class homePageUser : ContentPage
 {
+    // Variables de instancia y servicio de API
     private ApiService _apiService = new ApiService();
     public ObservableCollection<CarouselItem> CarouselItems { get; set; }
     private int currentIndex = 0; // Para saber el indice del carrusel
@@ -17,6 +24,7 @@ public partial class homePageUser : ContentPage
     private double discountPercentage = 0;
     private double discountedPrice = 0;
 
+    // Constructor para la página 'homePageUser'
     public homePageUser()
     {
         InitializeComponent();
@@ -28,7 +36,7 @@ public partial class homePageUser : ContentPage
 
         SizeChanged += OnSizeChanged;
 
-        // Empieza un timer para cambiar las ofertas
+        // Inicia un temporizador para cambiar las ofertas
         Task.Run(async () =>
         {
             while (true)
@@ -56,13 +64,34 @@ public partial class homePageUser : ContentPage
             await Navigation.PushAsync(new Views.Login.login());
             return;
         }
+
+        try
+        {
+            var resultado = await _apiService.PostDataAsync<existeUsuario>("revisarNotificaciones.php", new { idcliente = Config.Config.activeUserId });
+            bool existe = resultado.existe;
+
+            if (existe)
+            {
+                btnNotification.Source = "Iconos/notificacionn.png";
+            }
+            else
+            {
+                btnNotification.Source = "Iconos/notificacione.png";
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 
+    // Método para cargar datos asíncronamente
     private async void AsyncTaskExec()
     {
         await LoadDataAsync();
     }
 
+    // Método para cargar los productos en descuento
     private async Task LoadDataAsync()
     {
         try
@@ -117,14 +146,14 @@ public partial class homePageUser : ContentPage
         }
     }
 
-
-
+    // Método para avanzar al siguiente elemento del carrusel
     private void MoveToNextItem()
     {
         currentIndex = (currentIndex + 1) % CarouselItems.Count;
         carouselView.Position = currentIndex;
     }
 
+    // Controlador de eventos para el cambio de tamaño de la pantalla
     private void OnSizeChanged(object sender, EventArgs e)
     {
         // Obtiene la altura de la pantalla
@@ -143,6 +172,7 @@ public partial class homePageUser : ContentPage
         //carouselView.HeightRequest = screenHeight * carouselHeightPercentage;
     }
 
+    // Clase para representar un elemento del carrusel
     public class CarouselItem
     {
         public string? ImageSource { get; set; }
@@ -153,6 +183,7 @@ public partial class homePageUser : ContentPage
         public ICommand? TappedCommand { get; set; }
     }
 
+    // Controlador de eventos para el clic en un elemento del carrusel
     private void HandleItemTapped(ProductoModel selectedProduct)
     {
         if (selectedProduct != null)
@@ -161,12 +192,18 @@ public partial class homePageUser : ContentPage
         }
     }
 
-    private void btnLogout_Clicked(object sender, EventArgs e)
+    private async void btnLogout_Clicked(object sender, EventArgs e)
     {
-        UserPreferences.Logout();
-        Navigation.PushAsync(new Views.Login.login());
+        bool isSuccess = await logout.PerformLogoutAsync(_apiService);
+
+        if (isSuccess)
+        {
+            await Navigation.PushAsync(new Views.Login.login());
+        }
+        
     }
 
+    // Métodos para gestionar la navegación a diferentes páginas
     private async void TapGestureProductos_Tapped(object sender, TappedEventArgs e)
     {
         await AnimationUtilities.ChangeFrameColor(frameProductos, Color.FromRgb(46, 117, 182), Color.FromRgb(65, 185, 254), 250);
@@ -196,8 +233,8 @@ public partial class homePageUser : ContentPage
         await AnimationUtilities.ChangeFrameColor((Frame)sender, Color.FromRgb(46, 117, 182), Color.FromRgb(65, 185, 254), 250);
     }
 
-    private void btnNotification_Clicked(object sender, EventArgs e)
+    private async void btnNotification_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Notificaciones.notificacionesEstadoPedidos());
     }
 }

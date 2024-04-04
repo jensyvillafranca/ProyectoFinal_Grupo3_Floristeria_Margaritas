@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define el ViewModel para los pedidos en la aplicación Floristeria Margaritas.
+ * Proporciona propiedades para almacenar información sobre cada pedido, como el ID del pedido,
+ * la fuente de la imagen, el estado del pedido, la dirección de entrega, la hora de entrega,
+ * la fecha del pedido, el total del pedido, el color de fondo del marco, el color del texto,
+ * la visibilidad y maneja los eventos relacionados con PropertyChanged.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

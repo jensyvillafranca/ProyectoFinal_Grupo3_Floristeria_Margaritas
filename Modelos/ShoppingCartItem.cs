@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada ShoppingCartItem dentro del espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos.
+ * Esta clase representa un artículo en el carrito de compras y está mapeada a una tabla de base de datos llamada ShoppingCartDB.
+ * La clase contiene propiedades que representan los diferentes atributos de un artículo en el carrito de compras.
+ * Se utilizan atributos SQLite para configurar el mapeo de propiedades a la tabla de la base de datos.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

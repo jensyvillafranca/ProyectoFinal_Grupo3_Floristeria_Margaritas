@@ -1,3 +1,9 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'singin' de la aplicación Floristeria Margaritas, la cual maneja el registro de usuarios.
+ * Incluye validación de campos de registro, verificación de usuarios existentes, confirmación de contraseña y validación de formato de correo electrónico.
+ */
+
 using System.Text.RegularExpressions;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
@@ -6,9 +12,14 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login;
 
 public partial class singin : ContentPage
 {
+    // Variables para realizar un seguimiento del formato de correo electrónico y la validez del usuario
     private bool formatoCorreo = false;
     private bool usuarioValido = false;
+
+    // Temporizador para evento de cambio de texto demorado
     private System.Threading.Timer textChangedTimer;
+
+    // Instancia de ApiService para interacciones con la API
     private ApiService _apiService = new ApiService();
 
     public singin()
@@ -20,10 +31,13 @@ public partial class singin : ContentPage
 
     private async void btnRegistrarse_Clicked(object sender, EventArgs e)
     {
+        // Validar campos de registro
         if (ValidateRegistrationFields())
         {
+            // Si el usuario no existe, proceder con el registro
             var resultadoExiste = await _apiService.PostDataAsync<existeUsuario>("existeCorreo.php", new { correo = entryCorreo.Text });
             bool existe = resultadoExiste.existe;
+
 
             if (!existe)
             {
@@ -41,6 +55,7 @@ public partial class singin : ContentPage
                     Codigo = codigo
                 };
 
+                // Navegar a la página de creación de cuenta
                 await Navigation.PushAsync(new Views.Login.CrearCuenta { BindingContext = data });
             }
             else
@@ -59,7 +74,7 @@ public partial class singin : ContentPage
         }
     }
 
-    //Validaciones
+    // Método para validar campos de registro
     private bool ValidateRegistrationFields()
     {
         if (string.IsNullOrEmpty(entryPrimerNombre.Text))
@@ -111,6 +126,7 @@ public partial class singin : ContentPage
         return true;
     }
 
+    // Método para validar confirmación de contraseña
     private void ValidatePasswordConfirmation()
     {
         string password = entryContrasena.Text;
@@ -138,9 +154,9 @@ public partial class singin : ContentPage
         }
     }
 
+    // Controlador de eventos para evento de cambio de texto demorado
     private async void TextChangedDelayed(object state)
     {
-        // Code to be executed after the delay (e.g., perform a search or validation)
         MainThread.BeginInvokeOnMainThread(async () =>
         {
             var resultadoExiste = await _apiService.PostDataAsync<existeUsuario>("existeUsername.php", new { usuario = entryUsuario.Text });
@@ -160,6 +176,7 @@ public partial class singin : ContentPage
             }
         });
     }
+
 
     private async void LabelIngresar_Tapped(object sender, System.EventArgs e)
     {

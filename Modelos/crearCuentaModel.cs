@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada crearCuentaModel en el espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos.
+ * La clase representa un modelo de datos para la creación de una cuenta, con propiedades para el nombre, apellido, correo electrónico, teléfono, usuario, contraseña y código de verificación.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

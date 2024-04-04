@@ -8,17 +8,20 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
             InitializeComponent();
 
             int stayLogged = Config.Config.stayLogged;
+            int tipoUsuario = Config.Config.tipoUsuario;
 
             if (stayLogged == 0 || stayLogged == -1)
             {
                 MainPage = new AppShell();
             }
-            else
+            else if (stayLogged == 1 && tipoUsuario == 1)
             {
                 MainPage = new NavigationPage(new Views.Home.homePageUser());
             }
-
-            
+            else if (stayLogged == 1 && tipoUsuario == 3)
+            {
+                MainPage = new NavigationPage(new Views.Home.homePageRepartidor());
+            }          
         }
     }
 }

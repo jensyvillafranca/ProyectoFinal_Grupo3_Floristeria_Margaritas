@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada PasswordHandler en el espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions.
+ * Esta clase proporciona métodos estáticos para cifrar y verificar contraseñas utilizando la función de derivación de clave basada en contraseña (PBKDF2).
+ * Se utiliza el algoritmo de hash HMACSHA1 para la derivación de clave.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

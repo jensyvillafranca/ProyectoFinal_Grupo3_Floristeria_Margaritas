@@ -1,3 +1,9 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'AgregarDireccionNueva' de la aplicación Floristeria Margaritas.
+ * Permite al usuario agregar una nueva dirección, ya sea ingresándola manualmente o utilizando la ubicación actual del dispositivo.
+ */
+
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
@@ -7,9 +13,11 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.DireccionesUsuario;
 
 public partial class AgregarDireccionNueva : ContentPage
 {
+    // Servicio para geocodificación de direcciones
     private readonly GeocodingService _geocodingService;
     private ApiService _apiService = new ApiService();
 
+    // Variables de estado y colecciones para departamentos, ciudades y sucursales
     private int selectedCiudadId = 0;
     private int selectedDepartamentoId = 0;
     private string? selectedCiudadNombre = null;
@@ -19,6 +27,7 @@ public partial class AgregarDireccionNueva : ContentPage
     public ObservableCollection<CiudadModel> Ciudades { get; set; }
     public List<SucursalModel>? Sucursales { get; set; }
 
+    // Propiedades para manejar la selección de departamento y ciudad en los pickers
     //Para el Picker de Departamentos
     private DepartamentoModel _selectedDepartamento;
     public DepartamentoModel SelectedDepartamento
@@ -53,6 +62,7 @@ public partial class AgregarDireccionNueva : ContentPage
         }
     }
 
+    // Constructor
     public AgregarDireccionNueva(int tipo)
 	{
 		InitializeComponent();
@@ -65,6 +75,7 @@ public partial class AgregarDireccionNueva : ContentPage
         AsyncTaskExec();     
     }
 
+    // Método para ejecutar tareas asíncronas durante la inicialización de la página
     private async void AsyncTaskExec()
     {
         var sucursales = await _apiService.GetDataAsync<SucursalModel[]>("obtenerSucursales.php");
@@ -98,9 +109,10 @@ public partial class AgregarDireccionNueva : ContentPage
         
     }
 
+    // Método para obtener la ubicación actual del dispositivo
     private async Task getLocationService()
     {
-
+        // Verificar el permiso de ubicación
         var locationPermissionStatus = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
 
         if (locationPermissionStatus == PermissionStatus.Granted)
@@ -117,14 +129,17 @@ public partial class AgregarDireccionNueva : ContentPage
                 double Lat = location.Latitude;
                 double Lng = location.Longitude;
 
+                // Obtener detalles de la ubicación a partir de las coordenadas
                 var result = await _geocodingService.GetCoordinateDetailsAsync(Lat, Lng);
 
+                // Verificar si hay servicio de entrega en la ciudad actual
                 if (Sucursales?.Any(sucursal => sucursal.ciudad == result.Ciudad) != true)
                 {
                     await DisplayAlert("Alerta", $"Por el momento no contamos con servicio de entrega en {result.Ciudad} !", "OK");
                     await Navigation.PopAsync();
                 }
 
+                // Mostrar los detalles de la ubicación en la interfaz de usuario
                 entryDireccion.Text = result.Direccion;
                 ciudadPicker.Items.Add(result.Ciudad);
                 ciudadPicker.SelectedIndex = 0;
@@ -133,6 +148,7 @@ public partial class AgregarDireccionNueva : ContentPage
                 labelLatitud.Text = Lat.ToString();
                 labelLongitud.Text = Lng.ToString();
 
+                // Mostrar el mapa de la ubicación
                 var mapImageUrl = _geocodingService.GetStaticMapImageUrl(Lat, Lng);
                 imgLocation.Source = mapImageUrl;
 
@@ -141,13 +157,13 @@ public partial class AgregarDireccionNueva : ContentPage
             }
             else
             {
-                // Cuando la ubicacion es nula
+                // Si la ubicación es nula, mostrar un mensaje de alerta
                 await DisplayAlert("Alerta", "El GPS se encuentra desactivado. Porfavor active su GPS y abra la aplicación de nuevo!", "Ok");
             }
         }
         else
         {
-            // Cuando el permiso no es otorgado
+            // Si no se otorga el permiso de ubicación, mostrar un mensaje de error y salir de la aplicación
             await DisplayAlert("Error", "Permiso de Ubicación no otorgado. El Permiso es necesario para utilizar la aplicacion.", "OK");
             Application.Current.Quit();
         }
@@ -157,6 +173,7 @@ public partial class AgregarDireccionNueva : ContentPage
         
     }
 
+    // Métodos para cargar datos de departamentos y ciudades desde el servidor
     private async Task LoadDepartamentosDataAsync()
     {
         var departamentos = await _apiService.GetDataAsync<DepartamentoModel[]>("obtenerDepartamentos.php");
@@ -186,6 +203,7 @@ public partial class AgregarDireccionNueva : ContentPage
         departamentoPicker.SelectedIndex = -1;
     }
 
+    //Ciudades
     private async Task LoadCiudadesDataAsync(int selectedDepartmentId)
     {
         var ciudades = await _apiService.PostDataAsync<CiudadModel[]>("obtenerCiudades.php", new { iddepartamento = selectedDepartmentId });
@@ -215,6 +233,7 @@ public partial class AgregarDireccionNueva : ContentPage
 
     }
 
+    // Métodos para actualizar los elementos del picker de departamento y ciudad
     private async void UpdateDepartamentoItems()
     {
         if (SelectedDepartamento != null)
@@ -234,6 +253,7 @@ public partial class AgregarDireccionNueva : ContentPage
         }
     }
 
+    // Manejadores de eventos para navegación y acciones del usuario
     private void btnBack_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();
@@ -267,6 +287,7 @@ public partial class AgregarDireccionNueva : ContentPage
 
     private async void btnAgregar_Clicked(object sender, EventArgs e)
     {
+        // Validar la entrada de datos del usuario
         if (string.IsNullOrEmpty(entryDescripcion.Text))
         {
             await DisplayAlert("Alerta", "Porfavor ingrese una descripción", "OK");
@@ -303,6 +324,7 @@ public partial class AgregarDireccionNueva : ContentPage
             return;
         }
 
+        // Enviar datos al servidor para agregar la dirección
         var data = new
         {
             fk_idcliente = Config.Config.activeUserId,
@@ -318,7 +340,7 @@ public partial class AgregarDireccionNueva : ContentPage
 
         if (isSuccess)
         {
-            // Request was successful
+            // Limpiar los campos y mostrar un mensaje de éxito
             labelDescripcion.Text = string.Empty;
             entryDireccion.Text = string.Empty;
             labelReferencia.Text = string.Empty;
@@ -341,12 +363,13 @@ public partial class AgregarDireccionNueva : ContentPage
         }
         else
         {
-            // Request failed
+            // Mostrar un mensaje de error si falla la solicitud
             await DisplayAlert("Error", "Error al agregar la dirección!", "OK");
         }
 
     }
 
+    // Método para obtener la ubicación y mostrar detalles al completar la entrada de la dirección
     private async void entryDireccion_Completed(object sender, EventArgs e)
     {
         string address = entryDireccion.Text;
@@ -375,12 +398,14 @@ public partial class AgregarDireccionNueva : ContentPage
         
     }
 
+    // Método para limpiar el campo de dirección y la imagen del mapa
     private void btnBorrar_Clicked(object sender, EventArgs e)
     {
         entryDireccion.Text = string.Empty;
         imgLocation.Source = null;
     }
 
+    // Manejador de evento para la selección de departamento en el picker
     private void departamentoPicker_SelectedIndexChanged(object sender, EventArgs e)
     {
         int selectedIndex = departamentoPicker.SelectedIndex;

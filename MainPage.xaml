@@ -18,6 +18,13 @@
                 Text="Aqui pueden poner sus de prueba" />
 
             <Button
+                x:Name="btnFirebase"
+                Clicked="btnFirebase_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Firebase"
+                Text="Firebase" />
+
+            <Button
                 x:Name="CounterBtn"
                 Clicked="CounterBtn_Clicked"
                 HorizontalOptions="Center"
@@ -158,11 +165,18 @@
                 Text="Direcciones Guardadas" />
 
             <Button
-                x:Name="btnAgregarProductos"
-                Clicked="btnAgregarProductos_Clicked"
+                x:Name="btnCambiarCorreo"
+                Clicked="btnCambiarCorreo_Clicked"
                 HorizontalOptions="Center"
-                SemanticProperties.Hint="Ingrese productos"
-                Text="Ingrese productos" />
+                SemanticProperties.Hint="Cambiar Correo"
+                Text="Cambiar Correo" />
+
+            <Button
+                x:Name="btnCambiarNumero"
+                Clicked="btnCambiarNumero_Clicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Cambiar Numero"
+                Text="Cambiar Numero" />
         </VerticalStackLayout>
     </ScrollView>
 

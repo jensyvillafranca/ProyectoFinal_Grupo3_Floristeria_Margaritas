@@ -1,4 +1,12 @@
-﻿using System.ComponentModel;
+﻿/*
+ * Descripción:
+ * Este código define el ViewModel para un elemento de marco de orden en la aplicación Floristeria Margaritas.
+ * Proporciona propiedades para almacenar información sobre un artículo de pedido, como su ID, ID de producto,
+ * imagen de origen, nombre del producto, precio total, descuento, precio del producto, cantidad introducida,
+ * cantidad en stock y comandos para manejar eventos de toque, resta y adición.
+ */
+
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel

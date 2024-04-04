@@ -1,12 +1,17 @@
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home;
 
 public partial class homePageRepartidor : ContentPage
 {
+    private ApiService _apiService = new ApiService();
+
     public homePageRepartidor()
     {
         InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
+        labelBienvenido.Text = $"¡Bienvenido {PreferencesManager.GetString("usuario")}!";
         //SizeChanged += OnSizeChanged;
     }
 
@@ -24,9 +29,9 @@ public partial class homePageRepartidor : ContentPage
         framePerfil.HeightRequest = screenHeight * frameHeightPercentage;
     }
 
-    private void btnNotification_Clicked(object sender, EventArgs e)
+    private async void btnNotification_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Notificaciones.notificacionesRepartidor());
     }
 
     private async void TapGesturePedidos_Tapped(object sender, TappedEventArgs e)
@@ -49,8 +54,13 @@ public partial class homePageRepartidor : ContentPage
         await AnimationUtilities.ChangeFrameColor(framePerfil, Color.FromRgb(46, 117, 182), Color.FromRgb(65, 185, 254), 250);
     }
 
-    private void btnLogout_Clicked(object sender, EventArgs e)
+    private async void btnLogout_Clicked(object sender, EventArgs e)
     {
+        bool isSuccess = await logout.PerformLogoutAsync(_apiService);
 
+        if (isSuccess)
+        {
+            await Navigation.PushAsync(new Views.Login.login());
+        }
     }
 }

@@ -1,3 +1,9 @@
+/*
+ * Descripción:
+ * Este código define la lógica de backend para la página 'pedidosPrincipal' de la aplicación Floristeria Margaritas.
+ * Permite al usuario ver sus pedidos activos y su historial de pedidos, así como acceder a otras funciones como notificaciones, productos y perfil.
+ */
+
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
@@ -14,6 +20,7 @@ public partial class pedidosPrincipal : ContentPage
     public ObservableCollection<pedidosViewModel> PedidosActivos { get; set; }
     public ObservableCollection<pedidosViewModel> Historial { get; set; }
 
+    // Constructor
     public pedidosPrincipal()
 	{
 		InitializeComponent();
@@ -23,6 +30,33 @@ public partial class pedidosPrincipal : ContentPage
         InitializeAsync();
     }
 
+    // Método que se ejecuta cuando la página se muestra
+    protected async override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        try
+        {
+            // Verificar si existen notificaciones para el usuario y actualizar el ícono de notificación
+            var resultado = await _apiService.PostDataAsync<existeUsuario>("revisarNotificaciones.php", new { idcliente = Config.Config.activeUserId });
+            bool existe = resultado.existe;
+
+            if (existe)
+            {
+                btnNotification.Source = "Iconos/notificacionn.png";
+            }
+            else
+            {
+                btnNotification.Source = "Iconos/notificacione.png";
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejar cualquier excepción que ocurra durante la verificación de notificaciones
+        }
+    }
+
+    // Método asíncrono para inicializar la página y cargar los pedidos activos e historial
     private async void InitializeAsync()
     {
         //CollectionView Pedidos Activos
@@ -37,7 +71,7 @@ public partial class pedidosPrincipal : ContentPage
                 string? estado = null;
                 Color? color = null;
 
-                if(pedido.idestadopedido == 2)
+                if(pedido.idestadopedido == 2 || pedido.idestadopedido == 1)
                 {
                     image = "Estados/procesando.png";
                     estado = "Procesando";
@@ -116,7 +150,7 @@ public partial class pedidosPrincipal : ContentPage
                 string? estado = null;
                 Color? color = null;
 
-                if (pedido.idestadopedido == 2)
+                if (pedido.idestadopedido == 2 || pedido.idestadopedido == 1)
                 {
                     image = "Estados/procesando.png";
                     estado = "Procesando";
@@ -198,16 +232,19 @@ public partial class pedidosPrincipal : ContentPage
 
     }
 
-    private void HandleTappedCommand(pedidoModel pedido)
+    // Método para manejar el comando Tapped cuando se selecciona un pedido
+    private async void HandleTappedCommand(pedidoModel pedido)
     {
-        
+        await Navigation.PushAsync(new Views.Pedidos.detallePedido(pedido));
     }
 
-    private void btnNotification_Clicked(object sender, EventArgs e)
+    // Método para manejar el evento Clicked del botón de notificación
+    private async void btnNotification_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Notificaciones.notificacionesEstadoPedidos());
     }
 
+    // Métodos para manejar eventos Clicked de los botones de navegación y acciones del usuario
     private async void btnHome_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Views.Home.homePageUser());

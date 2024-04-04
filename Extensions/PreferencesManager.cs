@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada PreferencesManager en el espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions.
+ * Esta clase proporciona métodos estáticos para guardar, obtener y eliminar datos de tipo string e int utilizando el SecureStorage de Xamarin Essentials.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

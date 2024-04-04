@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada pedidoModel dentro del espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos.
+ * Esta clase representa un modelo para los detalles de un pedido, incluyendo información como el ID del pedido, la fecha de pedido,
+ * los detalles del repartidor, los detalles del cliente, los detalles de la dirección de entrega, los detalles de la sucursal,
+ * los montos financieros asociados al pedido, el estado del pedido, la fecha estimada de entrega, entre otros.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,5 +45,6 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos
         public int fk_idtarjeta { get; set; }
         public string? numerotarjeta { get; set; }
         public string? nombretarjeta { get; set; }
+        public string? factura { get; set; }
     }
 }

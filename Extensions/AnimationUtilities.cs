@@ -1,4 +1,10 @@
-﻿namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions
+﻿/*
+ * Descripción:
+ * Este código define una clase llamada AnimationUtilities en el espacio de nombres ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions.
+ * La clase proporciona un método estático para cambiar el color de un marco (Frame) con una animación simple.
+ */
+
+namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions
 {
     class AnimationUtilities
     {
@@ -17,9 +23,6 @@
                 targetFrame.BackgroundColor = fromColor;
             }
         }
-
-        
-
         }
 
     }

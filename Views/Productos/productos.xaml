@@ -33,7 +33,7 @@
                         BackgroundColor="Transparent"
                         Clicked="btnNotification_Clicked"
                         HeightRequest="40"
-                        Source="Home/notificacion.png"
+                        Source="Iconos/notificacione.png"
                         WidthRequest="40" />
 
                     <!--  SearchBar  -->
