@@ -21,7 +21,11 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
             else if (stayLogged == 1 && tipoUsuario == 3)
             {
                 MainPage = new NavigationPage(new Views.Home.homePageRepartidor());
-            }          
+            }
+            else if (stayLogged == 1 && tipoUsuario == 2)
+            {
+                MainPage = new NavigationPage(new Views.Home.homePageAdmin());
+            }
         }
     }
 }

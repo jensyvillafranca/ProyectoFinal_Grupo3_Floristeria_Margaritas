@@ -126,8 +126,36 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
                         }
                         else if (loginDetails.fk_idtipousuario == 2)
                         {
-                            
-                            await Navigation.PushAsync(new Views.Home.homePageAdmin());
+                            var adminDetails = await _apiService.PostDataAsync<adminIdModel>("loginTokenAdmin.php", new { idusuario = loginDetails.idusuario });
+
+                            try
+                            {
+                                await CrossFirebaseCloudMessaging.Current.CheckIfValidAsync();
+                                var deviceToken = await CrossFirebaseCloudMessaging.Current.GetTokenAsync();
+
+                                var data = new
+                                {
+                                    idadmin = adminDetails.idadmin,
+                                    token = deviceToken
+                                };
+
+                                bool isSuccess = await _apiService.PostSuccessAsync("updateTokenAdmin.php", data);
+
+                                if (isSuccess)
+                                {
+                                    PreferencesManager.SaveInt("adminID", adminDetails.idadmin);
+                                    PreferencesManager.SaveInt("userID", loginDetails.idusuario);
+                                    PreferencesManager.SaveString("usuario", loginDetails.usuario);
+                                    PreferencesManager.SaveInt("tipoUsuario", loginDetails.fk_idtipousuario);
+                                    PreferencesManager.SaveInt("stayLogged", recordarValue);
+                                    await Navigation.PushAsync(new Views.Home.homePageAdmin());
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                await DisplayAlert("Alerta", "Se produjo un error, intente de nuevo", "OK");
+                                return;
+                            }
                         }
 
 
