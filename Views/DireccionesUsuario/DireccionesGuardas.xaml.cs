@@ -138,29 +138,34 @@ public partial class DireccionesGuardas : ContentPage
         await Navigation.PushAsync(new Views.DireccionesUsuario.AgregarDireccionNueva(1));
     }
 
-    private void btnHome_Clicked(object sender, EventArgs e)
+    private async void btnHome_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Views.Home.homePageUser());
+        await Navigation.PushAsync(new Views.Home.homePageUser());
     }
 
-    private void btnProductos_Clicked(object sender, EventArgs e)
+    private async void btnProductos_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Views.Productos.productos());
+        await Navigation.PushAsync(new Views.Productos.productos());
     }
 
-    private void btnPedidos_Clicked(object sender, EventArgs e)
+    private async void btnPedidos_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Pedidos.pedidosPrincipal());
     }
 
-    private void btnPerfil_Clicked(object sender, EventArgs e)
+    private async void btnPerfil_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Profile.profilePageUser());
     }
 
-    private void btnLogout_Clicked(object sender, EventArgs e)
+    private async void btnLogout_Clicked(object sender, EventArgs e)
     {
+        bool isSuccess = await logout.PerformLogoutAsync(_apiService);
 
+        if (isSuccess)
+        {
+            await Navigation.PushAsync(new Views.Login.login());
+        }
     }
 
     private async void TapGestureUbicacionActual_Tapped(object sender, TappedEventArgs e)

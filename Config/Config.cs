@@ -22,6 +22,15 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Config
             }
         }
 
+        public static int idUsuario
+        {
+            get
+            {
+                int userId = PreferencesManager.GetInt("userID");
+                return userId != 0 ? userId : -1;
+            }
+        }
+
         public static int activeRepartidorId
         {
             get

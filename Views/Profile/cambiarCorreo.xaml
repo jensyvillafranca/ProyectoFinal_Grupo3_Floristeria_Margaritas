@@ -61,7 +61,7 @@
                     FontAttributes="Bold"
                     FontSize="12"
                     HorizontalTextAlignment="Center"
-                    Text="Aquí puede actualizar correo electrónico"
+                    Text="Aquí puede actualizar su correo electrónico"
                     TextColor="White"
                     VerticalOptions="CenterAndExpand" />
             </Frame>

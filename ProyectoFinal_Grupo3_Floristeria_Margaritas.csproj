@@ -212,6 +212,8 @@
 	  <None Remove="Resources\Images\Profile\agregardireccion.png" />
 	  <None Remove="Resources\Images\Profile\atrasperfil.png" />
 	  <None Remove="Resources\Images\Profile\cambiarcontra.png" />
+	  <None Remove="Resources\Images\Profile\cambiarcorreo.png" />
+	  <None Remove="Resources\Images\Profile\cambiartelefono.png" />
 	  <None Remove="Resources\Images\Profile\casa.png" />
 	  <None Remove="Resources\Images\Profile\chispss.png" />
 	  <None Remove="Resources\Images\Profile\editarperfil.png" />
@@ -400,6 +402,8 @@
 	  <MauiImage Include="Resources\Images\Profile\agregardireccion.png" />
 	  <MauiImage Include="Resources\Images\Profile\atrasperfil.png" />
 	  <MauiImage Include="Resources\Images\Profile\cambiarcontra.png" />
+	  <MauiImage Include="Resources\Images\Profile\cambiarcorreo.png" />
+	  <MauiImage Include="Resources\Images\Profile\cambiartelefono.png" />
 	  <MauiImage Include="Resources\Images\Profile\chispss.png" />
 	  <MauiImage Include="Resources\Images\Profile\editarperfil.png" />
 	  <MauiImage Include="Resources\Images\Profile\encabezadoperfil.png" />

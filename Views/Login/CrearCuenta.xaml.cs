@@ -22,7 +22,7 @@ public partial class CrearCuenta : ContentPage
     private string? Telefono;
     private string? Usuario;
     private string? Contrasenia;
-    private string? EnlaceFoto = "https://firebasestorage.googleapis.com/v0/b/floristeriamargaritas-c74d1.appspot.com/o/Usuarios%2FdefaultUser.png?alt=media";
+    private string? EnlaceFoto = "https://storage.googleapis.com/floristeriamargaritas-c74d1.appspot.com/Usuarios/defaultUser.png";
     private string? codigoVerificacion;
     private bool notValid = false;
 

@@ -213,11 +213,11 @@ public partial class productos : ContentPage
     }
 
     // Método para manejar el evento de pulsación en un elemento de producto
-    private void HandleItemTapped(ProductoModel selectedProduct)
+    private async void HandleItemTapped(ProductoModel selectedProduct)
     {
         if (selectedProduct != null)
         {
-            Navigation.PushAsync(new Views.Productos.productoDetalle(selectedProduct));
+            await Navigation.PushAsync(new Views.Productos.productoDetalle(selectedProduct));
         }
     }
 
@@ -246,35 +246,39 @@ public partial class productos : ContentPage
     }
 
     // Métodos para manejar el evento de clic en los botones de navegación
-    private void btnLogout_Clicked(object sender, EventArgs e)
+    private async void btnLogout_Clicked(object sender, EventArgs e)
     {
-        UserPreferences.Logout();
-        Navigation.PushAsync(new Views.Login.login());
+        bool isSuccess = await logout.PerformLogoutAsync(_apiService);
+
+        if (isSuccess)
+        {
+            await Navigation.PushAsync(new Views.Login.login());
+        }
     }
 
-    private void btnCarrito_Clicked(object sender, EventArgs e)
+    private async void btnCarrito_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Views.Productos.carritoCompras());
+        await Navigation.PushAsync(new Views.Productos.carritoCompras());
     }
 
-    private void btnHome_Clicked(object sender, EventArgs e)
+    private async void btnHome_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Views.Home.homePageUser());
+        await Navigation.PushAsync(new Views.Home.homePageUser());
     }
 
-    private void btnProductos_Clicked(object sender, EventArgs e)
+    private async void btnProductos_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Views.Productos.productos());
+        await Navigation.PushAsync(new Views.Productos.productos());
     }
 
-    private void btnPedidos_Clicked(object sender, EventArgs e)
+    private async void btnPedidos_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Views.Pedidos.pedidosPrincipal());
+        await Navigation.PushAsync(new Views.Pedidos.pedidosPrincipal());
     }
 
-    private void btnPerfil_Clicked(object sender, EventArgs e)
+    private async void btnPerfil_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Profile.profilePageUser());
     }
 
     // Métodos para manejar el evento de clic en los botones de filtro

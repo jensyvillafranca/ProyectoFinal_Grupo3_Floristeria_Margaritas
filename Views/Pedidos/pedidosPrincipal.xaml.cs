@@ -260,14 +260,18 @@ public partial class pedidosPrincipal : ContentPage
         await Navigation.PushAsync(new Views.Pedidos.pedidosPrincipal());
     }
 
-    private void btnPerfil_Clicked(object sender, EventArgs e)
+    private async void btnPerfil_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Profile.profilePageUser());
     }
 
-    private void btnLogout_Clicked(object sender, EventArgs e)
+    private async void btnLogout_Clicked(object sender, EventArgs e)
     {
-        UserPreferences.Logout();
-        Navigation.PushAsync(new Views.Login.login());
+        bool isSuccess = await logout.PerformLogoutAsync(_apiService);
+
+        if (isSuccess)
+        {
+            await Navigation.PushAsync(new Views.Login.login());
+        }
     }
 }

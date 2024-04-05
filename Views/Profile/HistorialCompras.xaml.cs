@@ -1,42 +1,126 @@
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel;
 using System.Collections.ObjectModel;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Profile;
 
 public partial class HistorialCompras : ContentPage
 {
-    public ObservableCollection<DireccionesAgregadas> ListaPedidosRepartidor { get; set; }
+    private ApiService _apiService = new ApiService();
+    public ObservableCollection<pedidosViewModel> Historial { get; set; }
     public HistorialCompras()
     {
-
         InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
+        BindingContext = this;
 
-        ListaPedidosRepartidor = new ObservableCollection<DireccionesAgregadas>
+        InitializeAsync();
+    }
+
+    private async void InitializeAsync()
+    {
+        //CollectionView Historial
+        try
+        {
+            var historialPedidos = await _apiService.PostDataAsync<pedidoModel[]>("obtenerPedidos.php", new { idcliente = Config.Config.activeUserId, tipo = 2 });
+            Historial = new ObservableCollection<pedidosViewModel>();
+
+            foreach (var pedido in historialPedidos)
             {
-                new DireccionesAgregadas {  imagenCasa = "Profile/fondo.png", cantidad = "50 Rosas ", entregado = "Villeda Morales", evaluacion = "Profile/primerextrenia.png", comprobante="Profile/listo.png"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/fondo.png", cantidad = "50 Rosas ", entregado = "Villeda Morales", evaluacion = "Profile/primerextrenia.png", comprobante="Profile/listo.png"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/fondo.png", cantidad = "50 Rosas",  entregado = "Villeda Morales", evaluacion = "Profile/primerextrenia.png", comprobante="Profile/listo.png"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/fondo.png", cantidad = "50 Rosas ", entregado = "Villeda Morales", evaluacion = "Profile/primerextrenia.png", comprobante="Profile/listo.png"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/fondo.png", cantidad = "50 Rosas", entregado = "Villeda Morales", evaluacion = "Profile/primerextrenia.png",  comprobante="Profile/listo.png"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/fondo.png", cantidad = "50 Rosas", entregado = "Villeda Morales", evaluacion = "Profile/primerextrenia.png",  comprobante="Profile/listo.png"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/fondo.png", cantidad = "50 Rosas  ",entregado = "Villeda Morales", evaluacion = "Profile/primerextrenia.png", comprobante="Profile/listo.png"},
-                new DireccionesAgregadas {  imagenCasa = "Profile/fondo.png", cantidad = "50 Rosas ", entregado = "Villeda Morales", evaluacion = "Profile/primerextrenia.png", comprobante="Profile/listo.png"},
+                string? image = null;
+                string? estado = null;
+                Color? color = null;
+
+                if (pedido.idestadopedido == 2 || pedido.idestadopedido == 1)
+                {
+                    image = "Estados/procesando.png";
+                    estado = "Procesando";
+                    color = Color.FromRgb(204, 204, 0);
+                }
+                else if (pedido.idestadopedido == 3)
+                {
+                    image = "Estados/encamino.png";
+                    estado = "En Camino";
+                    color = Color.FromRgb(0, 191, 255);
+                }
+                else if (pedido.idestadopedido == 4)
+                {
+                    image = "Estados/delivery.jpg";
+                    estado = "Entregado";
+                    color = Color.FromRgb(0, 128, 0);
+                }
+                else if (pedido.idestadopedido == 5)
+                {
+                    image = "Estados/cancelado.jpg";
+                    estado = "Cancelado";
+                    color = Color.FromRgb(255, 0, 0);
+                }
+
+                string? horaFormateada;
+                string? fechaFormateada = (pedido.fechapedido).ToString("d/M/yyyy");
+
+                //convertir de string a formato hora
+                if (pedido.fechaentregado != null)
+                {
+                    DateTime horaEntregado;
+
+                    DateTime.TryParse(pedido.fechaentregado, out horaEntregado);
+
+                    horaFormateada = horaEntregado.ToString("h:mm tt");
+                }
+                else
+                {
+                    horaFormateada = string.Empty;
+                }
+
+                pedidosViewModel pedidosViewModel = new pedidosViewModel
+                {
+                    IdPedido = $"Pedido: #PED-{pedido.idpedido}",
+                    ImageSource = image,
+                    EstadoPedido = $"Estado: {estado}",
+                    DireccionEntrega = pedido.direccion,
+                    HoraEntrega = horaFormateada,
+                    FechaPedido = fechaFormateada,
+                    TotalPedido = pedido.total,
+                    FrameBackgroundColor = color,
+                    TextColor = color,
+                    Visibilidad = true,
+                    TappedCommand = new Command(() => HandleTappedCommand(pedido))
+                };
+
+                Historial.Add(pedidosViewModel);
+            }
+
+            collectionViewHistorial.ItemsSource = Historial;
+        }
+        catch (Exception ex)
+        {
+            //Agrega uno predeterminado para indicar que no hay un historial
+            Historial = new ObservableCollection<pedidosViewModel>();
+
+            pedidosViewModel pedidosViewModel = new pedidosViewModel
+            {
+                IdPedido = "¡No Existe Ningún Pedido!",
+                ImageSource = "Estados/empty.png",
+                FrameBackgroundColor = Color.FromRgb(255, 0, 0),
+                Visibilidad = false
             };
-        collectionViewHistorialGuardas.ItemsSource = ListaPedidosRepartidor;
+
+            Historial.Add(pedidosViewModel);
+
+            collectionViewHistorial.ItemsSource = Historial;
+        }
+
     }
 
-    public class DireccionesAgregadas
+    private async void HandleTappedCommand(pedidoModel pedido)
     {
-
-        public string imagenCasa { get; set; }
-        public string cantidad { get; set; }
-        public string entregado { get; set; }
-        public string evaluacion { get; set; }
-        public string comprobante { get; set; }
+        await Navigation.PushAsync(new Views.Pedidos.detallePedido(pedido));
     }
 
-    private void btnImagenAtras_Clicked(object sender, EventArgs e)
+    private async void btnBack_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PopAsync();
     }
-
 }
