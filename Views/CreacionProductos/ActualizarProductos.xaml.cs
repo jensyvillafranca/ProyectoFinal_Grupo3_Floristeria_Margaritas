@@ -5,6 +5,8 @@ using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Config;
 using System.Text.RegularExpressions;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Utilities;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CreacionProductos;
 
@@ -13,8 +15,10 @@ public partial class ActualizarProductos : ContentPage
     private ApiService _apiService = new ApiService();
     //Imagen
     private byte[] imagenPrducto;
-    private string imagenFilePath;
-    private string base64Imagen;
+    private string? imagenFilePath = null;
+    private string? base64Imagen;
+    private int pickerCount;
+    private bool _isDiscounted = false;
     private ProductoModel actualizacionProducto; 
     FileResult imagen;
 
@@ -53,23 +57,63 @@ public partial class ActualizarProductos : ContentPage
     public ActualizarProductos(int tipo, ProductoModel producto)
     {
         InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
         Categorias = new ObservableCollection<FiltroModel>();
-        LoadFiltrosCategoriaDataAsync();
         tipoNavegacion = tipo;
         actualizacionProducto = producto;
-        txtNombreproductos.Text = producto.nombreproducto;
-        txtPresioVenta.Text = (producto.precioventa).ToString();
-        txtStock.Text = (producto.stock ).ToString();
-        txtAgregarDescuento.Text = (producto.descuento).ToString();
-        SelectorImagenes.Source = producto.enlacefoto;
-        entryDescripcion.Text = producto.descripcion;
 
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await LoadFiltrosCategoriaDataAsync();
+
+        txtNombreproductos.Text = actualizacionProducto.nombreproducto;
+        txtPresioVenta.Text = (actualizacionProducto.precioventa).ToString();
+        txtStock.Text = (actualizacionProducto.stock).ToString();
+        txtAgregarDescuento.Text = (actualizacionProducto.descuento).ToString();
+        SelectorImagenes.Source = actualizacionProducto.enlacefoto;
+        entryDescripcion.Text = actualizacionProducto.descripcion;
+        if (int.Parse(txtAgregarDescuento.Text) > 0)
+        {
+            SwitchDescuento.IsToggled = true;
+        }
+        else
+        {
+            SwitchDescuento.IsToggled = false;
+        }
+
+        //Para que se refleje la categoria en el picker
+        string selectedCategoria = actualizacionProducto.categoria;
+
+        int selectedIndex = -1;
+        for (int i = 0; i < pickerCount; i++)
+        {
+            if (categoriaPicker.Items[i].ToString() == selectedCategoria)
+            {
+                selectedIndex = i;
+                break;
+            }
+        }
+
+        categoriaPicker.SelectedIndex = selectedIndex;
     }
 
 
     private void SwitchDescuento_Toggled(object sender, ToggledEventArgs e)
     {
         txtAgregarDescuento.IsEnabled = e.Value;
+
+        if (SwitchDescuento.IsToggled == true)
+        {
+            _isDiscounted = true;
+        }
+        else
+        {
+            txtAgregarDescuento.Text = string.Empty;
+            _isDiscounted = false;
+        }
     }
 
     //Para poder seleccionar los productos
@@ -106,6 +150,8 @@ public partial class ActualizarProductos : ContentPage
         {
             categoriaPicker.Items.Add(categoria.categoria);
         }
+
+        pickerCount = categoriaPicker.Items.Count();
 
         // Desvincula nuevamente el evento SelectedIndexChanged del selector de categorías para evitar duplicaciones.
         categoriaPicker.SelectedIndexChanged -= cotegoriaPicker_SelectedIndexChanged;
@@ -164,57 +210,76 @@ public partial class ActualizarProductos : ContentPage
             await DisplayAlert("Alerta", "El stock no puede ser mayor que 50", "OK");
             return;
         }
-
-        // Verifica si no se ha ingresado una imagen del producto.
-        if (string.IsNullOrEmpty(base64Imagen))
-        {
-            await DisplayAlert("Alerta", "Por favor ingrese una imagen del producto", "OK");
-            return;
-        }
         // Verifica si el campo de texto para el descuento está vacío.
-        else if (string.IsNullOrEmpty(txtAgregarDescuento.Text))
+        else if (_isDiscounted)
         {
-            await DisplayAlert("Alerta", "Por favor ingrese el descuento del producto", "OK");
-            return;
-        }
-        else
-        {
-            // Convierte el valor ingresado a un número entero.
-            int descuento;
-            if (!int.TryParse(txtAgregarDescuento.Text, out descuento))
+            if (string.IsNullOrEmpty(txtAgregarDescuento.Text))
             {
-                await DisplayAlert("Alerta", "El descuento debe ser un número entero", "OK");
+                await DisplayAlert("Alerta", "Por favor ingrese el descuento del producto", "OK");
                 return;
             }
-
-            // Verifica si el descuento está dentro del rango permitido (1 - 75).
-            if (descuento < 1 || descuento > 75)
+            else
             {
-                await DisplayAlert("Alerta", "El descuento debe estar entre 1 y 75", "OK");
-                return;
+                // Convierte el valor ingresado a un número entero.
+                int descuento;
+                if (!int.TryParse(txtAgregarDescuento.Text, out descuento))
+                {
+                    await DisplayAlert("Alerta", "El descuento debe ser un número entero", "OK");
+                    return;
+                }
+
+                // Verifica si el descuento está dentro del rango permitido (1 - 75).
+                if (descuento < 1 || descuento > 75)
+                {
+                    await DisplayAlert("Alerta", "El descuento debe estar entre 1 y 75", "OK");
+                    return;
+                }
             }
         }
-
         // Verifica si el campo de texto para la descripción del producto está vacío.
-        if (string.IsNullOrEmpty(entryDescripcion.Text))
+        else if (string.IsNullOrEmpty(entryDescripcion.Text))
         {
             await DisplayAlert("Alerta", "Por favor ingrese una descripción del producto", "OK");
             return;
         }
 
+        int Descuento;
+        string? base64 = null;
+
+        if (string.IsNullOrEmpty(txtAgregarDescuento.Text))
+        {
+            Descuento = 0;
+        }
+        else
+        {
+            Descuento = int.Parse(txtAgregarDescuento.Text);
+        }
+
+        if (string.IsNullOrEmpty(imagenFilePath))
+        {
+            base64 = "ninguno";
+        }
+        else
+        {
+            base64 = photoHelper.ImageToBase64(imagenFilePath);
+        }
+
         var data = new
         {
             // Define un objeto de datos con la información del producto.
+            idproducto = actualizacionProducto.idproducto,
             nombreproducto = txtNombreproductos.Text,
+            categoria = categoriaPicker.SelectedItem,
             precioventa = txtPresioVenta.Text,
             stock = txtStock.Text,
-            enlacefoto = SelectorImagenes?.ToString(),
-            descuento = txtAgregarDescuento.Text,
-            descripcion = entryDescripcion.Text
+            enlacefoto = base64,
+            descuento = Descuento,
+            descripcion = entryDescripcion.Text,
+            urlanterior = actualizacionProducto.enlacefoto,
         };
 
         // Realiza una solicitud POST al servidor para agregar el producto.
-        bool isSuccess = await _apiService.PostSuccessAsync("RegistrosProductos.php", data);
+        bool isSuccess = await _apiService.PostSuccessAsync("ActualizarProducto.php", data);
 
         if (isSuccess)
         {
@@ -227,7 +292,7 @@ public partial class ActualizarProductos : ContentPage
             labelIngresaDescuento.Text = string.Empty;
             labelDescripcion.Text = string.Empty;
 
-            await DisplayAlert("Alerta", "El producto ha sido agregado correctamente!", "OK");
+            await DisplayAlert("Alerta", "El producto ha sido actualizado!", "OK");
 
             // Si el tipo de navegación es 1, navega a la página de historial de productos agregados.
             if (tipoNavegacion == 1)
@@ -263,6 +328,7 @@ public partial class ActualizarProductos : ContentPage
 
                 // Establece la imagen seleccionada como origen de la imagen en la interfaz de usuario.
                 SelectorImagenes.Source = ImageSource.FromFile(galeria.FullPath);
+                imagenFilePath = galeria.FullPath;
             }
             else
             {
@@ -324,5 +390,8 @@ public partial class ActualizarProductos : ContentPage
 
     }
 
+    private void btnCancelar_Clicked(object sender, EventArgs e)
+    {
 
+    }
 }

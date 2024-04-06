@@ -1,260 +1,331 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CreacionProductos.HistorialProductosAgregados"
-             x:Name="RegarHistorialProductos"
-             Title="">
-    
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CreacionProductos.HistorialProductosAgregados"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="RegarHistorialProductos"
+    Title=""
+    BackgroundImageSource="fondo_todas_pantallas.png">
+
     <Grid>
-        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" >
-            <Image Source="Profile/fondoprincipal.png" Aspect="AspectFill" HeightRequest="1000"/>
-        </StackLayout>
-        
-        
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollView>
+            <!--  Header  -->
+            <Frame
+                Grid.Row="0"
+                Margin="0,0,0,10"
+                Padding="5,10,5,10"
+                BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
+                CornerRadius="20">
+                <StackLayout
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    Orientation="Horizontal">
+                    <ImageButton
+                        x:Name="btnBack"
+                        Margin="10,0,10,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnBack_Clicked"
+                        HeightRequest="40"
+                        Source="Productos/backarrow.png"
+                        WidthRequest="40" />
+                    <!--  SearchBar  -->
+                    <Grid
+                        Margin="0,0,0,0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-            <ScrollView >
-                <!--  Header  -->
-                <Frame
-                      Grid.Row="0"
-                      Margin="0,0,0,15"
-                      Padding="5,10,5,10"
-                      BackgroundColor="{DynamicResource BlackWithTransparency}"
-                      BorderColor="{DynamicResource AzulBotones}"
-                      CornerRadius="20">
-                    <StackLayout
-                          Margin="0,0,0,0"
-                          Padding="0,0,0,0"
-                          BackgroundColor="Transparent"
-                          Orientation="Horizontal">
-                        <ImageButton
-                              x:Name="btnBack"
-                              Margin="10,0,0,0"
-                              Aspect="AspectFit"
-                              BackgroundColor="Transparent"
-                              Clicked="btnBack_Clicked"
-                              HeightRequest="40"
-                              Source="Productos/backarrow.png"
-                              WidthRequest="40" />
-                        <!--  Spacer  -->
-                        <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
-                        <Label
-                          Margin="0,0,120,0"
-                          FontAttributes="Bold"
-                          HorizontalTextAlignment="Center"
-                          Text="Productos Agregados"
-                          TextColor="White"
-                          VerticalOptions="CenterAndExpand" />
-                    </StackLayout>
-                </Frame>
-            </ScrollView>
-            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="15" Grid.Row="0">
-                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <!--Boton de atras-->
-                   
-                    
-                </Grid>
-            </StackLayout>
+                        <SearchBar
+                            x:Name="searchBarProductos"
+                            Grid.Column="1"
+                            Margin="0,0,0,0"
+                            BackgroundColor="White"
+                            Placeholder="Buscar"
+                            PlaceholderColor="Black"
+                            SearchButtonPressed="searchBarProductos_SearchButtonPressed"
+                            TextChanged="searchBarProductos_TextChanged"
+                            TextColor="Black" />
+                    </Grid>
 
-        </Grid>
+                    <ImageButton
+                        x:Name="btnAgregarProducto"
+                        Margin="20,0,10,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnAgregarProducto_Clicked"
+                        HeightRequest="40"
+                        Source="ImagenesAdministrador/agregarproducto.png"
+                        WidthRequest="40" />
+                </StackLayout>
+            </Frame>
+        </ScrollView>
 
-        <Grid>
-            <ScrollView Grid.Row="2" MaximumHeightRequest="580">
-                <!--Lista de los pedidos-->
-                <StackLayout Margin="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <CollectionView x:Name="collectionViewHistorialAgregados" ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding ListaPedidosRepartidor}">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Horizontal" Span="20" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame x:Name="drawablePedido" Margin="23,0,40,10" WidthRequest="340" Padding="10" BackgroundColor="White" CornerRadius="20" HasShadow="True">
-                                    <Grid ColumnSpacing="10">
+        <ScrollView Grid.Row="1">
+            <!--  Lista de los pedidos  -->
+            <StackLayout>
+                <CollectionView
+                    x:Name="collectionViewHistorialAgregados"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding ListaPedidosRepartidor}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                x:Name="drawablePedido"
+                                Margin="5"
+                                Padding="5"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
+                                CornerRadius="10"
+                                HasShadow="True"
+                                HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Padding="0"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="FillAndExpand">
+                                    <Image
+                                        Margin="3,10,3,10"
+                                        Aspect="AspectFit"
+                                        HeightRequest="80"
+                                        Source="{Binding ImageSource}"
+                                        WidthRequest="80" />
+                                    <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
 
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
 
+                                        <Label
+                                            x:Name="labelNombre"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
+                                            Margin="5,0,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding LabelText, StringFormat='Nombre: {0}'}"
+                                            TextColor="{StaticResource AzulLetraLogo}"
+                                            WidthRequest="260" />
 
+                                        <Label
+                                            x:Name="labelCategoria"
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
+                                            Margin="5,0,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding Categoria, StringFormat='Categoria: {0}'}"
+                                            TextColor="{StaticResource AzulLetraLogo}"
+                                            WidthRequest="260" />
 
-                                        <Frame Grid.Column="0" Grid.Row="1" 
-                                            WidthRequest="75" HeightRequest="75" 
-                                            CornerRadius="5" 
-                                            BorderColor="AliceBlue"
-                                            Margin="0,-1,0,0"
-                                            Padding="0">
-                                            <Image Source="{Binding ImageSource}" Aspect="AspectFill"/>
-                                        </Frame>
+                                        <Label
+                                            x:Name="labelStock"
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="5,0,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding LabelStock, StringFormat='Stock: {0}'}"
+                                            TextColor="{StaticResource AzulLetraLogo}"
+                                            WidthRequest="260" />
 
-                                        <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Vertical" Spacing="5">
-                                            <!--Formato para visualización del nombre del cliente-->
-                                            <Label  FontSize="12">
-                                                <Label.Text>
-                                                    <Binding Path="LabelText" StringFormat="Nombre: {0}" />
-                                                </Label.Text>
-                                            </Label>
+                                        <Label
+                                            x:Name="labelDescuento"
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="5,0,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding LabelDescuento, StringFormat='Descuento: {0}%'}"
+                                            TextColor="{StaticResource AzulLetraLogo}"
+                                            WidthRequest="260" />
 
-                                            <!--Formato para visualización del nombre del cliente-->
-                                            <Label  FontSize="12">
-                                                <Label.Text>
-                                                    <Binding Path="Categoria" StringFormat="Categoria: {0}" />
-                                                </Label.Text>
-                                            </Label>
+                                        <Label
+                                            x:Name="labelPrecio"
+                                            Grid.Row="4"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
+                                            Margin="5,0,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding LabelPrecio, StringFormat='Precio: {0}'}"
+                                            TextColor="{StaticResource AzulLetraLogo}"
+                                            WidthRequest="260" />
 
-                                            <!--Formato para visualización del lugar de entrega del pedido-->
-                                            <Label FontSize="12" 
-                                                Margin="0,0,0,0">
-                                                <Label.Text>
-                                                    <Binding Path="LabelStock" StringFormat="Stock: {0}" />
-                                                </Label.Text>
-                                            </Label>
+                                        <Label
+                                            x:Name="labelDescripcion"
+                                            Grid.Row="5"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
+                                            Margin="5,0,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding Descripcion, StringFormat='Descripción: {0}'}"
+                                            TextColor="{StaticResource AzulLetraLogo}"
+                                            WidthRequest="260" />
 
-
-                                            <!--Formato para visualización de la sucursal a recoger el pedido-->
-                                            <Label FontSize="12">
-                                                <Label.Text  x:Name="LabelDescuento">
-
-                                                    <Binding Path="LabelDescuento" StringFormat="Descuento: {0}" />
-                                                </Label.Text>
-                                            </Label>
-
-                                            <!--Formato para visualización de la sucursal a recoger el pedido-->
-                                            <Label FontSize="12">
-                                                <Label.Text>
-                                                    <Binding Path="LabelPrecio" StringFormat="Precio: {0}" />
-                                                </Label.Text>
-                                            </Label>
-                                            <!--Formato para visualización de la sucursal a recoger el pedido-->
-                                            <Label FontSize="12">
-                                                <Label.Text>
-                                                    <Binding Path="Descripcion" StringFormat="Descripcion: {0}" />
-                                                </Label.Text>
-                                            </Label>
-
-                                        </StackLayout>
                                         <ImageButton
-                                         Grid.Column="2" Grid.Row="1" 
-                                         WidthRequest="26"
-                                         Source="Profile/editar.png"
-                                          Command="{Binding TappedCommand}"
-                                         CommandParameter="{Binding .}"   
-                                         HorizontalOptions="CenterAndExpand" 
-                                         VerticalOptions="CenterAndExpand" 
-                                         Margin="0,0,100,0"
-                                         />
+                                            Grid.Row="2"
+                                            Grid.Column="2"
+                                            Margin="0,0,10,5"
+                                            Command="{Binding TappedCommand}"
+                                            CommandParameter="{Binding .}"
+                                            HeightRequest="18"
+                                            HorizontalOptions="StartAndExpand"
+                                            Source="Profile/editar.png"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="18" />
 
                                         <ImageButton
                                             x:Name="BtnEliminar"
-                                             Grid.Column="2" Grid.Row="1" 
-                                             WidthRequest="26"
-                                            Command="{Binding TappedCommand}"
-                                            CommandParameter="{Binding .}"                 
-                                            Source="Productos/eliminar2.png" 
-                                             HorizontalOptions="CenterAndExpand" 
-                                             VerticalOptions="CenterAndExpand" 
-                                             Margin="70,0,100,0"
-                                             />
+                                            Grid.Row="4"
+                                            Grid.Column="2"
+                                            Margin="0,0,10,5"
+                                            Command="{Binding DeleteCommand}"
+                                            CommandParameter="{Binding .}"
+                                            HeightRequest="24"
+                                            HorizontalOptions="StartAndExpand"
+                                            Source="Productos/eliminar2.png"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="24" />
 
                                     </Grid>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
-            </ScrollView>
+                                </StackLayout>
 
-          
-               
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
 
+        <!--  Menú de Opciones  -->
+        <Frame
+            Grid.Row="2"
+            Margin="0,0,0,0"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
 
+                <!--  Home Button  -->
+                <ImageButton
+                    x:Name="btnHome"
+                    Margin="20,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnHome_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botoninicio.png"
+                    WidthRequest="40" />
 
-        </Grid>
+                <!--  Inventario Button  -->
+                <ImageButton
+                    x:Name="btnStock"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnStock_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Menu/historialcompras.png"
+                    WidthRequest="40" />
 
-        <!--Menú de Opciones-->
-        <StackLayout  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="3" WidthRequest="393" HeightRequest="65">
-            <Image Source="ImagenesRepartidor/botonera.png" Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" 
-        AbsoluteLayout.LayoutFlags="All"></Image>
-        </StackLayout>
-        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" 
-          AbsoluteLayout.LayoutFlags="All" 
-          VerticalOptions="EndAndExpand"
-          HorizontalOptions="StartAndExpand"
-          Grid.Row="3" 
-          Orientation="Horizontal">
-            <ImageButton
-                   x:Name="btnInicioRepartidors"
-                   Aspect="AspectFit"
-                   BackgroundColor="Transparent"
-                   HeightRequest="55"
-                   Source="ImagenesRepartidor/botoninicio.png"
-                   Margin="21,0,5,5"
-                   WidthRequest="45">       
-            </ImageButton>
-            <ImageButton
-               x:Name="btnPedidosRepartidor"
-               Aspect="AspectFit"
-               BackgroundColor="Transparent"
-               HeightRequest="55"
-               Source="ImagenesRepartidor/botonpedidos.svg"
-               Margin="10,0,5,5"
-               WidthRequest="45">
-            </ImageButton>
-            <ImageButton
-                   x:Name="btnIngresosHistorial"
-                   Aspect="AspectFit"
-                   BackgroundColor="Transparent"
-                   HeightRequest="55"
-                   Source="ImagenesRepartidor/botoningresos.svg"
-                   Margin="10,0,5,5"
-                   WidthRequest="45">
-            </ImageButton>
-            <ImageButton
-                   x:Name="btnHistorialProductosAgregados"
-                   Aspect="AspectFit"
-                   BackgroundColor="Transparent"
-                   HeightRequest="55"
-                   Clicked="BtnHistorialProductos_Clicked"
-                   Source="ImagenesRepartidor/botonhistorialpedidos.svg"
-                   Margin="10,0,5,5"
-                   WidthRequest="45">
-            </ImageButton>
-            <ImageButton
-                   x:Name="btnPerfilRepartidor"
-                   Aspect="AspectFit"
-                   BackgroundColor="Transparent"
-                   HeightRequest="55"
-                   Source="ImagenesRepartidor/perfilrepartidor.svg"
-                   Margin="10,0,5,5"
-                   WidthRequest="45">
-            </ImageButton>
-            <ImageButton
-                   x:Name="btnLogOutRepartidor"
-                   Aspect="AspectFit"
-                   BackgroundColor="Transparent"
-                   HeightRequest="55"
-                   Source="ImagenesRepartidor/salirmenu.png"
-                   Margin="10,0,5,5"
-                   WidthRequest="45">
-            </ImageButton>
-        </StackLayout>
+                <!--  Estadisticas Button  -->
+                <ImageButton
+                    x:Name="btnEstadisticas"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnEstadisticas_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botonhistorialpedidos.svg"
+                    WidthRequest="40" />
+
+                <!--  Anuncios Button  -->
+                <ImageButton
+                    x:Name="btnAnuncios"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnAnuncios_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Menu/promocionesmenu.png"
+                    WidthRequest="40" />
+
+                <!--  Perfil Button  -->
+                <ImageButton
+                    x:Name="btnPerfil"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnPerfil_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="Home/perfilmenu.png"
+                    WidthRequest="40" />
+
+                <!--  Logout Button  -->
+                <ImageButton
+                    x:Name="btnLogout"
+                    Margin="0,0,20,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    Clicked="btnLogout_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/salirmenu.png"
+                    WidthRequest="40" />
+            </StackLayout>
+        </Frame>
 
     </Grid>
 </ContentPage>

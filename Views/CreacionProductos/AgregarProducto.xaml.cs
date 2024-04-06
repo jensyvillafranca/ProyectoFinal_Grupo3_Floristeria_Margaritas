@@ -15,6 +15,7 @@ public partial class AgregarProducto : ContentPage
     private byte[] imagenPrducto;
     private string imagenFilePath;
     private string base64Imagen;
+    private bool _isDiscounted = false;
   
     FileResult imagen;
 
@@ -55,6 +56,7 @@ public partial class AgregarProducto : ContentPage
 	{
 
 		InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
         Categorias = new ObservableCollection<FiltroModel>();
         LoadFiltrosCategoriaDataAsync();
         tipoNavegacion = tipo;
@@ -63,6 +65,17 @@ public partial class AgregarProducto : ContentPage
     private void SwitchDescuento_Toggled(object sender, ToggledEventArgs e)
     {
         txtAgregarDescuento.IsEnabled = e.Value;
+
+        if (SwitchDescuento.IsToggled == true)
+        {
+            _isDiscounted = true;
+        }
+        else
+        {
+            txtAgregarDescuento.Text = string.Empty;
+            _isDiscounted = false;
+        }
+        
     }
 
     //Para poder seleccionar los productos
@@ -127,7 +140,7 @@ public partial class AgregarProducto : ContentPage
             return;
         }
         // Verifica si no se ha seleccionado una categoría para el producto.
-        else if (categoriaPicker.SelectedIndex == 0)
+        else if (categoriaPicker.SelectedIndex == -1)
         {
             await DisplayAlert("Alerta", "Por favor seleccione una categoría para el producto", "OK");
             return;
@@ -136,6 +149,12 @@ public partial class AgregarProducto : ContentPage
         else if (string.IsNullOrEmpty(txtPresioVenta.Text))
         {
             await DisplayAlert("Alerta", "Por favor ingrese el precio de venta del producto", "OK");
+            return;
+        }
+        // Verifica si no se ha ingresado una imagen del producto.
+        if (string.IsNullOrEmpty(imagenFilePath))
+        {
+            await DisplayAlert("Alerta", "Por favor ingrese una imagen del producto", "OK");
             return;
         }
         // Verifica si el campo de texto para el stock está vacío.
@@ -154,34 +173,46 @@ public partial class AgregarProducto : ContentPage
         // Verifica si no se ha ingresado una imagen del producto.
       
         // Verifica si el campo de texto para el descuento está vacío.
-        else if (string.IsNullOrEmpty(txtAgregarDescuento.Text))
+        else if (_isDiscounted)
         {
-            await DisplayAlert("Alerta", "Por favor ingrese el descuento del producto", "OK");
-            return;
-        }
-        else
-        {
-            // Convierte el valor ingresado a un número entero.
-            int descuento;
-            if (!int.TryParse(txtAgregarDescuento.Text, out descuento))
+            if (string.IsNullOrEmpty(txtAgregarDescuento.Text))
             {
-                await DisplayAlert("Alerta", "El descuento debe ser un número entero", "OK");
+                await DisplayAlert("Alerta", "Por favor ingrese el descuento del producto", "OK");
                 return;
             }
-
-            // Verifica si el descuento está dentro del rango permitido (1 - 75).
-            if (descuento < 1 || descuento > 75)
+            else
             {
-                await DisplayAlert("Alerta", "El descuento debe estar entre 1 y 75", "OK");
-                return;
+                // Convierte el valor ingresado a un número entero.
+                int descuento;
+                if (!int.TryParse(txtAgregarDescuento.Text, out descuento))
+                {
+                    await DisplayAlert("Alerta", "El descuento debe ser un número entero", "OK");
+                    return;
+                }
+
+                // Verifica si el descuento está dentro del rango permitido (1 - 75).
+                if (descuento < 1 || descuento > 75)
+                {
+                    await DisplayAlert("Alerta", "El descuento debe estar entre 1 y 75", "OK");
+                    return;
+                }
             }
         }
-
-        // Verifica si el campo de texto para la descripción del producto está vacío.
-        if (string.IsNullOrEmpty(entryDescripcion.Text))
+        else if (string.IsNullOrEmpty(entryDescripcion.Text))
         {
             await DisplayAlert("Alerta", "Por favor ingrese una descripción del producto", "OK");
             return;
+        }
+
+        int Descuento;
+
+        if (string.IsNullOrEmpty(txtAgregarDescuento.Text))
+        {
+            Descuento = 0;
+        }
+        else
+        {
+            Descuento = int.Parse(txtAgregarDescuento.Text);
         }
 
         var data = new
@@ -192,7 +223,7 @@ public partial class AgregarProducto : ContentPage
             precioventa = txtPresioVenta.Text,
             stock = txtStock.Text,
             enlacefoto = photoHelper.ImageToBase64(imagenFilePath),
-            descuento = txtAgregarDescuento.Text,
+            descuento = Descuento,
             descripcion = entryDescripcion.Text
         };
 
@@ -270,17 +301,17 @@ public partial class AgregarProducto : ContentPage
 
    
 
-    private void btnBack_Clicked(object sender, EventArgs e)
+    private async void btnBack_Clicked(object sender, EventArgs e)
     {
-        Navigation.PopAsync();
+        await Navigation.PopAsync();
     }
 
 
 
 
-    private void btnHome_Clicked(object sender, EventArgs e)
+    private async void btnHome_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Home.homePageAdmin());
     }
 
     private void BtnHistorialProductos_Clicked(object sender, EventArgs e)
@@ -310,4 +341,8 @@ public partial class AgregarProducto : ContentPage
 
     }
 
+    private async void btnCancelar_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }

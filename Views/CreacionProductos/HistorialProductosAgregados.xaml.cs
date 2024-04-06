@@ -10,30 +10,6 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.ComponentModel;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
-
-/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-windows10.0.19041.0)'
-Antes:
-using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
-public partial class HistorialProductosAgregados : ContentPage
-Después:
-public partial class HistorialProductosAgregados : ContentPage
-*/
-
-/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-ios)'
-Antes:
-using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
-public partial class HistorialProductosAgregados : ContentPage
-Después:
-public partial class HistorialProductosAgregados : ContentPage
-*/
-
-/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-maccatalyst)'
-Antes:
-using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
-public partial class HistorialProductosAgregados : ContentPage
-Después:
-public partial class HistorialProductosAgregados : ContentPage
-*/
 public partial class HistorialProductosAgregados : ContentPage
 {
 
@@ -63,14 +39,31 @@ public partial class HistorialProductosAgregados : ContentPage
      * Almacena el precio descontado del producto.
      */
     private double discountedPrice = 0;
+
+    //Para la busqueda de productos
+    private string _searchQuery;
+    public string SearchQuery
+    {
+        get { return _searchQuery; }
+        set
+        {
+            if (_searchQuery != value)
+            {
+                _searchQuery = value;
+                OnPropertyChanged(nameof(SearchQuery));
+                UpdateFilteredItems();
+            }
+        }
+    }
+
     public HistorialProductosAgregados()
     {
         InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
         _apiService = new ApiService();
         HistorialProductos = new ObservableCollection<FrameItem>();
         collectionViewHistorialAgregados.ItemsSource = HistorialProductos;
         AsyncTaskExec();
-
     }
 
     private async void AsyncTaskExec()
@@ -98,6 +91,7 @@ public partial class HistorialProductosAgregados : ContentPage
             // Crea un nuevo objeto FrameItem para representar el producto.
             var DetalleProductoViewModel = new FrameItem
             {
+                IdProducto = historialproducto.idproducto,
                 ImageSource = historialproducto.enlacefoto,
                 LabelText = historialproducto.nombreproducto,
                 LabelPrecio = $"L {discountedPrice:N2}",
@@ -107,6 +101,7 @@ public partial class HistorialProductosAgregados : ContentPage
                 LabelStock = historialproducto.stock,
                 // Asigna un comando para manejar el evento de toque en el producto.
                 TappedCommand = new Command(() => HandleTappedCommand(historialproducto)),
+                DeleteCommand = new Command(() => DeleteCommand(historialproducto.idproducto))
             };
 
             // Controla la visibilidad de la imagen de descuento basado en el descuento aplicado.
@@ -123,70 +118,66 @@ public partial class HistorialProductosAgregados : ContentPage
         collectionViewHistorialAgregados.ItemsSource = HistorialProductos;
     }
 
+    // Método para actualizar los elementos filtrados basados en los filtros seleccionados y la búsqueda
+    private void UpdateFilteredItems()
+    {
+        // If no filter is selected and no search query, show all items
+        if (string.IsNullOrEmpty(SearchQuery))
+        {
+            collectionViewHistorialAgregados.ItemsSource = HistorialProductos;
+        }
+        else
+        {
+            // Filter items based on the search query
+            var filteredItems = HistorialProductos.Where(item =>
+                (string.IsNullOrEmpty(SearchQuery) ||
+                item.LabelText.ToLower().Contains(SearchQuery.ToLower()) ||
+                item.Categoria.ToLower().Contains(SearchQuery.ToLower()) ||
+                item.Descripcion.ToLower().Contains(SearchQuery.ToLower()))
+            );
+
+            collectionViewHistorialAgregados.ItemsSource = new ObservableCollection<FrameItem>(filteredItems);
+        }
+    }
+
     private async void HandleTappedCommand(ProductoModel producto)
     {
         // Muestra un cuadro de diálogo de confirmación para que el usuario confirme la eliminación del producto.
         await Navigation.PushAsync(new Views.CreacionProductos.ActualizarProductos(1, producto));
-
      }
 
 
     //Boton para eliminar los productos agregados a la lista
     private async void DeleteCommand(int idProducto)
     {
-        // Muestra un cuadro de diálogo de confirmación para que el usuario confirme la eliminación del producto.
-        bool userConfirmed = await DisplayAlert("Confirmación", "¿Está seguro de que desea eliminar este producto?", "Si", "No");
+        var tappedItem = HistorialProductos.FirstOrDefault(item => item.IdProducto == idProducto);
 
-        // Verifica si el usuario ha confirmado la eliminación del producto.
-        if (userConfirmed)
+        if (tappedItem != null)
         {
-            // Crea un objeto de datos con el ID del producto a eliminar.
-            var data = new
+            // Muestra un cuadro de diálogo de confirmación para que el usuario confirme la eliminación del producto.
+            bool userConfirmed = await DisplayAlert("Confirmación", "¿Está seguro de que desea eliminar este producto?", "Si", "No");
+
+            // Verifica si el usuario ha confirmado la eliminación del producto.
+            if (userConfirmed)
             {
-                idproducto = idProducto
-            };
-
-            // Realiza una solicitud POST al servidor para eliminar el producto.
-            bool isSuccess = await _apiService.PostSuccessAsync("eliminarProductos.php", data);
-
-            // Verifica si la solicitud fue exitosa.
-            if (isSuccess)
-            {
-                // Encuentra el índice del elemento a eliminar en la colección.
-                int indexToRemove = -1;
-
-                for (int i = 0; i < HistorialProductos.Count; i++)
+                // Crea un objeto de datos con el ID del producto a eliminar.
+                var data = new
                 {
-                    if (HistorialProductos[i].IdProducto == idProducto)
-                    {
-                        indexToRemove = i;
-                        break;
-                    }
-                }
+                    idproducto = idProducto
+                };
 
-                // Verifica si se encontró el índice del elemento a eliminar.
-                if (indexToRemove != -1)
+                // Realiza una solicitud POST al servidor para eliminar el producto.
+                bool isSuccess = await _apiService.PostSuccessAsync("eliminarProductos.php", data);
+
+                // Verifica si la solicitud fue exitosa.
+                if (isSuccess)
                 {
-                    // Elimina el elemento de la ObservableCollection.
-                    HistorialProductos.RemoveAt(indexToRemove);
-
-                    // Actualiza el origen de datos de la vista de colección.
-                    collectionViewHistorialAgregados.ItemsSource = null;
+                    HistorialProductos.Remove(tappedItem);
                     collectionViewHistorialAgregados.ItemsSource = HistorialProductos;
-
-                    // Muestra un mensaje de éxito.
-                    await DisplayAlert("Alerta", "El producto ha sido eliminado!", "OK");
-
-                    // Recarga la página navegando a ella de nuevo.
-                    await Navigation.PopAsync();
-                    await Navigation.PushAsync(new HistorialProductosAgregados());
-                }
-                else
-                {
-                    // Muestra un mensaje de error si no se encontró el producto en la colección.
-                    await DisplayAlert("Error", "No se encontró ningún producto en la colección.", "OK");
+                    await DisplayAlert("Aviso", "Producto Eliminado", "OK");
                 }
             }
+
         }
     }
 
@@ -225,6 +216,7 @@ public partial class HistorialProductosAgregados : ContentPage
         public Color BorderColor { get; set; }
 
         public ICommand? TappedCommand { get; set; }
+        public ICommand? DeleteCommand { get; set; }
     }
     public class FiltroItem
     {
@@ -233,27 +225,32 @@ public partial class HistorialProductosAgregados : ContentPage
 
 
 
-    private void btnBack_Clicked(object sender, EventArgs e)
+    private async void btnBack_Clicked(object sender, EventArgs e)
     {
-        Navigation.PopAsync();
+        await Navigation.PopAsync();
     }
 
-    private void btnActualizarProducto_Clicked(object sender, EventArgs e)
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected virtual void OnPropertyChanged(string propertyName)
     {
-       
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    private void btnHome_Clicked(object sender, EventArgs e)
+    private async void btnHome_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Views.Home.homePageAdmin());
+    }
+
+    private async void btnStock_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Views.CreacionProductos.HistorialProductosAgregados());
+    }
+
+    private void btnEstadisticas_Clicked(object sender, EventArgs e)
     {
 
     }
-
-    private void BtnHistorialProductos_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new HistorialProductosAgregados());
-    }
-
-
 
     private void btnAnuncios_Clicked(object sender, EventArgs e)
     {
@@ -265,21 +262,30 @@ public partial class HistorialProductosAgregados : ContentPage
 
     }
 
-    private void btnVerVencidos_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
     private void btnLogout_Clicked(object sender, EventArgs e)
     {
 
     }
-    public event PropertyChangedEventHandler? PropertyChanged;
 
-    protected virtual void OnPropertyChanged(string propertyName)
+    private async void btnAgregarProducto_Clicked(object sender, EventArgs e)
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        await Navigation.PushAsync(new Views.CreacionProductos.AgregarProducto(1));
     }
 
+    private void searchBarProductos_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(e.NewTextValue))
+        {
+            collectionViewHistorialAgregados.ItemsSource = HistorialProductos;
+        }
+        else
+        {
+            SearchQuery = e.NewTextValue;
+        }
+    }
 
+    private void searchBarProductos_SearchButtonPressed(object sender, EventArgs e)
+    {
+        SearchQuery = searchBarProductos.Text;
+    }
 }

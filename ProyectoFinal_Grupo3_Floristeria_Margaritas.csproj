@@ -119,6 +119,7 @@
 	  <None Remove="Resources\Images\Iconos\pdf.png" />
 	  <None Remove="Resources\Images\Iconos\refresh.png" />
 	  <None Remove="Resources\Images\Iconos\whatsapp.png" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\agregarproducto.png" />
 	  <None Remove="Resources\Images\ImagenesAdministrador\alerta.png" />
 	  <None Remove="Resources\Images\ImagenesAdministrador\botonproductos.svg" />
 	  <None Remove="Resources\Images\ImagenesAdministrador\botonpromociones.svg" />
@@ -294,6 +295,7 @@
 	  <MauiImage Include="Resources\Images\Iconos\pdf.png" />
 	  <MauiImage Include="Resources\Images\Iconos\refresh.png" />
 	  <MauiImage Include="Resources\Images\Iconos\whatsapp.png" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\agregarproducto.png" />
 	  <MauiImage Include="Resources\Images\ImagenesAdministrador\alerta.png" />
 	  <MauiImage Include="Resources\Images\ImagenesAdministrador\botonproductos.svg" />
 	  <MauiImage Include="Resources\Images\ImagenesAdministrador\botonpromociones.svg" />
