@@ -262,9 +262,14 @@ public partial class HistorialProductosAgregados : ContentPage
 
     }
 
-    private void btnLogout_Clicked(object sender, EventArgs e)
+    private async void btnLogout_Clicked(object sender, EventArgs e)
     {
+        bool isSuccess = await logout.PerformLogoutAsync(_apiService);
 
+        if (isSuccess)
+        {
+            await Navigation.PushAsync(new Views.Login.login());
+        }
     }
 
     private async void btnAgregarProducto_Clicked(object sender, EventArgs e)

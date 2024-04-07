@@ -33,7 +33,15 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions
                 RemovePreference("usuario");
                 RemovePreference("tipoUsuario");
                 RemovePreference("stayLogged");
-            }    
+            }
+            else if(Config.Config.tipoUsuario == 2)
+            {
+                RemovePreference("adminID");
+                RemovePreference("userID");
+                RemovePreference("usuario");
+                RemovePreference("tipoUsuario");
+                RemovePreference("stayLogged");
+            }
         }
 
         private static void RemovePreference(string key)

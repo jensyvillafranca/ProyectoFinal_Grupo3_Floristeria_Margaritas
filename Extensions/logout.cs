@@ -52,6 +52,23 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions
 
                 return isSuccess;
             }
+            //Logout Admin
+            else if (Config.Config.tipoUsuario == 2)
+            {
+                var data = new
+                {
+                    idadmin = Config.Config.activeAdminId
+                };
+
+                bool isSuccess = await _apiService.PostSuccessAsync("logoutAdmin.php", data);
+
+                if (isSuccess)
+                {
+                    UserPreferences.Logout();
+                }
+
+                return isSuccess;
+            }
 
             return false;          
         }

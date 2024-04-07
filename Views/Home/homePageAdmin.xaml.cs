@@ -1,3 +1,5 @@
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 using System.Collections.ObjectModel;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home;
@@ -6,6 +8,7 @@ public partial class homePageAdmin : ContentPage
 {
     ObservableCollection<string> departamentos;
     ObservableCollection<string> repartidores;
+    private ApiService _apiService = new ApiService();
     public homePageAdmin()
     {
         InitializeComponent();
@@ -57,12 +60,16 @@ public partial class homePageAdmin : ContentPage
 
     private void TapGestureStock_Tapped(object sender, TappedEventArgs e)
     {
-
     }
 
-    private void btnLogout_Clicked(object sender, EventArgs e)
+    private async void btnLogout_Clicked(object sender, EventArgs e)
     {
+        bool isSuccess = await logout.PerformLogoutAsync(_apiService);
 
+        if (isSuccess)
+        {
+            await Navigation.PushAsync(new Views.Login.login());
+        }
     }
 
     private void TapGestureProductos_Tapped(object sender, TappedEventArgs e)
