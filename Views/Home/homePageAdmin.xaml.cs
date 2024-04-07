@@ -9,6 +9,7 @@ public partial class homePageAdmin : ContentPage
     public homePageAdmin()
     {
         InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
         departamentos = new ObservableCollection<string>
         {
             "Atlántida",
@@ -44,9 +45,9 @@ public partial class homePageAdmin : ContentPage
         repartidorPicker.ItemsSource = repartidores;
     }
 
-    private void btnNotification_Clicked(object sender, EventArgs e)
+    private async void btnNotification_Clicked(object sender, EventArgs e)
     {
-
+        
     }
 
     private void TapGestureGanancias_Tapped(object sender, TappedEventArgs e)
@@ -140,9 +141,9 @@ public partial class homePageAdmin : ContentPage
 
     }
 
-    private void btnPerfil_Clicked(object sender, EventArgs e)
+    private async void btnPerfil_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.PantallaAdministrador.notificacionesAdministrador());
     }
 
     private void btnVerVencidos_Clicked(object sender, EventArgs e)

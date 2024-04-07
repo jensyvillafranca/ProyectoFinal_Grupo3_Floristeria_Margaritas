@@ -88,9 +88,20 @@
                             Text=""
                             TextColor="{StaticResource AzulLetraLogo}" />
 
+                        <Label
+                            x:Name="labelEntregarA"
+                            Margin="0,5,0,5"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            HorizontalTextAlignment="Center"
+                            Text=""
+                            TextColor="{StaticResource AzulLetraLogo}" />
+
                         <StackLayout Orientation="Vertical">
                             <Grid>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
@@ -640,6 +651,81 @@
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
                                 </CollectionView>
+                                <Frame
+                                    Grid.Row="20"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="4"
+                                    Margin="0,5,0,5"
+                                    Padding="0,0,0,0"
+                                    BackgroundColor="{DynamicResource AzulOscuro}"
+                                    BorderColor="{DynamicResource AzulBotones}">
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Calificacion Repartidor"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                </Frame>
+                                <Label
+                                    x:Name="labelMotivo"
+                                    Grid.Row="21"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    Margin="0,0,0,0"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                                <StackLayout
+                                    Grid.Row="21"
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="2"
+                                    Margin="10,0,10,5"
+                                    HorizontalOptions="CenterAndExpand"
+                                    IsVisible="True"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image
+                                        x:Name="imgStar1"
+                                        Margin="0,0,0,0"
+                                        Aspect="AspectFit"
+                                        HeightRequest="24"
+                                        Source="ImagenesCalificacion/estrella_vacia.png"
+                                        WidthRequest="24" />
+                                    <Image
+                                        x:Name="imgStar2"
+                                        Margin="0,0,0,0"
+                                        Aspect="AspectFit"
+                                        HeightRequest="24"
+                                        Source="ImagenesCalificacion/estrella_vacia.png"
+                                        WidthRequest="24" />
+                                    <Image
+                                        x:Name="imgStar3"
+                                        Margin="0,0,0,0"
+                                        Aspect="AspectFit"
+                                        HeightRequest="24"
+                                        Source="ImagenesCalificacion/estrella_vacia.png"
+                                        WidthRequest="24" />
+                                    <Image
+                                        x:Name="imgStar4"
+                                        Margin="0,0,0,0"
+                                        Aspect="AspectFit"
+                                        HeightRequest="24"
+                                        Source="ImagenesCalificacion/estrella_vacia.png"
+                                        WidthRequest="24" />
+                                    <Image
+                                        x:Name="imgStar5"
+                                        Margin="0,0,0,0"
+                                        Aspect="AspectFit"
+                                        HeightRequest="24"
+                                        Source="ImagenesCalificacion/estrella_vacia.png"
+                                        WidthRequest="24" />
+                                </StackLayout>
                             </Grid>
                         </StackLayout>
                     </StackLayout>
@@ -647,7 +733,7 @@
             </StackLayout>
         </ScrollView>
 
-        <!--  Boton Agregar a Carrito  -->
+        <!--  Frame Botones  -->
         <Frame
             Grid.Row="2"
             Margin="0,0,0,0"

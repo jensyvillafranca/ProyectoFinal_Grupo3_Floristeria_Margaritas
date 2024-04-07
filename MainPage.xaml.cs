@@ -62,11 +62,6 @@ public partial class MainPage : ContentPage
         Navigation.PushAsync(new Views.Calificacion.CalificacionFinalizada());
     }
 
-    private void btnPantallaCalificacion_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Views.Calificacion.PantallaCalificacion());
-    }
-
     private async void btnAplicarRepartidor_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Views.PantallasRepartidor.AplicarRepartidor());

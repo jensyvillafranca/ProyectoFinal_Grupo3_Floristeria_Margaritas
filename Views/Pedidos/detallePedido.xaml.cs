@@ -13,6 +13,7 @@ using System;
 using System.Collections.ObjectModel;
 using PdfSharp.Pdf;
 using Color = Microsoft.Maui.Graphics.Color;
+using Java.Time;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Pedidos;
 
@@ -68,10 +69,53 @@ public partial class detallePedido : ContentPage
         string? image = null;
         string? estado = null;
         Color? color = null;
+        string? entregar = $"Entregar a: {_pedidoModel.titulonota}";
 
         string? nombreRepartidor = null;
         string? telefonoRepartidor = null;
         string? horaEntrega = null;
+
+        if(string.IsNullOrEmpty(_pedidoModel.motivocalificacion))
+        {
+            labelMotivo.Text = "El Pedido aun no ha sido calificado";
+        }
+        else
+        {
+            //variables imagenes
+            string? star1 = null;
+            string? star2 = null;
+            string? star3 = null;
+            string? star4 = null;
+            string? star5 = null;
+
+            labelMotivo.Text = _pedidoModel.motivocalificacion;
+
+            string[] stars = new string[5];
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (int.Parse(_pedidoModel.calificacion) > i)
+                {
+                    stars[i] = "ImagenesCalificacion/estrella_llena1.png";
+                }
+                else
+                {
+                    stars[i] = "ImagenesCalificacion/estrella_vacia.png";
+                }
+            }
+
+            star1 = stars[0];
+            star2 = stars[1];
+            star3 = stars[2];
+            star4 = stars[3];
+            star5 = stars[4];
+
+            imgStar1.Source = star1;
+            imgStar2.Source = star2;
+            imgStar3.Source = star3;
+            imgStar4.Source = star4;
+            imgStar5.Source = star5;
+        }
 
         if(string.IsNullOrEmpty(_pedidoModel.nombresrepartidor))
         {
@@ -90,6 +134,8 @@ public partial class detallePedido : ContentPage
             estado = "Procesando";
             color = Color.FromRgb(204, 204, 0);
             horaEntrega = (_pedidoModel.fechaestimadaentrega).ToString("h:mm tt");
+            btnPDF.IsEnabled = false;
+            btnCalificar.IsEnabled = false;
         }
         else if (_pedidoModel.idestadopedido == 3)
         {
@@ -97,6 +143,7 @@ public partial class detallePedido : ContentPage
             estado = "En Camino";
             color = Color.FromRgb(0, 191, 255);
             horaEntrega = (_pedidoModel.fechaestimadaentrega).ToString("h:mm tt");
+            btnCalificar.IsEnabled=false;
         }
         else if (_pedidoModel.idestadopedido == 4)
         {
@@ -139,6 +186,7 @@ public partial class detallePedido : ContentPage
         labelEnvio.Text = $"L {Math.Round(_pedidoModel.envio, 2):F2}";
         labelPropina.Text = $"L {Math.Round(_pedidoModel.propina, 2):F2}";
         labelTotal.Text = $"L {Math.Round(_pedidoModel.total, 2):F2}";
+        labelEntregarA.Text = entregar;
 
 
     }
@@ -188,9 +236,17 @@ public partial class detallePedido : ContentPage
     }
 
     // Método para manejar el evento Clicked del botón de calificación
-    private void btnCalificar_Clicked(object sender, EventArgs e)
+    private async void btnCalificar_Clicked(object sender, EventArgs e)
     {
-
+        if (string.IsNullOrEmpty(_pedidoModel.motivocalificacion))
+        {
+            await Navigation.PushAsync(new Views.Calificacion.PantallaCalificacion(_pedidoModel, 1));
+        }
+        else
+        {
+            await Navigation.PushAsync(new Views.Calificacion.PantallaCalificacion(_pedidoModel, 2));
+        }
+        
     }
 
     // Método para manejar el evento Clicked del botón de cancelación del pedido
@@ -212,6 +268,7 @@ public partial class detallePedido : ContentPage
                     var data = new
                     {
                         idpedido = _pedidoModel.idpedido,
+                        idrepartidor = _pedidoModel.fk_idrepartidor,
                         nombresucursal = _pedidoModel.nombresucursal,
                         direccionsucursal = _pedidoModel.direccionsucursal,
                         nombrecliente = _pedidoModel.nombrescliente,

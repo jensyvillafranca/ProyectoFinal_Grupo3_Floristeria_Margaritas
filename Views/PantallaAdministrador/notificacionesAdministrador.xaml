@@ -28,13 +28,13 @@
                     BackgroundColor="Transparent"
                     Orientation="Horizontal">
                     <ImageButton
-                        x:Name="btnAtras"
-                        Margin="10,0,20,0"
+                        x:Name="btnBack"
+                        Margin="10,0,0,0"
                         Aspect="AspectFit"
                         BackgroundColor="Transparent"
                         Clicked="btnAtras_Clicked"
                         HeightRequest="40"
-                        Source="ImagenesRepartidor/atras.png"
+                        Source="Productos/backarrow.png"
                         WidthRequest="40" />
                     <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
                     <Label
@@ -42,7 +42,7 @@
                         FontAttributes="Bold"
                         FontSize="14"
                         HorizontalOptions="Center"
-                        Text="Historial de Entregas"
+                        Text="Solicitudes de Repartidores"
                         TextColor="White"
                         VerticalOptions="Center" />
 

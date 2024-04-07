@@ -162,7 +162,7 @@ public partial class confirmarOrden : ContentPage
         // Verifica si se ha ingresado un título y un mensaje
         if (string.IsNullOrEmpty(entryTitulo.Text))
         {
-            await DisplayAlert("Alerta", "Porfavor ingrese un título", "OK");
+            await DisplayAlert("Alerta", "Porfavor ingrese la persona de destino", "OK");
             return;
         }
         else if (string.IsNullOrEmpty(entryMensaje.Text))

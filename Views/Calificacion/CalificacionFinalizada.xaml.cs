@@ -9,7 +9,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Calificacion
 
         private void btnBack_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Views.Calificacion.PantallaCalificacion());
+            
         }
 
         private async void btnConfirmar_Clicked(object sender, EventArgs e)

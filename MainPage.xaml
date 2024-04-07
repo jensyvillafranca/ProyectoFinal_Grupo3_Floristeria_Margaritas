@@ -98,13 +98,6 @@
                 Text="Notificaciones Admin" />
 
             <Button
-                x:Name="btnPantallaCalificacion"
-                Clicked="btnPantallaCalificacion_Clicked"
-                HorizontalOptions="Center"
-                SemanticProperties.Hint="Pagina de Calificacion"
-                Text="Calificacion" />
-
-            <Button
                 x:Name="btnCalificacionFinalizada"
                 Clicked="btnCalificacionFinalizada_Clicked"
                 HorizontalOptions="Center"

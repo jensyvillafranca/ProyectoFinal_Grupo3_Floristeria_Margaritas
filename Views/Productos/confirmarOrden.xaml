@@ -431,7 +431,7 @@
                             FontAttributes="Bold"
                             FontSize="14"
                             HorizontalTextAlignment="Center"
-                            Placeholder="Título"
+                            Placeholder="Destinatario"
                             TextColor="Black" />
                         <Editor
                             x:Name="entryMensaje"
