@@ -79,7 +79,7 @@
                                 HasShadow="True"
                                 HorizontalOptions="FillAndExpand">
                                 <StackLayout
-                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalOptions="CenterAndExpand"
                                     Orientation="Horizontal"
                                     VerticalOptions="FillAndExpand">
                                     <Image
@@ -103,11 +103,12 @@
                                             Grid.Column="0"
                                             Margin="5,10,0,0"
                                             FontAttributes="Bold"
-                                            FontSize="14"
+                                            FontSize="12"
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding LabelNombreProducto}"
-                                            TextColor="{StaticResource AzulLetraLogo}" />
+                                            TextColor="{StaticResource AzulLetraLogo}"
+                                            WidthRequest="170" />
                                         <StackLayout
                                             Grid.Row="1"
                                             Grid.Column="0"
@@ -143,19 +144,19 @@
                                             x:Name="labelPrecioTotal"
                                             Grid.Row="0"
                                             Grid.Column="1"
-                                            Margin="20,10,0,0"
+                                            Margin="10,10,10,0"
                                             FontAttributes="Bold"
                                             FontSize="14"
-                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalOptions="FillAndExpand"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding LabelPrecioTotal, StringFormat='L {0:N2}'}"
                                             TextColor="Black"
-                                            WidthRequest="100" />
+                                            WidthRequest="80" />
                                         <ImageButton
                                             x:Name="btnEliminar"
                                             Grid.Row="1"
                                             Grid.Column="1"
-                                            Margin="30,0,0,10"
+                                            Margin="10,0,0,10"
                                             Aspect="AspectFit"
                                             BackgroundColor="Transparent"
                                             Command="{Binding TappedCommand}"

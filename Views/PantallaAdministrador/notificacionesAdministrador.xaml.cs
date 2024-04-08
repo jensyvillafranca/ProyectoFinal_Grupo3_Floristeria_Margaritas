@@ -201,11 +201,33 @@ public partial class notificacionesAdministrador : ContentPage
     private async void HandleDenegarCommand(SolicitudModel solicitud)
     {
         bool userConfirmed = await DisplayAlert("Confirmación", $"¿Está seguro de que desea denegar la solicitud de repartidor para: {solicitud.nombrecompleto}?", "Si", "No");
+        if (userConfirmed)
+        {
+            var data = new
+            {
+                idsolicitud = solicitud.idsolicitud,
+                nombre = solicitud.nombrecompleto,
+                correo = solicitud.correo
+            };
+
+            bool isSuccess = await _apiService.PostSuccessAsync("denegarSolicitud.php", data);
+
+            if (isSuccess)
+            {
+                await DisplayAlert("Alerta", "La Solicitud ha sido denegada", "OK");
+                await Navigation.PushAsync(new Views.PantallaAdministrador.notificacionesAdministrador());
+            }
+            else
+            {
+                await DisplayAlert("Alerta", "Ocurrio un error, intente de nuevo", "OK");
+                return;
+            }
+        }
     }
 
-    private void btnAtras_Clicked(object sender, EventArgs e)
+    private async void btnAtras_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PopAsync();
     }
 
     private void btnNotification_Clicked(object sender, EventArgs e)
@@ -213,14 +235,14 @@ public partial class notificacionesAdministrador : ContentPage
 
     }
 
-    private void btnHome_Clicked(object sender, EventArgs e)
+    private async void btnHome_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Home.homePageAdmin());
     }
 
-    private void btnStock_Clicked(object sender, EventArgs e)
+    private async void btnStock_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.CreacionProductos.HistorialProductosAgregados());
     }
 
     private void btnEstadisticas_Clicked(object sender, EventArgs e)
@@ -238,8 +260,13 @@ public partial class notificacionesAdministrador : ContentPage
 
     }
 
-    private void btnLogout_Clicked(object sender, EventArgs e)
+    private async void btnLogout_Clicked(object sender, EventArgs e)
     {
+        bool isSuccess = await logout.PerformLogoutAsync(_apiService);
 
+        if (isSuccess)
+        {
+            await Navigation.PushAsync(new Views.Login.login());
+        }
     }
 }

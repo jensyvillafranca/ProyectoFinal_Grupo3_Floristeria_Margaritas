@@ -126,6 +126,7 @@
 	  <None Remove="Resources\Images\ImagenesAdministrador\buscar.png" />
 	  <None Remove="Resources\Images\ImagenesAdministrador\icono_boton_promocion.png" />
 	  <None Remove="Resources\Images\ImagenesAdministrador\promociones.png" />
+	  <None Remove="Resources\Images\ImagenesAdministrador\solicitud.png" />
 	  <None Remove="Resources\Images\ImagenesCalificacion\calificacion_exitosa.png" />
 	  <None Remove="Resources\Images\ImagenesCalificacion\calificacion_finalizada.png" />
 	  <None Remove="Resources\Images\ImagenesCalificacion\estrella_llena1.png" />
@@ -303,6 +304,7 @@
 	  <MauiImage Include="Resources\Images\ImagenesAdministrador\buscar.png" />
 	  <MauiImage Include="Resources\Images\ImagenesAdministrador\icono_boton_promocion.png" />
 	  <MauiImage Include="Resources\Images\ImagenesAdministrador\promociones.png" />
+	  <MauiImage Include="Resources\Images\ImagenesAdministrador\solicitud.png" />
 	  <MauiImage Include="Resources\Images\ImagenesCalificacion\calificacion_exitosa.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiImage>
@@ -464,6 +466,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Login\signin.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Notificaciones\notificacionesAdmin.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Notificaciones\notificacionesEstadoPedidos.xaml">

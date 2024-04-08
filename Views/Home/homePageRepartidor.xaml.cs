@@ -47,6 +47,7 @@ public partial class homePageRepartidor : ContentPage
     private async void TapGestureHistorial_Tapped(object sender, TappedEventArgs e)
     {
         await AnimationUtilities.ChangeFrameColor(frameHistorial, Color.FromRgb(33, 52, 91), Color.FromRgb(65, 185, 254), 250);
+        await Navigation.PushAsync(new Views.PantallasRepartidor.historialEntregas());
     }
 
     private async void TapGesturePerfil_Tapped(object sender, TappedEventArgs e)
