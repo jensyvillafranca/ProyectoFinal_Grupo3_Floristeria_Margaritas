@@ -17,6 +17,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
         private Color originalBackgroundColor;
         private ApiService _apiService = new ApiService();
         private int recordarValue = 0;
+        private bool firstLogin = false;
 
         // Constructor para la página 'login'
         public login()
@@ -60,6 +61,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
                         if (storedPassword == enteredPassword)
                         {
                             passwordMatch = true;
+                            firstLogin = true;
                         }
                     }
 
@@ -127,7 +129,14 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
                                     PreferencesManager.SaveString("usuario", loginDetails.usuario);
                                     PreferencesManager.SaveInt("tipoUsuario", loginDetails.fk_idtipousuario);
                                     PreferencesManager.SaveInt("stayLogged", recordarValue);
-                                    await Navigation.PushAsync(new Views.Home.homePageRepartidor());
+                                    if(firstLogin)
+                                    {
+                                        await Navigation.PushAsync(new Views.Login.NuevaContrasenia());
+                                    }
+                                    else
+                                    {
+                                        await Navigation.PushAsync(new Views.Home.homePageRepartidor());
+                                    }      
                                 }
                             }
                             catch (Exception ex)

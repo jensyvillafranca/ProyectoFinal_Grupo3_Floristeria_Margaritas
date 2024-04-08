@@ -182,7 +182,7 @@ public partial class notificacionesAdministrador : ContentPage
                 genero = solicitud.genero
             };
 
-            bool isSuccess = await _apiService.PostSuccessAsync("updateTokenCliente.php", data);
+            bool isSuccess = await _apiService.PostSuccessAsync("aceptarSolicitud.php", data);
 
             if (isSuccess)
             {
@@ -200,7 +200,7 @@ public partial class notificacionesAdministrador : ContentPage
 
     private async void HandleDenegarCommand(SolicitudModel solicitud)
     {
-        
+        bool userConfirmed = await DisplayAlert("Confirmación", $"¿Está seguro de que desea denegar la solicitud de repartidor para: {solicitud.nombrecompleto}?", "Si", "No");
     }
 
     private void btnAtras_Clicked(object sender, EventArgs e)

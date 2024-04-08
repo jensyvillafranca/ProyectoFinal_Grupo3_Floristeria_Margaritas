@@ -457,6 +457,9 @@
 	  <MauiXaml Update="Views\Login\login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\NuevaContrasenia.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Login\RestaurarContra.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
