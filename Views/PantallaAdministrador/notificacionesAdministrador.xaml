@@ -62,10 +62,25 @@
         <!--  Body: Collection View  -->
         <ScrollView Grid.Row="1">
             <StackLayout>
+
+                <!--  Collection view Pendientes  -->
+                <Frame
+                    Padding="0,0,0,0"
+                    BackgroundColor="{DynamicResource AzulOscuro}"
+                    BorderColor="{DynamicResource AzulBotones}">
+                    <Label
+                        Margin="0,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalTextAlignment="Center"
+                        Text="Solicitudes Activas"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </Frame>
                 <CollectionView
-                    x:Name="collectionViewNotificaciones"
+                    x:Name="collectionViewPendientes"
                     ItemSizingStrategy="MeasureFirstItem"
-                    ItemsSource="{Binding Notificaciones}"
+                    ItemsSource="{Binding SolicitudesPendientes}"
                     SelectionMode="Single">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
@@ -106,7 +121,7 @@
                                             FontSize="10"
                                             HorizontalOptions="StartAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelIntro, StringFormat='{}{0} ha solicitado unirse como repartidor'}"
+                                            Text="{Binding NombreCompleto, StringFormat='{}{0} ha solicitado unirse como repartidor'}"
                                             TextColor="Black"
                                             VerticalOptions="CenterAndExpand" />
                                         <Label
@@ -119,7 +134,7 @@
                                             FontSize="10"
                                             HorizontalOptions="CenterAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelFecha}"
+                                            Text="{Binding FechaSolicitud}"
                                             TextColor="Gray"
                                             VerticalOptions="CenterAndExpand" />
                                         <Frame
@@ -140,7 +155,7 @@
                                                     FontSize="9"
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Center"
-                                                    Text="{Binding LabelNombre, StringFormat='Nombre: {0}'}"
+                                                    Text="{Binding NombreCompleto, StringFormat='Nombre: {0}'}"
                                                     TextColor="Black"
                                                     VerticalOptions="CenterAndExpand" />
                                                 <Label
@@ -150,7 +165,7 @@
                                                     FontSize="9"
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Center"
-                                                    Text="{Binding LabelCorreo, StringFormat='Correo Electrónico: {0}'}"
+                                                    Text="{Binding Correo, StringFormat='Correo Electrónico: {0}'}"
                                                     TextColor="Black"
                                                     VerticalOptions="CenterAndExpand" />
                                                 <Label
@@ -160,7 +175,7 @@
                                                     FontSize="9"
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Center"
-                                                    Text="{Binding LabelTelefono, StringFormat='Telefóno: {0}'}"
+                                                    Text="{Binding Telefono, StringFormat='Telefóno: {0}'}"
                                                     TextColor="Black"
                                                     VerticalOptions="CenterAndExpand" />
                                                 <Label
@@ -170,7 +185,7 @@
                                                     FontSize="9"
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Center"
-                                                    Text="{Binding LabelDNI, StringFormat='DNI: {0}'}"
+                                                    Text="{Binding Dni, StringFormat='DNI: {0}'}"
                                                     TextColor="Black"
                                                     VerticalOptions="CenterAndExpand" />
                                                 <Label
@@ -180,7 +195,7 @@
                                                     FontSize="9"
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Center"
-                                                    Text="{Binding LabelReqEdad}"
+                                                    Text="{Binding FechaNacimiento, StringFormat='Edad: {0}'}"
                                                     TextColor="Black"
                                                     VerticalOptions="CenterAndExpand" />
                                                 <Label
@@ -190,7 +205,7 @@
                                                     FontSize="9"
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Center"
-                                                    Text="{Binding LabelDireccion, StringFormat='Pertenece al departamento de {0}'}"
+                                                    Text="{Binding Departamento, StringFormat='Reside en: {0}'}"
                                                     TextColor="Black"
                                                     VerticalOptions="CenterAndExpand" />
                                                 <Label
@@ -200,7 +215,249 @@
                                                     FontSize="9"
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Center"
-                                                    Text="{Binding LabelGenero, StringFormat='Género: {0}'}"
+                                                    Text="{Binding Genero, StringFormat='Género: {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                            </StackLayout>
+                                        </Frame>
+                                        <Button
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Grid.ColumnSpan="2"
+                                            Margin="5,0,5,0"
+                                            BackgroundColor="{DynamicResource AzulBotones}"
+                                            BorderColor="{DynamicResource AzulOscuro}"
+                                            Command="{Binding FotoCommand}"
+                                            CommandParameter="{Binding .}"
+                                            CornerRadius="20"
+                                            FontAttributes="Bold"
+                                            FontSize="8"
+                                            HeightRequest="35"
+                                            HorizontalOptions="FillAndExpand"
+                                            SemanticProperties.Hint="Ver Imagenes"
+                                            Text="Ver Imagenes" />
+                                        <Button
+                                            Grid.Row="2"
+                                            Grid.Column="2"
+                                            Grid.ColumnSpan="2"
+                                            Margin="5,0,5,0"
+                                            BackgroundColor="{DynamicResource VerdePersonalizado}"
+                                            BorderColor="{DynamicResource AzulOscuro}"
+                                            Command="{Binding AceptarCommand}"
+                                            CommandParameter="{Binding .}"
+                                            CornerRadius="20"
+                                            FontAttributes="Bold"
+                                            FontSize="8"
+                                            HeightRequest="35"
+                                            HorizontalOptions="FillAndExpand"
+                                            SemanticProperties.Hint="Aceptar Solicitud"
+                                            Text="Aceptar" />
+                                        <Button
+                                            Grid.Row="3"
+                                            Grid.Column="2"
+                                            Grid.ColumnSpan="2"
+                                            Margin="5,0,5,0"
+                                            BackgroundColor="{DynamicResource RojoPersonalizado}"
+                                            BorderColor="{DynamicResource AzulOscuro}"
+                                            Command="{Binding DenegarCommand}"
+                                            CommandParameter="{Binding .}"
+                                            CornerRadius="20"
+                                            FontAttributes="Bold"
+                                            FontSize="8"
+                                            HeightRequest="35"
+                                            HorizontalOptions="FillAndExpand"
+                                            SemanticProperties.Hint="Rechazar Solicitud"
+                                            Text="Rechazar" />
+                                        <StackLayout
+                                            Grid.Row="4"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
+                                            Orientation="Horizontal">
+                                            <CheckBox
+                                                x:Name="checkMoto"
+                                                IsChecked="{Binding Motocicleta}"
+                                                IsEnabled="False" />
+                                            <Label
+                                                FontSize="8"
+                                                Text="Licencia Motocicleta"
+                                                VerticalOptions="Center" />
+                                            <CheckBox
+                                                x:Name="checkPesada"
+                                                IsChecked="{Binding Pesada}"
+                                                IsEnabled="False" />
+                                            <Label
+                                                FontSize="8"
+                                                Text="Licencia Pesada"
+                                                VerticalOptions="Center" />
+                                            <CheckBox
+                                                x:Name="checkLiviana"
+                                                IsChecked="{Binding Liviana}"
+                                                IsEnabled="False" />
+                                            <Label
+                                                FontSize="8"
+                                                Text="Licencia Liviana"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!--  Collection view Procesadas  -->
+                <Frame
+                    Padding="0,0,0,0"
+                    BackgroundColor="{DynamicResource AzulOscuro}"
+                    BorderColor="{DynamicResource AzulBotones}">
+                    <Label
+                        Margin="0,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalTextAlignment="Center"
+                        Text="Solicitudes Procesadas"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </Frame>
+                <CollectionView
+                    x:Name="collectionViewProcesadas"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding SolicitudesProcesadas}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                x:Name="frameSolicitud"
+                                Margin="5"
+                                Padding="5"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
+                                CornerRadius="10"
+                                HasShadow="True">
+                                <StackLayout
+                                    HorizontalOptions="CenterAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            x:Name="labelIntro"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Margin="5,5,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding NombreCompleto, StringFormat='{}{0} ha solicitado unirse como repartidor'}"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            x:Name="labelFecha"
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Grid.ColumnSpan="2"
+                                            Margin="0,5,0,5"
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding FechaSolicitud}"
+                                            TextColor="Gray"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Frame
+                                            Grid.Row="1"
+                                            Grid.RowSpan="3"
+                                            Grid.Column="0"
+                                            Margin="0,0,0,0"
+                                            Padding="0,0,0,0"
+                                            BackgroundColor="FloralWhite"
+                                            BorderColor="{DynamicResource AzulBotones}"
+                                            CornerRadius="10"
+                                            HasShadow="True">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label
+                                                    x:Name="labelNombre"
+                                                    Margin="5,3,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding NombreCompleto, StringFormat='Nombre: {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelCorreo"
+                                                    Margin="5,0,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding Correo, StringFormat='Correo Electrónico: {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelTelefono"
+                                                    Margin="5,0,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding Telefono, StringFormat='Telefóno: {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelDNI"
+                                                    Margin="5,0,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding Dni, StringFormat='DNI: {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelReqEdad"
+                                                    Margin="5,0,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding FechaNacimiento, StringFormat='Edad: {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelDireccion"
+                                                    Margin="5,0,5,3"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding Departamento, StringFormat='Pertenece al departamento de {0}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelGenero"
+                                                    Margin="5,0,5,5"
+                                                    FontAttributes="Bold"
+                                                    FontSize="9"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding Genero, StringFormat='Género: {0}'}"
                                                     TextColor="Black"
                                                     VerticalOptions="CenterAndExpand" />
                                             </StackLayout>
@@ -257,7 +514,7 @@
                                             FontSize="10"
                                             HorizontalOptions="StartAndExpand"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding LabelLicencia}"
+                                            Text="{Binding Ciudad}"
                                             TextColor="Black"
                                             VerticalOptions="CenterAndExpand" />
                                     </Grid>
@@ -327,7 +584,7 @@
                     Clicked="btnAnuncios_Clicked"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
-                    Source="Menu/anouncements.png"
+                    Source="Menu/promocionesmenu.png"
                     WidthRequest="40" />
 
                 <!--  Perfil Button  -->

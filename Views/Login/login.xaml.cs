@@ -49,7 +49,19 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
                 {
                     string enteredPassword = entryPassword.Text;
                     string storedPassword = loginDetails.contrasenia;
-                    bool passwordMatch = PasswordHandler.VerifyPassword(enteredPassword, storedPassword);
+                    bool passwordMatch = false;
+
+                    try
+                    {
+                        passwordMatch = PasswordHandler.VerifyPassword(enteredPassword, storedPassword);
+                    }
+                    catch
+                    {
+                        if (storedPassword == enteredPassword)
+                        {
+                            passwordMatch = true;
+                        }
+                    }
 
                     if (passwordMatch)
                     {
