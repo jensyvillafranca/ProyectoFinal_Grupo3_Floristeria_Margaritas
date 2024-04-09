@@ -205,9 +205,9 @@ public partial class ActualizarProductos : ContentPage
             return;
         }
         // Verifica si el valor de stock ingresado es mayor que 50.
-        else if (Convert.ToInt32(txtStock.Text) > 50)
+        else if (Convert.ToInt32(txtStock.Text) > 100)
         {
-            await DisplayAlert("Alerta", "El stock no puede ser mayor que 50", "OK");
+            await DisplayAlert("Alerta", "El stock no puede ser mayor que 100", "OK");
             return;
         }
         // Verifica si el campo de texto para el descuento está vacío.
