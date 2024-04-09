@@ -1,31 +1,11 @@
 using System.Collections.ObjectModel;
 using System.Text.Json;
 using System.Windows.Input;
-*/
-
-/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-windows10.0.19041.0)'
-Antes:
-using ProyectoFinal_Grupo3_Floristeria_Margaritas;
-Después:
-using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
-using System.Collections.ObjectModel;
-using System.Text.Json;
-using System.Windows.Input;
-*/
-
-/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-android)'
-Antes:
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
-using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
-using ProyectoFinal_Grupo3_Floristeria_Margaritas;
-Después:
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
-using System.Collections.ObjectModel;
-using System.Text.Json;
-using System.Windows.Input;
-*/
-using System.Collections.ObjectModel;
-using System.Windows.Input;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Utilities;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 

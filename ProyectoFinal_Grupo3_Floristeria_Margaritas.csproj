@@ -242,19 +242,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BCrypt.Net" Version="0.1.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.14" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.14" />
 		<PackageReference Include="Geolocator.Plugin" Version="1.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.7" />
-		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.7" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 		<PackageReference Include="Syncfusion.Maui.Expander" Version="24.2.9" />
 		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.14" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.14" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="PDFsharp" Version="6.0.0" />
 		<PackageReference Include="Plugin.Firebase.Crashlytics" Version="2.0.3" />
 		<PackageReference Include="Plugin.Firebase" Version="2.0.12" />

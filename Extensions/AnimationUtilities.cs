@@ -27,7 +27,5 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions
 
 
     }
-        }
-
 }
 

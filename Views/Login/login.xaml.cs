@@ -102,14 +102,14 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
                                 return;
                             }
 
-                            
+
                         }
                         else if (loginDetails.fk_idtipousuario == 3)
                         {
                             //Login Repartidor
                             var repartidorDetails = await _apiService.PostDataAsync<repartidorIdModel>("loginTokenRepartidor.php", new { idusuario = loginDetails.idusuario });
 
-        }
+
 
                             try
                             {
@@ -131,21 +131,21 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
                                     PreferencesManager.SaveString("usuario", loginDetails.usuario);
                                     PreferencesManager.SaveInt("tipoUsuario", loginDetails.fk_idtipousuario);
                                     PreferencesManager.SaveInt("stayLogged", recordarValue);
-                                    if(firstLogin)
+                                    if (firstLogin)
                                     {
                                         await Navigation.PushAsync(new Views.Login.NuevaContrasenia());
                                     }
                                     else
                                     {
                                         await Navigation.PushAsync(new Views.Home.homePageRepartidor());
-                                    }      
+                                    }
                                 }
                             }
                             catch (Exception ex)
                             {
                                 await DisplayAlert("Alerta", "Se produjo un error, intente de nuevo", "OK");
                                 return;
-                            }       
+                            }
                         }
                         else if (loginDetails.fk_idtipousuario == 2)
                         {
@@ -199,6 +199,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
                 return;
             }
         }
+
 
         // Controlador de eventos para clic en el botón de registro
         private async void btnRegistrarse_Clicked(object sender, EventArgs e)

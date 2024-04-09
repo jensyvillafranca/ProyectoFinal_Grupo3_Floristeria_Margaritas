@@ -1,7 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-	<application android:allowBackup="true" android:supportsRtl="true" android:icon="@mipmap/appicon">
-		<!--Para mapas-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.floristeriamargaritas">
 	<application android:allowBackup="true" android:supportsRtl="true" android:icon="@mipmap/appicon" android:label="Floristeria Margaritas">
 		
