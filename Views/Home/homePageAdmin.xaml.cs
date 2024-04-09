@@ -50,7 +50,7 @@ public partial class homePageAdmin : ContentPage
 
     private async void btnNotification_Clicked(object sender, EventArgs e)
     {
-        
+        await Navigation.PushAsync(new Views.Notificaciones.notificacionesAdmin());
     }
 
     private void TapGestureGanancias_Tapped(object sender, TappedEventArgs e)

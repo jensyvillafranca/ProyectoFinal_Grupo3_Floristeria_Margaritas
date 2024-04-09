@@ -100,8 +100,26 @@ public partial class notificacionesAdministrador : ContentPage
                 bool moto = false;
                 bool pesada = false;
                 bool liviana = false;
+                bool enabledAceptar = false;
+                bool enabledDenegar = false;
+                string? estado = null;
 
-                Color? color = Color.FromRgb(0, 191, 255);
+                Color? color = null;
+
+                if (solicitud.idestado == 1)
+                {
+                    color = Color.FromRgb(0, 128, 0);
+                    enabledAceptar = false;
+                    enabledDenegar = false;
+                    estado = "Aceptada";
+                }
+                else if (solicitud.idestado == 2)
+                {
+                    color = Color.FromRgb(255, 0, 0);
+                    enabledAceptar = true;
+                    enabledDenegar = false;
+                    estado = "Denegada";
+                }
 
                 AgeCalculator ageCalculator = new AgeCalculator();
 
@@ -141,6 +159,9 @@ public partial class notificacionesAdministrador : ContentPage
                     FechaSolicitud = fechaFormateada,
                     FrameBackgroundColor = color,
                     TextColor = color,
+                    EnabledAceptar = enabledAceptar,
+                    EnabledDenegar = enabledDenegar,
+                    Estado = estado,
                     FotoCommand = new Command(() => HandleFotoCommand(solicitud)),
                     AceptarCommand = new Command(() => HandleAceptarCommand(solicitud)),
                     DenegarCommand = new Command(() => HandleDenegarCommand(solicitud))

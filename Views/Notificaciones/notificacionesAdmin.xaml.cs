@@ -134,7 +134,7 @@ public partial class notificacionesAdmin : ContentPage
 
     private async void btnBack_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopAsync();
+        await Navigation.PushAsync(new Views.Home.homePageAdmin());
     }
 
     private async void btnRefresh_Clicked(object sender, EventArgs e)

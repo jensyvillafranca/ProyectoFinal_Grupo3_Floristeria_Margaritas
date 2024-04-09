@@ -334,7 +334,7 @@
                                 Margin="5"
                                 Padding="5"
                                 BackgroundColor="FloralWhite"
-                                BorderColor="{DynamicResource AzulBotones}"
+                                BorderColor="{Binding FrameBackgroundColor}"
                                 CornerRadius="10"
                                 HasShadow="True">
                                 <StackLayout
@@ -460,6 +460,16 @@
                                                     Text="{Binding Genero, StringFormat='Género: {0}'}"
                                                     TextColor="Black"
                                                     VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    x:Name="labelEstado"
+                                                    Margin="5,0,5,5"
+                                                    FontAttributes="Bold"
+                                                    FontSize="12"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding Estado}"
+                                                    TextColor="{Binding TextColor}"
+                                                    VerticalOptions="CenterAndExpand" />
                                             </StackLayout>
                                         </Frame>
                                         <Button
@@ -469,6 +479,8 @@
                                             Margin="5,0,5,0"
                                             BackgroundColor="{DynamicResource AzulBotones}"
                                             BorderColor="{DynamicResource AzulOscuro}"
+                                            Command="{Binding FotoCommand}"
+                                            CommandParameter="{Binding .}"
                                             CornerRadius="20"
                                             FontAttributes="Bold"
                                             FontSize="8"
@@ -483,11 +495,14 @@
                                             Margin="5,0,5,0"
                                             BackgroundColor="{DynamicResource VerdePersonalizado}"
                                             BorderColor="{DynamicResource AzulOscuro}"
+                                            Command="{Binding AceptarCommand}"
+                                            CommandParameter="{Binding .}"
                                             CornerRadius="20"
                                             FontAttributes="Bold"
                                             FontSize="8"
                                             HeightRequest="35"
                                             HorizontalOptions="FillAndExpand"
+                                            IsEnabled="{Binding EnabledAceptar}"
                                             SemanticProperties.Hint="Aceptar Solicitud"
                                             Text="Aceptar" />
                                         <Button
@@ -497,11 +512,14 @@
                                             Margin="5,0,5,0"
                                             BackgroundColor="{DynamicResource RojoPersonalizado}"
                                             BorderColor="{DynamicResource AzulOscuro}"
+                                            Command="{Binding DenegarCommand}"
+                                            CommandParameter="{Binding .}"
                                             CornerRadius="20"
                                             FontAttributes="Bold"
                                             FontSize="8"
                                             HeightRequest="35"
                                             HorizontalOptions="FillAndExpand"
+                                            IsEnabled="{Binding EnabledDenegar}"
                                             SemanticProperties.Hint="Rechazar Solicitud"
                                             Text="Rechazar" />
                                         <Label

@@ -220,6 +220,48 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel
             }
         }
 
+        private bool _EnabledAceptar;
+        public bool EnabledAceptar
+        {
+            get { return _EnabledAceptar; }
+            set
+            {
+                if (_EnabledAceptar != value)
+                {
+                    _EnabledAceptar = value;
+                    OnPropertyChanged(nameof(EnabledAceptar));
+                }
+            }
+        }
+
+        private bool _EnabledDenegar;
+        public bool EnabledDenegar
+        {
+            get { return _EnabledDenegar; }
+            set
+            {
+                if (_EnabledDenegar != value)
+                {
+                    _EnabledDenegar = value;
+                    OnPropertyChanged(nameof(EnabledDenegar));
+                }
+            }
+        }
+
+        private string? _Estado;
+        public string? Estado
+        {
+            get { return _Estado; }
+            set
+            {
+                if (_Estado != value)
+                {
+                    _Estado = value;
+                    OnPropertyChanged(nameof(Estado));
+                }
+            }
+        }
+
         public ICommand? FotoCommand { get; set; }
         public ICommand? AceptarCommand { get; set; }
         public ICommand? DenegarCommand { get; set; }
