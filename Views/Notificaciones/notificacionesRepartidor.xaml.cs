@@ -44,11 +44,11 @@ public partial class notificacionesRepartidor : ContentPage
                 Color? color = null;
 
                 // Determina la imagen, estado y color de fondo de la notificación
-                if (notificacion.tipo == 0)
+                if (notificacion.tipo == 1)
                 {
                     image = "Estados/procesando.png";
                 }
-                else if (notificacion.tipo == 1)
+                else if (notificacion.tipo == 2)
                 {
                     image = "Estados/cancelado.jpg";
                 }
@@ -162,6 +162,6 @@ public partial class notificacionesRepartidor : ContentPage
     // Controlador de eventos para el clic en el botón de actualización
     private async void btnRefresh_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Views.Notificaciones.notificacionesRepartidor());
+        OnAppearing();
     }
 }

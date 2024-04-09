@@ -510,6 +510,9 @@
 	  <MauiXaml Update="Views\PantallasRepartidor\PantallaPedidosEntrantes.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallasRepartidor\profilePageRepartidor.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Pedidos\detallePedido.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

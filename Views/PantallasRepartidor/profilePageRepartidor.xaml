@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.profilePageRepartidor"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundImageSource="fondo_todas_pantallas.png">
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Header  -->
+        <StackLayout
+            Grid.Row="0"
+            Margin="0,0,0,0"
+            BackgroundColor="Transparent"
+            Orientation="Vertical">
+            <Frame
+                Margin="0,0,0,0"
+                Padding="0,10,0,10"
+                BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
+                CornerRadius="20">
+                <StackLayout
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    Orientation="Vertical">
+                    <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
+                        <ImageButton
+                            x:Name="btnNotification"
+                            Margin="10,0,20,0"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            Clicked="btnNotification_Clicked"
+                            HeightRequest="40"
+                            Source="Iconos/notificacione.png"
+                            WidthRequest="40" />
+                        <!--  Spacer  -->
+                        <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                        <Label
+                            Margin="0,0,140,0"
+                            FontAttributes="Bold"
+                            Text="Perfil de Repartidor"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+
+
+        <!--  Body  -->
+        <ScrollView Grid.Row="1">
+            <StackLayout VerticalOptions="Start">
+                <Frame
+                    Margin="10,10,10,10"
+                    BackgroundColor="{DynamicResource BlackWithTransparency}"
+                    BorderColor="{DynamicResource AzulBotones}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand">
+                    <StackLayout>
+
+                        <Frame
+                            Margin="0,0,0,0"
+                            Padding="0,10,0,10"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="20">
+                            <StackLayout
+                                Padding="0,0,0,0"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="Center"
+                                Orientation="Horizontal">
+                                <Frame
+                                    Margin="0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="{DynamicResource AzulBotones}"
+                                    CornerRadius="100"
+                                    HeightRequest="120"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="Fill"
+                                    WidthRequest="120">
+                                    <Grid>
+                                        <Image
+                                            x:Name="imgPerfil"
+                                            Aspect="AspectFill"
+                                            HeightRequest="120"
+                                            Source="Logo/logp.png"
+                                            WidthRequest="120" />
+                                    </Grid>
+                                </Frame>
+
+                                <ImageButton
+                                    x:Name="btnCambiarImagen"
+                                    Margin="-10,90,10,0"
+                                    Aspect="AspectFit"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="{DynamicResource AzulOscuro}"
+                                    Clicked="btnCambiarImagen_Clicked"
+                                    HeightRequest="24"
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="Profile/editarperfil.png"
+                                    WidthRequest="24" />
+                            </StackLayout>
+                        </Frame>
+
+                        <!--  Frame Informacion  -->
+                        <Frame
+                            x:Name="frameInformacion"
+                            Margin="5,5,5,10"
+                            Padding="5"
+                            BackgroundColor="Transparent"
+                            BorderColor="{DynamicResource AzulBotones}"
+                            CornerRadius="10"
+                            HasShadow="True"
+                            HorizontalOptions="FillAndExpand">
+
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Vertical"
+                                VerticalOptions="FillAndExpand">
+
+                                <Label
+                                    x:Name="labelNombre"
+                                    Grid.Row="0"
+                                    Margin="5,10,0,1"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="200" />
+
+                                <Label
+                                    x:Name="labelUsuario"
+                                    Grid.Row="0"
+                                    Margin="5,0,0,5"
+                                    FontAttributes="Bold,Italic"
+                                    FontSize="12"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="200" />
+
+                                <Label
+                                    x:Name="labelNumeroTelefono"
+                                    Grid.Row="0"
+                                    Margin="5,0,0,5"
+                                    FontAttributes="Bold"
+                                    FontSize="12"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="200" />
+
+                                <Label
+                                    x:Name="labelCorreoElectronico"
+                                    Grid.Row="0"
+                                    Margin="5,0,0,5"
+                                    FontAttributes="Bold"
+                                    FontSize="12"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text=""
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="200" />
+                            </StackLayout>
+                        </Frame>
+
+                        <!--  Frame Historial de Pedidos  -->
+                        <Frame
+                            x:Name="frameHistorialPedidos"
+                            Margin="5"
+                            Padding="5"
+                            BackgroundColor="FloralWhite"
+                            BorderColor="{DynamicResource AzulBotones}"
+                            CornerRadius="10"
+                            HasShadow="True"
+                            HorizontalOptions="FillAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    x:Name="TapGestureHistorial"
+                                    CommandParameter="Historial"
+                                    Tapped="TapGestureHistorial_Tapped" />
+                            </Frame.GestureRecognizers>
+
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="FillAndExpand">
+                                <Image
+                                    Margin="3,10,3,10"
+                                    Aspect="AspectFit"
+                                    HeightRequest="48"
+                                    Source="Profile/historialcompras.png"
+                                    WidthRequest="48" />
+
+                                <Label
+                                    x:Name="labelHistorial"
+                                    Grid.Row="0"
+                                    Margin="5,10,0,5"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Historial de Pedidos"
+                                    TextColor="{StaticResource AzulPersonalizado}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="200" />
+                            </StackLayout>
+                        </Frame>
+
+                        <!--  Frame Cambiar Contraseña  -->
+                        <Frame
+                            x:Name="frameContrasenia"
+                            Margin="5"
+                            Padding="5"
+                            BackgroundColor="FloralWhite"
+                            BorderColor="{DynamicResource AzulBotones}"
+                            CornerRadius="10"
+                            HasShadow="True"
+                            HorizontalOptions="FillAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    x:Name="TapGestureContrasenia"
+                                    CommandParameter="Cambiar Contrasenia"
+                                    Tapped="TapGestureContrasenia_Tapped" />
+                            </Frame.GestureRecognizers>
+
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="FillAndExpand">
+                                <Image
+                                    Margin="3,10,3,10"
+                                    Aspect="AspectFit"
+                                    HeightRequest="48"
+                                    Source="Profile/cambiarcontra.png"
+                                    WidthRequest="48" />
+
+                                <Label
+                                    x:Name="labelContrasenia"
+                                    Grid.Row="0"
+                                    Margin="5,10,0,5"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Cambiar Contraseña"
+                                    TextColor="{StaticResource AzulPersonalizado}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="200" />
+                            </StackLayout>
+                        </Frame>
+
+                        <!--  Frame Cambiar Correo  -->
+                        <Frame
+                            x:Name="frameCorreo"
+                            Margin="5"
+                            Padding="5"
+                            BackgroundColor="FloralWhite"
+                            BorderColor="{DynamicResource AzulBotones}"
+                            CornerRadius="10"
+                            HasShadow="True"
+                            HorizontalOptions="FillAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    x:Name="TapGestureCorreo"
+                                    CommandParameter="Cambiar Correo"
+                                    Tapped="TapGestureCorreo_Tapped" />
+                            </Frame.GestureRecognizers>
+
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="FillAndExpand">
+                                <Image
+                                    Margin="3,10,3,10"
+                                    Aspect="AspectFit"
+                                    HeightRequest="48"
+                                    Source="Profile/cambiarcorreo.png"
+                                    WidthRequest="48" />
+
+                                <Label
+                                    x:Name="labelCorreo"
+                                    Grid.Row="0"
+                                    Margin="5,10,0,5"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Cambiar Correo Electrónico"
+                                    TextColor="{StaticResource AzulPersonalizado}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="200" />
+                            </StackLayout>
+                        </Frame>
+
+                        <!--  Frame Cambiar Telefono  -->
+                        <Frame
+                            x:Name="frameTelefono"
+                            Margin="5"
+                            Padding="5"
+                            BackgroundColor="FloralWhite"
+                            BorderColor="{DynamicResource AzulBotones}"
+                            CornerRadius="10"
+                            HasShadow="True"
+                            HorizontalOptions="FillAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    x:Name="TapGestureTelefono"
+                                    CommandParameter="Cambiar Telefono"
+                                    Tapped="TapGestureTelefono_Tapped" />
+                            </Frame.GestureRecognizers>
+
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="FillAndExpand">
+                                <Image
+                                    Margin="3,10,3,10"
+                                    Aspect="AspectFit"
+                                    HeightRequest="48"
+                                    Source="Profile/cambiartelefono.png"
+                                    WidthRequest="48" />
+
+                                <Label
+                                    x:Name="labelTelefono"
+                                    Grid.Row="0"
+                                    Margin="5,10,0,5"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Cambiar Número de Teléfono"
+                                    TextColor="{StaticResource AzulPersonalizado}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="200" />
+                            </StackLayout>
+                        </Frame>
+
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
+
+        <!--  Bottom Navigation Bar  -->
+        <Frame
+            Grid.Row="2"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+                <ImageButton
+                    x:Name="btnInicioRepartidor"
+                    Margin="20,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnInicioRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botoninicio.png"
+                    WidthRequest="40" />
+                <ImageButton
+                    x:Name="btnPedidosRepartidor"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnPedidosRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botonpedidos.svg"
+                    WidthRequest="40" />
+                <ImageButton
+                    x:Name="btnIngresosRepartidor"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnIngresosRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botoningresos.svg"
+                    WidthRequest="40" />
+                <ImageButton
+                    x:Name="btnHistorialPedidosRepartidor"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnHistorialPedidosRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botonhistorialpedidos.svg"
+                    WidthRequest="40" />
+                <ImageButton
+                    x:Name="btnPerfilRepartidor"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnPerfilRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/perfilrepartidor.svg"
+                    WidthRequest="40" />
+                <ImageButton
+                    x:Name="btnLogOutRepartidor"
+                    Margin="0,0,20,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnLogOutRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/salirmenu.png"
+                    WidthRequest="40" />
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

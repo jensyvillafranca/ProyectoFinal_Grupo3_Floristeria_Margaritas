@@ -172,6 +172,6 @@ public partial class notificacionesEstadoPedidos : ContentPage
     // Controlador de eventos para el clic en el botón de actualización
     private async void btnRefresh_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Views.Notificaciones.notificacionesEstadoPedidos());
+        OnAppearing();
     }
 }

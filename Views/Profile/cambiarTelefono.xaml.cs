@@ -40,25 +40,48 @@ public partial class cambiarTelefono : ContentPage
         bool userConfirmed = await DisplayAlert("Confirmación", "Por favor confirme si desea actualizar su número de teléfono", "Si", "No");
 
         if (userConfirmed)
-        {
+        {           
             try
             {
-                // Construir el objeto de datos con el ID del cliente y el nuevo número de teléfono
-                var data = new
+                if (Config.Config.tipoUsuario == 1)
                 {
-                    idcliente = Config.Config.activeUserId,
-                    telefono = entryNumero.Text
-                };
+                    // Construir el objeto de datos con el ID del cliente y el nuevo número de teléfono
+                    var data = new
+                    {
+                        idcliente = Config.Config.activeUserId,
+                        telefono = entryNumero.Text
+                    };
 
-                // Enviar la solicitud para actualizar el número de teléfono al servidor
-                bool isSuccess = await _apiService.PostSuccessAsync("updateTelefono.php", data);
+                    // Enviar la solicitud para actualizar el número de teléfono al servidor
+                    bool isSuccess = await _apiService.PostSuccessAsync("updateTelefono.php", data);
 
-                // Mostrar un mensaje de éxito si la operación se realiza correctamente
-                if (isSuccess)
+                    // Mostrar un mensaje de éxito si la operación se realiza correctamente
+                    if (isSuccess)
+                    {
+                        await DisplayAlert("Alerta", "Su número de teléfono ha sido actualizado", "OK");
+                        entryNumero.Text = string.Empty;
+                        await Navigation.PopAsync();
+                    }
+                }
+                else if (Config.Config.tipoUsuario == 3)
                 {
-                    await DisplayAlert("Alerta", "Su número de teléfono ha sido actualizado", "OK");
-                    entryNumero.Text = string.Empty;
-                    await Navigation.PopAsync();
+                    // Construir el objeto de datos con el ID del cliente y el nuevo número de teléfono
+                    var data = new
+                    {
+                        idrepartidor = Config.Config.activeRepartidorId,
+                        telefono = entryNumero.Text
+                    };
+
+                    // Enviar la solicitud para actualizar el número de teléfono al servidor
+                    bool isSuccess = await _apiService.PostSuccessAsync("updateTelefonoRepartidor.php", data);
+
+                    // Mostrar un mensaje de éxito si la operación se realiza correctamente
+                    if (isSuccess)
+                    {
+                        await DisplayAlert("Alerta", "Su número de teléfono ha sido actualizado", "OK");
+                        entryNumero.Text = string.Empty;
+                        await Navigation.PopAsync();
+                    }
                 }
             }
             catch (Exception ex)

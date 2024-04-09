@@ -31,14 +31,31 @@ public partial class cambiarCorreo : ContentPage
 
         try
         {
-            var passDetails = await _apiService.PostDataAsync<loginModel>("passwordDetails.php", new { idcliente = Config.Config.activeUserId });
-            if (passDetails != null)
+            if (Config.Config.tipoUsuario == 1)
             {
-                storedPassword = passDetails.contrasenia;
+                var passDetails = await _apiService.PostDataAsync<loginModel>("passwordDetails.php", new { idcliente = Config.Config.activeUserId });
+
+                if (passDetails != null)
+                {
+                    storedPassword = passDetails.contrasenia;
+                }
+                else
+                {
+                    await DisplayAlert("Alerta", "El Usuario no existe.", "OK");
+                }
             }
-            else
+            else if (Config.Config.tipoUsuario == 3)
             {
-                await DisplayAlert("Alerta", "El Usuario no existe.", "OK");
+                var passDetails = await _apiService.PostDataAsync<loginModel>("passwordDetailsRepartidor.php", new { idrepartidor = Config.Config.activeRepartidorId });
+
+                if (passDetails != null)
+                {
+                    storedPassword = passDetails.contrasenia;
+                }
+                else
+                {
+                    await DisplayAlert("Alerta", "El Usuario no existe.", "OK");
+                }
             }
         }
         catch (Exception ex)
@@ -78,19 +95,39 @@ public partial class cambiarCorreo : ContentPage
 
         if (passwordMatch)
         {
-            var data = new
+            if(Config.Config.tipoUsuario == 1)
             {
-                idcliente = Config.Config.activeUserId,
-                correo = entryConfirmarCorreo.Text
-            };
-            bool isSuccess = await _apiService.PostSuccessAsync("updateCorreo.php", data);
-            if (isSuccess)
+                var data = new
+                {
+                    idcliente = Config.Config.activeUserId,
+                    correo = entryConfirmarCorreo.Text
+                };
+                bool isSuccess = await _apiService.PostSuccessAsync("updateCorreo.php", data);
+                if (isSuccess)
+                {
+                    await DisplayAlert("Alerta", "Su correo electrónico ha sido actualizado", "OK");
+                    entryPassword.Text = string.Empty;
+                    entryCorreo.Text = string.Empty;
+                    entryConfirmarCorreo.Text = string.Empty;
+                    await Navigation.PopAsync();
+                }
+            }
+            else if(Config.Config.tipoUsuario == 3)
             {
-                await DisplayAlert("Alerta", "Su correo electrónico ha sido actualizado", "OK");
-                entryPassword.Text = string.Empty;
-                entryCorreo.Text = string.Empty;
-                entryConfirmarCorreo.Text = string.Empty;
-                await Navigation.PopAsync();
+                var data = new
+                {
+                    idrepartidor = Config.Config.activeRepartidorId,
+                    correo = entryConfirmarCorreo.Text
+                };
+                bool isSuccess = await _apiService.PostSuccessAsync("updateCorreoRepartidor.php", data);
+                if (isSuccess)
+                {
+                    await DisplayAlert("Alerta", "Su correo electrónico ha sido actualizado", "OK");
+                    entryPassword.Text = string.Empty;
+                    entryCorreo.Text = string.Empty;
+                    entryConfirmarCorreo.Text = string.Empty;
+                    await Navigation.PopAsync();
+                }
             }
         }
         else

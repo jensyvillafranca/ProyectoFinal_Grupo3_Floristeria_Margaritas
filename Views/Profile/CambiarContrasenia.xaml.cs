@@ -23,14 +23,31 @@ public partial class CambiarContrasenia : ContentPage
 
         try
         {
-            var passDetails = await _apiService.PostDataAsync<loginModel>("passwordDetails.php", new { idcliente = Config.Config.activeUserId });
-            if (passDetails != null)
+            if (Config.Config.tipoUsuario == 1)
             {
-                storedPassword = passDetails.contrasenia;
+                var passDetails = await _apiService.PostDataAsync<loginModel>("passwordDetails.php", new { idcliente = Config.Config.activeUserId });
+
+                if (passDetails != null)
+                {
+                    storedPassword = passDetails.contrasenia;
+                }
+                else
+                {
+                    await DisplayAlert("Alerta", "El Usuario no existe.", "OK");
+                }
             }
-            else
+            else if (Config.Config.tipoUsuario == 3)
             {
-                await DisplayAlert("Alerta", "El Usuario no existe.", "OK");
+                var passDetails = await _apiService.PostDataAsync<loginModel>("passwordDetailsRepartidor.php", new { idrepartidor = Config.Config.activeRepartidorId });
+
+                if (passDetails != null)
+                {
+                    storedPassword = passDetails.contrasenia;
+                }
+                else
+                {
+                    await DisplayAlert("Alerta", "El Usuario no existe.", "OK");
+                }
             }
         }
         catch (Exception ex)
@@ -109,6 +126,7 @@ public partial class CambiarContrasenia : ContentPage
         if (passwordMatch)
         {
             string encryptedPassword = PasswordHandler.EncryptPassword(entryConfirmarContrasenia.Text);
+
 
             var data = new
             {
