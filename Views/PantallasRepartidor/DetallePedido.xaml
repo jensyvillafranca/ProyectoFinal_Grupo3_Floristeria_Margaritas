@@ -20,7 +20,7 @@
 
                         <Image Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Source="ImagenesRepartidor/atras.png"/>
                         <Label Grid.Column="1" TextColor="White" FontSize="16" FontAttributes="Bold" Text="Detalle de Pedido" HorizontalOptions="Center" VerticalOptions="Start"></Label>
-                        <Label Grid.Column="1" Margin="0,-20,0,-45" TextColor="White" FontSize="12" FontAttributes="Bold" Text="Código de Pedido: PED-56546" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                        <Label Grid.Column="1" Margin="0,-20,0,-45" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"></Label>
                         <Image Grid.Column="2" Source="ImagenesRepartidor/notificacion_repartidor.png" WidthRequest="25" HeightRequest="25"/>
                     </Grid>
                 </Frame>
@@ -40,12 +40,12 @@
                                 <RoundRectangle CornerRadius="100"></RoundRectangle>
                             </Border.StrokeShape>
 
-                            <Image Source="Productos/flowers2.png" MaximumWidthRequest="250"/>
+                            <Image x:Name="img_product" MaximumWidthRequest="250"/>
                         </Border>
 
                         <StackLayout>
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1"/>
+                                <TapGestureRecognizer Tapped="view_photo_Tapped" NumberOfTapsRequired="1"/>
                                 <!--hacer click es con el atributo Tapped="evento del boton"-->
                             </StackLayout.GestureRecognizers>
                             <Grid HorizontalOptions="Center" Margin="0,0,0,20">
@@ -70,7 +70,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Image Grid.Column="0" Source="ImagenesRepartidor/cliente.png" HeightRequest="40" ></Image>
-                                    <Label Grid.Column="1" Text="Cliente: Jensy Lorena Villafranca" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Label x:Name="lbl_client" Grid.Column="1" Text="Cliente: Jensy Lorena Villafranca" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
                                 </Grid>
                             </StackLayout>
                         </Border>
@@ -87,7 +87,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Image Grid.Column="0" Source="ImagenesProducto/producto_cliente.png" HeightRequest="40" ></Image>
-                                    <Label Grid.Column="1" Text="Producto: Margaritas + Peluche" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Label x:Name="lbl_product" Grid.Column="1" Text="Producto: Margaritas + Peluche" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
                                 </Grid>
                             </StackLayout>
                         </Border>
@@ -104,7 +104,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Image Grid.Column="0" Source="ImagenesRepartidor/ubicacion_cliente.png" HeightRequest="40" ></Image>
-                                    <Label Grid.Column="1" Text="Ubicación: Choloma Cortés, Colonia Sierra Verde" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Label x:Name="lbl_location" Grid.Column="1" Text="Ubicación: Choloma Cortés, Colonia Sierra Verde" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
                                 </Grid>
                             </StackLayout>
                         </Border>
@@ -121,7 +121,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Image Grid.Column="0" Source="ImagenesRepartidor/fechaestimada_cliente.png" HeightRequest="40" ></Image>
-                                    <Label Grid.Column="1" Text="Fecha Estimada de Entrega: 04/02/2024 02:30 p.m." TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Label x:Name="lbl_date" Grid.Column="1" Text="Fecha Estimada de Entrega: 04/02/2024 02:30 p.m." TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
                                 </Grid>
                             </StackLayout>
                         </Border>
@@ -138,7 +138,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Image Grid.Column="0" Source="ImagenesRepartidor/telefono_cliente.png" HeightRequest="40" ></Image>
-                                    <Label Grid.Column="1" Text="Teléfono: 9548-9132" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Label x:Name="lbl_phone" Grid.Column="1" Text="Teléfono: 9548-9132" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
                                 </Grid>
                             </StackLayout>
                         </Border>
@@ -155,7 +155,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Image Grid.Column="0" Source="ImagenesRepartidor/recoger_sucursal.png" HeightRequest="40" ></Image>
-                                    <Label Grid.Column="1" Text="Recoger en Sucursal Circunvalación" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Label x:Name="lbl_sucursal" Grid.Column="1" Text="Recoger en Sucursal Circunvalación" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
                                 </Grid>
                             </StackLayout>
                         </Border>
@@ -172,7 +172,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Image Grid.Column="0" Source="ImagenesRepartidor/notas_clientes.png" HeightRequest="40" ></Image>
-                                    <Label Grid.Column="1" Text="Nota del usuario: “Dejar el pedido en la puerta de su casa”" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Label x:Name="lbl_note" Grid.Column="1" Text="Nota del usuario: “Dejar el pedido en la puerta de su casa”" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
                                 </Grid>
                             </StackLayout>
                         </Border>
@@ -189,7 +189,7 @@
                             <RoundRectangle CornerRadius="50"/>
                         </Border.StrokeShape>
 
-                        <Image HorizontalOptions="End" Source="ImagenesRepartidor/llamada_cliente.png" HeightRequest="50"></Image>
+                        <ImageButton Clicked="make_phone_call_Clicked" HorizontalOptions="End" Source="ImagenesRepartidor/llamada_cliente.png" HeightRequest="50"></ImageButton>
                     </Border>
 
                     <Border Margin="10,0,0,0" Grid.Column="1" WidthRequest="50" HorizontalOptions="Start" HeightRequest="50">
@@ -197,11 +197,11 @@
                             <RoundRectangle CornerRadius="50"/>
                         </Border.StrokeShape>
 
-                        <Image HorizontalOptions="End" Source="ImagenesRepartidor/whastapp.png" HeightRequest="50"></Image>
+                        <ImageButton Clicked="open_whatsapp_Clicked" HorizontalOptions="End" Source="ImagenesRepartidor/whastapp.png" HeightRequest="50"></ImageButton>
                     </Border>
 
                 </Grid>
-                <Button Margin="20" FontSize="15" CornerRadius="25" BackgroundColor="#00ADDC" FontAttributes="Bold" Text="Enviar solicitud"></Button>
+                <Button Clicked="start_order_Clicked" Margin="20" FontSize="15" CornerRadius="25" BackgroundColor="#00ADDC" FontAttributes="Bold" Text="Iniciar pedido"></Button>
             </StackLayout>
         </Border>
     </StackLayout>

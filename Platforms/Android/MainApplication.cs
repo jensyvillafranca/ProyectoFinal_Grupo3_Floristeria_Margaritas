@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Runtime;
-
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
 {
     [Application]

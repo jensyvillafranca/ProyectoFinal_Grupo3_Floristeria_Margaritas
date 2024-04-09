@@ -26,12 +26,7 @@
                 </Frame>
             </StackLayout>
         </Grid>
-        <Border Grid.Column="0" HeightRequest="448" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="345">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="12"/>
-            </Border.StrokeShape>
-            <maps:Map x:Name="mapa" MapType="Street" />
-        </Border>
+        <WebView x:Name="url_map" HeightRequest="500"/>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -47,8 +42,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" Source="ImagenesRepartidor/llamada_cliente.png" HeightRequest="40" HorizontalOptions="End"></Image>
-            <Image Grid.Column="1" Source="ImagenesRepartidor/whastapp.png" HeightRequest="40" HorizontalOptions="Start" Margin="20,0,0,0"></Image>
+            <ImageButton Clicked="make_phone_call_Clicked" Grid.Column="0" Source="ImagenesRepartidor/llamada_cliente.png" HeightRequest="40" HorizontalOptions="End"></ImageButton>
+            <ImageButton Clicked="open_whatsapp_Clicked" Grid.Column="1" Source="ImagenesRepartidor/whastapp.png" HeightRequest="40" HorizontalOptions="Start" Margin="20,0,0,0"></ImageButton>
         </Grid>
         <Button x:Name="btnEntregarPedidoCliente" Text="Finalizar Pedido" WidthRequest="330" BackgroundColor="#46b0f1" FontAttributes="Bold" Clicked="btnEntregarPedidoCliente_Clicked" VerticalOptions="End" Margin="0,4,0,0"></Button>
     </StackLayout>

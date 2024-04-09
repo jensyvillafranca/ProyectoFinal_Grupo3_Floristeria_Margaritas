@@ -15,6 +15,6 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos
     public class FiltroModel
     {
         public int idcategoria { get; set; }
-        public string? categoria {  get; set; }
+        public string? categoria { get; set; }
     }
 }

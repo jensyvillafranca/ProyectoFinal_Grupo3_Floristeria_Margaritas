@@ -12,7 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite;
-
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos
 {
     [SQLite.Table("ShoppingCartDB")]

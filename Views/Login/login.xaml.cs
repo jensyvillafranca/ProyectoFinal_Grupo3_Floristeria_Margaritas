@@ -95,6 +95,8 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
                             //Login Repartidor
                             var repartidorDetails = await _apiService.PostDataAsync<repartidorIdModel>("loginTokenRepartidor.php", new { idusuario = loginDetails.idusuario });
 
+        }
+
                             try
                             {
                                 await CrossFirebaseCloudMessaging.Current.CheckIfValidAsync();

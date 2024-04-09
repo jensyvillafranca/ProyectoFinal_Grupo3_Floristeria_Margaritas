@@ -40,6 +40,11 @@ public partial class profilePageUser : ContentPage
             // Manejar cualquier excepción que ocurra durante la obtención de productos del detalle del pedido
         }
 
+    private async void TapGestureHistorial_Tapped(object sender, TappedEventArgs e)
+    {
+
+        await AnimationUtilities.ChangeFrameColor(frameHistorial, Color.FromRgb(255, 255, 255), Color.FromRgb(65, 185, 254), 250);
+        await Navigation.PushAsync(new HistorialCompras());
         //Revisa si hay notificaciones
         try
         {

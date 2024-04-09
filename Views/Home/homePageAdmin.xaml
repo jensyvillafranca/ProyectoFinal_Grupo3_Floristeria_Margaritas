@@ -364,6 +364,7 @@
                                 WidthRequest="50">
                                 <DatePicker
                                     x:Name="datePickerStartDate"
+                                    DateSelected="datePickerStartDate_DateSelected"
                                     BackgroundColor="White"
                                     FontSize="9"
                                     HorizontalOptions="CenterAndExpand"
@@ -385,6 +386,7 @@
                                 WidthRequest="50">
                                 <DatePicker
                                     x:Name="datePickerEndDate"
+                                    DateSelected="datePickerEndDate_DateSelected"
                                     BackgroundColor="White"
                                     FontSize="9"
                                     HorizontalOptions="CenterAndExpand"
@@ -395,107 +397,12 @@
                         </Grid>
 
                         <!--  Grafica  -->
-                        <Image
-                            Margin="0,10,0,10"
-                            Aspect="AspectFit"
-                            HeightRequest="150"
-                            Source="Home/piechart.png" />
+                        <WebView x:Name="pie_chart"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                     </StackLayout>
                 </Frame>
 
 
-                <!--  Body: Third Row  -->
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <!--  Ganancias Frame  -->
-                    <Frame
-                        x:Name="frameGanancias"
-                        Margin="5"
-                        Padding="5"
-                        BackgroundColor="{DynamicResource AzulMedio}"
-                        BorderColor="{DynamicResource AzulBotones}"
-                        CornerRadius="10"
-                        HasShadow="True">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer
-                                x:Name="TapGestureGanancias"
-                                CommandParameter="Ganancias"
-                                Tapped="TapGestureGanancias_Tapped" />
-                        </Frame.GestureRecognizers>
-                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                            <Label
-                                Margin="0,0,0,10"
-                                FontAttributes="Bold"
-                                FontSize="14"
-                                HorizontalTextAlignment="Center"
-                                Text="Total Generado por Pedidos"
-                                TextColor="White" />
-                            <Image
-                                Aspect="AspectFit"
-                                HeightRequest="50"
-                                Source="Home/coin.png" />
-                            <Label
-                                x:Name="labelTotalGenerado"
-                                Margin="0,10,0,0"
-                                Padding="0,0,0,10"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="Center"
-                                Text="L 10,235.50"
-                                TextColor="White" />
-                        </StackLayout>
-                    </Frame>
-
-                    <!--  Stock Frame  -->
-                    <Frame
-                        x:Name="frameStock"
-                        Grid.Column="1"
-                        Margin="5"
-                        Padding="5"
-                        BackgroundColor="{DynamicResource AzulMedio}"
-                        BorderColor="{DynamicResource AzulBotones}"
-                        CornerRadius="10"
-                        HasShadow="True">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer
-                                x:Name="TapGestureStock"
-                                CommandParameter="Stock"
-                                Tapped="TapGestureStock_Tapped" />
-                        </Frame.GestureRecognizers>
-                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                            <Label
-                                Margin="0,0,0,0"
-                                FontAttributes="Bold"
-                                FontSize="14"
-                                HorizontalTextAlignment="Center"
-                                Text="Stock de Productos"
-                                TextColor="White" />
-                            <Image
-                                Margin="0,0,0,5"
-                                Aspect="AspectFit"
-                                HeightRequest="120"
-                                Source="Home/barchart.png"
-                                WidthRequest="120" />
-                            <Button
-                                x:Name="btnVerVencidos"
-                                Margin="0,0,0,5"
-                                BackgroundColor="{DynamicResource AzulBotones}"
-                                BorderColor="{DynamicResource AzulOscuro}"
-                                Clicked="btnVerVencidos_Clicked"
-                                CornerRadius="20"
-                                FontAttributes="Bold"
-                                FontSize="7"
-                                HeightRequest="35"
-                                HorizontalOptions="CenterAndExpand"
-                                SemanticProperties.Hint="Ver Productos Vencidos"
-                                Text="Ver Productos Vencidos"
-                                WidthRequest="110" />
-                        </StackLayout>
-                    </Frame>
-                </Grid>
+                
             </StackLayout>
         </ScrollView>
 

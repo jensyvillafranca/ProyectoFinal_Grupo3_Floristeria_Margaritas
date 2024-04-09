@@ -22,7 +22,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel
         private double discountPercentage = 0;
         private double discountedPrice = 0;
 
-        public DetalleProductoViewModel(ProductoModel selectedProduct) 
+        public DetalleProductoViewModel(ProductoModel selectedProduct)
         {
             _selectedProduct = selectedProduct;
             precioProducto = Double.Parse(_selectedProduct.precioventa);
