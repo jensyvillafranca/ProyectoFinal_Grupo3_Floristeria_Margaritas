@@ -83,7 +83,7 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12"/>
                             </Border.StrokeShape>
-                            <Entry BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"/>
+                            <Entry x:Name="txt_name" BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"/>
                         </Border>
                         <Label TextColor="#6C6C6C" FontSize="12" Text="*Requerido" Grid.Column="0" Grid.Row="2"></Label>
 
@@ -92,7 +92,7 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12"/>
                             </Border.StrokeShape>
-                            <Entry BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"/>
+                            <Entry x:Name="txt_surname" BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"/>
                         </Border>
                         <Label TextColor="#6C6C6C" FontSize="12" Margin="10,0,0,0" Text="*Requerido" Grid.Column="1" Grid.Row="2"></Label>
 
@@ -101,7 +101,7 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12"/>
                             </Border.StrokeShape>
-                            <Entry BackgroundColor="White" WidthRequest="330" MaximumHeightRequest="40"/>
+                            <Entry x:Name="txt_email" BackgroundColor="White" WidthRequest="330" MaximumHeightRequest="40"/>
                         </Border>
                         <Image Source="correo.png" Grid.Column="1" Grid.Row="5" WidthRequest="25" HorizontalOptions="End" Margin="5"></Image>
                         <Label TextColor="#6C6C6C" FontSize="12" Text="*Requerido" Grid.Column="0" Grid.Row="6"></Label>
@@ -111,7 +111,7 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12"/>
                             </Border.StrokeShape>
-                            <Entry BackgroundColor="White" WidthRequest="330" MaximumHeightRequest="40"/>
+                            <Entry x:Name="txt_phone" BackgroundColor="White" WidthRequest="330" MaximumHeightRequest="40"/>
                         </Border>
                         <Image Source="telefono_repartidor.png" Grid.Column="1" Grid.Row="8" WidthRequest="25" HorizontalOptions="End" Margin="5"></Image>
                         <Label TextColor="#6C6C6C" FontSize="12" Text="*Requerido" Grid.Column="0" Grid.Row="9"></Label>
@@ -121,7 +121,7 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12"/>
                             </Border.StrokeShape>
-                            <Entry BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"/>
+                            <Entry x:Name="txt_dni" BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"/>
                         </Border>
                         <Image Source="dni.png" Grid.Column="0" Grid.Row="11" WidthRequest="30" HorizontalOptions="End" Margin="5"></Image>
                         <Label TextColor="#6C6C6C" FontSize="12" Text="*Requerido" Grid.Column="0" Grid.Row="12"></Label>
@@ -131,7 +131,7 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12"/>
                             </Border.StrokeShape>
-                            <DatePicker BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"></DatePicker>
+                            <DatePicker x:Name="dp_birthdate" BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"></DatePicker>
                         </Border>
                         <Image Source="fecha_nacimiento.png" Grid.Column="1" Grid.Row="11" WidthRequest="20" HorizontalOptions="End" Margin="5"></Image>
                         <Label TextColor="#6C6C6C" FontSize="12" Margin="10,0,0,0" Text="*Requerido" Grid.Column="1" Grid.Row="12"></Label>
@@ -141,7 +141,7 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12"/>
                             </Border.StrokeShape>
-                            <Picker WidthRequest="150" BackgroundColor="White" Title="Elige una opción" SelectedIndexChanged="Picker_SelectedIndexChanged">
+                            <Picker x:Name="pk_deparments" WidthRequest="150" BackgroundColor="White" Title="Elige una opción" SelectedIndexChanged="selected_department">
                                 <Picker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
                                         <x:String>Cortés</x:String>
@@ -158,10 +158,12 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12"/>
                             </Border.StrokeShape>
-                            <Picker WidthRequest="150" BackgroundColor="White" Title="Seleccione:" SelectedIndexChanged="Picker_SelectedIndexChanged">
+                            <Picker x:Name="pk_gender" WidthRequest="150" BackgroundColor="White" Title="Seleccione:" >
                                 <Picker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
-                                        <x:String>Hay que llenarlo</x:String>
+                                        <x:String>Masculino</x:String>
+                                        <x:String>Femenino</x:String>
+                                        <x:String>No definido</x:String>
                                     </x:Array>
                                 </Picker.ItemsSource>
                             </Picker>
@@ -174,10 +176,10 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12"/>
                             </Border.StrokeShape>
-                            <Picker WidthRequest="150" BackgroundColor="White" Title="Elige una opción" SelectedIndexChanged="Picker_SelectedIndexChanged">
+                            <Picker x:Name="pk_city" WidthRequest="150" BackgroundColor="White" Title="Elige una opción" >
                                 <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>Hay que llenarlo</x:String>
+                                    <x:Array  Type="{x:Type x:String}">
+                                        
                                     </x:Array>
                                 </Picker.ItemsSource>
                             </Picker>

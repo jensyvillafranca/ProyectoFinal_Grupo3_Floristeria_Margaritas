@@ -63,9 +63,6 @@
 
         </Frame>
 
-
-
-
         <ScrollView Grid.Row="1">
             <!--  Lista de los pedidos  -->
             <StackLayout>
@@ -83,101 +80,109 @@
                 <CollectionView
                     x:Name="collectionViewPedidosRepartidor"
                     ItemSizingStrategy="MeasureFirstItem"
-                    ItemsSource="{Binding ListaPedidosRepartidor}">
+                    ItemsSource="{Binding Items}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
+
+
                             <Frame
-                                x:Name="drawablePedido"
-                                Margin="10,0,10,10"
-                                Padding="10"
-                                BackgroundColor="FloralWhite"
-                                BorderColor="{DynamicResource AzulBotones}"
-                                CornerRadius="10"
-                                HasShadow="True"
-                                HorizontalOptions="FillAndExpand">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
+                                    x:Name="drawablePedido"
+                                    Margin="10,0,10,10"
+                                    Padding="10"
+                                    BackgroundColor="FloralWhite"
+                                    BorderColor="{DynamicResource AzulBotones}"
+                                    CornerRadius="10"
+                                    HasShadow="True"
+                                    HorizontalOptions="FillAndExpand">
+                                <StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="get_specific_data" NumberOfTapsRequired="1"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
 
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Grid.ColumnSpan="3"
-                                        FontAttributes="Bold"
-                                        FontSize="9"
-                                        HorizontalOptions="Start"
-                                        HorizontalTextAlignment="Start"
-                                        Text="{Binding codPedido, StringFormat='Código: {0}'}"
-                                        TextColor="Black" 
-                                        FontFamily="Fredoka-Light"/>
-
-                                    <Frame
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        Padding="0"
-                                        CornerRadius="10"
-                                        HeightRequest="100"
-                                        WidthRequest="80">
-                                        <Image Aspect="AspectFill" Source="{Binding imagenProductoPedido}" />
-                                    </Frame>
-
-                                    <StackLayout
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Orientation="Vertical"
-                                        Spacing="5">
-                                        <!--  Formato para visualización del nombre del cliente  -->
                                         <Label
-                                            Margin="5,0,0,0"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
                                             FontAttributes="Bold"
-                                            FontSize="13"
-                                            FontFamily="Fredoka-Light">
-                                            <Label.Text>
-                                                <Binding Path="clientePedido" StringFormat="Cliente: {0}" />
-                                            </Label.Text>
-                                        </Label>
+                                            FontSize="9"
+                                            HorizontalOptions="Start"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding codPedido, StringFormat='Código: {0}'}"
+                                            TextColor="Black" 
+                                            FontFamily="Fredoka-Light"/>
 
-                                        <!--  Formato para visualización del lugar de entrega del pedido  -->
-                                        <Label
-                                            Margin="5,0,0,0"
-                                            FontSize="11"
-                                            LineBreakMode="WordWrap"
-                                            MaximumWidthRequest="162"
-                                            FontFamily="Fredoka-Light"
-                                            HorizontalOptions="Start">
-                                            <Label.Text>
-                                                <Binding Path="lugarEntregaPedido" StringFormat="Entrega en: {0}" />
-                                            </Label.Text>
-                                        </Label>
+                                        <Label Text="{Binding ped_idpedido}" IsVisible="Hidden"/>
 
+                                        <Frame
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Padding="0"
+                                            CornerRadius="10"
+                                            HeightRequest="100"
+                                            WidthRequest="80">
+                                            <Image Aspect="AspectFill" Source="{Binding ped_enlacefoto}" />
+                                        </Frame>
 
-                                        <!--  Formato para visualización de la sucursal a recoger el pedido  -->
-                                        <Label Margin="5,0,0,0" FontSize="11" FontFamily="Fredoka-Light">
-                                            <Label.Text>
-                                                <Binding Path="sucursalPedido" StringFormat="Recoger en: {0}" />
-                                            </Label.Text>
-                                        </Label>
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Orientation="Vertical"
+                                            Spacing="5">
+                                            <!--  Formato para visualización del nombre del cliente  -->
+                                            <Label
+                                                Margin="5,0,0,0"
+                                                FontAttributes="Bold"
+                                                FontSize="13"
+                                                FontFamily="Fredoka-Light">
+                                                <Label.Text>
+                                                    <Binding Path="cli_nombrecompleto" StringFormat="Cliente: {0}" />
+                                                </Label.Text>
+                                            </Label>
 
-                                    </StackLayout>
-                                    <Image
-                                        Grid.Row="1"
-                                        Grid.Column="2"
-                                        Margin="15,0,0,15"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Source="ImagenesRepartidor/checkpedidosrepartidor.png"
-                                        VerticalOptions="CenterAndExpand" />
-                                </Grid>
+                                            <!--  Formato para visualización del lugar de entrega del pedido  -->
+                                            <Label
+                                                Margin="5,0,0,0"
+                                                FontSize="11"
+                                                LineBreakMode="WordWrap"
+                                                MaximumWidthRequest="162"
+                                                FontFamily="Fredoka-Light"
+                                                HorizontalOptions="Start">
+                                                <Label.Text>
+                                                    <Binding Path="dir_direccion" StringFormat="Entrega en: {0}" />
+                                                </Label.Text>
+                                            </Label>
+
+                                            <!--  Formato para visualización de la sucursal a recoger el pedido  -->
+                                            <Label Margin="5,0,0,0" FontSize="11" FontFamily="Fredoka-Light">
+                                                <Label.Text>
+                                                    <Binding Path="suc_nombresucursal" StringFormat="Recoger en: {0}" />
+                                                </Label.Text>
+                                            </Label>
+
+                                        </StackLayout>
+                                        <Image
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Margin="-15,-30,0,0"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Source="{Binding enlace_status}"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                </StackLayout>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

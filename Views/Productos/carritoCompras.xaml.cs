@@ -7,6 +7,7 @@
 
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using System.Collections.ObjectModel;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel;
 
@@ -53,7 +54,7 @@ public partial class carritoCompras : ContentPage
 
             foreach (var producto in productos)
             {
-                if(producto.precioventa != item.precioventa || producto.descuento != item.descuento)
+                if (producto.precioventa != item.precioventa || producto.descuento != item.descuento)
                 {
                     item.precioventaOutdated = item.precioventa;
                     item.descuentoOutdated = item.descuento;
@@ -148,7 +149,7 @@ public partial class carritoCompras : ContentPage
     // Método para mostrar la alerta de precio actualizado
     private async void showPrecioActualizadoAlert(List<Modelos.ShoppingCartItem> items)
     {
-        foreach(var item in items)
+        foreach (var item in items)
         {
             int idProducto = item.idproducto;
 
@@ -177,7 +178,7 @@ public partial class carritoCompras : ContentPage
                 collectionViewCarrito.ItemsSource = Ordenes;
             }
         }
-        
+
     }
 
     // Método para manejar el evento de toque en un elemento del carrito de compras
@@ -219,8 +220,8 @@ public partial class carritoCompras : ContentPage
 
     // Método para manejar la adición de la cantidad de un producto en el carrito
     private void HandleAddTapped(FrameOrden item, double precio)
-    {     
-        if (item.EntryQuantity+1 <= CalculateQuantityLimit(item))
+    {
+        if (item.EntryQuantity + 1 <= CalculateQuantityLimit(item))
         {
             item.EntryQuantity++;
             item.LabelPrecioTotal = string.Format("{0:N2}", item.EntryQuantity * precio);
@@ -232,7 +233,7 @@ public partial class carritoCompras : ContentPage
         else
         {
             CheckQuantityLimit(item);
-        }       
+        }
     }
 
     // Método para actualizar la cantidad de un producto en el carrito

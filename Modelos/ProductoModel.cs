@@ -17,11 +17,11 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos
     {
         public int idproducto { get; set; }
         public string? nombreproducto { get; set; }
-        public string? categoria {  get; set; }
-        public string? precioventa {  get; set; }
+        public string? categoria { get; set; }
+        public string? precioventa { get; set; }
         public int stock { get; set; }
         public string? enlacefoto { get; set; }
-        public string? descuento {  get; set; }
+        public string? descuento { get; set; }
         public string? descripcion { get; set; }
 
     }

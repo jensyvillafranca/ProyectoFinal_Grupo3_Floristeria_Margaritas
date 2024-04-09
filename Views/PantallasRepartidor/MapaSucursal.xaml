@@ -27,12 +27,7 @@
                 </Frame>
             </StackLayout>
         </Grid>
-        <Border Grid.Column="0" HeightRequest="448" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="345">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="12"/>
-            </Border.StrokeShape>
-            <maps:Map x:Name="mapa" MapType="Street" />
-        </Border>
+        <WebView x:Name="url_map" HeightRequest="500"/>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>

@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+	<application android:allowBackup="true" android:supportsRtl="true" android:icon="@mipmap/appicon">
+		<!--Para mapas-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.floristeriamargaritas">
 	<application android:allowBackup="true" android:supportsRtl="true" android:icon="@mipmap/appicon" android:label="Floristeria Margaritas">
 		
@@ -30,8 +33,13 @@
 	<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 	<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
 	<uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+
+	<!--Para mapas-->
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<!--Usar la localizacion precisa de donde nos encontramoss-->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 	<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-	<uses-sdk android:targetSdkVersion="34" />
 	<uses-feature android:name="android.hardware.location" android:required="false" />
 	<uses-feature android:name="android.hardware.location.gps" android:required="false" />
 	<uses-feature android:name="android.hardware.location.network" android:required="false" />

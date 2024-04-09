@@ -1,14 +1,10 @@
-/*
- * Descripción:
- * Este código define la lógica de backend para la página 'productoDetalle' de la aplicación Floristeria Margaritas, que muestra los detalles de un producto seleccionado.
- * Incluye la gestión de la adición de productos al carrito de compras, actualización de la cantidad y cálculo del precio total.
- */
-
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
-using Microsoft.Extensions.Primitives;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.CustomViews;
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
 public partial class productoDetalle : ContentPage
@@ -38,6 +34,7 @@ public partial class productoDetalle : ContentPage
         // Coloca el contexto de la pagina al viewmodel
         this.BindingContext = _viewModel;
 
+        if (int.Parse(_productoModel.descuento) != 0)
         // Configuración de visibilidad y estilo basado en el descuento del producto
         if (int.Parse(_productoModel.descuento) != 0)
         {
@@ -48,9 +45,9 @@ public partial class productoDetalle : ContentPage
         }
         else
         {
-            labelDescuento.IsVisible= false;
-            imgDescuento.IsVisible= false;
-            labelPrecioOriginal.IsVisible= false;
+            labelDescuento.IsVisible = false;
+            imgDescuento.IsVisible = false;
+            labelPrecioOriginal.IsVisible = false;
             frameDetalle.BorderColor = Color.FromHex("#41B9FE");
         }
 
@@ -79,7 +76,7 @@ public partial class productoDetalle : ContentPage
             enlacefoto = _productoModel.enlacefoto,
             descuento = _productoModel.descuento,
             descripcion = _productoModel.descripcion,
-            cantidad = int.Parse(quantityEntry.Text)  
+            cantidad = int.Parse(quantityEntry.Text)
         };
 
         try
@@ -95,14 +92,14 @@ public partial class productoDetalle : ContentPage
                 else
                 {
                     var result = await DisplayAlert("Aviso", "El producto ya está en el carrito", "Ir a Carrito", "Seguir Comprando");
-                    if(result == true)
+                    if (result == true)
                     {
                         await Navigation.PushAsync(new Views.Productos.carritoCompras());
                     }
                     else
                     {
                         await Navigation.PushAsync(new Views.Productos.productos());
-                    }             
+                    }
                 }
             }
         }

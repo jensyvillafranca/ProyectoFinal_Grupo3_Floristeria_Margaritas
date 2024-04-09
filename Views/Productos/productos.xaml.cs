@@ -1,16 +1,31 @@
-/*
- * Descripción:
- * Este código define la lógica de backend para la página 'productos' de la aplicación Floristeria Margaritas, que muestra una lista de productos con opciones de filtrado y búsqueda.
- * Incluye la carga de productos desde la API, la gestión de filtros y la búsqueda de productos.
- */
-
 using System.Collections.ObjectModel;
 using System.Text.Json;
 using System.Windows.Input;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-windows10.0.19041.0)'
+Antes:
+using ProyectoFinal_Grupo3_Floristeria_Margaritas;
+Después:
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using System.Collections.ObjectModel;
+using System.Text.Json;
+using System.Windows.Input;
+*/
+
+/* Cambio no fusionado mediante combinación del proyecto 'ProyectoFinal_Grupo3_Floristeria_Margaritas (net8.0-android)'
+Antes:
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas;
+Después:
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
+using System.Collections.ObjectModel;
+using System.Text.Json;
+using System.Windows.Input;
+*/
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
 
@@ -71,7 +86,7 @@ public partial class productos : ContentPage
         carouselViewFiltros.ItemsSource = Filtros;
 
         AsyncTaskExec();
-        
+
     }
 
 
@@ -133,7 +148,7 @@ public partial class productos : ContentPage
             // Controla la visibilidad basado en el descuento
             frameItem.IsDescuentoVisible = int.Parse(producto.descuento) != 0;
             frameItem.IsDescuentoImageVisible = int.Parse(producto.descuento) != 0;
-            if(int.Parse(producto.descuento)!= 0)
+            if (int.Parse(producto.descuento) != 0)
             {
                 frameItem.BorderColor = Color.FromHex("#F44336");
             }

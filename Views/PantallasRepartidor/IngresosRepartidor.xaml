@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.IngresosRepartidor"
+             xmlns:expander="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
              Title="IngresosRepartidor"
              Shell.NavBarIsVisible="False"
              BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.svg">
@@ -43,7 +44,7 @@
                     <ColumnDefinition Width="310"></ColumnDefinition>
                     <ColumnDefinition Width="0"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Entry Grid.Column="0" Placeholder="Busca tu pedido aquí" WidthRequest="280" HorizontalOptions="Start"></Entry>
+                <Entry x:Name="txt_search_data" Grid.Column="0" Placeholder="Busca tu pedido aquí" TextChanged="txt_search_data_TextChanged" WidthRequest="280" HorizontalOptions="Start"></Entry>
                 <Image Grid.Column="1" Source="ImagenesAdministrador/buscar.png" WidthRequest="30" HeightRequest="30" VerticalOptions="End" HorizontalOptions="End" />
             </Grid>
         </Border>
@@ -54,7 +55,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label Text="¡Ingresos generados por tus pedidos!" Grid.Column="0" TextColor="Blue" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,10,0,10"></Label>
-            <Label Text="Total: L.2,500" Grid.Column="1" TextColor="Blue" FontAttributes="Bold" Margin="0,10,0,0"></Label>
+            <Label x:Name="lbl_total" Text="Total: L.2,500" Grid.Column="1" TextColor="Blue" FontAttributes="Bold" Margin="0,10,0,0"></Label>
         </Grid>
 
         <ScrollView Grid.Row="1" HeightRequest="500">
@@ -62,8 +63,7 @@
             <StackLayout>
                 <CollectionView
                     x:Name="collectionViewIngresosRepartidor"
-                    ItemSizingStrategy="MeasureFirstItem"
-                    ItemsSource="{Binding ListaIngresosRepartidor}">
+                    ItemsSource="{Binding Items}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
@@ -78,85 +78,104 @@
                                 CornerRadius="10"
                                 HasShadow="True"
                                 HorizontalOptions="FillAndExpand">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="40" />
-                                        <ColumnDefinition Width="190" />
-                                        <ColumnDefinition Width="60" />
-                                        <ColumnDefinition Width="20" />
-                                    </Grid.ColumnDefinitions>
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image
-                                        Grid.Column="0"
-                                        Grid.ColumnSpan="3"
-                                        HorizontalOptions="Start"
-                                        x:Name="iconoEstadoPedido"
-                                        Source="ImagenesRepartidor/estado_listo_ingresos.png"/>
-
-                                    <StackLayout
-                                        Grid.Column="1"
-                                        Orientation="Vertical"
-                                        Spacing="5">
+                                <expander:SfExpander BackgroundColor="White" Margin="12">
+                                    <expander:SfExpander.Header>
                                         <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40" />
+                                                <ColumnDefinition Width="190" />
+                                                <ColumnDefinition Width="60" />
+                                                <ColumnDefinition Width="20" />
+                                            </Grid.ColumnDefinitions>
+
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="20"></RowDefinition>
-                                                <RowDefinition></RowDefinition>
-                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
-                                            <!--  Formato para visualización del código del pedido  -->
-                                            <Label
-                                                Grid.Row="0"
-                                                FontAttributes="Bold"
-                                                FontSize="12"
-                                                HorizontalOptions="Start"
-                                                HorizontalTextAlignment="Start"
-                                                Text="{Binding codPedido, StringFormat='Cód. Pedido {0}'}"
-                                                TextColor="#1d4999" />
-                                            <!--  Formato para visualización de la fecha de entrega  -->
-                                            <Label
-                                                Grid.Row="1"
-                                                FontSize="12"
-                                                HorizontalOptions="Start"
-                                                HorizontalTextAlignment="Start"
-                                                Text="{Binding fechaEntrega, StringFormat='Entregado en fecha {0}'}"
-                                                TextColor="#4472c5" />
-                                            <!--  Formato para visualización del estado de la entrega  -->
-                                            <Label
-                                                Grid.Row="2"
-                                                FontSize="12"
-                                                HorizontalOptions="Start"
-                                                HorizontalTextAlignment="Start"
-                                                Text="{Binding estadoIngreso}"
-                                                TextColor="#4472c5" />
-                                        </Grid>
-                                    </StackLayout>
-                                    <!--Para visualización del dinero y el icono de desplegable-->
-                                    <StackLayout Grid.Column="2" VerticalOptions="Center">
-                                        <Label
+                                            
+                                            <Image
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
+                                            HorizontalOptions="Start"
+                                            x:Name="iconoEstadoPedido"
+                                            Source="{Binding enlace_status}"/>
+
+                                            <StackLayout
+                                            Grid.Column="1"
+                                            Orientation="Vertical"
+                                            Spacing="5">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="20"></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <!--  Formato para visualización del código del pedido  -->
+                                                    <Label
+                                                    Grid.Row="0"
+                                                    FontAttributes="Bold"
+                                                    FontSize="12"
+                                                    HorizontalOptions="Start"
+                                                    HorizontalTextAlignment="Start"
+                                                    Text="{Binding codPedido, StringFormat='Cód. Pedido {0}'}"
+                                                    TextColor="#1d4999" />
+                                                    <!--CORREGIR: Falta el codigo ya que no esta en la base de datos-->
+
+                                                    <Label
+                                                    Grid.Row="1"
+                                                    FontSize="12"
+                                                    HorizontalOptions="Start"
+                                                    HorizontalTextAlignment="Start"
+                                                    Text="{Binding ped_fechapedido, StringFormat='Entregado en fecha {0}'}"
+                                                    TextColor="#4472c5" 
+                                                    Margin="15,0,0,0"/>
+                                                    <!--  Formato para visualización del estado de la entrega  -->
+                                                    <Label
+                                                    Grid.Row="2"
+                                                    FontSize="12"
+                                                    HorizontalOptions="Start"
+                                                    HorizontalTextAlignment="Start"
+                                                    Text="{Binding est_estado}"
+                                                    Margin="15,0,0,0"
+                                                    TextColor="#4472c5" />
+                                                </Grid>
+                                            </StackLayout>
+                                            <!--Para visualización del dinero y el icono de desplegable-->
+                                            <StackLayout Grid.Column="2" VerticalOptions="Center">
+                                                <Label
                                                 Grid.ColumnSpan="2"
                                                 Grid.Row="0"
                                                 FontAttributes="Bold"
                                                 FontSize="10"
                                                 HorizontalTextAlignment="Center"
-                                                Text="{Binding ingresosRepartidor, StringFormat='L. {0}'}"
-                                                TextColor="#00ba00" />
-                                    </StackLayout>
-                                    
-                                    <!--Desplegable-->
-                                    <Image Grid.Column="3" Grid.Row="0" Source="ImagenesRepartidor/desplegar.png" WidthRequest="15" VerticalOptions="Center"></Image>
-                                </Grid>
+                                                Text="{Binding ped_total, StringFormat='L. {0}'}"
+                                                TextColor="{Binding color}" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </expander:SfExpander.Header>
+                                    <expander:SfExpander.Content>
+                                        <Grid Padding="10" ColumnSpacing="10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label Grid.Row="0" TextColor="Black" Text="{Binding ped_comisionrepartidor, StringFormat='Comisión por pedido: L. {0}'}" HorizontalOptions="FillAndExpand"/>
+
+                                            <Label Grid.Row="1" Text="{Binding ped_propina, StringFormat='Propina: L. {0}'}" HorizontalOptions="FillAndExpand"/>
+
+                                            <Label Grid.Row="2" Text="{Binding ped_total, StringFormat='Total: L. {0}'}" HorizontalOptions="FillAndExpand"/>
+                                        </Grid>
+                                    </expander:SfExpander.Content>
+                                </expander:SfExpander>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </StackLayout>
         </ScrollView>
-
 
         <!--  Menú de Opciones  -->
         <Frame

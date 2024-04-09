@@ -86,16 +86,6 @@ public partial class MainPage : ContentPage
         Navigation.PushAsync(new Views.PantallasRepartidor.IngresosRepartidor());
     }
 
-    private void btnDetallePedido_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Views.PantallasRepartidor.DetallePedido());
-    }
-
-    private void btnMapaSucursal_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Views.PantallasRepartidor.MapaSucursal());
-    }
-
     //Permisos de geolocalización para los mapas de repartidores.
 
     //Solicitar permisos de geolocalización
@@ -161,11 +151,6 @@ public partial class MainPage : ContentPage
         {
             await DisplayAlert("Sin Acceso a internet", "Por favor, revisa tu conexion a internet para continuar.", "OK");
         }
-    }
-
-    private void btnMapaCliente_Clicked_1(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new Views.PantallasRepartidor.MapaEntregaCliente());
     }
 
     private void btnAlertas_Clicked(object sender, EventArgs e)

@@ -143,7 +143,6 @@
 	  <None Remove="Resources\Images\ImagenesRepartidor\botoninicio.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\botonpedidos.svg" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\check.png" />
-	  <None Remove="Resources\Images\ImagenesRepartidor\checkpedidosrepartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\cliente.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\correo.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\desplegar.png" />
@@ -248,6 +247,11 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.14" />
 		<PackageReference Include="Geolocator.Plugin" Version="1.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.7" />
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.7" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="Syncfusion.Maui.Expander" Version="24.2.9" />
 		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.14" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.14" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -332,7 +336,6 @@
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botoninicio.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\botonpedidos.svg" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\check.png" />
-	  <MauiImage Include="Resources\Images\ImagenesRepartidor\checkpedidosrepartidor.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\cliente.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\correo.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\desplegar.png" />
@@ -502,6 +505,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\MapaSucursal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PantallasRepartidor\ModalPhoto.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PantallasRepartidor\Modal_Pedidos.xaml">
