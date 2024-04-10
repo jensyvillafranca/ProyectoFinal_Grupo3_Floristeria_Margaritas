@@ -12,7 +12,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
 
             if (stayLogged == 0 || stayLogged == -1)
             {
-                MainPage = new AppShell();
+                MainPage = new NavigationPage(new Views.Login.login());
             }
             else if (stayLogged == 1 && tipoUsuario == 1)
             {
