@@ -248,6 +248,7 @@
 		<PackageReference Include="Geolocator.Plugin" Version="1.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="25.1.39" />
 		<PackageReference Include="Syncfusion.Maui.Expander" Version="24.2.9" />
 		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.14" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.14" />

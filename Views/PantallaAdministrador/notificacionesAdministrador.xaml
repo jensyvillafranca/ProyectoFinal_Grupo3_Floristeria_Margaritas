@@ -593,17 +593,6 @@
                     Source="ImagenesRepartidor/botonhistorialpedidos.svg"
                     WidthRequest="40" />
 
-                <!--  Anuncios Button  -->
-                <ImageButton
-                    x:Name="btnAnuncios"
-                    Margin="0,0,10,0"
-                    Aspect="AspectFit"
-                    BackgroundColor="Transparent"
-                    Clicked="btnAnuncios_Clicked"
-                    HeightRequest="40"
-                    HorizontalOptions="FillAndExpand"
-                    Source="Menu/promocionesmenu.png"
-                    WidthRequest="40" />
 
                 <!--  Perfil Button  -->
                 <ImageButton
@@ -614,7 +603,7 @@
                     Clicked="btnPerfil_Clicked"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
-                    Source="Home/perfilmenu.png"
+                    Source="Menu/promocionesmenu.png"
                     WidthRequest="40" />
 
                 <!--  Logout Button  -->

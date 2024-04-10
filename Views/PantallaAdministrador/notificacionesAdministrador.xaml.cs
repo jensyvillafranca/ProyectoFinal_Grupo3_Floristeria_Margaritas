@@ -251,9 +251,9 @@ public partial class notificacionesAdministrador : ContentPage
         await Navigation.PopAsync();
     }
 
-    private void btnNotification_Clicked(object sender, EventArgs e)
+    private async void btnNotification_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Notificaciones.notificacionesAdmin());
     }
 
     private async void btnHome_Clicked(object sender, EventArgs e)
@@ -263,12 +263,12 @@ public partial class notificacionesAdministrador : ContentPage
 
     private async void btnStock_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Views.CreacionProductos.HistorialProductosAgregados());
+        await Navigation.PushAsync(new Views.CreacionProductos.AgregarProducto(1));
     }
 
-    private void btnEstadisticas_Clicked(object sender, EventArgs e)
+    private async void btnEstadisticas_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.CreacionProductos.HistorialProductosAgregados());
     }
 
     private void btnAnuncios_Clicked(object sender, EventArgs e)
@@ -276,9 +276,9 @@ public partial class notificacionesAdministrador : ContentPage
 
     }
 
-    private void btnPerfil_Clicked(object sender, EventArgs e)
+    private async void btnPerfil_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.PantallaAdministrador.notificacionesAdministrador());
     }
 
     private async void btnLogout_Clicked(object sender, EventArgs e)

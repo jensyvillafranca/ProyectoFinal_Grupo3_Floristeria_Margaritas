@@ -244,12 +244,12 @@ public partial class HistorialProductosAgregados : ContentPage
 
     private async void btnStock_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Views.CreacionProductos.HistorialProductosAgregados());
+        await Navigation.PushAsync(new Views.CreacionProductos.AgregarProducto(1));
     }
 
-    private void btnEstadisticas_Clicked(object sender, EventArgs e)
+    private async void btnEstadisticas_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.CreacionProductos.HistorialProductosAgregados());
     }
 
     private void btnAnuncios_Clicked(object sender, EventArgs e)
@@ -257,9 +257,9 @@ public partial class HistorialProductosAgregados : ContentPage
 
     }
 
-    private void btnPerfil_Clicked(object sender, EventArgs e)
+    private async void btnPerfil_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.PantallaAdministrador.notificacionesAdministrador());
     }
 
     private async void btnLogout_Clicked(object sender, EventArgs e)
