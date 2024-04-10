@@ -12,69 +12,178 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!--  StackLayout para superponer elementos a la imagen del encabezado  -->
-        <Frame
+        <!--  Header  -->
+        <StackLayout
             Grid.Row="0"
-            Margin="0,0,0,10"
-            Padding="0,10,0,10"
-            BackgroundColor="{DynamicResource BlackWithTransparency}"
-            BorderColor="{DynamicResource AzulBotones}"
-            CornerRadius="20">
-            <StackLayout
+            Margin="0,0,0,0"
+            BackgroundColor="Transparent"
+            Orientation="Vertical">
+            <Frame
                 Margin="0,0,0,0"
-                Padding="0,0,0,0"
-                BackgroundColor="Transparent"
-                Orientation="Horizontal">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <!--  Icono Atrás  -->
-                    <Image
-                        Grid.Column="0"
-                        Margin="20,0,0,0"
-                        HorizontalOptions="Start"
-                        Source="ImagenesRepartidor/atras.png" />
-
-                    <!--  Texto  -->
-                    <Label
-                        Grid.Column="1"
-                        FontAttributes="Bold"
-                        FontSize="14"
-                        HorizontalOptions="Center"
-                        Text="Pedidos entrantes"
-                        TextColor="White"
-                        VerticalOptions="Center"
-                        FontFamily="Fredoka-Light"/>
-
-                    <!--  Icono de notificación  -->
-                    <StackLayout
-                        Grid.Column="2"
-                        Margin="0,0,20,0"
-                        HorizontalOptions="End"
-                        Orientation="Horizontal"
-                        Spacing="5">
-                        <Image HeightRequest="40" Source="Home/notificacion.png" />
+                Padding="0,10,0,10"
+                BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
+                CornerRadius="20">
+                <StackLayout
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    Orientation="Vertical">
+                    <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
+                        <ImageButton
+                            x:Name="btnNotification"
+                            Margin="10,0,20,0"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            Clicked="btnNotification_Clicked"
+                            HeightRequest="40"
+                            Source="Iconos/notificacione.png"
+                            WidthRequest="40" />
+                        <!--  Spacer  -->
+                        <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                        <Label
+                            Margin="0,0,130,0"
+                            FontAttributes="Bold"
+                            Text="Pedidos Entrantes"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
                     </StackLayout>
-                </Grid>
-            </StackLayout>
-
-        </Frame>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
 
         <ScrollView Grid.Row="1">
             <!--  Lista de los pedidos  -->
             <StackLayout>
-                <Label
-                    Margin="0,0,0,10"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    Text="¡Pedidos confirmados y listos para ser procesados&#x0a;por tí!"
-                    TextColor="{StaticResource AzulPersonalizado}"
-                    VerticalOptions="Start"
-                    VerticalTextAlignment="Center" 
-                    FontFamily="Fredoka-Light"/>
+                <!--  Pedido Activo  -->
+                <Frame
+                    Padding="0,0,0,0"
+                    BackgroundColor="{DynamicResource AzulOscuro}"
+                    BorderColor="{DynamicResource AzulBotones}">
+                    <Label
+                        Margin="0,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalTextAlignment="Center"
+                        Text="Pedido Activo"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </Frame>
+                <CollectionView
+                    x:Name="collectionViewPedidoActivo"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding PedidoActivo}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                x:Name="drawablePedido"
+                                Margin="10,0,10,10"
+                                Padding="10"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
+                                CornerRadius="10"
+                                HasShadow="True"
+                                HorizontalOptions="FillAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TappedCommand}" />
+                                </Frame.GestureRecognizers>
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
+                                            FontAttributes="Bold"
+                                            FontFamily="Fredoka-Light"
+                                            FontSize="9"
+                                            HorizontalOptions="Start"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding IdPedido, StringFormat='Código: {0}'}"
+                                            TextColor="Black" />
+
+                                        <Frame
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Padding="0"
+                                            CornerRadius="10"
+                                            HeightRequest="100"
+                                            WidthRequest="80">
+                                            <Image Aspect="AspectFill" Source="{Binding EnlaceFoto}" />
+                                        </Frame>
+
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Orientation="Vertical"
+                                            Spacing="5">
+                                            <!--  Formato para visualización del nombre del cliente  -->
+                                            <Label
+                                                Margin="5,0,0,0"
+                                                FontAttributes="Bold"
+                                                FontFamily="Fredoka-Light"
+                                                FontSize="13"
+                                                Text="{Binding NombreCompleto, StringFormat='Cliente: {0}'}" />
+
+                                            <!--  Formato para visualización del lugar de entrega del pedido  -->
+                                            <Label
+                                                Margin="5,0,0,0"
+                                                FontFamily="Fredoka-Light"
+                                                FontSize="11"
+                                                HorizontalOptions="Start"
+                                                LineBreakMode="WordWrap"
+                                                MaximumWidthRequest="162"
+                                                Text="{Binding Direccion, StringFormat='Entrega en: {0}'}" />
+
+                                            <!--  Formato para visualización de la sucursal a recoger el pedido  -->
+                                            <Label
+                                                Margin="5,0,0,0"
+                                                FontFamily="Fredoka-Light"
+                                                FontSize="11"
+                                                Text="{Binding NombreSucursal, StringFormat='Recoger en: {0}'}" />
+
+                                        </StackLayout>
+                                        <Image
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Margin="-15,-30,0,0"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Source="{Binding enlace_status}"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!--  Pedidos Disponibles  -->
+                <Frame
+                    Padding="0,0,0,0"
+                    BackgroundColor="{DynamicResource AzulOscuro}"
+                    BorderColor="{DynamicResource AzulBotones}">
+                    <Label
+                        Margin="0,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalTextAlignment="Center"
+                        Text="¡Pedidos confirmados y listos para ser procesados&#x0a;por tí!"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </Frame>
                 <!--  -Para poder dar un salto de línea lo hacemos con: &#x0a;  -->
 
                 <CollectionView
@@ -86,20 +195,18 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-
-
                             <Frame
-                                    x:Name="drawablePedido"
-                                    Margin="10,0,10,10"
-                                    Padding="10"
-                                    BackgroundColor="FloralWhite"
-                                    BorderColor="{DynamicResource AzulBotones}"
-                                    CornerRadius="10"
-                                    HasShadow="True"
-                                    HorizontalOptions="FillAndExpand">
+                                x:Name="drawablePedido"
+                                Margin="10,0,10,10"
+                                Padding="10"
+                                BackgroundColor="FloralWhite"
+                                BorderColor="{DynamicResource AzulBotones}"
+                                CornerRadius="10"
+                                HasShadow="True"
+                                HorizontalOptions="FillAndExpand">
                                 <StackLayout>
                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="get_specific_data" NumberOfTapsRequired="1"/>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="get_specific_data" />
                                     </StackLayout.GestureRecognizers>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -118,14 +225,14 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="3"
                                             FontAttributes="Bold"
+                                            FontFamily="Fredoka-Light"
                                             FontSize="9"
                                             HorizontalOptions="Start"
                                             HorizontalTextAlignment="Start"
-                                            Text="{Binding codPedido, StringFormat='Código: {0}'}"
-                                            TextColor="Black" 
-                                            FontFamily="Fredoka-Light"/>
+                                            Text="{Binding ped_idpedido, StringFormat='Pedido: #PED-{0}'}"
+                                            TextColor="Black" />
 
-                                        <Label Text="{Binding ped_idpedido}" IsVisible="Hidden"/>
+                                        <Label IsVisible="Hidden" Text="{Binding ped_idpedido}" />
 
                                         <Frame
                                             Grid.Row="1"
@@ -146,8 +253,8 @@
                                             <Label
                                                 Margin="5,0,0,0"
                                                 FontAttributes="Bold"
-                                                FontSize="13"
-                                                FontFamily="Fredoka-Light">
+                                                FontFamily="Fredoka-Light"
+                                                FontSize="13">
                                                 <Label.Text>
                                                     <Binding Path="cli_nombrecompleto" StringFormat="Cliente: {0}" />
                                                 </Label.Text>
@@ -156,18 +263,21 @@
                                             <!--  Formato para visualización del lugar de entrega del pedido  -->
                                             <Label
                                                 Margin="5,0,0,0"
-                                                FontSize="11"
-                                                LineBreakMode="WordWrap"
-                                                MaximumWidthRequest="162"
                                                 FontFamily="Fredoka-Light"
-                                                HorizontalOptions="Start">
+                                                FontSize="11"
+                                                HorizontalOptions="Start"
+                                                LineBreakMode="WordWrap"
+                                                MaximumWidthRequest="162">
                                                 <Label.Text>
                                                     <Binding Path="dir_direccion" StringFormat="Entrega en: {0}" />
                                                 </Label.Text>
                                             </Label>
 
                                             <!--  Formato para visualización de la sucursal a recoger el pedido  -->
-                                            <Label Margin="5,0,0,0" FontSize="11" FontFamily="Fredoka-Light">
+                                            <Label
+                                                Margin="5,0,0,0"
+                                                FontFamily="Fredoka-Light"
+                                                FontSize="11">
                                                 <Label.Text>
                                                     <Binding Path="suc_nombresucursal" StringFormat="Recoger en: {0}" />
                                                 </Label.Text>
@@ -208,6 +318,7 @@
                     Aspect="AspectFit"
                     BackgroundColor="Transparent"
                     BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnInicioRepartidor_Clicked"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/botoninicio.png"
@@ -218,6 +329,7 @@
                     Aspect="AspectFit"
                     BackgroundColor="Transparent"
                     BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnPedidosRepartidor_Clicked"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/botonpedidos.svg"
@@ -228,6 +340,7 @@
                     Aspect="AspectFit"
                     BackgroundColor="Transparent"
                     BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnIngresosRepartidor_Clicked"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/botoningresos.svg"
@@ -238,6 +351,7 @@
                     Aspect="AspectFit"
                     BackgroundColor="Transparent"
                     BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnHistorialPedidosRepartidor_Clicked"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/botonhistorialpedidos.svg"
@@ -248,6 +362,7 @@
                     Aspect="AspectFit"
                     BackgroundColor="Transparent"
                     BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnPerfilRepartidor_Clicked"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/perfilrepartidor.svg"
@@ -258,6 +373,7 @@
                     Aspect="AspectFit"
                     BackgroundColor="Transparent"
                     BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnLogOutRepartidor_Clicked"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Source="ImagenesRepartidor/salirmenu.png"

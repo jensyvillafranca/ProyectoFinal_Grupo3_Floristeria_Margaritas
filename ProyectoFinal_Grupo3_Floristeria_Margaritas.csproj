@@ -152,6 +152,7 @@
 	  <None Remove="Resources\Images\ImagenesRepartidor\estrellallenarepartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\estrellavaciarepartidor.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\estadolistoingresos.png" />
+	  <None Remove="Resources\Images\ImagenesRepartidor\fechaestimada_cliente.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\fecha_nacimiento.png" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.svg" />
 	  <None Remove="Resources\Images\ImagenesRepartidor\genero.png" />
@@ -337,6 +338,7 @@
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\dni.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\encabezado_repartidores.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\estado_listo_ingresos.png" />
+	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fechaestimada_cliente.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fecha_nacimiento.png" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\fondo_todas_pantallas.svg" />
 	  <MauiImage Include="Resources\Images\ImagenesRepartidor\genero.png" />

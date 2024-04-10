@@ -1,5 +1,6 @@
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Home;
 
@@ -13,6 +14,30 @@ public partial class homePageRepartidor : ContentPage
         NavigationPage.SetHasNavigationBar(this, false);
         labelBienvenido.Text = $"¡Bienvenido {PreferencesManager.GetString("usuario")}!";
         //SizeChanged += OnSizeChanged;
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        //Revisa si hay notificaciones
+        try
+        {
+            var resultado = await _apiService.PostDataAsync<existeUsuario>("revisarNotificacionesRepartidor.php", new { idrepartidor = Config.Config.activeRepartidorId });
+            bool existe = resultado.existe;
+
+            if (existe)
+            {
+                btnNotification.Source = "Iconos/notificacionn.png";
+            }
+            else
+            {
+                btnNotification.Source = "Iconos/notificacione.png";
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejar cualquier excepción que ocurra durante la obtención de productos del detalle del pedido
+        }
     }
 
     private void OnSizeChanged(object sender, EventArgs e)
@@ -37,11 +62,13 @@ public partial class homePageRepartidor : ContentPage
     private async void TapGesturePedidos_Tapped(object sender, TappedEventArgs e)
     {
         await AnimationUtilities.ChangeFrameColor(framePedidos, Color.FromRgb(46, 117, 182), Color.FromRgb(65, 185, 254), 250);
+        await Navigation.PushAsync(new Views.PantallasRepartidor.PantallaPedidosEntrantes());
     }
 
     private async void TapGestureIngresos_Tapped(object sender, TappedEventArgs e)
     {
         await AnimationUtilities.ChangeFrameColor(frameIngresos, Color.FromRgb(33, 52, 91), Color.FromRgb(65, 185, 254), 250);
+        await Navigation.PushAsync(new Views.PantallasRepartidor.IngresosRepartidor());
     }
 
     private async void TapGestureHistorial_Tapped(object sender, TappedEventArgs e)

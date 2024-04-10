@@ -28,7 +28,6 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas
             }
         
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NAaF1cXmhNYVJ3WmFZfVpgdVRMYV1bR35PIiBoS35RckVgWH1cc3VURWlcU0x+");
-            MainPage = new AppShell();
         }
     }
 }

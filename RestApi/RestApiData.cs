@@ -21,5 +21,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.RestApi{
         public const string buscar_sucursal = url_bd+"/buscarSucursalPedido.php";
         public const string estado_pedido = url_bd+"/validarCampoEstado.php";
         public const string update_pedido = url_bd+"/update_pedido.php";
+        public const string update_pedido2 = url_bd + "/update_pedido2.php";
+        public const string update_pedido3 = url_bd + "/update_pedido3.php";
     }
 }

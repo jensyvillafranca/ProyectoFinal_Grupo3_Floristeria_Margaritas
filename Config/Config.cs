@@ -66,5 +66,14 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Config
                 return stayLogged != 0 ? stayLogged : -1;
             }
         }
+
+        public static string sucursal
+        {
+            get
+            {
+                string sucursal = PreferencesManager.GetString("sucursal");
+                return sucursal;
+            }
+        }
     }
 }

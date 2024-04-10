@@ -1,3 +1,5 @@
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.RestApi;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Services;
 using System.Text.Json;
@@ -5,12 +7,14 @@ using System.Text.Json;
 namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor{
     public partial class MapaEntregaCliente : ContentPage{
         int ped_idpedido;
-        string phone;
+        string numPhone;
+        private string? sucursal;
 
-        public MapaEntregaCliente(int id_pedido){
+        public MapaEntregaCliente(int id_pedido, string tienda){
             InitializeComponent();
-
-            ped_idpedido=id_pedido;
+            NavigationPage.SetHasNavigationBar(this, false);
+            ped_idpedido =id_pedido;
+            sucursal = tienda;
         }
 
         protected override async void OnAppearing() {
@@ -30,13 +34,14 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor{
             }
 
             List<TableJoinQueries> list = JsonSerializer.Deserialize<List<TableJoinQueries>>(response);
-            phone=list[0].cli_telefono;
+            numPhone=list[0].cli_telefono;
             mostrarMapa(list[0].dir_direccion);
         }
 
         private void mostrarMapa(string destinoSucursal) {
             string parametros = Uri.EscapeDataString(destinoSucursal);
-            string url = $"https://phpclusters-164276-0.cloudclusters.net/mostrarMapaClient.php?destinoSucursal="+parametros+"&idPedido="+ped_idpedido;
+            string parametro2 = Uri.EscapeDataString(sucursal);
+            string url = $"https://phpclusters-164276-0.cloudclusters.net/mostrarMapaClient.php?destinoSucursal={parametros}&idPedido={ped_idpedido}&sucursal={parametro2}";
             Console.Write("El mensaje: "+url);
             url_map.Source=url;
         }
@@ -53,7 +58,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor{
             }
 
             List<TableJoinQueries> list = JsonSerializer.Deserialize<List<TableJoinQueries>>(response);
-            return list[0].ped_idestadopedido!=6;
+            return list[0].ped_idestadopedido!=3;
         }
 
         private async Task update_pedido() {
@@ -68,7 +73,7 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor{
             string response = "";
 
             try {
-                response=await Task.Run(() => Methods.insert_update_async(data,RestApiData.update_pedido));
+                response=await Task.Run(() => Methods.insert_update_async(data,RestApiData.update_pedido3));
 
                 if(response=="exitoso") {
                     await DisplayAlert("Exitoso","Ha finalizado su pedido","OK");
@@ -86,11 +91,23 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor{
         }
 
         private async void make_phone_call_Clicked(object sender,EventArgs e) {
-            await PhoneService.make_phone_call(phone);
+            bool userConfirmed = await DisplayAlert("Atención", "¿Desea realizar una llamada al repartidor?", "Si", "No");
+            if (userConfirmed)
+            {
+                string? phone = numPhone;
+                var uri = $"tel:{phone}";
+                await Launcher.OpenAsync(uri);
+            }
         }
 
         private async void open_whatsapp_Clicked(object sender,EventArgs e) {
-            await WhatsAppService.open_whatsapp(phone);
+            bool userConfirmed = await DisplayAlert("Atención", "¿Desea abrir la aplicación de WhatsApp para comunicarse con el repartidor?", "Si", "No");
+            if (userConfirmed)
+            {
+                string? phone = numPhone;
+                var uri = $"whatsapp://send?phone={phone}";
+                await Launcher.OpenAsync(uri);
+            }
         }
     }
 }

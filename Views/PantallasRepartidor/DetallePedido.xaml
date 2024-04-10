@@ -1,178 +1,342 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.DetallePedido"
-             Title="DetallePedido"
-             Shell.NavBarIsVisible="False"
-             BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.svg">
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.DetallePedido"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="DetallePedido"
+    BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.svg"
+    Shell.NavBarIsVisible="False">
     <StackLayout>
         <Grid Margin="10">
-            <Image Aspect="AspectFill" HorizontalOptions="Start" VerticalOptions="Start" Source="background_top.svg"/>
+            <Image
+                Aspect="AspectFill"
+                HorizontalOptions="Start"
+                Source="background_top.svg"
+                VerticalOptions="Start" />
 
             <StackLayout Margin="5">
-                <Frame Margin="5,10,5,5" Padding="0,5,0,5" BackgroundColor="{DynamicResource BlackWithTransparency}" CornerRadius="20" HeightRequest="70" WidthRequest="330">
+                <Frame
+                    Margin="5,10,5,5"
+                    Padding="0,5,0,5"
+                    BackgroundColor="{DynamicResource BlackWithTransparency}"
+                    CornerRadius="20"
+                    HeightRequest="70"
+                    WidthRequest="330">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Image Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Source="ImagenesRepartidor/atras.png"/>
-                        <Label Grid.Column="1" TextColor="White" FontSize="16" FontAttributes="Bold" Text="Detalle de Pedido" HorizontalOptions="Center" VerticalOptions="Start"></Label>
-                        <Label Grid.Column="1" Margin="0,-20,0,-45" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"></Label>
-                        <Image Grid.Column="2" Source="ImagenesRepartidor/notificacion_repartidor.png" WidthRequest="25" HeightRequest="25"/>
+                        <Image
+                            Grid.Column="0"
+                            HorizontalOptions="Center"
+                            Source="ImagenesRepartidor/atras.png"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="Detalle de Pedido"
+                            TextColor="White"
+                            VerticalOptions="Start" />
+                        <Label
+                            Grid.Column="1"
+                            Margin="0,-20,0,-45"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                        <Image
+                            Grid.Column="2"
+                            HeightRequest="25"
+                            Source="ImagenesRepartidor/notificacion_repartidor.png"
+                            WidthRequest="25" />
                     </Grid>
                 </Frame>
             </StackLayout>
         </Grid>
 
-        <Border Background="White" Margin="10">
+        <Border Margin="10" Background="White">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="12"></RoundRectangle>
+                <RoundRectangle CornerRadius="12" />
             </Border.StrokeShape>
 
             <StackLayout>
-                <ScrollView MaximumHeightRequest="400" Margin="10" Padding="10">
+                <ScrollView
+                    Margin="10"
+                    Padding="10"
+                    MaximumHeightRequest="400">
                     <StackLayout Margin="10">
-                        <Border BackgroundColor="Black" WidthRequest="150" HeightRequest="150">
+                        <Border
+                            BackgroundColor="Black"
+                            HeightRequest="150"
+                            WidthRequest="150">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="100"></RoundRectangle>
+                                <RoundRectangle CornerRadius="100" />
                             </Border.StrokeShape>
 
-                            <Image x:Name="img_product" MaximumWidthRequest="250"/>
+                            <Image x:Name="img_product" MaximumWidthRequest="250" />
                         </Border>
 
                         <StackLayout>
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="view_photo_Tapped" NumberOfTapsRequired="1"/>
-                                <!--hacer click es con el atributo Tapped="evento del boton"-->
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="view_photo_Tapped" />
+                                <!--  hacer click es con el atributo Tapped="evento del boton"  -->
                             </StackLayout.GestureRecognizers>
-                            <Grid HorizontalOptions="Center" Margin="0,0,0,20">
+                            <Grid Margin="0,0,0,20" HorizontalOptions="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <ImageButton Grid.Column="0" HorizontalOptions="End" Source="ImagenesRepartidor/visualizar_productos.png" WidthRequest="25" HeightRequest="20" Margin="0,0,0,0"></ImageButton>
-                                <Label Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" Text="Visualizar Fotografías" TextColor="#3c75d0" FontAttributes="Bold"></Label>
+                                <ImageButton
+                                    Grid.Column="0"
+                                    Margin="0,0,0,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="End"
+                                    Source="ImagenesRepartidor/visualizar_productos.png"
+                                    WidthRequest="25" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Start"
+                                    Text="Visualizar Fotografías"
+                                    TextColor="#3c75d0"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
                             </Grid>
                         </StackLayout>
 
-                        <Border Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="#f2f2f2" Padding="10,10,10,10" Margin="0,0,0,10">
+                        <Border
+                            Grid.Column="0"
+                            Margin="0,0,0,10"
+                            Padding="10,10,10,10"
+                            BackgroundColor="#f2f2f2"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
                             <StackLayout>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="80"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Grid.Column="0" Source="ImagenesRepartidor/cliente.png" HeightRequest="40" ></Image>
-                                    <Label x:Name="lbl_client" Grid.Column="1" Text="Cliente: Jensy Lorena Villafranca" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Image
+                                        Grid.Column="0"
+                                        HeightRequest="40"
+                                        Source="ImagenesRepartidor/cliente.png" />
+                                    <Label
+                                        x:Name="lbl_client"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Cliente: Jensy Lorena Villafranca"
+                                        TextColor="#4472c4"
+                                        VerticalOptions="Center" />
                                 </Grid>
                             </StackLayout>
                         </Border>
 
-                        <Border HorizontalOptions="FillAndExpand" Grid.Column="0" VerticalOptions="Start" BackgroundColor="#f2f2f2" Padding="10,10,10,10" Margin="0,0,0,10">
+                        <Border
+                            Grid.Column="0"
+                            Margin="0,0,0,10"
+                            Padding="10,10,10,10"
+                            BackgroundColor="#f2f2f2"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
                             <StackLayout>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="80"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Grid.Column="0" Source="ImagenesProducto/producto_cliente.png" HeightRequest="40" ></Image>
-                                    <Label x:Name="lbl_product" Grid.Column="1" Text="Producto: Margaritas + Peluche" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Image
+                                        Grid.Column="0"
+                                        HeightRequest="40"
+                                        Source="ImagenesProducto/producto_cliente.png" />
+                                    <Label
+                                        x:Name="lbl_product"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Producto: Margaritas + Peluche"
+                                        TextColor="#4472c4"
+                                        VerticalOptions="Center" />
                                 </Grid>
                             </StackLayout>
                         </Border>
 
-                        <Border HorizontalOptions="FillAndExpand" Grid.Column="0" VerticalOptions="Start" BackgroundColor="#f2f2f2" Padding="10,10,10,10" Margin="0,0,0,10">
+                        <Border
+                            Grid.Column="0"
+                            Margin="0,0,0,10"
+                            Padding="10,10,10,10"
+                            BackgroundColor="#f2f2f2"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
                             <StackLayout HorizontalOptions="Start">
                                 <Grid HorizontalOptions="Start">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="80"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Grid.Column="0" Source="ImagenesRepartidor/ubicacion_cliente.png" HeightRequest="40" ></Image>
-                                    <Label x:Name="lbl_location" Grid.Column="1" Text="Ubicación: Choloma Cortés, Colonia Sierra Verde" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Image
+                                        Grid.Column="0"
+                                        HeightRequest="40"
+                                        Source="ImagenesRepartidor/ubicacion_cliente.png" />
+                                    <Label
+                                        x:Name="lbl_location"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Ubicación: Choloma Cortés, Colonia Sierra Verde"
+                                        TextColor="#4472c4"
+                                        VerticalOptions="Center" />
                                 </Grid>
                             </StackLayout>
                         </Border>
 
-                        <Border HorizontalOptions="FillAndExpand" Grid.Column="0" VerticalOptions="Start" BackgroundColor="#f2f2f2" Padding="10,10,10,10" Margin="0,0,0,10">
+                        <Border
+                            Grid.Column="0"
+                            Margin="0,0,0,10"
+                            Padding="10,10,10,10"
+                            BackgroundColor="#f2f2f2"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
                             <StackLayout>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="80"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Grid.Column="0" Source="ImagenesRepartidor/fechaestimada_cliente.png" HeightRequest="40" ></Image>
-                                    <Label x:Name="lbl_date" Grid.Column="1" Text="Fecha Estimada de Entrega: 04/02/2024 02:30 p.m." TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Image
+                                        Grid.Column="0"
+                                        HeightRequest="40"
+                                        Source="ImagenesRepartidor/fechaestimada_cliente.png" />
+                                    <Label
+                                        x:Name="lbl_date"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Fecha Estimada de Entrega: 04/02/2024 02:30 p.m."
+                                        TextColor="#4472c4"
+                                        VerticalOptions="Center" />
                                 </Grid>
                             </StackLayout>
                         </Border>
 
-                        <Border HorizontalOptions="FillAndExpand" Grid.Column="0" VerticalOptions="Start" BackgroundColor="#f2f2f2" Padding="10,10,10,10" Margin="0,0,0,10">
+                        <Border
+                            Grid.Column="0"
+                            Margin="0,0,0,10"
+                            Padding="10,10,10,10"
+                            BackgroundColor="#f2f2f2"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
                             <StackLayout>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="80"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Grid.Column="0" Source="ImagenesRepartidor/telefono_cliente.png" HeightRequest="40" ></Image>
-                                    <Label x:Name="lbl_phone" Grid.Column="1" Text="Teléfono: 9548-9132" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Image
+                                        Grid.Column="0"
+                                        HeightRequest="40"
+                                        Source="ImagenesRepartidor/telefono_cliente.png" />
+                                    <Label
+                                        x:Name="lbl_phone"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Teléfono: 9548-9132"
+                                        TextColor="#4472c4"
+                                        VerticalOptions="Center" />
                                 </Grid>
                             </StackLayout>
                         </Border>
 
-                        <Border HorizontalOptions="FillAndExpand" Grid.Column="0" VerticalOptions="Start" BackgroundColor="#f2f2f2" Padding="10,10,10,10" Margin="0,0,0,10">
+                        <Border
+                            Grid.Column="0"
+                            Margin="0,0,0,10"
+                            Padding="10,10,10,10"
+                            BackgroundColor="#f2f2f2"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
                             <StackLayout>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="80"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Grid.Column="0" Source="ImagenesRepartidor/recoger_sucursal.png" HeightRequest="40" ></Image>
-                                    <Label x:Name="lbl_sucursal" Grid.Column="1" Text="Recoger en Sucursal Circunvalación" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Image
+                                        Grid.Column="0"
+                                        HeightRequest="40"
+                                        Source="ImagenesRepartidor/recoger_sucursal.png" />
+                                    <Label
+                                        x:Name="lbl_sucursal"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Recoger en Sucursal Circunvalación"
+                                        TextColor="#4472c4"
+                                        VerticalOptions="Center" />
                                 </Grid>
                             </StackLayout>
                         </Border>
 
-                        <Border HorizontalOptions="FillAndExpand" Grid.Column="0" VerticalOptions="Start" BackgroundColor="#f2f2f2" Padding="10,10,10,10" Margin="0,0,0,10">
+                        <Border
+                            Grid.Column="0"
+                            Margin="0,0,0,10"
+                            Padding="10,10,10,10"
+                            BackgroundColor="#f2f2f2"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
                             <StackLayout>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="80"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Grid.Column="0" Source="ImagenesRepartidor/notas_clientes.png" HeightRequest="40" ></Image>
-                                    <Label x:Name="lbl_note" Grid.Column="1" Text="Nota del usuario: “Dejar el pedido en la puerta de su casa”" TextColor="#4472c4" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"></Label>
+                                    <Image
+                                        Grid.Column="0"
+                                        HeightRequest="40"
+                                        Source="ImagenesRepartidor/notas_clientes.png" />
+                                    <Label
+                                        x:Name="lbl_note"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Nota del usuario: “Dejar el pedido en la puerta de su casa”"
+                                        TextColor="#4472c4"
+                                        VerticalOptions="Center" />
                                 </Grid>
                             </StackLayout>
                         </Border>
@@ -180,28 +344,53 @@
                 </ScrollView>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Border Grid.Column="0" WidthRequest="50" HorizontalOptions="End" HeightRequest="50">
+                    <Border
+                        Grid.Column="0"
+                        HeightRequest="50"
+                        HorizontalOptions="End"
+                        WidthRequest="50">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="50"/>
+                            <RoundRectangle CornerRadius="50" />
                         </Border.StrokeShape>
 
-                        <ImageButton Clicked="make_phone_call_Clicked" HorizontalOptions="End" Source="ImagenesRepartidor/llamada_cliente.png" HeightRequest="50"></ImageButton>
+                        <ImageButton
+                            Clicked="make_phone_call_Clicked"
+                            HeightRequest="50"
+                            HorizontalOptions="End"
+                            Source="ImagenesRepartidor/llamada_cliente.png" />
                     </Border>
 
-                    <Border Margin="10,0,0,0" Grid.Column="1" WidthRequest="50" HorizontalOptions="Start" HeightRequest="50">
+                    <Border
+                        Grid.Column="1"
+                        Margin="10,0,0,0"
+                        HeightRequest="50"
+                        HorizontalOptions="Start"
+                        WidthRequest="50">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="50"/>
+                            <RoundRectangle CornerRadius="50" />
                         </Border.StrokeShape>
 
-                        <ImageButton Clicked="open_whatsapp_Clicked" HorizontalOptions="End" Source="ImagenesRepartidor/whastapp.png" HeightRequest="50"></ImageButton>
+                        <ImageButton
+                            Clicked="open_whatsapp_Clicked"
+                            HeightRequest="50"
+                            HorizontalOptions="End"
+                            Source="ImagenesRepartidor/whastapp.png" />
                     </Border>
 
                 </Grid>
-                <Button Clicked="start_order_Clicked" Margin="20" FontSize="15" CornerRadius="25" BackgroundColor="#00ADDC" FontAttributes="Bold" Text="Iniciar pedido"></Button>
+                <Button
+                    x:Name="btnAceptar"
+                    Margin="20"
+                    BackgroundColor="#00ADDC"
+                    Clicked="start_order_Clicked"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    Text="Iniciar pedido" />
             </StackLayout>
         </Border>
     </StackLayout>

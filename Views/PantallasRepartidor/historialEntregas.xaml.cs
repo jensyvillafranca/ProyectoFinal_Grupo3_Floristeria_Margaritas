@@ -9,6 +9,7 @@ using Java.Time;
 using Org.Apache.Http.Cookies;
 using Plugin.Firebase.Firestore.Platforms.Android.Extensions;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Controllers;
+using ProyectoFinal_Grupo3_Floristeria_Margaritas.Extensions;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Modelos;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.ViewModel;
 using ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Productos;
@@ -83,7 +84,7 @@ public partial class historialEntregas : ContentPage
         try
         {
             // Obtener historial de entregas
-            var historial = await _apiService.PostDataAsync<historialEntregasModel[]>("historialEntregas.php", new { idrepartidor = 4 });
+            var historial = await _apiService.PostDataAsync<historialEntregasModel[]>("historialEntregas.php", new { idrepartidor = Config.Config.activeRepartidorId });
             Historiales = new ObservableCollection<historialEntregasViewModel>();
 
             foreach (var item in historial)
@@ -208,9 +209,9 @@ public partial class historialEntregas : ContentPage
     }
 
     // Método para manejar el evento Clicked del botón de notificaciones
-    private void btnNotification_Clicked(object sender, EventArgs e)
+    private async void btnNotification_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Notificaciones.notificacionesRepartidor());
     }
 
     // Método para manejar el evento de búsqueda
@@ -280,34 +281,39 @@ public partial class historialEntregas : ContentPage
     }
 
     // Métodos para manejar eventos de botones
-    private void btnInicioRepartidor_Clicked(object sender, EventArgs e)
+    private async void btnInicioRepartidor_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.Home.homePageRepartidor());
     }
 
-    private void btnPedidosRepartidor_Clicked(object sender, EventArgs e)
+    private async void btnPedidosRepartidor_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.PantallasRepartidor.PantallaPedidosEntrantes());
     }
 
-    private void btnIngresosRepartidor_Clicked(object sender, EventArgs e)
+    private async void btnIngresosRepartidor_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.PantallasRepartidor.IngresosRepartidor());
     }
 
-    private void btnHistorialPedidosRepartidor_Clicked(object sender, EventArgs e)
+    private async void btnHistorialPedidosRepartidor_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.PantallasRepartidor.historialEntregas());
     }
 
-    private void btnPerfilRepartidor_Clicked(object sender, EventArgs e)
+    private async void btnPerfilRepartidor_Clicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Views.PantallasRepartidor.profilePageRepartidor());
     }
 
-    private void btnLogOutRepartidor_Clicked(object sender, EventArgs e)
+    private async void btnLogOutRepartidor_Clicked(object sender, EventArgs e)
     {
+        bool isSuccess = await logout.PerformLogoutAsync(_apiService);
 
+        if (isSuccess)
+        {
+            await Navigation.PushAsync(new Views.Login.login());
+        }
     }
 
     // Método para manejar el cambio de selección en el filtro

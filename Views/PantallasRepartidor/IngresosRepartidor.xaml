@@ -1,69 +1,124 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.IngresosRepartidor"
-             xmlns:expander="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
-             Title="IngresosRepartidor"
-             Shell.NavBarIsVisible="False"
-             BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.svg">
-    <StackLayout>
-        
-        <!--Encabezado-->
-        <Frame
-            Grid.Row="0"
-            Margin="10,10,10,15"
-            Padding="0,10,0,10"
-            BackgroundColor="{DynamicResource BlackWithTransparency}"
-            CornerRadius="20">
-            <StackLayout
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.IngresosRepartidor"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:expander="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
+    Title="IngresosRepartidor"
+    BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.svg"
+    Shell.NavBarIsVisible="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+
+        <!--  Encabezado  -->
+        <StackLayout>
+            <Frame
                 Margin="0,0,0,0"
-                Padding="0,0,0,0"
-                BackgroundColor="Transparent"
-                Orientation="Horizontal">
-                <!--  Spacer  -->
-                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                Padding="5,10,5,10"
+                BackgroundColor="{DynamicResource BlackWithTransparency}"
+                BorderColor="{DynamicResource AzulBotones}"
+                CornerRadius="20">
+                <StackLayout
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    Orientation="Horizontal">
+                    <ImageButton
+                        x:Name="btnAtras"
+                        Margin="10,0,20,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnAtras_Clicked"
+                        HeightRequest="40"
+                        Source="ImagenesRepartidor/atras.png"
+                        WidthRequest="40" />
+                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                    <Label
+                        Margin="0,0,50,0"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        HorizontalOptions="Center"
+                        Text="Historial de Entregas"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+
+                    <ImageButton
+                        x:Name="btnNotification"
+                        Margin="10,0,20,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnNotification_Clicked"
+                        HeightRequest="40"
+                        Source="Home/notificacion.png"
+                        WidthRequest="40" />
+                </StackLayout>
+            </Frame>
+            <!--  Buscador  -->
+            <Border
+                Padding="5"
+                BackgroundColor="White"
+                HeightRequest="48"
+                HorizontalOptions="CenterAndExpand"
+                WidthRequest="330">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="160"/>
-                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="310" />
+                        <ColumnDefinition Width="0" />
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" MaximumWidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center" Source="ImagenesRepartidor/atras.png"/>
-                    <Label Grid.Column="1" TextColor="White" FontSize="15" FontAttributes="Bold"  HorizontalOptions="Start" VerticalOptions="Center" Text="Ingresos Generados"></Label>
-                    <Image Grid.Column="2" MaximumWidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center" Source="ImagenesRepartidor/notificacion_repartidor.png"/>
+                    <Entry
+                        x:Name="txt_search_data"
+                        Grid.Column="0"
+                        HorizontalOptions="Start"
+                        Placeholder="Busca tu pedido aquí"
+                        TextChanged="txt_search_data_TextChanged"
+                        WidthRequest="280" />
+                    <Image
+                        Grid.Column="1"
+                        HeightRequest="30"
+                        HorizontalOptions="End"
+                        Source="ImagenesAdministrador/buscar.png"
+                        VerticalOptions="End"
+                        WidthRequest="30" />
                 </Grid>
-            </StackLayout>
-        </Frame>
-        <!--Buscador-->
-        <Border BackgroundColor="White" Padding="5" HorizontalOptions="Center" WidthRequest="330" HeightRequest="48">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="10"/>
-            </Border.StrokeShape>
+            </Border>
+            <!--  Textos Informativos  -->
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="310"></ColumnDefinition>
-                    <ColumnDefinition Width="0"></ColumnDefinition>
+                    <ColumnDefinition Width="260" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Entry x:Name="txt_search_data" Grid.Column="0" Placeholder="Busca tu pedido aquí" TextChanged="txt_search_data_TextChanged" WidthRequest="280" HorizontalOptions="Start"></Entry>
-                <Image Grid.Column="1" Source="ImagenesAdministrador/buscar.png" WidthRequest="30" HeightRequest="30" VerticalOptions="End" HorizontalOptions="End" />
+                <Label
+                    Grid.Column="0"
+                    Margin="0,10,0,10"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="¡Ingresos generados por tus pedidos!"
+                    TextColor="Blue"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    x:Name="lbl_total"
+                    Grid.Column="1"
+                    Margin="0,10,0,0"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Text="Total: L.2,500"
+                    TextColor="Blue" />
             </Grid>
-        </Border>
-        <!--Textos Informativos-->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="260"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Label Text="¡Ingresos generados por tus pedidos!" Grid.Column="0" TextColor="Blue" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,10,0,10"></Label>
-            <Label x:Name="lbl_total" Text="Total: L.2,500" Grid.Column="1" TextColor="Blue" FontAttributes="Bold" Margin="0,10,0,0"></Label>
-        </Grid>
+        </StackLayout>
 
         <ScrollView Grid.Row="1" HeightRequest="500">
             <!--  Lista de los pedidos  -->
             <StackLayout>
-                <CollectionView
-                    x:Name="collectionViewIngresosRepartidor"
-                    ItemsSource="{Binding Items}">
+                <CollectionView x:Name="collectionViewIngresosRepartidor" ItemsSource="{Binding Items}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
@@ -79,7 +134,7 @@
                                 HasShadow="True"
                                 HorizontalOptions="FillAndExpand">
 
-                                <expander:SfExpander BackgroundColor="White" Margin="12">
+                                <expander:SfExpander Margin="12" BackgroundColor="White">
                                     <expander:SfExpander.Header>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
@@ -93,80 +148,90 @@
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
-                                            
+
                                             <Image
-                                            Grid.Column="0"
-                                            Grid.ColumnSpan="3"
-                                            HorizontalOptions="Start"
-                                            x:Name="iconoEstadoPedido"
-                                            Source="{Binding enlace_status}"/>
+                                                x:Name="iconoEstadoPedido"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="3"
+                                                HorizontalOptions="Start"
+                                                Source="{Binding enlace_status}" />
 
                                             <StackLayout
-                                            Grid.Column="1"
-                                            Orientation="Vertical"
-                                            Spacing="5">
+                                                Grid.Column="1"
+                                                Orientation="Vertical"
+                                                Spacing="5">
                                                 <Grid>
                                                     <Grid.RowDefinitions>
-                                                        <RowDefinition Height="20"></RowDefinition>
-                                                        <RowDefinition></RowDefinition>
-                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition Height="20" />
+                                                        <RowDefinition />
+                                                        <RowDefinition />
                                                     </Grid.RowDefinitions>
                                                     <!--  Formato para visualización del código del pedido  -->
                                                     <Label
-                                                    Grid.Row="0"
-                                                    FontAttributes="Bold"
-                                                    FontSize="12"
-                                                    HorizontalOptions="Start"
-                                                    HorizontalTextAlignment="Start"
-                                                    Text="{Binding codPedido, StringFormat='Cód. Pedido {0}'}"
-                                                    TextColor="#1d4999" />
-                                                    <!--CORREGIR: Falta el codigo ya que no esta en la base de datos-->
+                                                        Grid.Row="0"
+                                                        FontAttributes="Bold"
+                                                        FontSize="12"
+                                                        HorizontalOptions="Start"
+                                                        HorizontalTextAlignment="Start"
+                                                        Text="{Binding ped_idpedido, StringFormat='Pedido: #PED-{0}'}"
+                                                        TextColor="#1d4999" />
+                                                    <!--  CORREGIR: Falta el codigo ya que no esta en la base de datos  -->
 
                                                     <Label
-                                                    Grid.Row="1"
-                                                    FontSize="12"
-                                                    HorizontalOptions="Start"
-                                                    HorizontalTextAlignment="Start"
-                                                    Text="{Binding ped_fechapedido, StringFormat='Entregado en fecha {0}'}"
-                                                    TextColor="#4472c5" 
-                                                    Margin="15,0,0,0"/>
+                                                        Grid.Row="1"
+                                                        Margin="15,0,0,0"
+                                                        FontSize="12"
+                                                        HorizontalOptions="Start"
+                                                        HorizontalTextAlignment="Start"
+                                                        Text="{Binding ped_fechapedido, StringFormat='Entregado en fecha {0}'}"
+                                                        TextColor="#4472c5" />
                                                     <!--  Formato para visualización del estado de la entrega  -->
                                                     <Label
-                                                    Grid.Row="2"
-                                                    FontSize="12"
-                                                    HorizontalOptions="Start"
-                                                    HorizontalTextAlignment="Start"
-                                                    Text="{Binding est_estado}"
-                                                    Margin="15,0,0,0"
-                                                    TextColor="#4472c5" />
+                                                        Grid.Row="2"
+                                                        Margin="15,0,0,0"
+                                                        FontSize="12"
+                                                        HorizontalOptions="Start"
+                                                        HorizontalTextAlignment="Start"
+                                                        Text="{Binding est_estado}"
+                                                        TextColor="#4472c5" />
                                                 </Grid>
                                             </StackLayout>
-                                            <!--Para visualización del dinero y el icono de desplegable-->
+                                            <!--  Para visualización del dinero y el icono de desplegable  -->
                                             <StackLayout Grid.Column="2" VerticalOptions="Center">
                                                 <Label
-                                                Grid.ColumnSpan="2"
-                                                Grid.Row="0"
-                                                FontAttributes="Bold"
-                                                FontSize="10"
-                                                HorizontalTextAlignment="Center"
-                                                Text="{Binding ped_total, StringFormat='L. {0}'}"
-                                                TextColor="{Binding color}" />
+                                                    Grid.Row="0"
+                                                    Grid.ColumnSpan="2"
+                                                    FontAttributes="Bold"
+                                                    FontSize="10"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding ped_total, StringFormat='L. {0:N2}'}"
+                                                    TextColor="{Binding color}" />
                                             </StackLayout>
                                         </Grid>
                                     </expander:SfExpander.Header>
                                     <expander:SfExpander.Content>
                                         <Grid Padding="10" ColumnSpacing="10">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
 
-                                            <Label Grid.Row="0" TextColor="Black" Text="{Binding ped_comisionrepartidor, StringFormat='Comisión por pedido: L. {0}'}" HorizontalOptions="FillAndExpand"/>
+                                            <Label
+                                                Grid.Row="0"
+                                                HorizontalOptions="FillAndExpand"
+                                                Text="{Binding ped_comisionrepartidor, StringFormat='Comisión por pedido: L. {0}'}"
+                                                TextColor="Black" />
 
-                                            <Label Grid.Row="1" Text="{Binding ped_propina, StringFormat='Propina: L. {0}'}" HorizontalOptions="FillAndExpand"/>
+                                            <Label
+                                                Grid.Row="1"
+                                                HorizontalOptions="FillAndExpand"
+                                                Text="{Binding ped_propina, StringFormat='Propina: L. {0}'}" />
 
-                                            <Label Grid.Row="2" Text="{Binding ped_total, StringFormat='Total: L. {0}'}" HorizontalOptions="FillAndExpand"/>
+                                            <Label
+                                                Grid.Row="2"
+                                                HorizontalOptions="FillAndExpand"
+                                                Text="{Binding ped_total, StringFormat='Total: L. {0}'}" />
                                         </Grid>
                                     </expander:SfExpander.Content>
                                 </expander:SfExpander>
@@ -185,70 +250,76 @@
             BorderColor="{DynamicResource AzulBotones}"
             CornerRadius="20">
             <StackLayout
-                    Padding="0,0,0,0"
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Horizontal">
+                <ImageButton
+                    x:Name="btnInicioRepartidor"
+                    Margin="20,0,10,0"
+                    Aspect="AspectFit"
                     BackgroundColor="Transparent"
-                    Orientation="Horizontal">
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnInicioRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botoninicio.png"
+                    WidthRequest="40" />
                 <ImageButton
-                        x:Name="btnInicioRepartidor"
-                        Margin="20,0,10,0"
-                        Aspect="AspectFit"
-                        BackgroundColor="Transparent"
-                        BorderColor="{DynamicResource AzulOscuro}"
-                        HeightRequest="40"
-                        HorizontalOptions="FillAndExpand"
-                        Source="ImagenesRepartidor/botoninicio.png"
-                        WidthRequest="40" />
+                    x:Name="btnPedidosRepartidor"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnPedidosRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botonpedidos.svg"
+                    WidthRequest="40" />
                 <ImageButton
-                        x:Name="btnPedidosRepartidor"
-                        Margin="0,0,10,0"
-                        Aspect="AspectFit"
-                        BackgroundColor="Transparent"
-                        BorderColor="{DynamicResource AzulOscuro}"
-                        HeightRequest="40"
-                        HorizontalOptions="FillAndExpand"
-                        Source="ImagenesRepartidor/botonpedidos.svg"
-                        WidthRequest="40" />
+                    x:Name="btnIngresosRepartidor"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnIngresosRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botoningresos.svg"
+                    WidthRequest="40" />
                 <ImageButton
-                        x:Name="btnIngresosRepartidor"
-                        Margin="0,0,10,0"
-                        Aspect="AspectFit"
-                        BackgroundColor="Transparent"
-                        BorderColor="{DynamicResource AzulOscuro}"
-                        HeightRequest="40"
-                        HorizontalOptions="FillAndExpand"
-                        Source="ImagenesRepartidor/botoningresos.svg"
-                        WidthRequest="40" />
+                    x:Name="btnHistorialPedidosRepartidor"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnHistorialPedidosRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/botonhistorialpedidos.svg"
+                    WidthRequest="40" />
                 <ImageButton
-                        x:Name="btnHistorialPedidosRepartidor"
-                        Margin="0,0,10,0"
-                        Aspect="AspectFit"
-                        BackgroundColor="Transparent"
-                        BorderColor="{DynamicResource AzulOscuro}"
-                        HeightRequest="40"
-                        HorizontalOptions="FillAndExpand"
-                        Source="ImagenesRepartidor/botonhistorialpedidos.svg"
-                        WidthRequest="40" />
+                    x:Name="btnPerfilRepartidor"
+                    Margin="0,0,10,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnPerfilRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/perfilrepartidor.svg"
+                    WidthRequest="40" />
                 <ImageButton
-                        x:Name="btnPerfilRepartidor"
-                        Margin="0,0,10,0"
-                        Aspect="AspectFit"
-                        BackgroundColor="Transparent"
-                        BorderColor="{DynamicResource AzulOscuro}"
-                        HeightRequest="40"
-                        HorizontalOptions="FillAndExpand"
-                        Source="ImagenesRepartidor/perfilrepartidor.svg"
-                        WidthRequest="40" />
-                <ImageButton
-                        x:Name="btnLogOutRepartidor"
-                        Margin="0,0,20,0"
-                        Aspect="AspectFit"
-                        BackgroundColor="Transparent"
-                        BorderColor="{DynamicResource AzulOscuro}"
-                        HeightRequest="40"
-                        HorizontalOptions="FillAndExpand"
-                        Source="ImagenesRepartidor/salirmenu.png"
-                        WidthRequest="40" />
+                    x:Name="btnLogOutRepartidor"
+                    Margin="0,0,20,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource AzulOscuro}"
+                    Clicked="btnLogOutRepartidor_Clicked"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Source="ImagenesRepartidor/salirmenu.png"
+                    WidthRequest="40" />
             </StackLayout>
         </Frame>
-    </StackLayout>
+    </Grid>
 </ContentPage>
