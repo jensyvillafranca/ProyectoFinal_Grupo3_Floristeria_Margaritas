@@ -134,13 +134,13 @@ public partial class homePageAdmin : ContentPage
 
     private async void btnStock_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Views.CreacionProductos.HistorialProductosAgregados());
+        await Navigation.PushAsync(new Views.CreacionProductos.AgregarProducto(1));
     }
 
-    private void btnEstadisticas_Clicked(object sender, EventArgs e)
+    private async void btnEstadisticas_Clicked(object sender, EventArgs e)
     {
-
-    }
+            await Navigation.PushAsync(new Views.CreacionProductos.HistorialProductosAgregados());
+        }
 
     private void btnAnuncios_Clicked(object sender, EventArgs e)
     {
