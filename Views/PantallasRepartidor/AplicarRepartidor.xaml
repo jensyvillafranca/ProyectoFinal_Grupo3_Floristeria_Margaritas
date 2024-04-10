@@ -1,224 +1,583 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.AplicarRepartidor"
-             Title="AplicarRepartidor"
-             Shell.NavBarIsVisible="False"
-             BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.svg">
-    <StackLayout>
-        <!--  Header  -->
-        <Frame
-        Grid.Row="0"
-        Margin="10,10,10,15"
-        Padding="0,10,0,10"
-        BackgroundColor="{DynamicResource BlackWithTransparency}"
-        CornerRadius="20">
-            <StackLayout
-            Margin="0,0,0,0"
-            Padding="0,0,0,0"
-            BackgroundColor="Transparent"
-            Orientation="Horizontal">
-                <ImageButton
-                x:Name="btnAtras"
-                Margin="10,0,0,0"
-                Aspect="AspectFit"
-                BackgroundColor="Transparent"
-                Clicked="btnAtras_Clicked"
-                HeightRequest="40"
-                Source="ImagenesRepartidor/atras.png"
-                WidthRequest="40" />
-                <!--  Spacer  -->
-                <!--  Spacer  -->
-                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
-                <Label
-                Margin="0,0,95,0"
-                FontAttributes="Bold"
-                Text="¡Aplica como repartidor!"
-                TextColor="White"
-                VerticalOptions="CenterAndExpand" />
+<ContentPage
+    x:Class="ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.PantallasRepartidor.AplicarRepartidor"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="AplicarRepartidor"
+    BackgroundImageSource="ImagenesRepartidor/fondo_todas_pantallas.svg"
+    Shell.NavBarIsVisible="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
+        <!--  Header  -->
+
+        <Frame
+            Grid.Row="0"
+            Margin="0,0,0,0"
+            Padding="0,10,0,10"
+            BackgroundColor="{DynamicResource BlackWithTransparency}"
+            BorderColor="{DynamicResource AzulBotones}"
+            CornerRadius="20">
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                Orientation="Vertical">
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
+                    <ImageButton
+                        x:Name="btnBack"
+                        Margin="10,0,0,0"
+                        Aspect="AspectFit"
+                        BackgroundColor="Transparent"
+                        Clicked="btnBack_Clicked"
+                        HeightRequest="40"
+                        Source="Productos/backarrow.png"
+                        WidthRequest="40" />
+                    <!--  Spacer  -->
+                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                    <Label
+                        Margin="0,0,100,0"
+                        FontAttributes="Bold"
+                        Text="¡Aplica como Repartidor!"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
             </StackLayout>
         </Frame>
 
-        <Border MaximumHeightRequest="600" BackgroundColor="#80d2eaf8" Margin="10" Padding="10">
+        <Border
+            Grid.Row="1"
+            Margin="10"
+            Padding="10"
+            BackgroundColor="#80d2eaf8"
+            MaximumHeightRequest="600">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="10">
-                </RoundRectangle>
+                <RoundRectangle CornerRadius="10" />
             </Border.StrokeShape>
             <ScrollView>
                 <StackLayout Margin="10">
-                    <Image Source="ImagenesRepartidor/aplicar_repartidor.png" MaximumWidthRequest="250"/>
+                    <Image MaximumWidthRequest="250" Source="ImagenesRepartidor/aplicar_repartidor.png" />
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <Label Text="Nombres" FontSize="16" Grid.Column="0" Grid.Row="0"></Label>
-                        <Border Grid.Column="0" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Start">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontSize="16"
+                            Text="Nombres" />
+                        <Border
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
-                            <Entry x:Name="txt_name" BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"/>
+                            <Entry
+                                x:Name="txt_name"
+                                BackgroundColor="White"
+                                MaximumHeightRequest="40"
+                                WidthRequest="150" />
                         </Border>
-                        <Label TextColor="#6C6C6C" FontSize="12" Text="*Requerido" Grid.Column="0" Grid.Row="2"></Label>
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontSize="12"
+                            Text="*Requerido"
+                            TextColor="#6C6C6C" />
 
-                        <Label Margin="10,0,0,0" Text="Apellidos" Grid.Column="1" FontSize="16" Grid.Row="0"></Label>
-                        <Border Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Start">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            FontSize="16"
+                            Text="Apellidos" />
+                        <Border
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
-                            <Entry x:Name="txt_surname" BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"/>
+                            <Entry
+                                x:Name="txt_surname"
+                                BackgroundColor="White"
+                                MaximumHeightRequest="40"
+                                WidthRequest="150" />
                         </Border>
-                        <Label TextColor="#6C6C6C" FontSize="12" Margin="10,0,0,0" Text="*Requerido" Grid.Column="1" Grid.Row="2"></Label>
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            FontSize="12"
+                            Text="*Requerido"
+                            TextColor="#6C6C6C" />
 
-                        <Label Margin="0,20,0,0" Text="Correo electrónico" Grid.Column="0" FontSize="16" Grid.Row="4"></Label>
-                        <Border Grid.Column="0" Grid.Row="5" VerticalOptions="Start" HorizontalOptions="Start">
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Margin="0,20,0,0"
+                            FontSize="16"
+                            Text="Correo electrónico" />
+                        <Border
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
-                            <Entry x:Name="txt_email" BackgroundColor="White" WidthRequest="330" MaximumHeightRequest="40"/>
+                            <Entry
+                                x:Name="txt_email"
+                                BackgroundColor="White"
+                                MaximumHeightRequest="40"
+                                TextChanged="txt_email_TextChanged"
+                                WidthRequest="330" />
                         </Border>
-                        <Image Source="correo.png" Grid.Column="1" Grid.Row="5" WidthRequest="25" HorizontalOptions="End" Margin="5"></Image>
-                        <Label TextColor="#6C6C6C" FontSize="12" Text="*Requerido" Grid.Column="0" Grid.Row="6"></Label>
+                        <Image
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Margin="5"
+                            HorizontalOptions="End"
+                            Source="correo.png"
+                            WidthRequest="25" />
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            FontSize="12"
+                            Text="*Requerido"
+                            TextColor="#6C6C6C" />
 
-                        <Label Margin="0,20,0,0" Text="Teléfono" Grid.Column="0" FontSize="16" Grid.Row="7"></Label>
-                        <Border Grid.Column="0" Grid.Row="8" VerticalOptions="Start" HorizontalOptions="Start">
+                        <Label
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            Margin="0,20,0,0"
+                            FontSize="16"
+                            Text="Teléfono" />
+                        <Border
+                            Grid.Row="8"
+                            Grid.Column="0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
-                            <Entry x:Name="txt_phone" BackgroundColor="White" WidthRequest="330" MaximumHeightRequest="40"/>
+                            <Entry
+                                x:Name="txt_phone"
+                                BackgroundColor="White"
+                                MaximumHeightRequest="40"
+                                WidthRequest="330" />
                         </Border>
-                        <Image Source="telefono_repartidor.png" Grid.Column="1" Grid.Row="8" WidthRequest="25" HorizontalOptions="End" Margin="5"></Image>
-                        <Label TextColor="#6C6C6C" FontSize="12" Text="*Requerido" Grid.Column="0" Grid.Row="9"></Label>
+                        <Image
+                            Grid.Row="8"
+                            Grid.Column="1"
+                            Margin="5"
+                            HorizontalOptions="End"
+                            Source="telefono_repartidor.png"
+                            WidthRequest="25" />
+                        <Label
+                            Grid.Row="9"
+                            Grid.Column="0"
+                            FontSize="12"
+                            Text="*Requerido"
+                            TextColor="#6C6C6C" />
 
-                        <Label Margin="0,20,0,0" Text="DNI" FontSize="16" Grid.Column="0" Grid.Row="10"></Label>
-                        <Border Grid.Column="0" Grid.Row="11" VerticalOptions="Start" HorizontalOptions="Start">
+                        <Label
+                            Grid.Row="10"
+                            Grid.Column="0"
+                            Margin="0,20,0,0"
+                            FontSize="16"
+                            Text="DNI" />
+                        <Border
+                            Grid.Row="11"
+                            Grid.Column="0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
-                            <Entry x:Name="txt_dni" BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"/>
+                            <Entry
+                                x:Name="txt_dni"
+                                BackgroundColor="White"
+                                MaximumHeightRequest="40"
+                                WidthRequest="150" />
                         </Border>
-                        <Image Source="dni.png" Grid.Column="0" Grid.Row="11" WidthRequest="30" HorizontalOptions="End" Margin="5"></Image>
-                        <Label TextColor="#6C6C6C" FontSize="12" Text="*Requerido" Grid.Column="0" Grid.Row="12"></Label>
+                        <Image
+                            Grid.Row="11"
+                            Grid.Column="0"
+                            Margin="5"
+                            HorizontalOptions="End"
+                            Source="dni.png"
+                            WidthRequest="30" />
+                        <Label
+                            Grid.Row="12"
+                            Grid.Column="0"
+                            FontSize="12"
+                            Text="*Requerido"
+                            TextColor="#6C6C6C" />
 
-                        <Label Margin="10,20,0,0" Text="Fecha nacimiento" Grid.Column="1" FontSize="16" Grid.Row="10"></Label>
-                        <Border Margin="10,0,0,0" Grid.Column="1" Grid.Row="11" VerticalOptions="Start" HorizontalOptions="Start">
+                        <Label
+                            Grid.Row="10"
+                            Grid.Column="1"
+                            Margin="10,20,0,0"
+                            FontSize="16"
+                            Text="Fecha nacimiento" />
+                        <Border
+                            Grid.Row="11"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
-                            <DatePicker x:Name="dp_birthdate" BackgroundColor="White" WidthRequest="150" MaximumHeightRequest="40"></DatePicker>
+                            <DatePicker
+                                x:Name="dp_birthdate"
+                                BackgroundColor="White"
+                                DateSelected="dp_birthdate_DateSelected"
+                                MaximumHeightRequest="40"
+                                WidthRequest="150" />
                         </Border>
-                        <Image Source="fecha_nacimiento.png" Grid.Column="1" Grid.Row="11" WidthRequest="20" HorizontalOptions="End" Margin="5"></Image>
-                        <Label TextColor="#6C6C6C" FontSize="12" Margin="10,0,0,0" Text="*Requerido" Grid.Column="1" Grid.Row="12"></Label>
+                        <Image
+                            Grid.Row="11"
+                            Grid.Column="1"
+                            Margin="5"
+                            HorizontalOptions="End"
+                            Source="fecha_nacimiento.png"
+                            WidthRequest="20" />
+                        <Label
+                            Grid.Row="12"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            FontSize="12"
+                            Text="*Requerido"
+                            TextColor="#6C6C6C" />
 
-                        <Label Margin="0,20,0,0" Text="Departamento" FontSize="16" Grid.Column="0" Grid.Row="13"></Label>
-                        <Border Grid.Column="0" Grid.Row="14" VerticalOptions="Start" HorizontalOptions="Start">
+                        <Label
+                            Grid.Row="13"
+                            Grid.Column="0"
+                            Margin="0,20,0,0"
+                            FontSize="16"
+                            Text="Departamento" />
+                        <Border
+                            Grid.Row="14"
+                            Grid.Column="0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
-                            <Picker x:Name="pk_deparments" WidthRequest="150" BackgroundColor="White" Title="Elige una opción" SelectedIndexChanged="selected_department">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>Cortés</x:String>
-                                        <x:String>Choluteca</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
+                            <Picker
+                                x:Name="pk_deparments"
+                                Title="Departamento"
+                                BackgroundColor="White"
+                                SelectedIndexChanged="pk_deparments_SelectedIndexChanged"
+                                WidthRequest="150" />
                         </Border>
-                        <Image Source="ubicacion_repartidor.png" Grid.Column="0" Grid.Row="14" WidthRequest="25" HorizontalOptions="End" Margin="5"></Image>
-                        <Label TextColor="#6C6C6C" FontSize="12" Text="*Requerido" Grid.Column="0" Grid.Row="15"></Label>
+                        <Image
+                            Grid.Row="14"
+                            Grid.Column="0"
+                            Margin="5"
+                            HorizontalOptions="End"
+                            Source="ubicacion_repartidor.png"
+                            WidthRequest="25" />
+                        <Label
+                            Grid.Row="15"
+                            Grid.Column="0"
+                            FontSize="12"
+                            Text="*Requerido"
+                            TextColor="#6C6C6C" />
 
-                        <Label Margin="10,20,0,0" Text="Género" Grid.Column="1" FontSize="16" Grid.Row="13"></Label>
-                        <Border Margin="10,0,0,0" Grid.Column="1" Grid.Row="14" VerticalOptions="Start" HorizontalOptions="Start">
+                        <Label
+                            Grid.Row="13"
+                            Grid.Column="1"
+                            Margin="10,20,0,0"
+                            FontSize="16"
+                            Text="Género" />
+                        <Border
+                            Grid.Row="14"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
-                            <Picker x:Name="pk_gender" WidthRequest="150" BackgroundColor="White" Title="Seleccione:" >
+                            <Picker
+                                x:Name="pk_gender"
+                                Title="Seleccione:"
+                                BackgroundColor="White"
+                                WidthRequest="150">
                                 <Picker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
                                         <x:String>Masculino</x:String>
                                         <x:String>Femenino</x:String>
-                                        <x:String>No definido</x:String>
                                     </x:Array>
                                 </Picker.ItemsSource>
                             </Picker>
                         </Border>
-                        <Image Source="genero.png" Grid.Column="1" Grid.Row="14" WidthRequest="25" HorizontalOptions="End" Margin="5"></Image>
-                        <Label TextColor="#6C6C6C" FontSize="12" Margin="10,0,0,0" Text="*Requerido" Grid.Column="1" Grid.Row="15"></Label>
+                        <Image
+                            Grid.Row="14"
+                            Grid.Column="1"
+                            Margin="5"
+                            HorizontalOptions="End"
+                            Source="genero.png"
+                            WidthRequest="25" />
+                        <Label
+                            Grid.Row="15"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            FontSize="12"
+                            Text="*Requerido"
+                            TextColor="#6C6C6C" />
 
-                        <Label Margin="0,20,0,0" Text="Ciudad" Grid.Column="0" FontSize="16" Grid.Row="16"></Label>
-                        <Border  Grid.Column="0" Grid.Row="17" VerticalOptions="Start" HorizontalOptions="Start">
+                        <Label
+                            Grid.Row="16"
+                            Grid.Column="0"
+                            Margin="0,20,0,0"
+                            FontSize="16"
+                            Text="Ciudad" />
+                        <Border
+                            Grid.Row="17"
+                            Grid.Column="0"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
+                                <RoundRectangle CornerRadius="12" />
                             </Border.StrokeShape>
-                            <Picker x:Name="pk_city" WidthRequest="150" BackgroundColor="White" Title="Elige una opción" >
-                                <Picker.ItemsSource>
-                                    <x:Array  Type="{x:Type x:String}">
-                                        
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
+                            <Picker
+                                x:Name="pk_city"
+                                Title="Elige una opción"
+                                BackgroundColor="White"
+                                SelectedIndexChanged="pk_city_SelectedIndexChanged"
+                                WidthRequest="150" />
                         </Border>
-                        <Image Source="ubicacion.png" Grid.Column="0" Grid.Row="17" Margin="0,0,10,0" WidthRequest="50" HorizontalOptions="End"></Image>
-                        <Label TextColor="#6C6C6C" FontSize="12" Text="*Requerido" Grid.Column="0" Grid.Row="18"></Label>
+                        <Image
+                            Grid.Row="17"
+                            Grid.Column="0"
+                            Margin="0,0,10,0"
+                            HorizontalOptions="End"
+                            Source="ubicacion.png"
+                            WidthRequest="50" />
+                        <Label
+                            Grid.Row="18"
+                            Grid.Column="0"
+                            FontSize="12"
+                            Text="*Requerido"
+                            TextColor="#6C6C6C" />
 
-                        <Label Margin="20,0,0,0" Text="Elija los tipos de licencia que posee:" Grid.Column="1" FontSize="12" Grid.Row="17"></Label>
-                        <StackLayout Grid.Row="18" Grid.Column="1" Margin="40,10,0,0">
+                        <Label
+                            Grid.Row="17"
+                            Grid.Column="1"
+                            Margin="20,0,0,0"
+                            FontSize="12"
+                            Text="Elija los tipos de licencia que posee:" />
+                        <StackLayout
+                            Grid.Row="18"
+                            Grid.Column="1"
+                            Margin="40,10,0,0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
 
-                                <Label Grid.Column="0" Grid.Row="0" WidthRequest="100" Text="Motocicletas:" FontSize="12" TextColor="#227bd5" FontAttributes="Bold"></Label>
-                                <CheckBox Grid.Row="0" Grid.Column="1" Margin="0,-10,0,0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontAttributes="Bold"
+                                    FontSize="12"
+                                    Text="Motocicletas:"
+                                    TextColor="#227bd5"
+                                    WidthRequest="100" />
+                                <CheckBox
+                                    x:Name="checkMoto"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0,-10,0,0"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
 
-                                <Label Margin="0,15,0,0" Grid.Column="0" Grid.Row="1" WidthRequest="100" Text="Vehículo liviano:" FontSize="12" TextColor="#227bd5" FontAttributes="Bold"></Label>
-                                <CheckBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="0,15,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="12"
+                                    Text="Vehículo liviano:"
+                                    TextColor="#227bd5"
+                                    WidthRequest="100" />
+                                <CheckBox
+                                    x:Name="checkLiviana"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="0,5,0,0"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
 
-                                <Label Margin="0,15,0,0" Grid.Column="0" Grid.Row="2" WidthRequest="100" Text="Vehículo de carga:" FontSize="12" TextColor="#227bd5" FontAttributes="Bold"></Label>
-                                <CheckBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Margin="0,15,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="12"
+                                    Text="Vehículo de carga:"
+                                    TextColor="#227bd5"
+                                    WidthRequest="100" />
+                                <CheckBox
+                                    x:Name="checkPesada"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="0,5,0,0"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
                             </Grid>
                         </StackLayout>
 
-                        <Image Source="adjuntar_fotografia.png" Grid.Column="0" Grid.Row="18" MaximumWidthRequest="40"/>
-                        <Label VerticalOptions="Start" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="19" WidthRequest="150" Margin="0,-50,0,0" Text="Adjunte la fotografía de su licencia:" FontSize="12"></Label>
+                        <StackLayout
+                            Grid.Row="18"
+                            Grid.Column="0"
+                            Margin="0,20,0,0"
+                            Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <ImageButton
+                                    x:Name="btnDNIFrente"
+                                    Margin="0,0,0,0"
+                                    Clicked="btnDNIFrente_Clicked"
+                                    HeightRequest="40"
+                                    Source="adjuntar_fotografia.png"
+                                    WidthRequest="40" />
+                                <ImageButton
+                                    x:Name="btnDNIAtras"
+                                    Margin="50,0,0,0"
+                                    Clicked="btnDNIAtras_Clicked"
+                                    HeightRequest="40"
+                                    Source="adjuntar_fotografia.png"
+                                    WidthRequest="40" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    x:Name="labelDNIFrente"
+                                    Margin="0,0,0,0"
+                                    FontSize="12"
+                                    HorizontalTextAlignment="Start"
+                                    Text="DNI Frente"
+                                    VerticalOptions="Start"
+                                    WidthRequest="40">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label
+                                    x:Name="labelDNIAtras"
+                                    Margin="50,0,0,0"
+                                    FontSize="12"
+                                    HorizontalTextAlignment="Start"
+                                    Text="DNI Atras"
+                                    VerticalOptions="Start"
+                                    WidthRequest="40">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <ImageButton
+                                    x:Name="btnLICFrente"
+                                    Margin="0,0,0,0"
+                                    Clicked="btnLICFrente_Clicked"
+                                    HeightRequest="40"
+                                    Source="adjuntar_fotografia.png"
+                                    WidthRequest="40" />
+                                <ImageButton
+                                    x:Name="btnLICAtras"
+                                    Margin="50,0,0,0"
+                                    Clicked="btnLICAtras_Clicked"
+                                    HeightRequest="40"
+                                    Source="adjuntar_fotografia.png"
+                                    WidthRequest="40" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    x:Name="labelLICFrente"
+                                    Margin="0,0,0,0"
+                                    FontSize="12"
+                                    HorizontalTextAlignment="Start"
+                                    Text="Licencia Frente"
+                                    VerticalOptions="Start"
+                                    WidthRequest="60">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_2" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label
+                                    x:Name="labelLICAtras"
+                                    Margin="30,0,0,0"
+                                    FontSize="12"
+                                    HorizontalTextAlignment="Start"
+                                    Text="Licencia Atras"
+                                    VerticalOptions="Start"
+                                    WidthRequest="60">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_3" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
 
                     </Grid>
-                    <Button Margin="20" FontSize="16" CornerRadius="25" BackgroundColor="#00ADDC" FontAttributes="Bold" Text="Enviar solicitud"></Button>
+
                 </StackLayout>
             </ScrollView>
         </Border>
-    </StackLayout>
+        <Button
+            x:Name="btnEnviar"
+            Grid.Row="2"
+            Margin="20"
+            BackgroundColor="#00ADDC"
+            Clicked="btnEnviar_Clicked"
+            CornerRadius="25"
+            FontAttributes="Bold"
+            FontSize="16"
+            Text="Enviar solicitud" />
+    </Grid>
 </ContentPage>

@@ -166,11 +166,7 @@ public partial class AgregarDireccionNueva : ContentPage
             // Si no se otorga el permiso de ubicación, mostrar un mensaje de error y salir de la aplicación
             await DisplayAlert("Error", "Permiso de Ubicación no otorgado. El Permiso es necesario para utilizar la aplicacion.", "OK");
             Application.Current.Quit();
-        }
-
-
-
-        
+        }       
     }
 
     // Métodos para cargar datos de departamentos y ciudades desde el servidor

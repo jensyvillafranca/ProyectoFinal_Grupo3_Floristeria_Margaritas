@@ -209,9 +209,9 @@ namespace ProyectoFinal_Grupo3_Floristeria_Margaritas.Views.Login
         }
 
         // Controlador de eventos para clic en el botón de registro
-        private void btnAplicar_Clicked(object sender, EventArgs e)
+        private async void btnAplicar_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new Views.PantallasRepartidor.AplicarRepartidor());
         }
 
         // Controlador de eventos para clic en el Label de recuperar contraseña
